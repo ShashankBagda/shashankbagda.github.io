@@ -205,24 +205,12 @@
 
             <div class="col-md-6 col-sm-12 p-4 responsive-map">
                 <div class="map"></div>
-                <!-- <iframe class="w-100 h-100"
+                <iframe class="w-100 h-100"
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3689.6342698009603!2d70.79464107503472!3d22.367434340459102!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a27af07389cb377%3A0xe6c1048589fe4e62!2sMarwadi%20University%20(Engineering%2C%20MBA%2C%20Law%2C%20Science%2C%20Architecture%2C%20Physiotherapy)!5e0!3m2!1sen!2sin!4v1696357968343!5m2!1sen!2sin"
-                    style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
+                    style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
     </div>
-
-    <script>
-        var map = L.map('map').setView([51.505, -0.09], 13);
-
-        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
-
-        L.marker([51.5, -0.09]).addTo(map)
-            .bindPopup('A pretty CSS popup.<br> Easily customizable.')
-            .openPopup();
-    </script>
 
     <script>
         const searchInput = document.getElementById('searchInput');
