@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rastrealo Transportation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
+
+        .navbar {
+            background-color: #20c997;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            color: white;
+            font-weight: bold;
+        }
+
+        .hero-section {
+            position: relative;
+            height: 600px;
+            color: white;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('./images/bg.webp') no-repeat center center/cover;
+            filter: blur(5px); /* Apply the blur effect to the background image */
+            z-index: -1; /* Place the blurred image behind the content */
+        }
+
+
+        .hero-section h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hero-section p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            margin-top: 20px;
+            padding: 12px 24px;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #28a745;
+        }
+
+        .features-section {
+            background-color: #ffffff;
+            padding: 50px 0;
+        }
+
+        .feature-item {
+            text-align: center;
+        }
+
+        .feature-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #343a40;
+        }
+
+        .feature-item p {
+            font-size: 1.1rem;
+            color: #6c757d;
+        }
+
+        .about-section {
+            padding: 50px 0;
+        }
+
+        .contact-section {
+            background-color: #f8f9fa;
+            padding: 50px 0;
+        }
+
+        .contact-info {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar Section -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <!-- ... (navbar content) ... -->
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero-section text-center">
+        <h1>Rastrealo Transportation Management System</h1>
+        <p>Efficient and Safe Transport Solutions for Students</p>
+        <a href="login.html" class="btn btn-success cta-button">Log In</a>
+    </div>
+
+    <!-- Features Section -->
+    <section class="features-section text-center">
+        <div class="container">
+            <h2 class="mb-4">Key Features</h2>
+            <div class="row">
+                <div class="col-md-4 feature-item">
+                    <h3>Real-time Tracking</h3>
+                    <p>Track buses and student routes in real-time, ensuring safety and timely arrivals.</p>
+                </div>
+                <div class="col-md-4 feature-item">
+                    <h3>Efficient Scheduling</h3>
+                    <p>Optimize bus routes and schedules to reduce travel time and fuel consumption.</p>
+                </div>
+                <div class="col-md-4 feature-item">
+                    <h3>Automated Notifications</h3>
+                    <p>Receive automated notifications about bus arrivals, delays, and route changes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section class="about-section text-center">
+        <div class="container">
+            <h2 class="mb-4">About Us</h2>
+            <p>Rastrealo Transportation is dedicated to providing reliable and safe transport services to students. With our advanced transportation management system, we ensure seamless coordination between students, drivers, and administrators. Our mission is to simplify the commuting experience for students and enhance the overall efficiency of transportation operations.</p>
+        </div>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section class="contact-section text-center">
+        <div class="container">
+            <h2 class="mb-4">Contact Us</h2>
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <div class="contact-info">
+                        <p>If you have any questions or inquiries, feel free to reach out to us:</p>
+                        <p>Email: shashankbagda167@gmail.com</p>
+                        <p>Phone: 72030 39929</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap JS and other scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>
