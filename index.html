@@ -24,35 +24,23 @@
 
         .hero-section {
             position: relative;
-            height: 600px;
+            min-height: 600px;
             color: white;
             text-align: center;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-        }
-
-        .hero-section::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
             background: url('./images/bg.webp') no-repeat center center/cover;
-            filter: blur(2px); /* Apply the blur effect to the background image */
-            z-index: -1; /* Place the blurred image behind the content */
         }
-
 
         .hero-section h1 {
             font-size: 3rem;
             margin-bottom: 20px;
         }
 
-        .hero-section p {
-            font-size: 1.2rem;
+        .hero-section h5 {
+            font-size: 1.5rem;
             margin-bottom: 30px;
         }
 
@@ -71,16 +59,18 @@
         .features-section {
             color: #ffffff;
             padding: 50px 0;
+            background-color: #343a40;
         }
 
         .feature-item {
             text-align: center;
+            margin-bottom: 30px;
         }
 
         .feature-item h3 {
             font-size: 1.5rem;
             margin-bottom: 10px;
-            color: #343a40;
+            color: #28a745;
         }
 
         .feature-item p {
@@ -88,38 +78,20 @@
             color: #6c757d;
         }
 
-        .about-section {
+        .about-section, .contact-section {
             padding: 50px 0;
-        }
-
-        .contact-section {
-            background-color: #f8f9fa;
-            padding: 50px 0;
-        }
-
-        .contact-info {
-            font-size: 1.1rem;
-            margin-bottom: 20px;
         }
 
         .card {
-        /* Add shadows to create the "card" effect */
-        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-        transition: 0.3s;
-        background-color: rgba(0, 0, 0, 0.2); /* Black color with 20% transparency */
-        color: white; /* Set text color to white */
-        padding: 10px;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+            transition: 0.3s;
+            background-color: rgba(0, 0, 0, 0.8); /* Black color with 80% transparency */
+            color: white;
+            padding: 20px;
         }
 
-        /* On mouse-over, add a deeper shadow */
         .card:hover {
-        box-shadow: 0 50px 50px 0 rgba(0,0,0,0.2);
-        }
-
-        /* Add some padding inside the card container */
-        .container {
-        padding: 2px 16px;
-        color: black;
+            box-shadow: 0 10px 20px 0 rgba(0,0,0,0.2);
         }
     </style>
 </head>
@@ -133,8 +105,8 @@
     <div class="hero-section text-center">
         <div class="card" style="align-items: center;">
             <h1>Rastrealo Transportation Management System</h1>
-            <h5>Efficient and Safe Transport Solutions for Students</h5>
-            <a href="login.html" class="btn col-3 btn-success cta-button">Log In</a>
+            <h5>Efficient and Safe Transport Solutions</h5>
+            <a href="login.html" class="btn btn-success col-4 cta-button">Log In</a>
         </div>
     </div>
 
@@ -146,21 +118,21 @@
                 <div class="col-md-4 feature-item">
                     <div class="card">
                         <h3>Real-time Tracking</h3>
-                        <img src="/images/icon.jpg" alt="Avatar" style="width:100%">
+                        <img src="/images/map_compas.gif" alt="Real-time Tracking" style="width:100%">
                         <p>Track buses and student routes in real-time, ensuring safety and timely arrivals.</p>
                     </div>
                 </div>
                 <div class="col-md-4 feature-item">
                     <div class="card">
                         <h3>Efficient Scheduling</h3>
-                        <img src="/images/icon.jpg" alt="Avatar" style="width:100%">
+                        <img src="/images/preview.gif" alt="Efficient Scheduling" style="width:100%">
                         <p>Optimize bus routes and schedules to reduce travel time and fuel consumption.</p>
                     </div>
                 </div>
                 <div class="col-md-4 feature-item">
                     <div class="card">
                         <h3>Automated Notifications</h3>
-                        <img src="/images/icon.jpg" alt="Avatar" style="width:100%">
+                        <img src="/images/notification.gif" alt="Automated Notifications" style="width:100%">
                         <p>Receive automated notifications about bus arrivals, delays, and route changes.</p>
                     </div>
                 </div>
@@ -169,12 +141,16 @@
     </section>
 
     <!-- About Us Section -->
-    <section class="contact-section text-center" style="display: inline;">
+    <section class="about-section text-center">
         <div class="container">
-            <div class="card">
-                <h2 class="mb-4">About Us</h2>
-                <img src="/images/icon.jpg" alt="Avatar" style="width: 40%">
-                <p>Rastrealo Transportation is dedicated to providing reliable and safe transport services to students. With our advanced transportation management system, we ensure seamless coordination between students, drivers, and administrators. Our mission is to simplify the commuting experience for students and enhance the overall efficiency of transportation operations.</p>
+            <div class="card" style="align-items: center;">
+                <h2 class="mb-4">About The Developer</h2>
+                <img src="/images/photo 1.JPG" alt="Developer's Photo" style="width: 40%">
+                <h5>
+                    <p>Welcome to Rastrealo, your reliable companion on the roads! This innovative transportation solution was crafted with passion and expertise by our dedicated developer,<h3>Shashank Bagda</h3></p>
+                    <p>He is a skilled technologist with a strong background in .NET, JavaScript, and real-time communication frameworks like SignalR and Google Services. With a passion for creating impactful solutions, he turned the vision of Rastrealo into a reality.</p>
+                    <p>Have a question, suggestion, or just want to say hello? We would love to connect with users and fellow tech enthusiasts.</p>
+                </h5>
             </div>
         </div>
     </section>
@@ -187,9 +163,17 @@
                 <div class="row">
                     <div class="col-md-6 offset-md-3">
                         <div class="contact-info">
-                            <p>If you have any questions or inquiries, feel free to reach out to us:</p>
-                            <p>Email: shashankbagda167@gmail.com</p>
+                            <h4>If you have any questions or inquiries, feel free to reach out to us:</h4>
+                            <p>Email: <a href="mailto:shashankbagda167@gmail.com">shashankbagda167@gmail.com</a></p>
                             <p>Phone: +91 72030 39929</p>
+                            <p>
+                                <a href="https://www.linkedin.com/in/shashank-bagda/" target="_blank">
+                                <img src="/images/linkedin.png" height="50px" width="50px"></a>
+
+                                <a href="https://github.com/ShashankBagda" target="_blank">
+                                    <img src="/images/github.png" height="50px" width="50px"></a>
+                                </a>
+                            </p>
                         </div>
                     </div>
                 </div>
