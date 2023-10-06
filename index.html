@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rastrealo Transportation</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <style>
+	<style>
         body {
             font-family: 'Arial', sans-serif;
             background-color: #f8f9fa;
@@ -93,21 +93,21 @@
         .card:hover {
             box-shadow: 0 10px 20px 0 rgba(0,0,0,0.2);
         }
+		
+		#loader-animation {
+			width:100vw;
+			height:100vh;
+			position:fixed;
+			top:0;
+			z-index:99;
+			background-color:#ffffff;
+		}
+		
+		.disabled {
+			display:none;
+		}
     </style>
-    <script src="https://cdn.jsdelivr.net/npm/lottie-web/build/player/lottie.min.js"></script>
-    <script>
-        // Get the DOM element for the animation container
-        var animationContainer = document.getElementById('loader-animation');
     
-        // Load the animation from the JSON file
-        lottie.loadAnimation({
-            container: animationContainer, // Specify the container element
-            renderer: 'svg', // Choose the renderer (canvas, html, svg)
-            loop: true, // Set loop to true for continuous playback
-            autoplay: true, // Set autoplay to true to start the animation immediately
-            path: 'animation_lnex2f6w.json' // Path to your JSON animation file
-        });
-    </script>
     
 </head>
 <body>
@@ -198,6 +198,24 @@
         </div>
     </section>
 
+	<script src="https://cdn.jsdelivr.net/npm/lottie-web/build/player/lottie.min.js"></script>
+    <script>
+        // Get the DOM element for the animation container
+        var animationContainer = document.getElementById('loader-animation');
+    
+        // Load the animation from the JSON file
+        lottie.loadAnimation({
+            container: animationContainer, // Specify the container element
+            renderer: 'svg', // Choose the renderer (canvas, html, svg)
+            loop: true, // Set loop to true for continuous playback
+            autoplay: true, // Set autoplay to true to start the animation immediately
+            path: 'animation_lnex2f6w.json' // Path to your JSON animation file
+        });
+		
+		const myTimeout = setTimeout(()=>{
+			animationContainer.classList.add('disabled');
+		}, 3000);
+    </script>
     <!-- Bootstrap JS and other scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
