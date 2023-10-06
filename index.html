@@ -94,8 +94,25 @@
             box-shadow: 0 10px 20px 0 rgba(0,0,0,0.2);
         }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/lottie-web/build/player/lottie.min.js"></script>
+    <script>
+        // Get the DOM element for the animation container
+        var animationContainer = document.getElementById('loader-animation');
+    
+        // Load the animation from the JSON file
+        lottie.loadAnimation({
+            container: animationContainer, // Specify the container element
+            renderer: 'svg', // Choose the renderer (canvas, html, svg)
+            loop: true, // Set loop to true for continuous playback
+            autoplay: true, // Set autoplay to true to start the animation immediately
+            path: 'animation_lnex2f6w.json' // Path to your JSON animation file
+        });
+    </script>
+    
 </head>
 <body>
+    <div id="loader-animation"></div>
+
     <!-- Navbar Section -->
     <nav class="navbar navbar-expand-lg navbar-light">
         <!-- ... (navbar content) ... -->
