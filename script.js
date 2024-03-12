@@ -1,5 +1,3 @@
-// script.js file
-
 function domReady(fn) {
     if (
         document.readyState === "complete" ||
