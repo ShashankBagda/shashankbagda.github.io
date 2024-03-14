@@ -13,7 +13,7 @@ domReady(function () {
 
     // If found your qr code
     function onScanSuccess(decodeText, decodeResult) {
-        alert("Redirecting to " + decodeText);
+        // Remove alert and directly redirect
         window.location.href = decodeText; // Redirect to the decoded URL
     }
 
