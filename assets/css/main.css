@@ -11,6 +11,29 @@
 # Help: https://bootstrapmade.com/color-system/
 --------------------------------------------------------------*/
 /* Fonts */
+
+/* Show desktop video by default */
+.video-desktop {
+  display: block;
+}
+
+.video-mobile {
+  display: none;
+}
+
+/* On screens smaller than 768px, switch to mobile video */
+@media screen and (max-width: 767px) {
+  .video-desktop {
+    display: none !important;
+  }
+
+  .video-mobile {
+    display: block !important;
+  }
+}
+
+
+
 :root {
   --default-font: "Roboto",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --heading-font: "Raleway",  sans-serif;
