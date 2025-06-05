@@ -389,7 +389,7 @@
     <p><em>IEEE & Circuitology Club, Marwadi University</em></p>
     <ul>
       <li><strong>Chair – IEEE MEFGI Student Branch (2024)</strong>: Spearheaded events on emerging technologies, built industry-academic bridges, and mentored student teams.</li>
-      <li><strong>Founder – Circuitology Club</strong>: Established one of the university’s most active technical communities, organizing 10+ peer sessions, 3 workshops, 5 expert talks, and securing ₹21,500+ in funding.</li>
+      <li><strong>Founder – Circuitology Club</strong>: Established one of the university’s most active technical communities, organizing 10+ peer sessions, 3 workshops, 5 expert talks, and securing ₹3,00,000+ in funding.</li>
       <!-- <li>Represented the Gujarat Section at <strong>IEEE VICS 2025 in Tokyo, Japan</strong> as the sole student delegate from India under a global grant initiative.</li>
       <li>Delivered expert talks and workshops on <strong>IoT, AI, embedded systems, and innovation</strong> for school, college, and university audiences.</li> -->
     </ul>
@@ -784,35 +784,35 @@
     <div class="row gy-4 justify-content-center">
 
       <div class="col-lg-8">
-        <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
-          <div class="row gy-4">
+        <form id="contactForm" action="https://formspree.io/f/mblylqlz" method="POST" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+  <input type="hidden" name="_redirect" value="" />
+  
+  <div class="row gy-4">
 
-            <div class="col-md-6">
-              <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
-            </div>
+    <div class="col-md-6">
+      <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
+    </div>
 
-            <div class="col-md-6">
-              <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
-            </div>
+    <div class="col-md-6">
+      <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
+    </div>
 
-            <div class="col-md-12">
-              <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
-            </div>
+    <div class="col-md-12">
+      <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
+    </div>
 
-            <div class="col-md-12">
-              <textarea class="form-control" name="message" rows="6" placeholder="Message" required=""></textarea>
-            </div>
+    <div class="col-md-12">
+      <textarea class="form-control" name="message" rows="6" placeholder="Message" required=""></textarea>
+    </div>
 
-            <div class="col-md-12 text-center">
-              <div class="loading">Loading</div>
-              <div class="error-message"></div>
-              <div class="sent-message">Your message has been sent. Thank you!</div>
+    <div class="col-md-12 text-center">
+      <button type="submit" id="submitBtn">Send Message</button>
+    </div>
 
-              <button type="submit">Send Message</button>
-            </div>
+  </div>
+</form>
 
-          </div>
-        </form>
+
       </div><!-- End Contact Form -->
 
     </div>
@@ -867,6 +867,51 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+
+
+<script>
+  document.getElementById('contactForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const form = e.target;
+    const submitBtn = document.getElementById('submitBtn');
+    const formData = new FormData(form);
+
+    try {
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        submitBtn.textContent = 'Your message has been sent. Thank you!';
+        submitBtn.style.backgroundColor = '#4BB543';
+        form.reset();
+
+        // Optional: revert button after 3 seconds
+        setTimeout(() => {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Send Message';
+          submitBtn.style.backgroundColor = '';
+        }, 5000);
+
+      } else {
+        throw new Error('Network response was not ok.');
+      }
+    } catch (error) {
+      alert('Oops! There was a problem submitting your form.');
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send Message';
+    }
+  });
+</script>
+
 
 </body>
 
