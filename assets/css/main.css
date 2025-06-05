@@ -590,6 +590,11 @@ section,
 .hero .social-links {
   margin-top: 25px;
 }
+.social-links a {
+  pointer-events: auto;
+  position: relative;
+  z-index: 2;
+}
 
 .hero .social-links a {
   font-size: 20px;
@@ -1480,3 +1485,4 @@ section,
 .starter-section {
   /* Add your styles here */
 }
+
