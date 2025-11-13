@@ -8,20 +8,16 @@
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Custom Pastel Theme -->
+  <!-- Styles -->
   <style>
-    body {
-      background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
-      font-family: 'Inter', sans-serif;
-    }
-    .glass {
-      backdrop-filter: blur(15px);
-      background: rgba(255, 255, 255, 0.65);
-      border: 1px solid rgba(255,255,255,0.5);
-      box-shadow: 0 10px 30px rgba(2, 6, 23, 0.08);
-    }
-    @keyframes floatIn { from { opacity:0; transform: translateY(10px) scale(.98);} to { opacity:1; transform: translateY(0) scale(1);} }
-    .animate-in { animation: floatIn .6s ease both; }
+    body { background: #f7f8fb; font-family: 'Inter', sans-serif; }
+    .glass { backdrop-filter: blur(15px); background: rgba(255,255,255,.7); border: 1px solid rgba(255,255,255,.5); box-shadow: 0 10px 30px rgba(2,6,23,.08); }
+    .toggle-on { background: #10b981 !important; color: #fff !important; }
+    .toggle-off { background: #e2e8f0 !important; color: #475569 !important; }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(12px);} to { opacity: 1; transform: translateY(0);} }
+    .animate-in { animation: fadeInUp .5s ease both; }
+    @keyframes gradientX { 0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; } }
+    .btn-animated { background: linear-gradient(90deg,#3b82f6,#10b981,#8b5cf6); background-size:200% 100%; animation: gradientX 4s ease infinite alternate; color:#fff; }
   </style>
 
   <!-- PWA Manifest -->
@@ -38,69 +34,207 @@
 
   <!-- HEADER -->
   <header class="w-full py-6 shadow-sm glass animate-in">
-    <h1 class="text-center text-3xl font-bold text-gray-800">
-      🌿 Shashank's Lifestyle Tracker
-    </h1>
-    <p class="text-center text-gray-500 text-sm mt-1">
-      Health • Fitness • Habits • Productivity
-    </p>
+    <div class="max-w-5xl mx-auto px-4">
+      <h1 class="text-3xl font-bold text-gray-800">🌿 Shashank's Lifestyle Tracker</h1>
+      <p class="text-gray-500 text-sm mt-1">Health • Fitness • Habits • Productivity</p>
+    </div>
   </header>
 
-  <!-- HERO SECTION -->
-  <section class="flex-1 flex flex-col items-center justify-center px-6 py-12 text-center animate-in" style="animation-delay:.05s">
+  <main class="flex-1 px-4 md:px-8 lg:px-12 py-8 space-y-10">
 
-    <img src="assets/icon-512.png" class="w-32 h-32 mb-6 drop-shadow-xl" alt="App Logo"/>
+    <!-- REMINDER MODULES (kept from dashboard) -->
+    <section class="max-w-5xl mx-auto animate-in">
+      <h2 class="text-xl font-semibold text-gray-700 mb-4">Reminder Modules</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
-    <h2 class="text-2xl font-semibold text-gray-700">Your Personal Wellness Command Center</h2>
-    <p class="text-gray-500 mt-3 max-w-md">
-      Track your habits, receive automated reminders, review daily progress,
-      and stay accountable — all in one beautiful, intelligent dashboard.
-    </p>
+        <!-- Exercise -->
+        <div class="glass p-4 rounded-xl shadow flex flex-col justify-between">
+          <div>
+            <h3 class="text-lg font-semibold text-gray-700">🏋️ Exercise</h3>
+            <p class="text-gray-500 text-sm">Gym + mobility reminders</p>
+          </div>
+          <div class="flex gap-2 mt-4">
+            <button id="toggle-exercise" class="flex-1 py-2 rounded-lg toggle-off font-medium shadow">Enable</button>
+            <button type="button" onclick="window.testWebhook('exercise')" class="px-3 py-2 rounded-lg shadow btn-animated">Test</button>
+          </div>
+        </div>
 
-    <!-- BUTTONS -->
-    <div class="mt-10 flex flex-col gap-4 w-full max-w-xs">
+        <!-- Food -->
+        <div class="glass p-4 rounded-xl shadow flex flex-col justify-between">
+          <div>
+            <h3 class="text-lg font-semibold text-gray-700">🍽 Food</h3>
+            <p class="text-gray-500 text-sm">Breakfast, lunch, dinner reminders</p>
+          </div>
+          <div class="flex gap-2 mt-4">
+            <button id="toggle-food" class="flex-1 py-2 rounded-lg toggle-off font-medium shadow">Enable</button>
+            <button type="button" onclick="window.testWebhook('food')" class="px-3 py-2 rounded-lg shadow btn-animated">Test</button>
+          </div>
+        </div>
 
-      <a
-        href="./dashboard.html"
-        class="w-full py-3 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-medium text-lg shadow-md hover:from-blue-700 hover:to-indigo-700 transition">
-        Open Dashboard
-      </a>
+        <!-- Water -->
+        <div class="glass p-4 rounded-xl shadow flex flex-col justify-between">
+          <div>
+            <h3 class="text-lg font-semibold text-gray-700">💧 Water</h3>
+            <p class="text-gray-500 text-sm">Hydration reminders throughout day</p>
+          </div>
+          <div class="flex gap-2 mt-4">
+            <button id="toggle-water" class="flex-1 py-2 rounded-lg toggle-off font-medium shadow">Enable</button>
+            <button type="button" onclick="window.testWebhook('water')" class="px-3 py-2 rounded-lg shadow btn-animated">Test</button>
+          </div>
+        </div>
 
-      <a
-        href="./settings.html"
-        class="w-full py-3 rounded-xl bg-white text-blue-600 border border-blue-200 font-medium shadow-sm hover:bg-blue-50 transition">
-        Edit Reminders
-      </a>
+        <!-- Work -->
+        <div class="glass p-4 rounded-xl shadow flex flex-col justify-between">
+          <div>
+            <h3 class="text-lg font-semibold text-gray-700">💻 Work</h3>
+            <p class="text-gray-500 text-sm">Productivity + focus reminders</p>
+          </div>
+          <div class="flex gap-2 mt-4">
+            <button id="toggle-work" class="flex-1 py-2 rounded-lg toggle-off font-medium shadow">Enable</button>
+            <button type="button" onclick="window.testWebhook('work')" class="px-3 py-2 rounded-lg shadow btn-animated">Test</button>
+          </div>
+        </div>
 
-      <button
-        id="installBtn"
-        class="w-full py-3 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-medium text-lg shadow-md hover:from-emerald-700 hover:to-teal-700 transition hidden">
-        Install App
-      </button>
-    </div>
-  </section>
+        <!-- Sleep -->
+        <div class="glass p-4 rounded-xl shadow flex flex-col justify-between">
+          <div>
+            <h3 class="text-lg font-semibold text-gray-700">😴 Sleep</h3>
+            <p class="text-gray-500 text-sm">Sleep routine + wind-down reminders</p>
+          </div>
+          <div class="flex gap-2 mt-4">
+            <button id="toggle-sleep" class="flex-1 py-2 rounded-lg toggle-off font-medium shadow">Enable</button>
+            <button type="button" onclick="window.testWebhook('sleep')" class="px-3 py-2 rounded-lg shadow btn-animated">Test</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SETTINGS (merged from settings.html) -->
+    <section class="max-w-5xl mx-auto animate-in" style="animation-delay:.05s">
+      <h2 class="text-xl font-semibold text-gray-700 mb-4">⚙️ Edit Reminder Times</h2>
+
+      <!-- Exercise -->
+      <div class="glass card p-5 rounded-2xl shadow mb-6">
+        <h3 class="text-lg font-semibold text-gray-700">🏋️ Exercise</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+          <div><label class="text-gray-600 text-sm">Morning Mobility</label><input type="time" id="ex_morning" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2"/></div>
+          <div><label class="text-gray-600 text-sm">Gym / Swimming</label><input type="time" id="ex_gym" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2"/></div>
+          <div><label class="text-gray-600 text-sm">Protein Shake</label><input type="time" id="ex_shake" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2"/></div>
+        </div>
+      </div>
+
+      <!-- Food -->
+      <div class="glass card p-5 rounded-2xl shadow mb-6">
+        <h3 class="text-lg font-semibold text-gray-700">🍽 Food</h3>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mt-4">
+          <div><label class="text-gray-600 text-sm">Breakfast</label><input type="time" id="fd_breakfast" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2"/></div>
+          <div><label class="text-gray-600 text-sm">Lunch</label><input type="time" id="fd_lunch" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2"/></div>
+          <div><label class="text-gray-600 text-sm">Snack</label><input type="time" id="fd_snack" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2"/></div>
+          <div><label class="text-gray-600 text-sm">Dinner</label><input type="time" id="fd_dinner" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2"/></div>
+        </div>
+      </div>
+
+      <!-- Water -->
+      <div class="glass card p-5 rounded-2xl shadow mb-6">
+        <h3 class="text-lg font-semibold text-gray-700">💧 Water</h3>
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-4 mt-4">
+          <div><label class="text-gray-600 text-sm">Morning</label><input type="time" id="wt_1" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2"/></div>
+          <div><label class="text-gray-600 text-sm">Mid-Morning</label><input type="time" id="wt_2" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2"/></div>
+          <div><label class="text-gray-600 text-sm">After Lunch</label><input type="time" id="wt_3" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2"/></div>
+          <div><label class="text-gray-600 text-sm">Evening</label><input type="time" id="wt_4" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2"/></div>
+          <div><label class="text-gray-600 text-sm">Pre-Workout</label><input type="time" id="wt_5" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2"/></div>
+        </div>
+      </div>
+
+      <!-- Work -->
+      <div class="glass card p-5 rounded-2xl shadow mb-6">
+        <h3 class="text-lg font-semibold text-gray-700">💻 Work</h3>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mt-4">
+          <div><label class="text-gray-600 text-sm">Start</label><input type="time" id="wk_start" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2"/></div>
+          <div><label class="text-gray-600 text-sm">Break</label><input type="time" id="wk_break" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2"/></div>
+          <div><label class="text-gray-600 text-sm">Refocus</label><input type="time" id="wk_focus" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2"/></div>
+          <div><label class="text-gray-600 text-sm">Wrap</label><input type="time" id="wk_wrap" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2"/></div>
+        </div>
+      </div>
+
+      <!-- Sleep -->
+      <div class="glass card p-5 rounded-2xl shadow mb-24">
+        <h3 class="text-lg font-semibold text-gray-700">😴 Sleep</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+          <div><label class="text-gray-600 text-sm">Wind Down</label><input type="time" id="sl_wind" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2"/></div>
+          <div><label class="text-gray-600 text-sm">Brush Teeth</label><input type="time" id="sl_brush" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2"/></div>
+          <div><label class="text-gray-600 text-sm">Sleep Time</label><input type="time" id="sl_sleep" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2"/></div>
+        </div>
+      </div>
+
+      <!-- Save/Reset bar -->
+      <div class="fixed bottom-0 left-0 w-full px-6 py-4 bg-gradient-to-r from-blue-50/80 via-emerald-50/80 to-violet-50/80 backdrop-blur-md shadow-inner border-t border-white/60">
+        <div class="max-w-5xl mx-auto flex gap-4">
+          <button id="saveBtn" class="flex-1 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-xl shadow hover:from-blue-700 hover:to-indigo-700 transition">Save All</button>
+          <button id="resetBtn" class="flex-1 py-3 bg-white text-gray-700 font-semibold rounded-xl shadow border border-gray-200 hover:bg-gray-50 transition">Reset Defaults</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
 
   <!-- FOOTER -->
   <footer class="w-full text-center py-6 text-gray-400 text-sm">
     Made with ❤️ by Shashank
   </footer>
 
-  <!-- PWA Install Script -->
+  <!-- App Scripts -->
+  <script src="js/scheduler.js"></script>
+  <script src="js/app.js"></script>
+
+  <!-- Settings logic -->
   <script>
-    let deferredPrompt;
-    const installBtn = document.getElementById("installBtn");
+    const defaultTimes = {
+      exercise: { ex_morning: "08:00", ex_gym: "18:30", ex_shake: "20:00" },
+      food: { fd_breakfast: "08:30", fd_lunch: "13:00", fd_snack: "16:30", fd_dinner: "21:00" },
+      water:{ wt_1:"08:15", wt_2:"10:30", wt_3:"13:15", wt_4:"16:00", wt_5:"19:00" },
+      work: { wk_start: "09:00", wk_break: "11:00", wk_focus: "14:00", wk_wrap: "17:00" },
+      sleep:{ sl_wind:"23:00", sl_brush:"23:30", sl_sleep:"00:00" }
+    };
 
-    window.addEventListener("beforeinstallprompt", (e) => {
-      e.preventDefault();
-      deferredPrompt = e;
-      installBtn.classList.remove("hidden");
-    });
+    function loadTimes() {
+      const saved = JSON.parse(localStorage.getItem("reminderTimes")) || defaultTimes;
+      for (let section in saved) {
+        for (let key in saved[section]) {
+          const el = document.getElementById(key);
+          if (el) el.value = saved[section][key];
+        }
+      }
+    }
 
-    installBtn.addEventListener("click", () => {
-      if (!deferredPrompt) return;
-      deferredPrompt.prompt();
-      deferredPrompt = null;
-      installBtn.classList.add("hidden");
+    function saveTimes() {
+      const data = {
+        exercise: { ex_morning: ex_morning.value, ex_gym: ex_gym.value, ex_shake: ex_shake.value },
+        food: { fd_breakfast: fd_breakfast.value, fd_lunch: fd_lunch.value, fd_snack: fd_snack.value, fd_dinner: fd_dinner.value },
+        water:{ wt_1: wt_1.value, wt_2: wt_2.value, wt_3: wt_3.value, wt_4: wt_4.value, wt_5: wt_5.value },
+        work: { wk_start: wk_start.value, wk_break: wk_break.value, wk_focus: wk_focus.value, wk_wrap: wk_wrap.value },
+        sleep:{ sl_wind: sl_wind.value, sl_brush: sl_brush.value, sl_sleep: sl_sleep.value }
+      };
+      localStorage.setItem("reminderTimes", JSON.stringify(data));
+      alert("Reminder times saved successfully!");
+
+      // Re-init enabled workers with new times
+      const enabled = JSON.parse(localStorage.getItem('enabledWorkers')||'[]');
+      enabled.forEach(name => { if (window.stopWorker) stopWorker(name); });
+      enabled.forEach(name => { if (window.startWorker) startWorker(name); });
+    }
+
+    function resetDefaults() {
+      localStorage.setItem("reminderTimes", JSON.stringify(defaultTimes));
+      loadTimes();
+      alert("Times reset to defaults.");
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      loadTimes();
+      document.getElementById('saveBtn').addEventListener('click', saveTimes);
+      document.getElementById('resetBtn').addEventListener('click', resetDefaults);
     });
   </script>
 
