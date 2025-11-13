@@ -35,6 +35,12 @@
     .animate-in { animation: fadeInUp .5s ease both; }
     @keyframes gradientX { 0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; } }
     .btn-animated { background: linear-gradient(90deg,#3b82f6,#10b981,#8b5cf6); background-size:200% 100%; animation: gradientX 4s ease infinite alternate; color:#fff; }
+    /* Quote bar */
+    .quote-box { position: relative; overflow: hidden; background: linear-gradient(90deg,#f0fdf4,#f0f9ff); }
+    .quote-box::after { content:""; position:absolute; inset:0; background: linear-gradient(90deg,transparent,rgba(255,255,255,.65),transparent); transform: translateX(-100%); animation: shimmer 6s linear infinite; }
+    @keyframes shimmer { 0%{transform: translateX(-100%);} 100%{transform: translateX(100%);} }
+    .quote-text { display:inline-block; opacity:0; transform: translateY(4px); animation: quoteIn .6s ease forwards; }
+    @keyframes quoteIn { to { opacity:1; transform: translateY(0);} }
   </style>
 
   <!-- PWA Manifest -->
@@ -63,7 +69,9 @@
 
     <!-- MOTIVATIONAL QUOTE -->
     <section class="max-w-5xl mx-auto animate-in">
-      <div class="glass rounded-2xl p-4 shadow text-center text-slate-700" id="quoteBox">Stay consistent — small healthy choices add up.</div>
+      <div class="glass rounded-2xl p-4 shadow text-center text-slate-700 quote-box">
+        <span id="quoteBox" class="quote-text">Stay consistent — small healthy choices add up.</span>
+      </div>
     </section>
 
     <!-- PROFILE + STATS -->
@@ -329,7 +337,10 @@
 document.addEventListener('DOMContentLoaded', ()=>{
       // Motivational quote
       const quotes=['Health is the greatest wealth.','Small steps every day lead to big results.','Hydrate, move, rest — repeat.','Consistency beats intensity.','Your future self will thank you.'];
-      const qb=document.getElementById('quoteBox'); if(qb) qb.textContent=quotes[Math.floor(Math.random()*quotes.length)];
+      const qb=document.getElementById('quoteBox');
+      function rotateQuote(){ if(!qb) return; qb.classList.remove('quote-text'); void qb.offsetWidth; // restart animation
+        qb.textContent=quotes[Math.floor(Math.random()*quotes.length)]; qb.classList.add('quote-text'); }
+      rotateQuote(); setInterval(rotateQuote, 8000);
       // Init profile
       const p = getProfile();
       if (!hasProfileCookie()) { openProfile(); setControlsEnabled(false); }
@@ -411,8 +422,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     function openSettings(mod) {
       if (typeof hasProfileCookie === 'function' && !hasProfileCookie()) {
         if (typeof showToast === 'function') showToast('Please complete your profile first', 'info');
-        openProfile();
-        return;
+        return; // Block without opening profile here
       }
       currentModule = mod;
       const times = getTimes();
