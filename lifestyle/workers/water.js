@@ -20,8 +20,10 @@ function schedule(rem) {
   }, target - now);
 }
 
+let MOD = 'water';
 self.onmessage = (e) => {
-  const { type, times, webhook } = e.data || {};
+  const { type, times, webhook, module } = e.data || {};
+  if (module) MOD = module;
   if (type === 'test') {
     fetch(webhook || WEBHOOK, {
       method: 'POST',
@@ -50,6 +52,7 @@ self.onmessage = (e) => {
       }
       setTimeout(() => {
         fetch(webhook || WEBHOOK, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ content: `💧 **Water Reminder:** ${rem.text}` }) });
+        try { self.postMessage({ type: 'fired', module: MOD }); } catch (_) {}
         send(rem);
       }, target - now);
     };

@@ -22,7 +22,24 @@ function startWorker(name, opts = {}) {
     const times = JSON.parse(localStorage.getItem("reminderTimes")) || null;
     const hooks = JSON.parse(localStorage.getItem('webhookLinks')||'{}');
     const webhook = hooks && hooks[name] ? hooks[name] : null;
-    workers[name].postMessage({ type: "init", times, webhook });
+    workers[name].postMessage({ type: "init", times, webhook, module: name });
+    // Capture fired events from worker to track alert counts
+    workers[name].onmessage = (e) => {
+      const data = e.data || {};
+      if (data.type === 'fired') {
+        try {
+          const key = 'alertCounts';
+          const arr = JSON.parse(localStorage.getItem(key) || '[]');
+          arr.push({ ts: Date.now(), module: name });
+          // keep reasonable size
+          if (arr.length > 5000) arr.splice(0, arr.length - 5000);
+          localStorage.setItem(key, JSON.stringify(arr));
+          if (window.dispatchEvent) {
+            window.dispatchEvent(new CustomEvent('alert-fired', { detail: { module: name } }));
+          }
+        } catch (_) {}
+      }
+    };
   } catch (e) {
     console.warn("Failed to send times to worker", e);
   }

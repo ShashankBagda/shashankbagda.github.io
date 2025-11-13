@@ -22,6 +22,8 @@
 
   <!-- PWA Manifest -->
   <link rel="manifest" href="pwa/manifest.json" />
+  <!-- Chart.js for stats -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <script>
@@ -41,6 +43,35 @@
   </header>
 
   <main class="flex-1 px-4 md:px-8 lg:px-12 py-8 space-y-10">
+
+    <!-- PROFILE + STATS -->
+    <section class="max-w-5xl mx-auto animate-in">
+      <div class="glass rounded-2xl p-4 shadow flex flex-col md:flex-row items-center gap-4">
+        <div id="genderSketch" class="text-6xl select-none">👤</div>
+        <div class="flex-1 w-full">
+          <div class="flex items-center justify-between">
+            <h3 class="text-lg font-semibold text-gray-700">
+              <span id="welcomeText">Welcome</span>
+            </h3>
+            <button id="editProfileBtn" class="px-3 py-2 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-sm">Edit Profile</button>
+          </div>
+          <div class="mt-3">
+            <div class="flex items-center gap-3">
+              <label class="text-sm text-slate-600">Range</label>
+              <select id="rangeSelect" class="px-3 py-2 rounded-lg border border-slate-300 bg-white text-sm">
+                <option value="daily">Daily</option>
+                <option value="weekly">Weekly</option>
+                <option value="monthly">Monthly</option>
+                <option value="all">All time</option>
+              </select>
+            </div>
+            <div class="mt-3">
+              <canvas id="alertChart" height="120"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- REMINDER MODULES (kept from dashboard) -->
     <section class="max-w-5xl mx-auto animate-in">
@@ -135,14 +166,52 @@
       </div>
     </section>
 
-    <!-- Settings Modal (per-module) -->
-    <div id="settingsModal" class="fixed inset-0 z-50 hidden">
+  <!-- Settings Modal (per-module) -->
+  <div id="settingsModal" class="fixed inset-0 z-50 hidden">
       <div class="absolute inset-0 bg-slate-900/40" onclick="closeSettings()"></div>
       <div class="relative max-w-xl mx-auto mt-24 glass rounded-2xl p-6 animate-in">
         <div class="flex items-center justify-between mb-3">
           <h3 id="modalTitle" class="text-lg font-semibold text-gray-800">Edit Times</h3>
           <button class="p-2 rounded-lg hover:bg-slate-100" onclick="closeSettings()">✖</button>
+  </div>
+
+    <!-- Profile Modal -->
+    <div id="profileModal" class="fixed inset-0 z-50 hidden">
+      <div class="absolute inset-0 bg-slate-900/40" onclick="closeProfile()"></div>
+      <div class="relative max-w-lg mx-auto mt-24 glass rounded-2xl p-6 animate-in">
+        <h3 class="text-lg font-semibold text-gray-800 mb-4">Tell us about you</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="text-sm text-slate-600">Name</label>
+            <input id="pf_name" type="text" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2" />
+          </div>
+          <div>
+            <label class="text-sm text-slate-600">Age</label>
+            <input id="pf_age" type="number" min="0" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2" />
+          </div>
+          <div>
+            <label class="text-sm text-slate-600">Height (cm)</label>
+            <input id="pf_height" type="number" min="0" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2" />
+          </div>
+          <div>
+            <label class="text-sm text-slate-600">Weight (kg)</label>
+            <input id="pf_weight" type="number" min="0" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2" />
+          </div>
+          <div class="md:col-span-2">
+            <label class="text-sm text-slate-600">Gender</label>
+            <div class="mt-1 flex items-center gap-4">
+              <label class="flex items-center gap-2 text-sm"><input type="radio" name="pf_gender" value="male"/> Male</label>
+              <label class="flex items-center gap-2 text-sm"><input type="radio" name="pf_gender" value="female"/> Female</label>
+              <label class="flex items-center gap-2 text-sm"><input type="radio" name="pf_gender" value="other"/> Other</label>
+            </div>
+          </div>
         </div>
+        <div class="mt-6 flex gap-3 justify-end">
+          <button class="px-4 py-2 rounded-xl bg-white border border-slate-200 text-slate-700 hover:bg-slate-50" onclick="closeProfile()">Cancel</button>
+          <button class="px-4 py-2 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:from-blue-700 hover:to-indigo-700" onclick="saveProfile()">Save</button>
+        </div>
+      </div>
+    </div>
         <div id="modalBody" class="grid gap-4"></div>
         <div class="mt-6 flex gap-3 justify-end">
           <button class="px-4 py-2 rounded-xl bg-white border border-slate-200 text-slate-700 hover:bg-slate-50" onclick="resetModuleTimes()">Reset</button>
@@ -181,6 +250,88 @@
       setTimeout(()=> toastHost.removeChild(el), 2500);
     }
     window.showToast = showToast;
+    // Profile helpers
+    function getProfile(){ return JSON.parse(localStorage.getItem('userProfile')||'null'); }
+    function setProfile(p){ localStorage.setItem('userProfile', JSON.stringify(p)); }
+
+    function renderWelcome(){
+      const p = getProfile();
+      const w = document.getElementById('welcomeText');
+      const g = document.getElementById('genderSketch');
+      if (p && p.name) w.textContent = `Welcome, ${p.name}`; else w.textContent = 'Welcome';
+      const em = (!p||!p.gender)?'👤':(p.gender==='male'?'👨':'👩');
+      g.textContent = em;
+    }
+
+    function openProfile(){ document.getElementById('profileModal').classList.remove('hidden'); }
+    function closeProfile(){ document.getElementById('profileModal').classList.add('hidden'); }
+    function saveProfile(){
+      const name = document.getElementById('pf_name').value.trim();
+      const age = parseInt(document.getElementById('pf_age').value||'0',10);
+      const height = parseFloat(document.getElementById('pf_height').value||'0');
+      const weight = parseFloat(document.getElementById('pf_weight').value||'0');
+      const gender = (document.querySelector('input[name="pf_gender"]:checked')||{}).value || 'other';
+      setProfile({ name, age, height, weight, gender });
+      renderWelcome();
+      closeProfile();
+      showToast('Profile saved','success');
+    }
+    window.saveProfile = saveProfile; window.closeProfile = closeProfile;
+
+    // Alerts chart
+    let alertChart;
+    function getAlerts(){ return JSON.parse(localStorage.getItem('alertCounts')||'[]'); }
+
+    function groupDaily(arr){
+      const today = new Date(); today.setHours(0,0,0,0);
+      const buckets = Array(24).fill(0);
+      arr.forEach(a=>{ const d=new Date(a.ts); if (d>=today) buckets[d.getHours()]++; });
+      return { labels: Array.from({length:24},(_,i)=>i+':00'), data: buckets };
+    }
+    function groupWeekly(arr){
+      const now = new Date(); const start = new Date(now); start.setDate(now.getDate()-6); start.setHours(0,0,0,0);
+      const labels = [] , data = [];
+      for(let i=0;i<7;i++){ const d=new Date(start); d.setDate(start.getDate()+i); labels.push(d.toLocaleDateString(undefined,{weekday:'short'})); data.push(0);} 
+      arr.forEach(a=>{ const d=new Date(a.ts); if (d>=start){ const idx=Math.floor((d-start)/(24*3600*1000)); if(idx>=0&&idx<7) data[idx]++; }});
+      return { labels, data };
+    }
+    function groupMonthly(arr){
+      const now = new Date(); const start = new Date(now); start.setDate(now.getDate()-29); start.setHours(0,0,0,0);
+      const labels=[]; const data=[]; for(let i=0;i<30;i++){ const d=new Date(start); d.setDate(start.getDate()+i); labels.push((d.getMonth()+1)+'/'+d.getDate()); data.push(0);} 
+      arr.forEach(a=>{ const d=new Date(a.ts); if (d>=start){ const idx=Math.floor((d-start)/(24*3600*1000)); if(idx>=0&&idx<30) data[idx]++; }});
+      return { labels, data };
+    }
+    function groupAll(arr){
+      const map = new Map();
+      arr.forEach(a=>{ const d=new Date(a.ts); const k=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0'); map.set(k,(map.get(k)||0)+1); });
+      const labels=[...map.keys()].sort(); const data=labels.map(k=>map.get(k));
+      return { labels, data };
+    }
+
+    function buildChart(){
+      const range = (document.getElementById('rangeSelect')||{}).value || 'daily';
+      const arr = getAlerts();
+      let g = range==='daily'?groupDaily(arr):range==='weekly'?groupWeekly(arr):range==='monthly'?groupMonthly(arr):groupAll(arr);
+      const ctx = document.getElementById('alertChart'); if (!ctx) return;
+      const cfg = { type:'line', data:{ labels:g.labels, datasets:[{ label:'Alerts sent', data:g.data, borderColor:'#3b82f6', backgroundColor:'rgba(59,130,246,.2)', tension:.3 }]}, options:{ responsive:true, plugins:{legend:{display:false}} } };
+      if (alertChart) { alertChart.data.labels=g.labels; alertChart.data.datasets[0].data=g.data; alertChart.update(); }
+      else { alertChart = new Chart(ctx, cfg); }
+    }
+
+    document.addEventListener('DOMContentLoaded', ()=>{
+      // Init profile
+      const p = getProfile();
+      if (!p) openProfile();
+      else renderWelcome();
+      // Edit button
+      const eb = document.getElementById('editProfileBtn'); if (eb) eb.addEventListener('click', ()=>{
+        const p=getProfile()||{}; document.getElementById('pf_name').value=p.name||''; document.getElementById('pf_age').value=p.age||''; document.getElementById('pf_height').value=p.height||''; document.getElementById('pf_weight').value=p.weight||''; if (p.gender) { const r=document.querySelector(`input[name=pf_gender][value=${p.gender}]`); if(r) r.checked=true; } openProfile();
+      });
+      // Chart
+      const rs = document.getElementById('rangeSelect'); if (rs) rs.addEventListener('change', buildChart);
+      buildChart();
+      window.addEventListener('alert-fired', buildChart);
+    });
     const defaultTimes = {
       exercise: { ex_morning: "08:00", ex_gym: "18:30", ex_shake: "20:00" },
       food: { fd_breakfast: "08:30", fd_lunch: "13:00", fd_snack: "16:30", fd_dinner: "21:00" },
