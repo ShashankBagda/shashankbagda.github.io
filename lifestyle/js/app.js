@@ -2,6 +2,14 @@
    app.js — Dashboard UI Controls & Behavior
 ---------------------------------------------- */
 
+function renderToggleButton(btn, isOn) {
+  btn.innerHTML = `<span class="label">${isOn ? 'Disable' : 'Enable'}</span>
+    <svg class="hb" viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true">
+      <path class="hb-flat" d="M0,10 L100,10"></path>
+      <path class="hb-wave" d="M0,10 L15,10 L20,2 L25,18 L30,10 L45,10 L50,10 L55,4 L60,16 L65,10 L100,10"></path>
+    </svg>`;
+}
+
 function setupToggle(id, workerName) {
   const btn = document.getElementById(id);
 
@@ -10,11 +18,11 @@ function setupToggle(id, workerName) {
   if (enabled.has(workerName)) {
     btn.classList.remove("toggle-off");
     btn.classList.add("toggle-on");
-    btn.textContent = "Disable";
+    renderToggleButton(btn, true);
   } else {
     btn.classList.remove("toggle-on");
     btn.classList.add("toggle-off");
-    btn.textContent = "Enable";
+    renderToggleButton(btn, false);
   }
 
   btn.addEventListener("click", () => {
@@ -24,12 +32,12 @@ function setupToggle(id, workerName) {
       stopWorker(workerName);
       btn.classList.remove("toggle-on");
       btn.classList.add("toggle-off");
-      btn.textContent = "Enable";
+      renderToggleButton(btn, false);
     } else {
       startWorker(workerName);
       btn.classList.remove("toggle-off");
       btn.classList.add("toggle-on");
-      btn.textContent = "Disable";
+      renderToggleButton(btn, true);
     }
   });
 }

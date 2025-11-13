@@ -14,6 +14,19 @@
     .glass { backdrop-filter: blur(15px); background: rgba(255,255,255,.7); border: 1px solid rgba(255,255,255,.5); box-shadow: 0 10px 30px rgba(2,6,23,.08); }
     .toggle-on { background: #10b981 !important; color: #fff !important; }
     .toggle-off { background: #e2e8f0 !important; color: #475569 !important; }
+    /* Heartbeat line inside toggle buttons */
+    .toggle-on, .toggle-off { position: relative; overflow: hidden; }
+    .toggle-on .label, .toggle-off .label { position: relative; z-index: 2; }
+    .hb { position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 100%; height: 24px; z-index: 1; opacity: 0.9; pointer-events: none; }
+    .hb path { fill: none; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+    /* Live (enabled) */
+    .toggle-on .hb .hb-wave { stroke: rgba(255,255,255,0.95); stroke-dasharray: 70 180; animation: heartbeat 2s linear infinite; }
+    .toggle-on .hb .hb-flat { display: none; }
+    /* Dead (disabled) */
+    .toggle-off .hb .hb-flat { stroke: #64748b; opacity: .6; animation: flatpulse 2.6s ease-in-out infinite; }
+    .toggle-off .hb .hb-wave { display: none; }
+    @keyframes heartbeat { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -250; } }
+    @keyframes flatpulse { 0%,100% { opacity: .35 } 50% { opacity: .6 } }
     @keyframes fadeInUp { from { opacity: 0; transform: translateY(12px);} to { opacity: 1; transform: translateY(0);} }
     .animate-in { animation: fadeInUp .5s ease both; }
     @keyframes gradientX { 0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; } }
