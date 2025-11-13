@@ -1,6 +1,6 @@
 const WEBHOOK = "https://discord.com/api/webhooks/1438500870957436938/XQkTpSciuMBQGX8CW9g7co7KuAyecEJNaFpZVSZpRaSA2c8Sq9qgt5hlBXbzX35u7XuC";
 
-function schedule(rem) {
+function schedule(rem, webhook) {
   const now = new Date();
   const [h, m] = rem.time.split(":").map(Number);
 
@@ -10,19 +10,19 @@ function schedule(rem) {
   if (target <= now) target.setDate(target.getDate() + 1);
 
   setTimeout(() => {
-    fetch(WEBHOOK, {
+    fetch(webhook || WEBHOOK, {
       method: "POST",
       headers: {"Content-Type":"application/json"},
       body: JSON.stringify({ content: `💻 **Work Reminder:** ${rem.text}` })
     });
-    schedule(rem); // Repeat daily
+    schedule(rem, webhook); // Repeat daily
   }, target - now);
 }
 
 self.onmessage = (e) => {
-  const { type, times } = e.data || {};
+  const { type, times, webhook } = e.data || {};
   if (type === 'test') {
-    fetch(WEBHOOK, {
+    fetch(webhook || WEBHOOK, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ content: '🔔 Test: Work reminder webhook working.' })
@@ -36,6 +36,6 @@ self.onmessage = (e) => {
       { time: times.work.wk_focus, text: "Refocus • Avoid distractions" },
       { time: times.work.wk_wrap, text: "Wrap Up • Review tasks" }
     ];
-    reminders.forEach(schedule);
+    reminders.forEach(r => schedule(r, webhook));
   }
 };

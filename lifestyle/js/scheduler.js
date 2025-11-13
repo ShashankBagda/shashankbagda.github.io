@@ -20,7 +20,9 @@ function startWorker(name, opts = {}) {
   // Pass current reminder times into the worker (web workers can't access localStorage)
   try {
     const times = JSON.parse(localStorage.getItem("reminderTimes")) || null;
-    workers[name].postMessage({ type: "init", times });
+    const hooks = JSON.parse(localStorage.getItem('webhookLinks')||'{}');
+    const webhook = hooks && hooks[name] ? hooks[name] : null;
+    workers[name].postMessage({ type: "init", times, webhook });
   } catch (e) {
     console.warn("Failed to send times to worker", e);
   }
@@ -31,13 +33,13 @@ function startWorker(name, opts = {}) {
   localStorage.setItem('enabledWorkers', JSON.stringify([...enabled]));
 }
 
-function stopWorker(name) {
+function stopWorker(name, opts = {}) {
   if (workers[name]) {
     workers[name].terminate();
     workers[name] = null;
     console.log(name + " worker stopped");
   }
-  if (window.showToast) window.showToast(`${name.charAt(0).toUpperCase()+name.slice(1)} disabled`, 'info');
+  if (!opts.silent && window.showToast) window.showToast(`${name.charAt(0).toUpperCase()+name.slice(1)} disabled`, 'info');
   // Update enabled state
   const enabled = new Set(JSON.parse(localStorage.getItem('enabledWorkers') || '[]'));
   enabled.delete(name);

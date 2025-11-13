@@ -196,6 +196,13 @@
       localStorage.setItem('reminderTimes', JSON.stringify(data));
     }
 
+    function getWebhookLinks(){
+      return JSON.parse(localStorage.getItem('webhookLinks')||'{}');
+    }
+    function setWebhookLinks(obj){
+      localStorage.setItem('webhookLinks', JSON.stringify(obj||{}));
+    }
+
     let currentModule = null;
 
     function inputField(id, label, value) {
@@ -237,7 +244,15 @@
       const body = document.getElementById('modalBody');
       document.getElementById('modalTitle').textContent = titleFor(mod);
       const fields = moduleFields[mod];
-      body.innerHTML = fields.map(([id,label]) => inputField(id,label, (times[mod]||defaultTimes[mod])[id])).join('');
+      const hooks = getWebhookLinks();
+      const hookVal = hooks[mod] || '';
+      body.innerHTML = `
+        ${fields.map(([id,label]) => inputField(id,label, (times[mod]||defaultTimes[mod])[id])).join('')}
+        <div class="mt-2">
+          <label class="text-gray-600 text-sm">Webhook URL (optional)</label>
+          <input type="url" id="webhook_url" placeholder="https://..." value="${hookVal}"
+                 class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2"/>
+        </div>`;
       document.getElementById('settingsModal').classList.remove('hidden');
     }
     function closeSettings(){
@@ -251,9 +266,13 @@
       moduleFields[currentModule].forEach(([id]) => { updates[id] = document.getElementById(id).value; });
       times[currentModule] = updates;
       setTimes(times);
+      const hooks = getWebhookLinks();
+      const newHook = (document.getElementById('webhook_url')||{}).value || '';
+      hooks[currentModule] = newHook;
+      setWebhookLinks(hooks);
       // Re-init only this module if enabled
       const enabled = new Set(JSON.parse(localStorage.getItem('enabledWorkers')||'[]'));
-      if (enabled.has(currentModule)) { stopWorker(currentModule); startWorker(currentModule); }
+      if (enabled.has(currentModule)) { stopWorker(currentModule,{silent:true}); startWorker(currentModule,{silent:true}); }
       closeSettings();
       if (window.showToast) showToast('Saved!', 'success');
     }
@@ -262,6 +281,9 @@
       const times = getTimes();
       times[currentModule] = defaultTimes[currentModule];
       setTimes(times);
+      const hooks = getWebhookLinks();
+      delete hooks[currentModule];
+      setWebhookLinks(hooks);
       openSettings(currentModule); // re-render
       if (window.showToast) showToast('Reset to defaults', 'info');
     }

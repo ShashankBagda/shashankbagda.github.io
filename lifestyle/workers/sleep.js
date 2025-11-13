@@ -19,9 +19,9 @@ function schedule(rem) {
 }
 
 self.onmessage = (e) => {
-  const { type, times } = e.data || {};
+  const { type, times, webhook } = e.data || {};
   if (type === 'test') {
-    fetch(WEBHOOK, {
+    fetch(webhook || WEBHOOK, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ content: '🔔 Test: Sleep reminder webhook working.' })
@@ -34,6 +34,17 @@ self.onmessage = (e) => {
       { time: times.sleep.sl_brush, text: "Brush Teeth 🦷 • Prepare for bed" },
       { time: times.sleep.sl_sleep, text: "Sleep Time 😴 • Aim for 7 hours" }
     ];
-    reminders.forEach(schedule);
+    const send = (rem) => {
+      const now = new Date();
+      const [h, m] = rem.time.split(":").map(Number);
+      let target = new Date();
+      target.setHours(h, m, 0, 0);
+      if (target <= now) target.setDate(target.getDate() + 1);
+      setTimeout(() => {
+        fetch(webhook || WEBHOOK, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ content: `😴 **Sleep Reminder:** ${rem.text}` }) });
+        send(rem);
+      }, target - now);
+    };
+    reminders.forEach(send);
   }
 };
