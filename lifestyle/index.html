@@ -92,7 +92,9 @@
             <h3 class="text-lg font-semibold text-gray-700">
               <span id="welcomeText">Welcome</span>
             </h3>
-            <button id="editProfileBtn" class="px-3 py-2 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-sm">Edit Profile</button>
+            <button id="editProfileBtn" class="p-2 rounded-lg border border-slate-200 bg-white hover:bg-slate-50" title="Profile settings">
+              <img src="assets/setting.png" alt="Settings" class="h-6 w-6 object-contain" />
+            </button>
           </div>
           <div class="mt-3">
             <div class="flex items-center gap-3">
@@ -215,7 +217,7 @@
   </div>
 
     <!-- Profile Modal -->
-    <div id="profileModal" class="fixed inset-0 z-50 hidden">
+    <div id="profileModal" class="fixed inset-0 z-50 hidden" style="z-index: 10000;">
       <div class="absolute inset-0 bg-slate-900/40" onclick="closeProfile()"></div>
       <div class="relative max-w-lg mx-auto mt-24 glass rounded-2xl p-6 animate-in">
         <h3 class="text-lg font-semibold text-gray-800 mb-4">Tell us about you</h3>
@@ -316,6 +318,8 @@
 
     function openProfile(){ document.getElementById('profileModal').classList.remove('hidden'); }
     function closeProfile(){ document.getElementById('profileModal').classList.add('hidden'); }
+    window.openProfile = openProfile;
+    window.closeProfile = closeProfile;
     function saveProfile(){
       const name = document.getElementById('pf_name').value.trim();
       const birth = (document.getElementById('pf_birth')||{}).value||'';
