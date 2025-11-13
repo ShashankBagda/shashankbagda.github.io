@@ -341,10 +341,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
       function rotateQuote(){ if(!qb) return; qb.classList.remove('quote-text'); void qb.offsetWidth; // restart animation
         qb.textContent=quotes[Math.floor(Math.random()*quotes.length)]; qb.classList.add('quote-text'); }
       rotateQuote(); setInterval(rotateQuote, 8000);
-      // Init profile
-      const p = getProfile();
-      if (!hasProfileCookie()) { openProfile(); setControlsEnabled(false); }
-      else { renderWelcome(); setControlsEnabled(true); }
+      // Init profile (open only via Settings icon)
+      renderWelcome(); setControlsEnabled(true);
       // Edit button
       const eb = document.getElementById('editProfileBtn'); if (eb) eb.addEventListener('click', ()=>{
         const p=getProfile()||{}; document.getElementById('pf_name').value=p.name||''; const bd=document.getElementById('pf_birth'); if(bd) bd.value=p.birth||''; document.getElementById('pf_height').value=p.height||''; document.getElementById('pf_weight').value=p.weight||''; if (p.gender) { const r=document.querySelector(`input[name=pf_gender][value=${p.gender}]`); if(r) r.checked=true; } openProfile();

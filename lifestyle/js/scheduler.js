@@ -65,7 +65,6 @@ function stopWorker(name, opts = {}) {
 
 // Auto-start any previously enabled workers on page load
 window.addEventListener('DOMContentLoaded', () => {
-  if (window.hasProfileCookie && !window.hasProfileCookie()) return;
   const enabled = JSON.parse(localStorage.getItem('enabledWorkers') || '[]');
   enabled.forEach(name => { if (name in workers) startWorker(name, { silent: true }); });
 });
