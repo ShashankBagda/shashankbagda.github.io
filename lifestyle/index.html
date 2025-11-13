@@ -107,13 +107,13 @@
               <h3 class="text-lg font-semibold text-gray-700">🏋️ Exercise</h3>
               <p class="text-gray-500 text-sm">Gym + mobility reminders</p>
             </div>
-            <button aria-label="Edit times" title="Edit times" class="p-2 rounded-md bg-white border border-slate-200 shadow hover:bg-slate-50" onclick="openSettings('exercise')">
+            <button aria-label="Edit times" title="Edit times" class="gear-btn p-2 rounded-md bg-white border border-slate-200 shadow hover:bg-slate-50" onclick="openSettings('exercise')">
               <img src="assets/setting.png" alt="Settings" class="h-6 w-6 object-contain" />
             </button>
           </div>
           <div class="flex gap-2 mt-4">
             <button id="toggle-exercise" class="flex-1 py-2 rounded-lg toggle-off font-medium shadow">Enable</button>
-            <button type="button" onclick="window.testWebhook('exercise')" class="px-3 py-2 rounded-lg shadow btn-animated">Test</button>
+            <button type="button" onclick="window.testWebhook('exercise')" class="test-btn px-3 py-2 rounded-lg shadow btn-animated">Test</button>
           </div>
         </div>
 
@@ -124,13 +124,13 @@
               <h3 class="text-lg font-semibold text-gray-700">🍽 Food</h3>
               <p class="text-gray-500 text-sm">Breakfast, lunch, dinner reminders</p>
             </div>
-            <button aria-label="Edit times" title="Edit times" class="p-2 rounded-md bg-white border border-slate-200 shadow hover:bg-slate-50" onclick="openSettings('food')">
+            <button aria-label="Edit times" title="Edit times" class="gear-btn p-2 rounded-md bg-white border border-slate-200 shadow hover:bg-slate-50" onclick="openSettings('food')">
               <img src="assets/setting.png" alt="Settings" class="h-6 w-6 object-contain" />
             </button>
           </div>
           <div class="flex gap-2 mt-4">
             <button id="toggle-food" class="flex-1 py-2 rounded-lg toggle-off font-medium shadow">Enable</button>
-            <button type="button" onclick="window.testWebhook('food')" class="px-3 py-2 rounded-lg shadow btn-animated">Test</button>
+            <button type="button" onclick="window.testWebhook('food')" class="test-btn px-3 py-2 rounded-lg shadow btn-animated">Test</button>
           </div>
         </div>
 
@@ -141,13 +141,13 @@
               <h3 class="text-lg font-semibold text-gray-700">💧 Water</h3>
               <p class="text-gray-500 text-sm">Hydration reminders throughout day</p>
             </div>
-            <button aria-label="Edit times" title="Edit times" class="p-2 rounded-md bg-white border border-slate-200 shadow hover:bg-slate-50" onclick="openSettings('water')">
+            <button aria-label="Edit times" title="Edit times" class="gear-btn p-2 rounded-md bg-white border border-slate-200 shadow hover:bg-slate-50" onclick="openSettings('water')">
               <img src="assets/setting.png" alt="Settings" class="h-6 w-6 object-contain" />
             </button>
           </div>
           <div class="flex gap-2 mt-4">
             <button id="toggle-water" class="flex-1 py-2 rounded-lg toggle-off font-medium shadow">Enable</button>
-            <button type="button" onclick="window.testWebhook('water')" class="px-3 py-2 rounded-lg shadow btn-animated">Test</button>
+            <button type="button" onclick="window.testWebhook('water')" class="test-btn px-3 py-2 rounded-lg shadow btn-animated">Test</button>
           </div>
         </div>
 
@@ -158,13 +158,13 @@
               <h3 class="text-lg font-semibold text-gray-700">💻 Work</h3>
               <p class="text-gray-500 text-sm">Productivity + focus reminders</p>
             </div>
-            <button aria-label="Edit times" title="Edit times" class="p-2 rounded-md bg-white border border-slate-200 shadow hover:bg-slate-50" onclick="openSettings('work')">
+            <button aria-label="Edit times" title="Edit times" class="gear-btn p-2 rounded-md bg-white border border-slate-200 shadow hover:bg-slate-50" onclick="openSettings('work')">
               <img src="assets/setting.png" alt="Settings" class="h-6 w-6 object-contain" />
             </button>
           </div>
           <div class="flex gap-2 mt-4">
             <button id="toggle-work" class="flex-1 py-2 rounded-lg toggle-off font-medium shadow">Enable</button>
-            <button type="button" onclick="window.testWebhook('work')" class="px-3 py-2 rounded-lg shadow btn-animated">Test</button>
+            <button type="button" onclick="window.testWebhook('work')" class="test-btn px-3 py-2 rounded-lg shadow btn-animated">Test</button>
           </div>
         </div>
 
@@ -175,13 +175,13 @@
               <h3 class="text-lg font-semibold text-gray-700">😴 Sleep</h3>
               <p class="text-gray-500 text-sm">Sleep routine + wind-down reminders</p>
             </div>
-            <button aria-label="Edit times" title="Edit times" class="p-2 rounded-md bg-white border border-slate-200 shadow hover:bg-slate-50" onclick="openSettings('sleep')">
+            <button aria-label="Edit times" title="Edit times" class="gear-btn p-2 rounded-md bg-white border border-slate-200 shadow hover:bg-slate-50" onclick="openSettings('sleep')">
               <img src="assets/setting.png" alt="Settings" class="h-6 w-6 object-contain" />
             </button>
           </div>
           <div class="flex gap-2 mt-4">
             <button id="toggle-sleep" class="flex-1 py-2 rounded-lg toggle-off font-medium shadow">Enable</button>
-            <button type="button" onclick="window.testWebhook('sleep')" class="px-3 py-2 rounded-lg shadow btn-animated">Test</button>
+            <button type="button" onclick="window.testWebhook('sleep')" class="test-btn px-3 py-2 rounded-lg shadow btn-animated">Test</button>
           </div>
         </div>
 
@@ -306,6 +306,12 @@
     }
     window.saveProfile = saveProfile; window.closeProfile = closeProfile;
 
+    function setControlsEnabled(enabled){
+      const ids=['#toggle-exercise','#toggle-food','#toggle-water','#toggle-work','#toggle-sleep'];
+      document.querySelectorAll(ids.join(',')).forEach(b=>{ if(!b) return; b.disabled=!enabled; b.style.pointerEvents=enabled?'':'none'; b.classList.toggle('opacity-60', !enabled); b.classList.toggle('cursor-not-allowed', !enabled); });
+      document.querySelectorAll('.gear-btn,.test-btn').forEach(b=>{ b.disabled=!enabled; b.style.pointerEvents=enabled?'':'none'; b.classList.toggle('opacity-60', !enabled); b.classList.toggle('cursor-not-allowed', !enabled); });
+    }
+
     
     // Alerts chart – bar by module
     let alertChart;
@@ -326,8 +332,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
       const qb=document.getElementById('quoteBox'); if(qb) qb.textContent=quotes[Math.floor(Math.random()*quotes.length)];
       // Init profile
       const p = getProfile();
-      if (!hasProfileCookie()) { openProfile(); }
-      else { renderWelcome(); }
+      if (!hasProfileCookie()) { openProfile(); setControlsEnabled(false); }
+      else { renderWelcome(); setControlsEnabled(true); }
       // Edit button
       const eb = document.getElementById('editProfileBtn'); if (eb) eb.addEventListener('click', ()=>{
         const p=getProfile()||{}; document.getElementById('pf_name').value=p.name||''; const bd=document.getElementById('pf_birth'); if(bd) bd.value=p.birth||''; document.getElementById('pf_height').value=p.height||''; document.getElementById('pf_weight').value=p.weight||''; if (p.gender) { const r=document.querySelector(`input[name=pf_gender][value=${p.gender}]`); if(r) r.checked=true; } openProfile();
@@ -403,6 +409,11 @@ document.addEventListener('DOMContentLoaded', ()=>{
     }
 
     function openSettings(mod) {
+      if (typeof hasProfileCookie === 'function' && !hasProfileCookie()) {
+        if (typeof showToast === 'function') showToast('Please complete your profile first', 'info');
+        openProfile();
+        return;
+      }
       currentModule = mod;
       const times = getTimes();
       const body = document.getElementById('modalBody');

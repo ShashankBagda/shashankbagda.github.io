@@ -37,6 +37,11 @@ function setupToggle(id, workerName) {
   }
 
   btn.addEventListener("click", () => {
+    if (window.hasProfileCookie && !window.hasProfileCookie()) {
+      if (window.showToast) window.showToast('Please complete your profile first', 'info');
+      if (window.openProfile) window.openProfile();
+      return;
+    }
     const isOn = btn.classList.contains("toggle-on");
 
     if (isOn) {
