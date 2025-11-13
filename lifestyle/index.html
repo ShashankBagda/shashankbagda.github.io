@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Shashank Lifestyle Tracker</title>
+  <title>Lifestyle Tracker App</title>
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -34,16 +34,9 @@
 
   <!-- HEADER -->
   <header class="w-full py-4 bg-gradient-to-r from-blue-600 via-emerald-500 to-indigo-600 text-white shadow">
-    <div class="max-w-5xl mx-auto px-4 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <img src="assets/icon-192.png" alt="" class="w-8 h-8 rounded" />
-        <h1 class="text-xl md:text-2xl font-semibold">Shashank's Lifestyle Tracker</h1>
-      </div>
-      <nav class="hidden sm:flex items-center gap-3 text-sm opacity-90">
-        <span class="px-3 py-1 rounded-full bg-white/20">Modules</span>
-        <a href="#" class="hover:underline">Help</a>
-        <a href="#" class="hover:underline">About</a>
-      </nav>
+    <div class="max-w-5xl mx-auto px-4 flex items-center">
+      <img src="assets/icon-192.png" alt="" class="w-8 h-8 rounded mr-3" />
+      <h1 class="text-xl md:text-2xl font-semibold">Shashank's Lifestyle Tracker</h1>
     </div>
   </header>
 
@@ -56,9 +49,14 @@
 
         <!-- Exercise -->
         <div class="glass p-4 rounded-xl shadow flex flex-col justify-between">
-          <div>
-            <h3 class="text-lg font-semibold text-gray-700">🏋️ Exercise</h3>
-            <p class="text-gray-500 text-sm">Gym + mobility reminders</p>
+          <div class="flex items-center justify-between">
+            <div>
+              <h3 class="text-lg font-semibold text-gray-700">🏋️ Exercise</h3>
+              <p class="text-gray-500 text-sm">Gym + mobility reminders</p>
+            </div>
+            <button aria-label="Edit times" title="Edit times" class="p-2 rounded-md bg-white border border-slate-200 shadow hover:bg-slate-50" onclick="openSettings('exercise')">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-slate-700" viewBox="0 0 20 20" fill="currentColor"><path d="M11.983 1.883a1 1 0 00-1.966 0l-.094.564a7.034 7.034 0 00-1.387.803l-.51-.295a1 1 0 00-1.366.366l-1 1.732a1 1 0 00.366 1.366l.51.295a7.034 7.034 0 00-.2 1.597 7.034 7.034 0 00.2 1.597l-.51.295a1 1 0 00-.366 1.366l1 1.732a1 1 0 001.366.366l.51-.295c.43.326.894.597 1.387.803l.094.564a1 1 0 001.966 0l.094-.564c.493-.206.957-.477 1.387-.803l.51.295a1 1 0 001.366-.366l1-1.732a1 1 0 00-.366-1.366l-.51-.295a7.034 7.034 0 00.2-1.597 7.034 7.034 0 00-.2-1.597l.51-.295a1 1 0 00.366-1.366l-1-1.732a1 1 0 00-1.366-.366l-.51.295a7.034 7.034 0 00-1.387-.803l-.094-.564zM10 13a3 3 0 110-6 3 3 0 010 6z"/></svg>
+            </button>
           </div>
           <div class="flex gap-2 mt-4">
             <button id="toggle-exercise" class="flex-1 py-2 rounded-lg toggle-off font-medium shadow">Enable</button>
@@ -68,9 +66,14 @@
 
         <!-- Food -->
         <div class="glass p-4 rounded-xl shadow flex flex-col justify-between">
-          <div>
-            <h3 class="text-lg font-semibold text-gray-700">🍽 Food</h3>
-            <p class="text-gray-500 text-sm">Breakfast, lunch, dinner reminders</p>
+          <div class="flex items-center justify-between">
+            <div>
+              <h3 class="text-lg font-semibold text-gray-700">🍽 Food</h3>
+              <p class="text-gray-500 text-sm">Breakfast, lunch, dinner reminders</p>
+            </div>
+            <button aria-label="Edit times" title="Edit times" class="p-2 rounded-md bg-white border border-slate-200 shadow hover:bg-slate-50" onclick="openSettings('food')">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-slate-700" viewBox="0 0 20 20" fill="currentColor"><path d="M11.983 1.883a1 1 0 00-1.966 0l-.094.564a7.034 7.034 0 00-1.387.803l-.51-.295a1 1 0 00-1.366.366l-1 1.732a1 1 0 00.366 1.366l.51.295a7.034 7.034 0 00-.2 1.597 7.034 7.034 0 00-.2 1.597l-.51.295a1 1 0 00-.366 1.366l1 1.732a1 1 0 001.366.366l.51-.295c.43.326.894.597 1.387.803l.094.564a1 1 0 001.966 0l.094-.564c.493-.206.957-.477 1.387-.803l.51.295a1 1 0 001.366-.366l1-1.732a1 1 0 00-.366-1.366l-.51-.295a7.034 7.034 0 00.2-1.597 7.034 7.034 0 00-.2-1.597l.51-.295a1 1 0 00.366-1.366l-1-1.732a1 1 0 00-1.366-.366l-.51.295a7.034 7.034 0 00-1.387-.803l-.094-.564zM10 13a3 3 0 110-6 3 3 0 010 6z"/></svg>
+            </button>
           </div>
           <div class="flex gap-2 mt-4">
             <button id="toggle-food" class="flex-1 py-2 rounded-lg toggle-off font-medium shadow">Enable</button>
@@ -80,9 +83,14 @@
 
         <!-- Water -->
         <div class="glass p-4 rounded-xl shadow flex flex-col justify-between">
-          <div>
-            <h3 class="text-lg font-semibold text-gray-700">💧 Water</h3>
-            <p class="text-gray-500 text-sm">Hydration reminders throughout day</p>
+          <div class="flex items-center justify-between">
+            <div>
+              <h3 class="text-lg font-semibold text-gray-700">💧 Water</h3>
+              <p class="text-gray-500 text-sm">Hydration reminders throughout day</p>
+            </div>
+            <button aria-label="Edit times" title="Edit times" class="p-2 rounded-md bg-white border border-slate-200 shadow hover:bg-slate-50" onclick="openSettings('water')">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-slate-700" viewBox="0 0 20 20" fill="currentColor"><path d="M11.983 1.883a1 1 0 00-1.966 0l-.094.564a7.034 7.034 0 00-1.387.803l-.51-.295a1 1 0 00-1.366.366l-1 1.732a1 1 0 00.366 1.366l.51.295a7.034 7.034 0 00-.2 1.597 7.034 7.034 0 00-.2 1.597l-.51.295a1 1 0 00-.366 1.366l1 1.732a1 1 0 001.366.366l.51-.295c.43.326.894.597 1.387.803l.094.564a1 1 0 001.966 0l.094-.564c.493-.206.957-.477 1.387-.803l.51.295a1 1 0 001.366-.366l1-1.732a1 1 0 00-.366-1.366l-.51-.295a7.034 7.034 0 00.2-1.597 7.034 7.034 0 00-.2-1.597l.51-.295a1 1 0 00.366-1.366l-1-1.732a1 1 0 00-1.366-.366l-.51.295a7.034 7.034 0 00-1.387-.803l-.094-.564zM10 13a3 3 0 110-6 3 3 0 010 6z"/></svg>
+            </button>
           </div>
           <div class="flex gap-2 mt-4">
             <button id="toggle-water" class="flex-1 py-2 rounded-lg toggle-off font-medium shadow">Enable</button>
@@ -92,9 +100,14 @@
 
         <!-- Work -->
         <div class="glass p-4 rounded-xl shadow flex flex-col justify-between">
-          <div>
-            <h3 class="text-lg font-semibold text-gray-700">💻 Work</h3>
-            <p class="text-gray-500 text-sm">Productivity + focus reminders</p>
+          <div class="flex items-center justify-between">
+            <div>
+              <h3 class="text-lg font-semibold text-gray-700">💻 Work</h3>
+              <p class="text-gray-500 text-sm">Productivity + focus reminders</p>
+            </div>
+            <button aria-label="Edit times" title="Edit times" class="p-2 rounded-md bg-white border border-slate-200 shadow hover:bg-slate-50" onclick="openSettings('work')">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-slate-700" viewBox="0 0 20 20" fill="currentColor"><path d="M11.983 1.883a1 1 0 00-1.966 0l-.094.564a7.034 7.034 0 00-1.387.803l-.51-.295a1 1 0 00-1.366.366l-1 1.732a1 1 0 00.366 1.366l.51.295a7.034 7.034 0 00-.2 1.597 7.034 7.034 0 00-.2 1.597l-.51.295a1 1 0 00-.366 1.366l1 1.732a1 1 0 001.366.366l.51-.295c.43.326.894.597 1.387.803l.094.564a1 1 0 001.966 0l.094-.564c.493-.206.957-.477 1.387-.803l.51.295a1 1 0 001.366-.366l1-1.732a1 1 0 00-.366-1.366l-.51-.295a7.034 7.034 0 00.2-1.597 7.034 7.034 0 00-.2-1.597l.51-.295a1 1 0 00.366-1.366l-1-1.732a1 1 0 00-1.366-.366l-.51.295a7.034 7.034 0 00-1.387-.803l-.094-.564zM10 13a3 3 0 110-6 3 3 0 010 6z"/></svg>
+            </button>
           </div>
           <div class="flex gap-2 mt-4">
             <button id="toggle-work" class="flex-1 py-2 rounded-lg toggle-off font-medium shadow">Enable</button>
@@ -104,9 +117,14 @@
 
         <!-- Sleep -->
         <div class="glass p-4 rounded-xl shadow flex flex-col justify-between">
-          <div>
-            <h3 class="text-lg font-semibold text-gray-700">😴 Sleep</h3>
-            <p class="text-gray-500 text-sm">Sleep routine + wind-down reminders</p>
+          <div class="flex items-center justify-between">
+            <div>
+              <h3 class="text-lg font-semibold text-gray-700">😴 Sleep</h3>
+              <p class="text-gray-500 text-sm">Sleep routine + wind-down reminders</p>
+            </div>
+            <button aria-label="Edit times" title="Edit times" class="p-2 rounded-md bg-white border border-slate-200 shadow hover:bg-slate-50" onclick="openSettings('sleep')">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-slate-700" viewBox="0 0 20 20" fill="currentColor"><path d="M11.983 1.883a1 1 0 00-1.966 0l-.094.564a7.034 7.034 0 00-1.387.803l-.51-.295a1 1 0 00-1.366.366l-1 1.732a1 1 0 00.366 1.366l.51.295a7.034 7.034 0 00-.2 1.597 7.034 7.034 0 00-.2 1.597l-.51.295a1 1 0 00-.366 1.366l1 1.732a1 1 0 001.366.366l.51-.295c.43 .326.894.597 1.387.803l.094.564a1 1 0 001.966 0l.094-.564c.493-.206.957-.477 1.387-.803l.51.295a1 1 0 001.366-.366l1-1.732a1 1 0 00-.366-1.366l-.51-.295a7.034 7.034 0 00.2-1.597 7.034 7.034 0 00-.2-1.597l.51-.295a1 1 0 00.366-1.366l-1-1.732a1 1 0 00-1.366-.366l-.51.295a7.034 7.034 0 00-1.387-.803l-.094-.564zM10 13a3 3 0 110-6 3 3 0 010 6z"/></svg>
+            </button>
           </div>
           <div class="flex gap-2 mt-4">
             <button id="toggle-sleep" class="flex-1 py-2 rounded-lg toggle-off font-medium shadow">Enable</button>
@@ -138,7 +156,7 @@
   <!-- FOOTER -->
   <footer class="w-full py-6 bg-gradient-to-r from-indigo-600 via-emerald-500 to-blue-600 text-white">
     <div class="max-w-5xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-sm opacity-90">
-      <span>Made with ❤️ by Shashank</span>
+      <span>Made with ❤️ by Shashank Bagda</span>
       <span>Track • Improve • Evolve</span>
     </div>
   </footer>
@@ -149,6 +167,20 @@
 
   <!-- Settings modal logic -->
   <script>
+    // Toasts
+    const toastHost = document.createElement('div');
+    toastHost.className = 'fixed z-50 top-4 right-4 space-y-2';
+    document.addEventListener('DOMContentLoaded', ()=> document.body.appendChild(toastHost));
+    function showToast(message, type='info'){
+      const el = document.createElement('div');
+      const colors = { info:'bg-slate-800', success:'bg-emerald-600', error:'bg-rose-600'};
+      el.className = `${colors[type]||colors.info} text-white px-4 py-2 rounded-lg shadow text-sm animate-in`;
+      el.textContent = message;
+      toastHost.appendChild(el);
+      setTimeout(()=>{ el.classList.add('opacity-0'); el.style.transition='opacity .4s'; }, 2000);
+      setTimeout(()=> toastHost.removeChild(el), 2500);
+    }
+    window.showToast = showToast;
     const defaultTimes = {
       exercise: { ex_morning: "08:00", ex_gym: "18:30", ex_shake: "20:00" },
       food: { fd_breakfast: "08:30", fd_lunch: "13:00", fd_snack: "16:30", fd_dinner: "21:00" },

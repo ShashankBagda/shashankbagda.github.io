@@ -15,6 +15,7 @@ function startWorker(name) {
   // Workers are resolved relative to the page URL
   workers[name] = new Worker(`workers/${name}.js`);
   console.log(name + " worker started");
+  if (window.showToast) window.showToast(`${name.charAt(0).toUpperCase()+name.slice(1)} enabled`, 'success');
 
   // Pass current reminder times into the worker (web workers can't access localStorage)
   try {
@@ -36,6 +37,7 @@ function stopWorker(name) {
     workers[name] = null;
     console.log(name + " worker stopped");
   }
+  if (window.showToast) window.showToast(`${name.charAt(0).toUpperCase()+name.slice(1)} disabled`, 'info');
   // Update enabled state
   const enabled = new Set(JSON.parse(localStorage.getItem('enabledWorkers') || '[]'));
   enabled.delete(name);
@@ -58,8 +60,10 @@ function testWebhook(name) {
   }
   try {
     workers[name].postMessage({ type: 'test' });
+    if (window.showToast) window.showToast('Test sent to '+name, 'success');
   } catch (e) {
     console.warn('Failed to send test message to worker', name, e);
+    if (window.showToast) window.showToast('Failed to test '+name, 'error');
   }
 }
 
