@@ -16,14 +16,16 @@
     .toggle-off { background: #e2e8f0 !important; color: #475569 !important; }
     /* Heartbeat line inside toggle buttons */
     .toggle-on, .toggle-off { position: relative; overflow: hidden; }
-    .toggle-on .label, .toggle-off .label { position: relative; z-index: 2; }
+    .toggle-on .label, .toggle-off .label { position: relative; z-index: 3; padding: 2px 8px; border-radius: 9999px; }
+    .toggle-on .label { background-color: #10b981; }
+    .toggle-off .label { background-color: #e2e8f0; }
     .hb { position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 100%; height: 24px; z-index: 1; opacity: 0.9; pointer-events: none; }
     .hb path { fill: none; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
     /* Live (enabled) */
-    .toggle-on .hb .hb-wave { stroke: rgba(255,255,255,0.95); stroke-dasharray: 70 180; animation: heartbeat 2s linear infinite; }
+    .toggle-on .hb .hb-wave { stroke: rgba(255,255,255,0.95); stroke-dasharray: 70 180; animation: heartbeat 2s linear infinite; animation-delay: var(--hb-delay,0ms); filter: drop-shadow(0 0 6px rgba(255,255,255,.85)); }
     .toggle-on .hb .hb-flat { display: none; }
     /* Dead (disabled) */
-    .toggle-off .hb .hb-flat { stroke: #64748b; opacity: .6; animation: flatpulse 2.6s ease-in-out infinite; }
+    .toggle-off .hb .hb-flat { stroke: #64748b; opacity: .6; animation: flatpulse 2s ease-in-out infinite; animation-delay: var(--hb-delay,0ms); filter: drop-shadow(0 0 4px rgba(100,116,139,.5)); }
     .toggle-off .hb .hb-wave { display: none; }
     @keyframes heartbeat { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -250; } }
     @keyframes flatpulse { 0%,100% { opacity: .35 } 50% { opacity: .6 } }
@@ -56,6 +58,11 @@
   </header>
 
   <main class="flex-1 px-4 md:px-8 lg:px-12 py-8 space-y-10">
+
+    <!-- MOTIVATIONAL QUOTE -->
+    <section class="max-w-5xl mx-auto animate-in">
+      <div class="glass rounded-2xl p-4 shadow text-center text-slate-700" id="quoteBox">Stay consistent — small healthy choices add up.</div>
+    </section>
 
     <!-- PROFILE + STATS -->
     <section class="max-w-5xl mx-auto animate-in">
@@ -199,8 +206,8 @@
             <input id="pf_name" type="text" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2" />
           </div>
           <div>
-            <label class="text-sm text-slate-600">Age</label>
-            <input id="pf_age" type="number" min="0" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2" />
+            <label class="text-sm text-slate-600">Birthdate</label>
+            <input id="pf_birth" type="date" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2" />
           </div>
           <div>
             <label class="text-sm text-slate-600">Height (cm)</label>
@@ -280,65 +287,43 @@
     function closeProfile(){ document.getElementById('profileModal').classList.add('hidden'); }
     function saveProfile(){
       const name = document.getElementById('pf_name').value.trim();
-      const age = parseInt(document.getElementById('pf_age').value||'0',10);
+      const birth = (document.getElementById('pf_birth')||{}).value||'';
       const height = parseFloat(document.getElementById('pf_height').value||'0');
       const weight = parseFloat(document.getElementById('pf_weight').value||'0');
       const gender = (document.querySelector('input[name="pf_gender"]:checked')||{}).value || 'other';
-      setProfile({ name, age, height, weight, gender });
+      let age = 0; if (birth) { const b=new Date(birth); const n=new Date(); age = n.getFullYear()-b.getFullYear(); const m=n.getMonth()-b.getMonth(); if (m<0||(m===0&&n.getDate()<b.getDate())) age--; }
+      setProfile({ name, birth, age, height, weight, gender });
       renderWelcome();
       closeProfile();
       showToast('Profile saved','success');
     }
     window.saveProfile = saveProfile; window.closeProfile = closeProfile;
 
-    // Alerts chart
+    
+    // Alerts chart – bar by module
     let alertChart;
     function getAlerts(){ return JSON.parse(localStorage.getItem('alertCounts')||'[]'); }
-
-    function groupDaily(arr){
-      const today = new Date(); today.setHours(0,0,0,0);
-      const buckets = Array(24).fill(0);
-      arr.forEach(a=>{ const d=new Date(a.ts); if (d>=today) buckets[d.getHours()]++; });
-      return { labels: Array.from({length:24},(_,i)=>i+':00'), data: buckets };
-    }
-    function groupWeekly(arr){
-      const now = new Date(); const start = new Date(now); start.setDate(now.getDate()-6); start.setHours(0,0,0,0);
-      const labels = [] , data = [];
-      for(let i=0;i<7;i++){ const d=new Date(start); d.setDate(start.getDate()+i); labels.push(d.toLocaleDateString(undefined,{weekday:'short'})); data.push(0);} 
-      arr.forEach(a=>{ const d=new Date(a.ts); if (d>=start){ const idx=Math.floor((d-start)/(24*3600*1000)); if(idx>=0&&idx<7) data[idx]++; }});
-      return { labels, data };
-    }
-    function groupMonthly(arr){
-      const now = new Date(); const start = new Date(now); start.setDate(now.getDate()-29); start.setHours(0,0,0,0);
-      const labels=[]; const data=[]; for(let i=0;i<30;i++){ const d=new Date(start); d.setDate(start.getDate()+i); labels.push((d.getMonth()+1)+'/'+d.getDate()); data.push(0);} 
-      arr.forEach(a=>{ const d=new Date(a.ts); if (d>=start){ const idx=Math.floor((d-start)/(24*3600*1000)); if(idx>=0&&idx<30) data[idx]++; }});
-      return { labels, data };
-    }
-    function groupAll(arr){
-      const map = new Map();
-      arr.forEach(a=>{ const d=new Date(a.ts); const k=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0'); map.set(k,(map.get(k)||0)+1); });
-      const labels=[...map.keys()].sort(); const data=labels.map(k=>map.get(k));
-      return { labels, data };
-    }
-
+    const MODULES=['exercise','food','water','work','sleep'];
+    function rangeStart(range){ if(range==='daily'){const d=new Date();d.setHours(0,0,0,0);return d;} if(range==='weekly'){const d=new Date();d.setDate(d.getDate()-6);d.setHours(0,0,0,0);return d;} if(range==='monthly'){const d=new Date();d.setDate(d.getDate()-29);d.setHours(0,0,0,0);return d;} return null; }
     function buildChart(){
-      const range = (document.getElementById('rangeSelect')||{}).value || 'daily';
-      const arr = getAlerts();
-      let g = range==='daily'?groupDaily(arr):range==='weekly'?groupWeekly(arr):range==='monthly'?groupMonthly(arr):groupAll(arr);
-      const ctx = document.getElementById('alertChart'); if (!ctx) return;
-      const cfg = { type:'line', data:{ labels:g.labels, datasets:[{ label:'Alerts sent', data:g.data, borderColor:'#3b82f6', backgroundColor:'rgba(59,130,246,.2)', tension:.3 }]}, options:{ responsive:true, plugins:{legend:{display:false}} } };
-      if (alertChart) { alertChart.data.labels=g.labels; alertChart.data.datasets[0].data=g.data; alertChart.update(); }
-      else { alertChart = new Chart(ctx, cfg); }
+      const range=(document.getElementById('rangeSelect')||{}).value||'daily';
+      const start=rangeStart(range); const arr=getAlerts().filter(a=>!start||new Date(a.ts)>=start);
+      const counts=MODULES.map(m=>arr.filter(a=>a.module===m).length);
+      const ctx=document.getElementById('alertChart'); if(!ctx) return;
+      const cfg={ type:'bar', data:{ labels: MODULES.map(m=>m[0].toUpperCase()+m.slice(1)), datasets:[{ label:'Alerts sent', data: counts, backgroundColor:['#10b981','#f59e0b','#38bdf8','#6366f1','#ef4444'] }]}, options:{ responsive:true, plugins:{legend:{display:false}}, scales:{ y:{beginAtZero:true,ticks:{precision:0}}}} };
+      if(alertChart){ alertChart.data.labels=cfg.data.labels; alertChart.data.datasets[0].data=counts; alertChart.update(); } else { alertChart=new Chart(ctx,cfg); }
     }
-
-    document.addEventListener('DOMContentLoaded', ()=>{
+document.addEventListener('DOMContentLoaded', ()=>{
+      // Motivational quote
+      const quotes=['Health is the greatest wealth.','Small steps every day lead to big results.','Hydrate, move, rest — repeat.','Consistency beats intensity.','Your future self will thank you.'];
+      const qb=document.getElementById('quoteBox'); if(qb) qb.textContent=quotes[Math.floor(Math.random()*quotes.length)];
       // Init profile
       const p = getProfile();
       if (!p) openProfile();
       else renderWelcome();
       // Edit button
       const eb = document.getElementById('editProfileBtn'); if (eb) eb.addEventListener('click', ()=>{
-        const p=getProfile()||{}; document.getElementById('pf_name').value=p.name||''; document.getElementById('pf_age').value=p.age||''; document.getElementById('pf_height').value=p.height||''; document.getElementById('pf_weight').value=p.weight||''; if (p.gender) { const r=document.querySelector(`input[name=pf_gender][value=${p.gender}]`); if(r) r.checked=true; } openProfile();
+        const p=getProfile()||{}; document.getElementById('pf_name').value=p.name||''; const bd=document.getElementById('pf_birth'); if(bd) bd.value=p.birth||''; document.getElementById('pf_height').value=p.height||''; document.getElementById('pf_weight').value=p.weight||''; if (p.gender) { const r=document.querySelector(`input[name=pf_gender][value=${p.gender}]`); if(r) r.checked=true; } openProfile();
       });
       // Chart
       const rs = document.getElementById('rangeSelect'); if (rs) rs.addEventListener('change', buildChart);

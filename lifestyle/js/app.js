@@ -3,7 +3,13 @@
 ---------------------------------------------- */
 
 function renderToggleButton(btn, isOn) {
-  btn.innerHTML = `<span class="label">${isOn ? 'Disable' : 'Enable'}</span>
+  // Global synced animation start
+  const start = window.__hbStart || (window.__hbStart = Date.now());
+  const period = 2000; // ms
+  const elapsed = ((Date.now() - start) % period);
+  const delay = -elapsed; // negative delay to sync phase
+  btn.style.setProperty('--hb-delay', `${delay}ms`);
+  btn.innerHTML = `<span class="label">${isOn ? 'Enabled' : 'Disabled'}</span>
     <svg class="hb" viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true">
       <path class="hb-flat" d="M0,10 L100,10"></path>
       <path class="hb-wave" d="M0,10 L15,10 L20,2 L25,18 L30,10 L45,10 L50,10 L55,4 L60,16 L65,10 L100,10"></path>
