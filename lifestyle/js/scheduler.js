@@ -49,3 +49,19 @@ window.addEventListener('DOMContentLoaded', () => {
     if (name in workers) startWorker(name);
   });
 });
+
+// Trigger an immediate webhook ping via the worker
+function testWebhook(name) {
+  if (!(name in workers)) return;
+  if (!workers[name]) {
+    startWorker(name);
+  }
+  try {
+    workers[name].postMessage({ type: 'test' });
+  } catch (e) {
+    console.warn('Failed to send test message to worker', name, e);
+  }
+}
+
+// Expose for UI
+window.testWebhook = testWebhook;

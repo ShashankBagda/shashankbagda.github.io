@@ -30,8 +30,18 @@
       background: #e2e8f0 !important; /* Gray */
       color: #475569 !important;
     }
+    /* Lively animations */
     @keyframes fadeInUp { from { opacity: 0; transform: translateY(12px);} to { opacity: 1; transform: translateY(0);} }
+    @keyframes gradientX { 0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; } }
+    @keyframes glow { 0%,100% { box-shadow: 0 10px 30px rgba(59,130,246,0.15);} 50% { box-shadow: 0 12px 36px rgba(16,185,129,0.18);} }
     .animate-in { animation: fadeInUp .6s ease both; }
+    .btn-animated {
+      background: linear-gradient(90deg, #3b82f6, #10b981, #8b5cf6);
+      background-size: 200% 100%;
+      animation: gradientX 4s ease infinite alternate;
+    }
+    .card-animated { transition: transform .2s ease; animation: glow 3.6s ease-in-out infinite; }
+    .card-animated:hover { transform: translateY(-4px) scale(1.01); }
   </style>
 </head>
 
@@ -57,21 +67,21 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
         <!-- Water -->
-        <div class="glass p-6 rounded-2xl shadow">
+        <div class="glass p-6 rounded-2xl shadow card-animated">
           <h3 class="text-gray-700 font-semibold text-lg">💧 Water Intake</h3>
           <p class="text-gray-500 text-sm">Goal: 8 cups</p>
           <canvas id="chartWater" class="mt-4"></canvas>
         </div>
 
         <!-- Sleep -->
-        <div class="glass p-6 rounded-2xl shadow">
+        <div class="glass p-6 rounded-2xl shadow card-animated">
           <h3 class="text-gray-700 font-semibold text-lg">😴 Sleep</h3>
           <p class="text-gray-500 text-sm">Goal: 7 hours</p>
           <canvas id="chartSleep" class="mt-4"></canvas>
         </div>
 
         <!-- Exercise -->
-        <div class="glass p-6 rounded-2xl shadow">
+        <div class="glass p-6 rounded-2xl shadow card-animated">
           <h3 class="text-gray-700 font-semibold text-lg">🏋️ Exercise</h3>
           <p class="text-gray-500 text-sm">Goal: 1 session</p>
           <canvas id="chartExercise" class="mt-4"></canvas>
@@ -87,63 +97,73 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
         <!-- Exercise -->
-        <div class="glass p-4 rounded-xl shadow flex flex-col justify-between">
+        <div class="glass p-4 rounded-xl shadow flex flex-col justify-between card-animated">
           <div>
             <h3 class="text-lg font-semibold text-gray-700">🏋️ Exercise</h3>
             <p class="text-gray-500 text-sm">Gym + mobility reminders</p>
           </div>
-          <button id="toggle-exercise"
-                  class="mt-4 py-2 rounded-lg toggle-off font-medium shadow">
-            Enable
-          </button>
+          <div class="flex gap-2 mt-4">
+            <button id="toggle-exercise"
+                    class="flex-1 py-2 rounded-lg toggle-off font-medium shadow">Enable</button>
+            <button type="button" onclick="window.testWebhook('exercise')"
+                    class="px-3 py-2 rounded-lg text-white shadow btn-animated">Test</button>
+          </div>
         </div>
 
         <!-- Food -->
-        <div class="glass p-4 rounded-xl shadow flex flex-col justify-between">
+        <div class="glass p-4 rounded-xl shadow flex flex-col justify-between card-animated">
           <div>
             <h3 class="text-lg font-semibold text-gray-700">🍽 Food</h3>
             <p class="text-gray-500 text-sm">Breakfast, lunch, dinner reminders</p>
           </div>
-          <button id="toggle-food"
-                  class="mt-4 py-2 rounded-lg toggle-off font-medium shadow">
-            Enable
-          </button>
+          <div class="flex gap-2 mt-4">
+            <button id="toggle-food"
+                    class="flex-1 py-2 rounded-lg toggle-off font-medium shadow">Enable</button>
+            <button type="button" onclick="window.testWebhook('food')"
+                    class="px-3 py-2 rounded-lg text-white shadow btn-animated">Test</button>
+          </div>
         </div>
 
         <!-- Water -->
-        <div class="glass p-4 rounded-xl shadow flex flex-col justify-between">
+        <div class="glass p-4 rounded-xl shadow flex flex-col justify-between card-animated">
           <div>
             <h3 class="text-lg font-semibold text-gray-700">💧 Water</h3>
             <p class="text-gray-500 text-sm">Hydration reminders throughout day</p>
           </div>
-          <button id="toggle-water"
-                  class="mt-4 py-2 rounded-lg toggle-off font-medium shadow">
-            Enable
-          </button>
+          <div class="flex gap-2 mt-4">
+            <button id="toggle-water"
+                    class="flex-1 py-2 rounded-lg toggle-off font-medium shadow">Enable</button>
+            <button type="button" onclick="window.testWebhook('water')"
+                    class="px-3 py-2 rounded-lg text-white shadow btn-animated">Test</button>
+          </div>
         </div>
 
         <!-- Work -->
-        <div class="glass p-4 rounded-xl shadow flex flex-col justify-between">
+        <div class="glass p-4 rounded-xl shadow flex flex-col justify-between card-animated">
           <div>
             <h3 class="text-lg font-semibold text-gray-700">💻 Work</h3>
             <p class="text-gray-500 text-sm">Productivity + focus reminders</p>
           </div>
-          <button id="toggle-work"
-                  class="mt-4 py-2 rounded-lg toggle-off font-medium shadow">
-            Enable
-          </button>
+          <div class="flex gap-2 mt-4">
+            <button id="toggle-work"
+                    class="flex-1 py-2 rounded-lg toggle-off font-medium shadow">Enable</button>
+            <button type="button" onclick="window.testWebhook('work')"
+                    class="px-3 py-2 rounded-lg text-white shadow btn-animated">Test</button>
+          </div>
         </div>
 
         <!-- Sleep -->
-        <div class="glass p-4 rounded-xl shadow flex flex-col justify-between">
+        <div class="glass p-4 rounded-xl shadow flex flex-col justify-between card-animated">
           <div>
             <h3 class="text-lg font-semibold text-gray-700">😴 Sleep</h3>
             <p class="text-gray-500 text-sm">Sleep routine + wind-down reminders</p>
           </div>
-          <button id="toggle-sleep"
-                  class="mt-4 py-2 rounded-lg toggle-off font-medium shadow">
-            Enable
-          </button>
+          <div class="flex gap-2 mt-4">
+            <button id="toggle-sleep"
+                    class="flex-1 py-2 rounded-lg toggle-off font-medium shadow">Enable</button>
+            <button type="button" onclick="window.testWebhook('sleep')"
+                    class="px-3 py-2 rounded-lg text-white shadow btn-animated">Test</button>
+          </div>
         </div>
 
       </div>

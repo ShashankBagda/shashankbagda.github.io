@@ -25,11 +25,20 @@ function schedule(rem) {
 
 self.onmessage = (e) => {
   const { type, times } = e.data || {};
-  if (type !== 'init' || !times || !times.exercise) return;
-  const reminders = [
-    { time: times.exercise.ex_morning, text: "Morning mobility + 500ml water" },
-    { time: times.exercise.ex_gym, text: "Gym / Swimming time 💪" },
-    { time: times.exercise.ex_shake, text: "Post-workout Protein Shake" }
-  ];
-  reminders.forEach(schedule);
+  if (type === 'test') {
+    fetch(WEBHOOK, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ content: '🔔 Test: Exercise reminder webhook working.' })
+    });
+    return;
+  }
+  if (type === 'init' && times && times.exercise) {
+    const reminders = [
+      { time: times.exercise.ex_morning, text: "Morning mobility + 500ml water" },
+      { time: times.exercise.ex_gym, text: "Gym / Swimming time 💪" },
+      { time: times.exercise.ex_shake, text: "Post-workout Protein Shake" }
+    ];
+    reminders.forEach(schedule);
+  }
 };

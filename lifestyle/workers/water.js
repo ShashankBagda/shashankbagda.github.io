@@ -22,13 +22,22 @@ function schedule(rem) {
 
 self.onmessage = (e) => {
   const { type, times } = e.data || {};
-  if (type !== 'init' || !times || !times.water) return;
-  const reminders = [
-    { time: times.water.wt_1, text: "Morning Water • 300–500ml" },
-    { time: times.water.wt_2, text: "Hydration Break 💧" },
-    { time: times.water.wt_3, text: "Water after lunch" },
-    { time: times.water.wt_4, text: "Evening hydration" },
-    { time: times.water.wt_5, text: "Pre-workout Water" }
-  ];
-  reminders.forEach(schedule);
+  if (type === 'test') {
+    fetch(WEBHOOK, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ content: '🔔 Test: Water reminder webhook working.' })
+    });
+    return;
+  }
+  if (type === 'init' && times && times.water) {
+    const reminders = [
+      { time: times.water.wt_1, text: "Morning Water • 300–500ml" },
+      { time: times.water.wt_2, text: "Hydration Break 💧" },
+      { time: times.water.wt_3, text: "Water after lunch" },
+      { time: times.water.wt_4, text: "Evening hydration" },
+      { time: times.water.wt_5, text: "Pre-workout Water" }
+    ];
+    reminders.forEach(schedule);
+  }
 };

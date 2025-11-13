@@ -23,12 +23,21 @@ function schedule(rem) {
 
 self.onmessage = (e) => {
   const { type, times } = e.data || {};
-  if (type !== 'init' || !times || !times.food) return;
-  const reminders = [
-    { time: times.food.fd_breakfast, text: "Breakfast 🍳 • Don't skip your first meal!" },
-    { time: times.food.fd_lunch, text: "Lunch 🥗 • 3–4 roti + dal + sabji" },
-    { time: times.food.fd_snack, text: "Evening Snack 🍎 • Fruit / Nuts / Coffee" },
-    { time: times.food.fd_dinner, text: "Dinner 🍽 • Light healthy meal" }
-  ];
-  reminders.forEach(schedule);
+  if (type === 'test') {
+    fetch(WEBHOOK, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ content: '🔔 Test: Food reminder webhook working.' })
+    });
+    return;
+  }
+  if (type === 'init' && times && times.food) {
+    const reminders = [
+      { time: times.food.fd_breakfast, text: "Breakfast 🍳 • Don't skip your first meal!" },
+      { time: times.food.fd_lunch, text: "Lunch 🥗 • 3–4 roti + dal + sabji" },
+      { time: times.food.fd_snack, text: "Evening Snack 🍎 • Fruit / Nuts / Coffee" },
+      { time: times.food.fd_dinner, text: "Dinner 🍽 • Light healthy meal" }
+    ];
+    reminders.forEach(schedule);
+  }
 };

@@ -20,11 +20,20 @@ function schedule(rem) {
 
 self.onmessage = (e) => {
   const { type, times } = e.data || {};
-  if (type !== 'init' || !times || !times.sleep) return;
-  const reminders = [
-    { time: times.sleep.sl_wind, text: "Wind Down 🌙 • Reduce screen" },
-    { time: times.sleep.sl_brush, text: "Brush Teeth 🦷 • Prepare for bed" },
-    { time: times.sleep.sl_sleep, text: "Sleep Time 😴 • Aim for 7 hours" }
-  ];
-  reminders.forEach(schedule);
+  if (type === 'test') {
+    fetch(WEBHOOK, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ content: '🔔 Test: Sleep reminder webhook working.' })
+    });
+    return;
+  }
+  if (type === 'init' && times && times.sleep) {
+    const reminders = [
+      { time: times.sleep.sl_wind, text: "Wind Down 🌙 • Reduce screen" },
+      { time: times.sleep.sl_brush, text: "Brush Teeth 🦷 • Prepare for bed" },
+      { time: times.sleep.sl_sleep, text: "Sleep Time 😴 • Aim for 7 hours" }
+    ];
+    reminders.forEach(schedule);
+  }
 };
