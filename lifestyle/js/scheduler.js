@@ -10,12 +10,12 @@ const workers = {
   sleep: null
 };
 
-function startWorker(name) {
+function startWorker(name, opts = {}) {
   if (workers[name]) return;
   // Workers are resolved relative to the page URL
   workers[name] = new Worker(`workers/${name}.js`);
   console.log(name + " worker started");
-  if (window.showToast) window.showToast(`${name.charAt(0).toUpperCase()+name.slice(1)} enabled`, 'success');
+  if (!opts.silent && window.showToast) window.showToast(`${name.charAt(0).toUpperCase()+name.slice(1)} enabled`, 'success');
 
   // Pass current reminder times into the worker (web workers can't access localStorage)
   try {
@@ -48,7 +48,7 @@ function stopWorker(name) {
 window.addEventListener('DOMContentLoaded', () => {
   const enabled = JSON.parse(localStorage.getItem('enabledWorkers') || '[]');
   enabled.forEach(name => {
-    if (name in workers) startWorker(name);
+    if (name in workers) startWorker(name, { silent: true });
   });
 });
 
@@ -56,7 +56,7 @@ window.addEventListener('DOMContentLoaded', () => {
 function testWebhook(name) {
   if (!(name in workers)) return;
   if (!workers[name]) {
-    startWorker(name);
+    startWorker(name, { silent: true });
   }
   try {
     workers[name].postMessage({ type: 'test' });
