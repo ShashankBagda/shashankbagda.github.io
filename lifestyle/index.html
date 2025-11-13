@@ -19,7 +19,9 @@
     .toggle-on .label, .toggle-off .label { position: relative; z-index: 3; padding: 2px 8px; border-radius: 9999px; }
     .toggle-on .label { background-color: #10b981; }
     .toggle-off .label { background-color: #e2e8f0; }
-    .hb { position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 100%; height: 24px; z-index: 1; opacity: 0.9; pointer-events: none; }
+    .hb { position: absolute; top: 50%; transform: translateY(-50%); height: 24px; z-index: 1; opacity: 0.9; pointer-events: none; }
+    .hb-left { left: 0; width: 46%; }
+    .hb-right { right: 0; width: 46%; }
     .hb path { fill: none; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
     /* Live (enabled) */
     .toggle-on .hb .hb-wave { stroke: rgba(255,255,255,0.95); stroke-dasharray: 70 180; animation: heartbeat 2s linear infinite; animation-delay: var(--hb-delay,0ms); filter: drop-shadow(0 0 6px rgba(255,255,255,.85)); }
@@ -222,7 +224,6 @@
             <div class="mt-1 flex items-center gap-4">
               <label class="flex items-center gap-2 text-sm"><input type="radio" name="pf_gender" value="male"/> Male</label>
               <label class="flex items-center gap-2 text-sm"><input type="radio" name="pf_gender" value="female"/> Female</label>
-              <label class="flex items-center gap-2 text-sm"><input type="radio" name="pf_gender" value="other"/> Other</label>
             </div>
           </div>
         </div>
@@ -272,14 +273,20 @@
     window.showToast = showToast;
     // Profile helpers
     function getProfile(){ return JSON.parse(localStorage.getItem('userProfile')||'null'); }
-    function setProfile(p){ localStorage.setItem('userProfile', JSON.stringify(p)); }
+    function setProfile(p){ localStorage.setItem('userProfile', JSON.stringify(p)); document.cookie = 'userProfile=1; path=/; max-age=' + (60*60*24*365*2); }
+    function hasProfileCookie(){ return document.cookie.indexOf('userProfile=1') !== -1; }
 
     function renderWelcome(){
       const p = getProfile();
       const w = document.getElementById('welcomeText');
       const g = document.getElementById('genderSketch');
       if (p && p.name) w.textContent = `Welcome, ${p.name}`; else w.textContent = 'Welcome';
-      const em = (!p||!p.gender)?'👤':(p.gender==='male'?'👨':'👩');
+      let em = '👤';
+      if (p && p.gender) {
+        const isChild = p.age !== undefined ? (p.age < 13) : false;
+        if (p.gender === 'male') em = isChild ? '👦' : '👨';
+        if (p.gender === 'female') em = isChild ? '👧' : '👩';
+      }
       g.textContent = em;
     }
 
@@ -319,8 +326,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
       const qb=document.getElementById('quoteBox'); if(qb) qb.textContent=quotes[Math.floor(Math.random()*quotes.length)];
       // Init profile
       const p = getProfile();
-      if (!p) openProfile();
-      else renderWelcome();
+      if (!hasProfileCookie()) { openProfile(); }
+      else { renderWelcome(); }
       // Edit button
       const eb = document.getElementById('editProfileBtn'); if (eb) eb.addEventListener('click', ()=>{
         const p=getProfile()||{}; document.getElementById('pf_name').value=p.name||''; const bd=document.getElementById('pf_birth'); if(bd) bd.value=p.birth||''; document.getElementById('pf_height').value=p.height||''; document.getElementById('pf_weight').value=p.weight||''; if (p.gender) { const r=document.querySelector(`input[name=pf_gender][value=${p.gender}]`); if(r) r.checked=true; } openProfile();
