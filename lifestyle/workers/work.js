@@ -1,17 +1,5 @@
 const WEBHOOK = "https://discord.com/api/webhooks/1438500870957436938/XQkTpSciuMBQGX8CW9g7co7KuAyecEJNaFpZVSZpRaSA2c8Sq9qgt5hlBXbzX35u7XuC";
 
-function loadTimes() {
-  const d = JSON.parse(localStorage.getItem("reminderTimes"));
-  if (!d) return null;
-
-  return [
-    { time: d.work.wk_start, text: "Start Work • Focus Mode On 💻" },
-    { time: d.work.wk_break, text: "Stretch Break • 5 mins 🧘" },
-    { time: d.work.wk_focus, text: "Refocus • Avoid distractions" },
-    { time: d.work.wk_wrap, text: "Wrap Up • Review tasks" }
-  ];
-}
-
 function schedule(rem) {
   const now = new Date();
   const [h, m] = rem.time.split(":").map(Number);
@@ -31,5 +19,14 @@ function schedule(rem) {
   }, target - now);
 }
 
-const reminders = loadTimes();
-if (reminders) reminders.forEach(schedule);
+self.onmessage = (e) => {
+  const { type, times } = e.data || {};
+  if (type !== 'init' || !times || !times.work) return;
+  const reminders = [
+    { time: times.work.wk_start, text: "Start Work • Focus Mode On 💻" },
+    { time: times.work.wk_break, text: "Stretch Break • 5 mins 🧘" },
+    { time: times.work.wk_focus, text: "Refocus • Avoid distractions" },
+    { time: times.work.wk_wrap, text: "Wrap Up • Review tasks" }
+  ];
+  reminders.forEach(schedule);
+};

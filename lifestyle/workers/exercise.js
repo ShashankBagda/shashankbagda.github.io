@@ -1,16 +1,5 @@
 const WEBHOOK = "https://discord.com/api/webhooks/1438499804471758900/h3gwoXH7YJURIbVLVjtE6lY4v_XqkWnVwdrKL1FqzSApDTKpC4zIflEpEnNZtFAztrEn";
 
-function loadTimes() {
-  const data = JSON.parse(localStorage.getItem("reminderTimes"));
-  if (!data) return null;
-
-  return [
-    { time: data.exercise.ex_morning, text: "Morning mobility + 500ml water" },
-    { time: data.exercise.ex_gym, text: "Gym / Swimming time 💪" },
-    { time: data.exercise.ex_shake, text: "Post-workout Protein Shake" }
-  ];
-}
-
 function schedule(rem) {
   if (!rem.time) return;
 
@@ -34,5 +23,13 @@ function schedule(rem) {
   }, delay);
 }
 
-const reminders = loadTimes();
-if (reminders) reminders.forEach(schedule);
+self.onmessage = (e) => {
+  const { type, times } = e.data || {};
+  if (type !== 'init' || !times || !times.exercise) return;
+  const reminders = [
+    { time: times.exercise.ex_morning, text: "Morning mobility + 500ml water" },
+    { time: times.exercise.ex_gym, text: "Gym / Swimming time 💪" },
+    { time: times.exercise.ex_shake, text: "Post-workout Protein Shake" }
+  ];
+  reminders.forEach(schedule);
+};

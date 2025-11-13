@@ -1,18 +1,5 @@
 const WEBHOOK = "https://discord.com/api/webhooks/1438499790173372457/Z3KZTTwPJPYCA5V6ClGOz4RvAd-nvNqGs2HR_haNelnnYL5X3F74PjhhkR4MOIIpy7TR";
 
-function loadTimes() {
-  const d = JSON.parse(localStorage.getItem("reminderTimes"));
-  if (!d) return null;
-
-  return [
-    { time: d.water.wt_1, text: "Morning Water • 300–500ml" },
-    { time: d.water.wt_2, text: "Hydration Break 💧" },
-    { time: d.water.wt_3, text: "Water after lunch" },
-    { time: d.water.wt_4, text: "Evening hydration" },
-    { time: d.water.wt_5, text: "Pre-workout Water" }
-  ];
-}
-
 function schedule(rem) {
   if (!rem.time) return;
 
@@ -33,5 +20,15 @@ function schedule(rem) {
   }, target - now);
 }
 
-const reminders = loadTimes();
-if (reminders) reminders.forEach(schedule);
+self.onmessage = (e) => {
+  const { type, times } = e.data || {};
+  if (type !== 'init' || !times || !times.water) return;
+  const reminders = [
+    { time: times.water.wt_1, text: "Morning Water • 300–500ml" },
+    { time: times.water.wt_2, text: "Hydration Break 💧" },
+    { time: times.water.wt_3, text: "Water after lunch" },
+    { time: times.water.wt_4, text: "Evening hydration" },
+    { time: times.water.wt_5, text: "Pre-workout Water" }
+  ];
+  reminders.forEach(schedule);
+};

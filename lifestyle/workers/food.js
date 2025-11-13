@@ -1,17 +1,5 @@
 const WEBHOOK = "https://discord.com/api/webhooks/1438500068737945731/q5TQePGq-PMsqAUwQJe-zuCS3xs6nS8_fyViAwXom4GfsDwsZgRGuMPsLszoh09MWruW";
 
-function loadTimes() {
-  const d = JSON.parse(localStorage.getItem("reminderTimes"));
-  if (!d) return null;
-
-  return [
-    { time: d.food.fd_breakfast, text: "Breakfast 🍳 • Don't skip your first meal!" },
-    { time: d.food.fd_lunch, text: "Lunch 🥗 • 3–4 roti + dal + sabji" },
-    { time: d.food.fd_snack, text: "Evening Snack 🍎 • Fruit / Nuts / Coffee" },
-    { time: d.food.fd_dinner, text: "Dinner 🍽 • Light healthy meal" }
-  ];
-}
-
 function schedule(rem) {
   if (!rem.time) return;
 
@@ -33,5 +21,14 @@ function schedule(rem) {
   }, target - now);
 }
 
-const reminders = loadTimes();
-if (reminders) reminders.forEach(schedule);
+self.onmessage = (e) => {
+  const { type, times } = e.data || {};
+  if (type !== 'init' || !times || !times.food) return;
+  const reminders = [
+    { time: times.food.fd_breakfast, text: "Breakfast 🍳 • Don't skip your first meal!" },
+    { time: times.food.fd_lunch, text: "Lunch 🥗 • 3–4 roti + dal + sabji" },
+    { time: times.food.fd_snack, text: "Evening Snack 🍎 • Fruit / Nuts / Coffee" },
+    { time: times.food.fd_dinner, text: "Dinner 🍽 • Light healthy meal" }
+  ];
+  reminders.forEach(schedule);
+};

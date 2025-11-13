@@ -5,6 +5,18 @@
 function setupToggle(id, workerName) {
   const btn = document.getElementById(id);
 
+  // Initialize from persisted state
+  const enabled = new Set(JSON.parse(localStorage.getItem('enabledWorkers') || '[]'));
+  if (enabled.has(workerName)) {
+    btn.classList.remove("toggle-off");
+    btn.classList.add("toggle-on");
+    btn.textContent = "Disable";
+  } else {
+    btn.classList.remove("toggle-on");
+    btn.classList.add("toggle-off");
+    btn.textContent = "Enable";
+  }
+
   btn.addEventListener("click", () => {
     const isOn = btn.classList.contains("toggle-on");
 

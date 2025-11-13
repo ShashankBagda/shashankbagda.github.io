@@ -17,7 +17,11 @@
     .glass {
       backdrop-filter: blur(15px);
       background: rgba(255, 255, 255, 0.65);
+      border: 1px solid rgba(255,255,255,0.5);
+      box-shadow: 0 10px 30px rgba(2, 6, 23, 0.08);
     }
+    @keyframes floatIn { from { opacity:0; transform: translateY(10px) scale(.98);} to { opacity:1; transform: translateY(0) scale(1);} }
+    .animate-in { animation: floatIn .6s ease both; }
   </style>
 
   <!-- PWA Manifest -->
@@ -33,7 +37,7 @@
 <body class="min-h-screen flex flex-col">
 
   <!-- HEADER -->
-  <header class="w-full py-6 shadow-sm glass">
+  <header class="w-full py-6 shadow-sm glass animate-in">
     <h1 class="text-center text-3xl font-bold text-gray-800">
       🌿 Shashank's Lifestyle Tracker
     </h1>
@@ -43,7 +47,7 @@
   </header>
 
   <!-- HERO SECTION -->
-  <section class="flex-1 flex flex-col items-center justify-center px-6 py-12 text-center">
+  <section class="flex-1 flex flex-col items-center justify-center px-6 py-12 text-center animate-in" style="animation-delay:.05s">
 
     <img src="assets/icon-512.png" class="w-32 h-32 mb-6 drop-shadow-xl" alt="App Logo"/>
 
@@ -58,7 +62,7 @@
 
       <a
         href="./dashboard.html"
-        class="w-full py-3 rounded-xl bg-blue-600 text-white font-medium text-lg shadow-md hover:bg-blue-700 transition">
+        class="w-full py-3 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-medium text-lg shadow-md hover:from-blue-700 hover:to-indigo-700 transition">
         Open Dashboard
       </a>
 
@@ -70,7 +74,7 @@
 
       <button
         id="installBtn"
-        class="w-full py-3 rounded-xl bg-emerald-600 text-white font-medium text-lg shadow-md hover:bg-emerald-700 transition hidden">
+        class="w-full py-3 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-medium text-lg shadow-md hover:from-emerald-700 hover:to-teal-700 transition hidden">
         Install App
       </button>
     </div>
