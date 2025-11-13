@@ -34,17 +34,21 @@ self.onmessage = (e) => {
     return;
   }
   if (type === 'init' && times && times.exercise) {
+    const norm = (v) => ({ t: (v && v.t) ? v.t : v, d: (v && v.d) ? v.d : [0,1,2,3,4,5,6] });
     const reminders = [
-      { time: times.exercise.ex_morning, text: "Morning mobility + 500ml water" },
-      { time: times.exercise.ex_gym, text: "Gym / Swimming time 💪" },
-      { time: times.exercise.ex_shake, text: "Post-workout Protein Shake" }
+      { time: norm(times.exercise.ex_morning), text: "Morning mobility + 500ml water" },
+      { time: norm(times.exercise.ex_gym), text: "Gym / Swimming time 💪" },
+      { time: norm(times.exercise.ex_shake), text: "Post-workout Protein Shake" }
     ];
     const send = (rem) => {
       const now = new Date();
-      const [h, m] = rem.time.split(":").map(Number);
+      const [h, m] = (rem.time.t||rem.time).split(":").map(Number);
+      const days = rem.time.d || [0,1,2,3,4,5,6];
       let target = new Date();
       target.setHours(h, m, 0, 0);
-      if (target <= now) target.setDate(target.getDate() + 1);
+      for (let i=0; i<8 && (target <= now || !days.includes(target.getDay())); i++) {
+        target.setDate(target.getDate()+1);
+      }
       setTimeout(() => {
         fetch(webhook || WEBHOOK, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ content: `🏋️ **Exercise Reminder:** ${rem.text}` }) });
         send(rem);

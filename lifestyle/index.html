@@ -206,7 +206,15 @@
     let currentModule = null;
 
     function inputField(id, label, value) {
-      return `<div><label class="text-gray-600 text-sm">${label}</label><input type="time" id="${id}" value="${value}" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2"/></div>`;
+      const v = typeof value === 'object' ? (value.t||'') : (value||'');
+      const dset = (value && value.d) ? value.d : [0,1,2,3,4,5,6];
+      const dayBtn = (i, txt) => `<button type="button" data-day="${i}" data-for="${id}" class="day-btn px-2 py-1 rounded border ${dset.includes(i)?'bg-blue-600 text-white border-blue-600':'bg-white text-slate-700 border-slate-300'}">${txt}</button>`;
+      const row = ['S','M','T','W','T','F','S'].map((t,i)=>dayBtn(i,t)).join(' ');
+      return `<div>
+        <label class="text-gray-600 text-sm">${label}</label>
+        <input type="time" id="${id}" value="${v}" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2"/>
+        <div class="mt-2 flex gap-1 flex-wrap">${row}</div>
+      </div>`;
     }
 
     const moduleFields = {
@@ -254,6 +262,17 @@
                  class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2"/>
         </div>`;
       document.getElementById('settingsModal').classList.remove('hidden');
+      document.querySelectorAll('.day-btn').forEach(btn=>{
+        btn.addEventListener('click',()=>{
+          const on = btn.classList.contains('bg-blue-600');
+          btn.classList.toggle('bg-blue-600', !on);
+          btn.classList.toggle('text-white', !on);
+          btn.classList.toggle('border-blue-600', !on);
+          btn.classList.toggle('bg-white', on);
+          btn.classList.toggle('text-slate-700', on);
+          btn.classList.toggle('border-slate-300', on);
+        });
+      });
     }
     function closeSettings(){
       document.getElementById('settingsModal').classList.add('hidden');
@@ -263,7 +282,13 @@
       if (!currentModule) return;
       const times = getTimes();
       const updates = {};
-      moduleFields[currentModule].forEach(([id]) => { updates[id] = document.getElementById(id).value; });
+      moduleFields[currentModule].forEach(([id]) => {
+        const timeVal = document.getElementById(id).value;
+        const days = Array.from(document.querySelectorAll(`.day-btn[data-for="${id}"]`))
+          .filter(b=>b.classList.contains('bg-blue-600'))
+          .map(b=>parseInt(b.getAttribute('data-day')));
+        updates[id] = { t: timeVal, d: days.length?days:[0,1,2,3,4,5,6] };
+      });
       times[currentModule] = updates;
       setTimes(times);
       const hooks = getWebhookLinks();

@@ -31,19 +31,23 @@ self.onmessage = (e) => {
     return;
   }
   if (type === 'init' && times && times.water) {
+    const norm = (v) => ({ t: (v && v.t) ? v.t : v, d: (v && v.d) ? v.d : [0,1,2,3,4,5,6] });
     const reminders = [
-      { time: times.water.wt_1, text: "Morning Water • 300–500ml" },
-      { time: times.water.wt_2, text: "Hydration Break 💧" },
-      { time: times.water.wt_3, text: "Water after lunch" },
-      { time: times.water.wt_4, text: "Evening hydration" },
-      { time: times.water.wt_5, text: "Pre-workout Water" }
+      { time: norm(times.water.wt_1), text: "Morning Water • 300–500ml" },
+      { time: norm(times.water.wt_2), text: "Hydration Break 💧" },
+      { time: norm(times.water.wt_3), text: "Water after lunch" },
+      { time: norm(times.water.wt_4), text: "Evening hydration" },
+      { time: norm(times.water.wt_5), text: "Pre-workout Water" }
     ];
     const send = (rem) => {
       const now = new Date();
-      const [h, m] = rem.time.split(":").map(Number);
+      const [h, m] = (rem.time.t||rem.time).split(":").map(Number);
+      const days = rem.time.d || [0,1,2,3,4,5,6];
       let target = new Date();
       target.setHours(h, m, 0, 0);
-      if (target <= now) target.setDate(target.getDate() + 1);
+      for (let i=0; i<8 && (target <= now || !days.includes(target.getDay())); i++) {
+        target.setDate(target.getDate()+1);
+      }
       setTimeout(() => {
         fetch(webhook || WEBHOOK, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ content: `💧 **Water Reminder:** ${rem.text}` }) });
         send(rem);
