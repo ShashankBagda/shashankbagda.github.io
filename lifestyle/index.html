@@ -41,6 +41,7 @@
     @keyframes shimmer { 0%{transform: translateX(-100%);} 100%{transform: translateX(100%);} }
     .quote-text { display:inline-block; opacity:0; transform: translateY(4px); animation: quoteIn .6s ease forwards; }
     @keyframes quoteIn { to { opacity:1; transform: translateY(0);} }
+    .profile-banner { background: linear-gradient(90deg,#fff7ed,#ecfeff); border: 1px solid rgba(255,255,255,.6); }
   </style>
 
   <!-- PWA Manifest -->
@@ -66,6 +67,14 @@
   </header>
 
   <main class="flex-1 px-4 md:px-8 lg:px-12 py-8 space-y-10">
+
+    <!-- COMPLETE PROFILE BANNER -->
+    <section class="max-w-5xl mx-auto animate-in">
+      <div id="profileBanner" class="glass profile-banner rounded-2xl p-4 shadow flex items-center justify-between gap-4 hidden">
+        <div class="text-slate-700 text-sm md:text-base">Complete your profile to personalize reminders.</div>
+        <button id="completeProfileBtn" class="px-4 py-2 rounded-lg text-white btn-animated">Complete now</button>
+      </div>
+    </section>
 
     <!-- MOTIVATIONAL QUOTE -->
     <section class="max-w-5xl mx-auto animate-in">
@@ -280,9 +289,16 @@
     }
     window.showToast = showToast;
     // Profile helpers
-    function getProfile(){ return JSON.parse(localStorage.getItem('userProfile')||'null'); }
-    function setProfile(p){ localStorage.setItem('userProfile', JSON.stringify(p)); document.cookie = 'userProfile=1; path=/; max-age=' + (60*60*24*365*2); }
-    function hasProfileCookie(){ return document.cookie.indexOf('userProfile=1') !== -1; }
+    function getProfile(){
+      const m = document.cookie.match(/(?:^|; )profileData=([^;]+)/);
+      if (m) { try { return JSON.parse(decodeURIComponent(m[1])); } catch(_){} }
+      return JSON.parse(localStorage.getItem('userProfile')||'null');
+    }
+    function setProfile(p){
+      localStorage.setItem('userProfile', JSON.stringify(p));
+      document.cookie = 'profileData=' + encodeURIComponent(JSON.stringify(p)) + '; path=/; max-age=' + (60*60*24*365*2);
+    }
+    function hasProfileCookie(){ return /(?:^|; )profileData=/.test(document.cookie); }
 
     function renderWelcome(){
       const p = getProfile();
@@ -341,8 +357,17 @@ document.addEventListener('DOMContentLoaded', ()=>{
       function rotateQuote(){ if(!qb) return; qb.classList.remove('quote-text'); void qb.offsetWidth; // restart animation
         qb.textContent=quotes[Math.floor(Math.random()*quotes.length)]; qb.classList.add('quote-text'); }
       rotateQuote(); setInterval(rotateQuote, 8000);
-      // Init profile (open only via Settings icon)
-      renderWelcome(); setControlsEnabled(true);
+      // Init profile
+      const banner = document.getElementById('profileBanner');
+      const cpBtn = document.getElementById('completeProfileBtn'); if (cpBtn) cpBtn.addEventListener('click', openProfile);
+      if (!hasProfileCookie()) {
+        banner && banner.classList.remove('hidden');
+        openProfile();
+      } else {
+        banner && banner.classList.add('hidden');
+        renderWelcome();
+      }
+      setControlsEnabled(true);
       // Edit button
       const eb = document.getElementById('editProfileBtn'); if (eb) eb.addEventListener('click', ()=>{
         const p=getProfile()||{}; document.getElementById('pf_name').value=p.name||''; const bd=document.getElementById('pf_birth'); if(bd) bd.value=p.birth||''; document.getElementById('pf_height').value=p.height||''; document.getElementById('pf_weight').value=p.weight||''; if (p.gender) { const r=document.querySelector(`input[name=pf_gender][value=${p.gender}]`); if(r) r.checked=true; } openProfile();
