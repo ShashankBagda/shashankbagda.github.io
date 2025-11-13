@@ -214,10 +214,17 @@
         <div class="flex items-center justify-between mb-3">
           <h3 id="modalTitle" class="text-lg font-semibold text-gray-800">Edit Times</h3>
           <button class="p-2 rounded-lg hover:bg-slate-100" onclick="closeSettings()">✖</button>
-  </div>
+        </div>
+        <div id="modalBody" class="grid gap-4"></div>
+        <div class="mt-6 flex gap-3 justify-end">
+          <button class="px-4 py-2 rounded-xl bg-white border border-slate-200 text-slate-700 hover:bg-slate-50" onclick="resetModuleTimes()">Reset</button>
+          <button class="px-4 py-2 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:from-blue-700 hover:to-indigo-700" onclick="saveModuleTimes()">Save</button>
+        </div>
+      </div>
+    </div>
 
-    <!-- Profile Modal -->
-    <div id="profileModal" class="fixed inset-0 z-50 hidden" style="z-index: 10000;">
+    <!-- Profile Modal (now separate, not nested) -->
+    <div id="profileModal" class="fixed inset-0 hidden" style="z-index: 10000;">
       <div class="absolute inset-0 bg-slate-900/40" onclick="closeProfile()"></div>
       <div class="relative max-w-lg mx-auto mt-24 glass rounded-2xl p-6 animate-in">
         <h3 class="text-lg font-semibold text-gray-800 mb-4">Tell us about you</h3>
@@ -249,13 +256,6 @@
         <div class="mt-6 flex gap-3 justify-end">
           <button class="px-4 py-2 rounded-xl bg-white border border-slate-200 text-slate-700 hover:bg-slate-50" onclick="closeProfile()">Cancel</button>
           <button class="px-4 py-2 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:from-blue-700 hover:to-indigo-700" onclick="saveProfile()">Save</button>
-        </div>
-      </div>
-    </div>
-        <div id="modalBody" class="grid gap-4"></div>
-        <div class="mt-6 flex gap-3 justify-end">
-          <button class="px-4 py-2 rounded-xl bg-white border border-slate-200 text-slate-700 hover:bg-slate-50" onclick="resetModuleTimes()">Reset</button>
-          <button class="px-4 py-2 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:from-blue-700 hover:to-indigo-700" onclick="saveModuleTimes()">Save</button>
         </div>
       </div>
     </div>
