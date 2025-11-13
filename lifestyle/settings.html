@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Edit Reminder Times</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    body {
+      background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+      font-family: 'Inter', sans-serif;
+    }
+    .glass {
+      backdrop-filter: blur(15px);
+      background: rgba(255, 255, 255, 0.7);
+    }
+    .card {
+      transition: all 0.2s ease;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    input[type="time"] {
+      background: white;
+      padding: 8px 12px;
+      border-radius: 10px;
+      border: 1px solid #cbd5e1;
+      font-size: 15px;
+      width: 100%;
+      color: #475569;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="w-full py-6 shadow-sm glass mb-6">
+    <h1 class="text-center text-3xl font-bold text-gray-800">
+      ⚙️ Edit Reminder Times
+    </h1>
+    <p class="text-center text-gray-500 text-sm mt-1">
+      Customize your daily wellness schedule
+    </p>
+  </header>
+
+  <!-- FORM -->
+  <main class="flex-1 px-6 md:px-12 lg:px-24 pb-20">
+
+    <!-- Exercise -->
+    <div class="glass card p-5 rounded-2xl shadow mb-6">
+      <h2 class="text-xl font-semibold text-gray-700">🏋️ Exercise</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+
+        <div>
+          <label class="text-gray-600 text-sm">Morning Mobility</label>
+          <input type="time" id="ex_morning" />
+        </div>
+
+        <div>
+          <label class="text-gray-600 text-sm">Gym / Swimming</label>
+          <input type="time" id="ex_gym" />
+        </div>
+
+        <div>
+          <label class="text-gray-600 text-sm">Protein Shake</label>
+          <input type="time" id="ex_shake" />
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Food -->
+    <div class="glass card p-5 rounded-2xl shadow mb-6">
+      <h2 class="text-xl font-semibold text-gray-700">🍽 Food</h2>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mt-4">
+
+        <div>
+          <label class="text-gray-600 text-sm">Breakfast</label>
+          <input type="time" id="fd_breakfast" />
+        </div>
+
+        <div>
+          <label class="text-gray-600 text-sm">Lunch</label>
+          <input type="time" id="fd_lunch" />
+        </div>
+
+        <div>
+          <label class="text-gray-600 text-sm">Snack</label>
+          <input type="time" id="fd_snack" />
+        </div>
+
+        <div>
+          <label class="text-gray-600 text-sm">Dinner</label>
+          <input type="time" id="fd_dinner" />
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Water -->
+    <div class="glass card p-5 rounded-2xl shadow mb-6">
+      <h2 class="text-xl font-semibold text-gray-700">💧 Water</h2>
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-4 mt-4">
+
+        <div>
+          <label class="text-gray-600 text-sm">Morning</label>
+          <input type="time" id="wt_1" />
+        </div>
+
+        <div>
+          <label class="text-gray-600 text-sm">Mid-Morning</label>
+          <input type="time" id="wt_2" />
+        </div>
+
+        <div>
+          <label class="text-gray-600 text-sm">After Lunch</label>
+          <input type="time" id="wt_3" />
+        </div>
+
+        <div>
+          <label class="text-gray-600 text-sm">Evening</label>
+          <input type="time" id="wt_4" />
+        </div>
+
+        <div>
+          <label class="text-gray-600 text-sm">Pre-Workout</label>
+          <input type="time" id="wt_5" />
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Work -->
+    <div class="glass card p-5 rounded-2xl shadow mb-6">
+      <h2 class="text-xl font-semibold text-gray-700">💻 Work</h2>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mt-4">
+
+        <div>
+          <label class="text-gray-600 text-sm">Start Work</label>
+          <input type="time" id="wk_start" />
+        </div>
+
+        <div>
+          <label class="text-gray-600 text-sm">Stretch Break</label>
+          <input type="time" id="wk_break" />
+        </div>
+
+        <div>
+          <label class="text-gray-600 text-sm">Refocus</label>
+          <input type="time" id="wk_focus" />
+        </div>
+
+        <div>
+          <label class="text-gray-600 text-sm">Wrap Up</label>
+          <input type="time" id="wk_wrap" />
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Sleep -->
+    <div class="glass card p-5 rounded-2xl shadow mb-10">
+      <h2 class="text-xl font-semibold text-gray-700">😴 Sleep</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+
+        <div>
+          <label class="text-gray-600 text-sm">Wind Down</label>
+          <input type="time" id="sl_wind" />
+        </div>
+
+        <div>
+          <label class="text-gray-600 text-sm">Brush Teeth</label>
+          <input type="time" id="sl_brush" />
+        </div>
+
+        <div>
+          <label class="text-gray-600 text-sm">Sleep Time</label>
+          <input type="time" id="sl_sleep" />
+        </div>
+
+      </div>
+    </div>
+
+    <!-- BUTTONS -->
+    <div class="fixed bottom-0 left-0 w-full px-6 py-4 bg-white/70 backdrop-blur-md shadow-inner">
+      <div class="max-w-lg mx-auto flex gap-4">
+
+        <button
+          id="saveBtn"
+          class="flex-1 py-3 bg-blue-600 text-white font-semibold rounded-xl shadow hover:bg-blue-700">
+          Save All
+        </button>
+
+        <button
+          id="resetBtn"
+          class="flex-1 py-3 bg-gray-200 text-gray-700 font-semibold rounded-xl shadow hover:bg-gray-300">
+          Reset Defaults
+        </button>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Script: Load/Save Settings -->
+  <script>
+    const defaultTimes = {
+      exercise: {
+        ex_morning: "08:00",
+        ex_gym: "18:30",
+        ex_shake: "20:00",
+      },
+      food: {
+        fd_breakfast: "08:30",
+        fd_lunch: "13:00",
+        fd_snack: "16:30",
+        fd_dinner: "21:00",
+      },
+      water: {
+        wt_1: "08:15",
+        wt_2: "10:30",
+        wt_3: "13:15",
+        wt_4: "16:00",
+        wt_5: "19:00",
+      },
+      work: {
+        wk_start: "09:00",
+        wk_break: "11:00",
+        wk_focus: "14:00",
+        wk_wrap: "17:00",
+      },
+      sleep: {
+        sl_wind: "23:00",
+        sl_brush: "23:30",
+        sl_sleep: "00:00",
+      }
+    };
+
+    function loadTimes() {
+      const saved = JSON.parse(localStorage.getItem("reminderTimes")) || defaultTimes;
+
+      for (let section in saved) {
+        for (let key in saved[section]) {
+          document.getElementById(key).value = saved[section][key];
+        }
+      }
+    }
+
+    function saveTimes() {
+      const data = {
+        exercise: {
+          ex_morning: ex_morning.value,
+          ex_gym: ex_gym.value,
+          ex_shake: ex_shake.value
+        },
+        food: {
+          fd_breakfast: fd_breakfast.value,
+          fd_lunch: fd_lunch.value,
+          fd_snack: fd_snack.value,
+          fd_dinner: fd_dinner.value
+        },
+        water: {
+          wt_1: wt_1.value,
+          wt_2: wt_2.value,
+          wt_3: wt_3.value,
+          wt_4: wt_4.value,
+          wt_5: wt_5.value
+        },
+        work: {
+          wk_start: wk_start.value,
+          wk_break: wk_break.value,
+          wk_focus: wk_focus.value,
+          wk_wrap: wk_wrap.value
+        },
+        sleep: {
+          sl_wind: sl_wind.value,
+          sl_brush: sl_brush.value,
+          sl_sleep: sl_sleep.value
+        }
+      };
+
+      localStorage.setItem("reminderTimes", JSON.stringify(data));
+
+      alert("Reminder times saved successfully!");
+    }
+
+    function resetDefaults() {
+      localStorage.setItem("reminderTimes", JSON.stringify(defaultTimes));
+      loadTimes();
+      alert("Times reset to defaults.");
+    }
+
+    saveBtn.addEventListener("click", saveTimes);
+    resetBtn.addEventListener("click", resetDefaults);
+
+    loadTimes();
+  </script>
+
+</body>
+</html>

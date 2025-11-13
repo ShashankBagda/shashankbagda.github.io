@@ -1,0 +1,22 @@
+{
+  "name": "Shashank Lifestyle Tracker",
+  "short_name": "Lifestyle",
+  "start_url": "/lifestyle/index.html",
+  "scope": "/lifestyle/",
+  "display": "standalone",
+  "background_color": "#f9fafb",
+  "theme_color": "#3b82f6",
+  "description": "Daily reminders, habit tracking, graphs and wellness dashboard.",
+  "icons": [
+    {
+      "src": "/lifestyle/assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/lifestyle/assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

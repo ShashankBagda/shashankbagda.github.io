@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shashank Lifestyle Tracker</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Custom Pastel Theme -->
+  <style>
+    body {
+      background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+      font-family: 'Inter', sans-serif;
+    }
+    .glass {
+      backdrop-filter: blur(15px);
+      background: rgba(255, 255, 255, 0.65);
+    }
+  </style>
+
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="pwa/manifest.json" />
+</head>
+
+<script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("pwa/service-worker.js");
+  }
+</script>
+
+<body class="min-h-screen flex flex-col">
+
+  <!-- HEADER -->
+  <header class="w-full py-6 shadow-sm glass">
+    <h1 class="text-center text-3xl font-bold text-gray-800">
+      🌿 Shashank's Lifestyle Tracker
+    </h1>
+    <p class="text-center text-gray-500 text-sm mt-1">
+      Health • Fitness • Habits • Productivity
+    </p>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="flex-1 flex flex-col items-center justify-center px-6 py-12 text-center">
+
+    <img src="assets/logo.png" class="w-32 h-32 mb-6 drop-shadow-xl" alt="App Logo"/>
+
+    <h2 class="text-2xl font-semibold text-gray-700">Your Personal Wellness Command Center</h2>
+    <p class="text-gray-500 mt-3 max-w-md">
+      Track your habits, receive automated reminders, review daily progress,
+      and stay accountable — all in one beautiful, intelligent dashboard.
+    </p>
+
+    <!-- BUTTONS -->
+    <div class="mt-10 flex flex-col gap-4 w-full max-w-xs">
+
+      <a
+        href="./dashboard.html"
+        class="w-full py-3 rounded-xl bg-blue-600 text-white font-medium text-lg shadow-md hover:bg-blue-700 transition">
+        Open Dashboard
+      </a>
+
+      <a
+        href="./settings.html"
+        class="w-full py-3 rounded-xl bg-white text-blue-600 border border-blue-200 font-medium shadow-sm hover:bg-blue-50 transition">
+        Edit Reminders
+      </a>
+
+      <button
+        id="installBtn"
+        class="w-full py-3 rounded-xl bg-emerald-600 text-white font-medium text-lg shadow-md hover:bg-emerald-700 transition hidden">
+        Install App
+      </button>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="w-full text-center py-6 text-gray-400 text-sm">
+    Made with ❤️ by Shashank
+  </footer>
+
+  <!-- PWA Install Script -->
+  <script>
+    let deferredPrompt;
+    const installBtn = document.getElementById("installBtn");
+
+    window.addEventListener("beforeinstallprompt", (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      installBtn.classList.remove("hidden");
+    });
+
+    installBtn.addEventListener("click", () => {
+      if (!deferredPrompt) return;
+      deferredPrompt.prompt();
+      deferredPrompt = null;
+      installBtn.classList.add("hidden");
+    });
+  </script>
+
+</body>
+</html>
