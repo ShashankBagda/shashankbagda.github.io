@@ -1,0 +1,75 @@
+#root {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 3rem;
+}
+
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.app-shell header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  margin: -0.5rem -0.5rem 0;
+  border-radius: 999px;
+  background: linear-gradient(
+      to right,
+      rgba(15, 23, 42, 0.9),
+      rgba(15, 23, 42, 0.7)
+    ),
+    rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  backdrop-filter: blur(16px);
+}
+
+.app-shell header h1 {
+  margin: 0;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #9ca3af;
+}
+
+.app-shell header nav a {
+  font-size: 0.9rem;
+  margin-left: 1rem;
+  color: #e5e7eb;
+  opacity: 0.85;
+}
+
+.app-shell header nav a:hover {
+  opacity: 1;
+}
+
+.app-shell main {
+  flex: 1;
+  padding-top: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  #root {
+    padding: 1.5rem 1rem 2.5rem;
+  }
+
+  .app-shell header {
+    padding-inline: 1rem;
+  }
+
+  .app-shell header h1 {
+    font-size: 0.9rem;
+    max-width: 55%;
+  }
+
+  .app-shell header nav a {
+    margin-left: 0.75rem;
+  }
+}
