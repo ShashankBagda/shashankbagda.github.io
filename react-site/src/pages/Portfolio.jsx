@@ -151,6 +151,7 @@ const projects = [
 
 function Portfolio() {
   const [isDownloading, setIsDownloading] = useState(false)
+  const [formStatus, setFormStatus] = useState('idle')
 
   const handleResumeClick = (event) => {
     event.preventDefault()
@@ -168,6 +169,36 @@ function Portfolio() {
     window.setTimeout(() => {
       setIsDownloading(false)
     }, 1500)
+  }
+
+  const handleContactSubmit = async (event) => {
+    event.preventDefault()
+    if (formStatus === 'sending') return
+
+    const form = event.currentTarget
+    const formData = new FormData(form)
+
+    try {
+      setFormStatus('sending')
+      const response = await fetch('https://formspree.io/f/mblylqlz', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          Accept: 'application/json',
+        },
+      })
+
+      if (response.ok) {
+        setFormStatus('success')
+        form.reset()
+        window.setTimeout(() => setFormStatus('idle'), 4000)
+      } else {
+        throw new Error('Network response was not ok')
+      }
+    } catch (error) {
+      setFormStatus('error')
+      window.setTimeout(() => setFormStatus('idle'), 4000)
+    }
   }
 
   return (
@@ -463,8 +494,7 @@ function Portfolio() {
 
             <form
               className="contact-form"
-              action="https://formspree.io/f/mblylqlz"
-              method="POST"
+              onSubmit={handleContactSubmit}
             >
               <input type="hidden" name="_redirect" value="" />
 
@@ -513,8 +543,21 @@ function Portfolio() {
                 />
               </div>
 
-              <button type="submit" className="primary-button">
-                Send message
+              <button
+                type="submit"
+                className={`primary-button${
+                  formStatus === 'sending' ? ' is-sending' : ''
+                }${formStatus === 'success' ? ' is-success' : ''}${
+                  formStatus === 'error' ? ' is-error' : ''
+                }`}
+              >
+                {formStatus === 'sending' && (
+                  <span className="button-spinner" aria-hidden />
+                )}
+                {formStatus === 'idle' && 'Send message'}
+                {formStatus === 'sending' && 'Sending…'}
+                {formStatus === 'success' && 'Sent! Thank you'}
+                {formStatus === 'error' && 'Something went wrong – retry'}
               </button>
             </form>
           </div>

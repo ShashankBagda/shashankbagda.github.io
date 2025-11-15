@@ -34,6 +34,7 @@
   opacity: 0.6;
   mix-blend-mode: screen;
   animation: railGlow 18s linear infinite alternate;
+  pointer-events: none;
 }
 
 .rail-avatar {
@@ -139,6 +140,7 @@
 .rail-resume.is-downloading {
   background: linear-gradient(135deg, #0ea5e9, #6366f1);
   box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.9);
+  transform: translateY(0);
 }
 
 .resume-spinner {
@@ -452,6 +454,32 @@
 .primary-button:active {
   transform: translateY(0);
   box-shadow: none;
+}
+
+.primary-button.is-sending {
+  background: linear-gradient(135deg, #0ea5e9, #22c55e);
+  box-shadow: 0 12px 32px rgba(34, 197, 94, 0.55);
+}
+
+.primary-button.is-success {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  box-shadow: 0 10px 26px rgba(22, 163, 74, 0.6);
+}
+
+.primary-button.is-error {
+  background: linear-gradient(135deg, #f97316, #ef4444);
+  box-shadow: 0 10px 26px rgba(239, 68, 68, 0.6);
+}
+
+.button-spinner {
+  width: 0.9rem;
+  height: 0.9rem;
+  border-radius: 999px;
+  border: 2px solid rgba(15, 23, 42, 0.2);
+  border-top-color: #020617;
+  margin-right: 0.45rem;
+  background: radial-gradient(circle at 30% 0, #fee2e2, transparent 60%);
+  animation: resumeSpin 0.7s linear infinite;
 }
 
 .portfolio-footer {

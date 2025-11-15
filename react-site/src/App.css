@@ -53,6 +53,21 @@
 .app-shell main {
   flex: 1;
   padding-top: 0.5rem;
+  position: relative;
+}
+
+.app-shell main::before {
+  content: '';
+  position: fixed;
+  inset: -40%;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.15), transparent 55%),
+    radial-gradient(circle at 90% 80%, rgba(129, 140, 248, 0.2), transparent 55%);
+  opacity: 0.4;
+  mix-blend-mode: screen;
+  z-index: -1;
+  animation: backgroundDrift 40s linear infinite alternate;
 }
 
 @media (max-width: 768px) {
@@ -71,5 +86,17 @@
 
   .app-shell header nav a {
     margin-left: 0.75rem;
+  }
+}
+
+@keyframes backgroundDrift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(0, -10px, 0) scale(1.05);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1.02);
   }
 }
