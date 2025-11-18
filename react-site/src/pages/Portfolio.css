@@ -1,8 +1,9 @@
 .portfolio-page {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 2.5rem;
   align-items: stretch;
+  margin-top: 5.5rem; /* clear fixed navbar */
 }
 
 .portfolio-rail {
@@ -20,6 +21,10 @@
     0 0 0 1px rgba(15, 23, 42, 0.9);
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .rail-inner::before {
@@ -61,8 +66,8 @@
 }
 
 .rail-avatar {
-  width: 96px;
-  height: 96px;
+  width: 132px;
+  height: 132px;
   border-radius: 999px;
   overflow: hidden;
   border: 2px solid rgba(148, 163, 184, 0.7);
@@ -180,13 +185,13 @@
 .portfolio-main {
   display: flex;
   flex-direction: column;
-  gap: 2.75rem;
-  padding-top: 4.5rem; /* space for fixed nav */
+  gap: 2.5rem;
+  padding-top: 1.5rem;
 }
 
 .section-nav {
   position: fixed;
-  top: 0.5rem;
+  top: 0.3rem;
   left: 50%;
   transform: translateX(-50%);
   z-index: 30;
@@ -248,6 +253,7 @@
   box-shadow:
     0 20px 45px rgba(15, 23, 42, 0.85),
     0 0 0 1px rgba(15, 23, 42, 0.9);
+  scroll-margin-top: 5.5rem; /* anchor offset for fixed nav */
 }
 
 .section.with-trail {
@@ -654,11 +660,7 @@
 
 @media (max-width: 960px) {
   .portfolio-page {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .portfolio-rail {
-    position: static;
+    margin-top: 5rem;
   }
 }
 
