@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import './Portfolio.css'
 
 const RESUME_URL =
@@ -152,35 +152,6 @@ const projects = [
 function Portfolio() {
   const [isDownloading, setIsDownloading] = useState(false)
   const [formStatus, setFormStatus] = useState('idle')
-
-  useEffect(() => {
-    if (typeof window === 'undefined') return
-
-    const sections = document.querySelectorAll('.section')
-
-    if (!('IntersectionObserver' in window)) {
-      sections.forEach((el) => el.classList.add('is-visible'))
-      return
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible')
-            observer.unobserve(entry.target)
-          }
-        })
-      },
-      {
-        threshold: 0.2,
-      },
-    )
-
-    sections.forEach((el) => observer.observe(el))
-
-    return () => observer.disconnect()
-  }, [])
 
   const handleResumeClick = (event) => {
     event.preventDefault()

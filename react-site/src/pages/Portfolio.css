@@ -167,18 +167,6 @@
   box-shadow:
     0 20px 45px rgba(15, 23, 42, 0.85),
     0 0 0 1px rgba(15, 23, 42, 0.9);
-  opacity: 0;
-  transform: translateY(18px);
-  transition:
-    opacity 0.45s ease-out,
-    transform 0.45s ease-out,
-    box-shadow 0.25s ease-out,
-    border-color 0.25s ease-out;
-}
-
-.section.is-visible {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 .section h3 {
