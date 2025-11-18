@@ -88,9 +88,7 @@
           </aside>
 
           <div class="portfolio-main">
-            <div class="stack-cards-container">
-              <div class="stack-cards">
-                <section class="section hero with-trail stack-card" id="overview">
+            <section class="section hero with-trail" id="overview">
               <p class="eyebrow">
                 Tech Enthusiast · Innovator · Researcher
               </p>
@@ -133,7 +131,7 @@
               </div>
             </section>
 
-                <section class="section with-trail stack-card" id="about">
+            <section class="section with-trail" id="about">
               <h3>About</h3>
               <div class="section-body">
                 <p>
@@ -180,7 +178,7 @@
               </div>
             </section>
 
-                <section class="section with-trail stack-card" id="skills">
+            <section class="section with-trail" id="skills">
               <h3>Skills &amp; Platforms</h3>
               <div class="section-body skills-grid">
                 <div>
@@ -218,7 +216,7 @@
               </div>
             </section>
 
-                <section class="section with-trail stack-card" id="education">
+            <section class="section with-trail" id="education">
               <h3>Education</h3>
               <div class="section-body cards-list">
                 <article class="card-block">
@@ -258,7 +256,7 @@
               </div>
             </section>
 
-                <section class="section with-trail stack-card" id="experience">
+            <section class="section with-trail" id="experience">
               <h3>Experience</h3>
               <div class="section-body">
                 <div class="cards-list">
@@ -328,7 +326,7 @@
               </div>
             </section>
 
-                <section class="section with-trail stack-card" id="leadership">
+            <section class="section with-trail" id="leadership">
               <h3>Leadership &amp; Community</h3>
               <div class="section-body">
                 <div class="cards-list">
@@ -383,7 +381,7 @@
               </div>
             </section>
 
-                <section class="section with-trail stack-card" id="projects">
+            <section class="section with-trail" id="projects">
               <h3>Selected Work</h3>
               <div class="section-body cards-grid">
                 <article class="card-block">
@@ -424,7 +422,7 @@
               </div>
             </section>
 
-                <section class="section with-trail stack-card" id="contact">
+            <section class="section with-trail" id="contact">
               <h3>Let’s build something meaningful</h3>
               <div class="section-body contact-body">
                 <p>
@@ -492,9 +490,6 @@
                 </form>
               </div>
             </section>
-
-              </div>
-            </div>
 
             <footer class="portfolio-footer">
               <p>© <span id="yearSpan"></span> Shashank Bagda</p>
@@ -598,50 +593,6 @@
       const yearSpan = document.getElementById('yearSpan')
       if (yearSpan) {
         yearSpan.textContent = new Date().getFullYear()
-      }
-
-      // Stack card scroll animation (inspired by reference)
-      const stackContainer = document.querySelector('.stack-cards-container')
-      const stackCards = stackContainer
-        ? Array.from(stackContainer.querySelectorAll('.stack-card'))
-        : []
-
-      if (stackContainer && stackCards.length) {
-        // Adjust container height based on card count
-        stackContainer.style.height = `${stackCards.length * 150}vh`
-
-        document.addEventListener(
-          'scroll',
-          () => {
-            const rect = stackContainer.getBoundingClientRect()
-            const viewportHeight = window.innerHeight
-
-            const start =
-              rect.top + window.scrollY - viewportHeight * 0.5
-            const end = start + rect.height + viewportHeight * 0.5
-            const scrollY = window.scrollY
-            const total = end - start
-            let progress = total > 0 ? (scrollY - start) / total : 0
-            progress = Math.max(0, Math.min(1, progress))
-
-            const numCards = stackCards.length
-            const activeIndex = Math.min(
-              numCards - 1,
-              Math.max(0, Math.floor(progress * numCards)),
-            )
-
-            stackCards.forEach((card, index) => {
-              if (index < activeIndex) {
-                card.classList.add('slide-up')
-              } else {
-                card.classList.remove('slide-up')
-              }
-
-              card.style.opacity = index === activeIndex ? '1' : '0'
-            })
-          },
-          { passive: true },
-        )
       }
     </script>
   </body>
