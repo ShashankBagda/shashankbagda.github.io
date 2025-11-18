@@ -263,39 +263,61 @@ function Portfolio() {
       </aside>
 
       <div className="portfolio-main">
+        <nav className="section-nav">
+          <a href="#overview">Overview</a>
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#education">Education</a>
+          <a href="#experience">Experience</a>
+          <a href="#leadership">Leadership</a>
+          <a href="#highlights">Highlights</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
         <section className="section hero" id="overview">
-          <p className="eyebrow">Tech Enthusiast · Innovator · Researcher</p>
-          <h2>
-            Designing systems where silicon, software, and intelligence meet.
-          </h2>
-          <p className="lede">
-            I am an MTech Software Engineering student (NUS, ISS) and BTech ICT
-            graduate (Marwadi University), building systems that blend embedded
-            hardware, AI, and cloud-native software — from research prototypes
-            at IIT Guwahati to community-driven engineering initiatives.
-          </p>
-          <div className="hero-grid">
-            <div className="hero-card">
-              <h3>01 · Research</h3>
-              <p>
-                Exploring architectures for in-memory computing, secure
-                Network-on-Chip designs, and high-throughput neural network
-                inference.
-              </p>
-            </div>
-            <div className="hero-card">
-              <h3>02 · Engineering</h3>
-              <p>
-                Building systems that span firmware, embedded platforms, and
-                software — turning complex ideas into reliable, testable tools.
-              </p>
-            </div>
-            <div className="hero-card">
-              <h3>03 · Community</h3>
-              <p>
-                Leading technical communities, mentoring peers, and designing
-                experiences that make engineering more accessible and exciting.
-              </p>
+          <div className="hero-border">
+            <div className="hero-trail" />
+          </div>
+          <div className="hero-inner">
+            <p className="eyebrow">
+              Tech Enthusiast · Innovator · Researcher
+            </p>
+            <h2>
+              Designing systems where silicon, software, and intelligence meet.
+            </h2>
+            <p className="lede">
+              I am an MTech Software Engineering student (NUS, ISS) and BTech
+              ICT graduate (Marwadi University), building systems that blend
+              embedded hardware, AI, and cloud-native software — from research
+              prototypes at IIT Guwahati to community-driven engineering
+              initiatives.
+            </p>
+            <div className="hero-grid">
+              <div className="hero-card">
+                <h3>01 · Research</h3>
+                <p>
+                  Exploring architectures for in-memory computing, secure
+                  Network-on-Chip designs, and high-throughput neural network
+                  inference.
+                </p>
+              </div>
+              <div className="hero-card">
+                <h3>02 · Engineering</h3>
+                <p>
+                  Building systems that span firmware, embedded platforms, and
+                  software — turning complex ideas into reliable, testable
+                  tools.
+                </p>
+              </div>
+              <div className="hero-card">
+                <h3>03 · Community</h3>
+                <p>
+                  Leading technical communities, mentoring peers, and designing
+                  experiences that make engineering more accessible and
+                  exciting.
+                </p>
+              </div>
             </div>
           </div>
         </section>

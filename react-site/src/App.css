@@ -30,6 +30,24 @@
   z-index: -1;
 }
 
+.scroll-progress {
+  position: fixed;
+  inset: 0 0 auto;
+  height: 3px;
+  z-index: 50;
+  pointer-events: none;
+  background: transparent;
+}
+
+.scroll-progress-bar {
+  height: 100%;
+  width: 100%;
+  transform-origin: left center;
+  transform: scaleX(0);
+  background: linear-gradient(90deg, #38bdf8, #6366f1);
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.7);
+}
+
 @media (max-width: 768px) {
   #root {
     padding: 1.5rem 1rem 2.5rem;

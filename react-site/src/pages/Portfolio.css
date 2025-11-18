@@ -194,29 +194,6 @@
     0 0 0 1px rgba(15, 23, 42, 0.9);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .section::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    padding: 1px;
-    background: linear-gradient(
-      115deg,
-      rgba(56, 189, 248, 0.1),
-      rgba(129, 140, 248, 0.85),
-      rgba(56, 189, 248, 0.1)
-    );
-    -webkit-mask:
-      linear-gradient(#000 0 0) content-box,
-      linear-gradient(#000 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
-    animation: sectionBorderLoop 16s linear infinite;
-  }
-}
-
 .section h3 {
   margin: 0 0 0.75rem;
   font-size: 1.1rem;
@@ -242,6 +219,7 @@
   background: radial-gradient(circle at 0 0, #1d283a, #020617);
   position: relative;
   overflow: hidden;
+  padding: 0;
 }
 
 .hero::before {
@@ -256,31 +234,35 @@
   mix-blend-mode: screen;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .hero::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    padding: 1px;
-    background: linear-gradient(
-      90deg,
-      rgba(56, 189, 248, 0.1),
-      rgba(129, 140, 248, 0.9),
-      rgba(56, 189, 248, 0.1)
-    );
-    -webkit-mask:
-      linear-gradient(#000 0 0) content-box,
-      linear-gradient(#000 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
-    animation: heroBorderLoop 12s linear infinite;
-  }
-}
-
 .hero > * {
   position: relative;
+}
+
+.hero-inner {
+  position: relative;
+  padding: 1.75rem 1.75rem 1.85rem;
+}
+
+.hero-border {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  clip-path: inset(0 0 0 0 round 1.5rem);
+  pointer-events: none;
+}
+
+.hero-trail {
+  width: 28px;
+  aspect-ratio: 2 / 1;
+  position: absolute;
+  background: radial-gradient(
+    100% 100% at right,
+    rgba(56, 189, 248, 0.9),
+    transparent 55%
+  );
+  offset-path: border-box;
+  offset-anchor: 100% 50%;
+  animation: heroTrail 10s linear infinite;
 }
 
 .eyebrow {
@@ -375,6 +357,7 @@
   height: 6px;
   border-radius: 999px;
   background: #38bdf8;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.8);
 }
 
 .cards-list {
@@ -392,7 +375,7 @@
 .card-block {
   padding: 1.1rem 1.1rem 1.3rem;
   border-radius: 1rem;
-  background: rgba(15, 23, 42, 0.9);
+  background: radial-gradient(circle at 0 0, #111827, #020617);
   border: 1px solid rgba(30, 64, 175, 0.7);
   font-size: 0.9rem;
   transition:
@@ -570,15 +553,9 @@
   }
 }
 
-@keyframes sectionBorderLoop {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 150% 50%;
-  }
-  100% {
-    background-position: 300% 50%;
+@keyframes heroTrail {
+  to {
+    offset-distance: 100%;
   }
 }
 
