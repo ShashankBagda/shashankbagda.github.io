@@ -248,13 +248,6 @@ function Portfolio() {
             >
               GitHub
             </a>
-            <a
-              href="mailto:work.shashankbagda@gmail.com"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Email
-            </a>
           </div>
 
           <button
