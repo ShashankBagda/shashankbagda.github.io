@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import HighlightsStack from '../components/HighlightsStack'
 import './Portfolio.css'
 
 const RESUME_URL =
@@ -272,7 +271,6 @@ function Portfolio({ scrollProgress = 0 }) {
             <a href="#education">Education</a>
             <a href="#experience">Experience</a>
             <a href="#leadership">Leadership</a>
-            <a href="#highlights">Highlights</a>
             <a href="#projects">Projects</a>
             <a href="#contact">Contact</a>
           </div>
@@ -452,15 +450,6 @@ function Portfolio({ scrollProgress = 0 }) {
               ))}
             </div>
           </div>
-        </section>
-
-        <section className="section with-trail" id="highlights">
-          <h3>Highlights</h3>
-          <p className="section-body">
-            A quick tour of who I am, what I work on, and the kind of problems
-            I like to solve.
-          </p>
-          <HighlightsStack />
         </section>
 
         <section className="section with-trail" id="projects">
