@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import HighlightsStack from '../components/HighlightsStack'
 import './Portfolio.css'
 
 const RESUME_URL =
@@ -454,33 +455,12 @@ function Portfolio({ scrollProgress = 0 }) {
         </section>
 
         <section className="section with-trail" id="highlights">
-          <h3>Highlights &amp; Recognition</h3>
-          <div className="section-body skills-grid">
-            <div>
-              <h4>Patents &amp; IP</h4>
-              <ul>
-                {recognition.patents.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h4>Awards</h4>
-              <ul>
-                {recognition.awards.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h4>Certifications</h4>
-              <ul>
-                {recognition.certifications.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
+          <h3>Highlights</h3>
+          <p className="section-body">
+            A quick tour of who I am, what I work on, and the kind of problems
+            I like to solve.
+          </p>
+          <HighlightsStack />
         </section>
 
         <section className="section with-trail" id="projects">
