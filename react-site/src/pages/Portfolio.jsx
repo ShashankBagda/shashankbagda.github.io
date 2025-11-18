@@ -149,7 +149,7 @@ const projects = [
   },
 ]
 
-function Portfolio() {
+function Portfolio({ scrollProgress = 0 }) {
   const [isDownloading, setIsDownloading] = useState(false)
   const [formStatus, setFormStatus] = useState('idle')
 
@@ -264,15 +264,23 @@ function Portfolio() {
 
       <div className="portfolio-main">
         <nav className="section-nav">
-          <a href="#overview">Overview</a>
-          <a href="#about">About</a>
-          <a href="#skills">Skills</a>
-          <a href="#education">Education</a>
-          <a href="#experience">Experience</a>
-          <a href="#leadership">Leadership</a>
-          <a href="#highlights">Highlights</a>
-          <a href="#projects">Projects</a>
-          <a href="#contact">Contact</a>
+          <div className="section-nav-inner">
+            <a href="#overview">Overview</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#education">Education</a>
+            <a href="#experience">Experience</a>
+            <a href="#leadership">Leadership</a>
+            <a href="#highlights">Highlights</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+          </div>
+          <div className="section-nav-progress">
+            <div
+              className="section-nav-progress-bar"
+              style={{ transform: `scaleX(${scrollProgress})` }}
+            />
+          </div>
         </nav>
 
         <section className="section hero with-trail" id="overview">

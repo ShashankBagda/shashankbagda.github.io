@@ -1,13 +1,13 @@
 .portfolio-page {
-  display: grid;
-  grid-template-columns: 320px minmax(0, 1fr);
-  gap: 2.5rem;
-  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: stretch;
 }
 
 .portfolio-rail {
   position: relative;
-  align-self: flex-start;
+  align-self: stretch;
 }
 
 .rail-inner {
@@ -181,22 +181,29 @@
   display: flex;
   flex-direction: column;
   gap: 2.75rem;
+  padding-top: 4.5rem; /* space for fixed nav */
 }
 
 .section-nav {
-  position: sticky;
-  top: 0;
-  z-index: 5;
+  position: fixed;
+  top: 0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 30;
+  width: min(1160px, 100vw - 2rem);
+  border-radius: 999px;
+  padding: 0.4rem 1.1rem 0.75rem;
+  background: rgba(15, 23, 42, 0.96);
+  border: 1px solid rgba(148, 163, 184, 0.45);
+  backdrop-filter: blur(16px);
+}
+
+.section-nav-inner {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
   gap: 0.75rem;
-  padding: 0.35rem 0.9rem;
-  margin-bottom: 1rem;
-  border-radius: 999px;
-  background: rgba(15, 23, 42, 0.96);
-  border: 1px solid rgba(148, 163, 184, 0.45);
-  backdrop-filter: blur(12px);
 }
 
 .section-nav a {
@@ -210,6 +217,26 @@
 .section-nav a:hover {
   opacity: 1;
   color: #7dd3fc;
+}
+
+.section-nav-progress {
+  position: absolute;
+  left: 0.5rem;
+  right: 0.5rem;
+  bottom: 0.2rem;
+  height: 3px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: rgba(15, 23, 42, 0.85);
+}
+
+.section-nav-progress-bar {
+  height: 100%;
+  width: 100%;
+  transform-origin: left center;
+  transform: scaleX(0);
+  background: linear-gradient(90deg, #38bdf8, #6366f1);
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.7);
 }
 
 .section {

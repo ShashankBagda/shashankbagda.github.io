@@ -49,4 +49,20 @@ button {
   font-family: inherit;
 }
 
-/* Global background kept static for smoothness */
+@media (prefers-reduced-motion: no-preference) {
+  body {
+    animation: bgShade 36s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes bgShade {
+  0% {
+    background-position: 0% 0%, 100% 100%, 100% 0%;
+  }
+  50% {
+    background-position: 4% 10%, 96% 90%, 100% 0%;
+  }
+  100% {
+    background-position: 0% 6%, 100% 94%, 100% 0%;
+  }
+}

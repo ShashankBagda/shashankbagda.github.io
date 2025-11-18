@@ -18,21 +18,7 @@
 }
 
 .scroll-progress {
-  position: fixed;
-  inset: 0 0 auto;
-  height: 4px;
-  z-index: 50;
-  pointer-events: none;
-  background: rgba(15, 23, 42, 0.95);
-}
-
-.scroll-progress-bar {
-  height: 100%;
-  width: 100%;
-  transform-origin: left center;
-  transform: scaleX(0);
-  background: linear-gradient(90deg, #38bdf8, #6366f1);
-  box-shadow: 0 0 12px rgba(56, 189, 248, 0.7);
+  display: none;
 }
 
 @media (max-width: 768px) {

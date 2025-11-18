@@ -26,17 +26,17 @@ function App() {
   return (
     <BrowserRouter basename={base}>
       <div className="app-shell">
-        <div className="scroll-progress">
-          <div
-            className="scroll-progress-bar"
-            style={{ transform: `scaleX(${scrollProgress})` }}
-          />
-        </div>
         <main>
           <Routes>
-            <Route path="/portfolio" element={<Portfolio />} />
+            <Route
+              path="/portfolio"
+              element={<Portfolio scrollProgress={scrollProgress} />}
+            />
             <Route path="/lifestyle" element={<Lifestyle />} />
-            <Route path="*" element={<Portfolio />} />
+            <Route
+              path="*"
+              element={<Portfolio scrollProgress={scrollProgress} />}
+            />
           </Routes>
         </main>
       </div>
