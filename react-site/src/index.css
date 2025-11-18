@@ -49,20 +49,4 @@ button {
   font-family: inherit;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  body {
-    animation: bodyGradientDrift 32s ease-in-out infinite alternate;
-  }
-}
-
-@keyframes bodyGradientDrift {
-  0% {
-    background-position: 0% 0%, 100% 100%, 100% 0%;
-  }
-  50% {
-    background-position: 6% 14%, 94% 86%, 100% 0%;
-  }
-  100% {
-    background-position: 0% 8%, 100% 92%, 100% 0%;
-  }
-}
+/* Global background kept static for smoothness */

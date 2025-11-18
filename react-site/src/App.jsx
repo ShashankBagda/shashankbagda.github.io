@@ -15,10 +15,6 @@ function App() {
       const total = scrollHeight - clientHeight
       const ratio = total > 0 ? scrollTop / total : 0
       setScrollProgress(ratio)
-      document.documentElement.style.setProperty(
-        '--scroll-ratio',
-        ratio.toString(),
-      )
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true })

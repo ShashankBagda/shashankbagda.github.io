@@ -17,26 +17,13 @@
   position: relative;
 }
 
-.app-shell main::before {
-  content: '';
-  position: fixed;
-  inset: -40%;
-  pointer-events: none;
-  background:
-    radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.15), transparent 55%),
-    radial-gradient(circle at 90% 80%, rgba(129, 140, 248, 0.2), transparent 55%);
-  opacity: 0.4;
-  mix-blend-mode: screen;
-  z-index: -1;
-}
-
 .scroll-progress {
   position: fixed;
   inset: 0 0 auto;
-  height: 3px;
+  height: 4px;
   z-index: 50;
   pointer-events: none;
-  background: transparent;
+  background: rgba(15, 23, 42, 0.95);
 }
 
 .scroll-progress-bar {
@@ -54,20 +41,4 @@
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .app-shell main::before {
-    animation: backgroundDrift 50s linear infinite alternate;
-  }
-}
-
-@keyframes backgroundDrift {
-  0% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  50% {
-    transform: translate3d(0, -6px, 0) scale(1.03);
-  }
-  100% {
-    transform: translate3d(0, 0, 0) scale(1.01);
-  }
-}
+/* No parallax background on main; keep things snappy */

@@ -275,54 +275,44 @@ function Portfolio() {
           <a href="#contact">Contact</a>
         </nav>
 
-        <section className="section hero" id="overview">
-          <div className="hero-border">
-            <div className="hero-trail" />
-          </div>
-          <div className="hero-inner">
-            <p className="eyebrow">
-              Tech Enthusiast · Innovator · Researcher
-            </p>
-            <h2>
-              Designing systems where silicon, software, and intelligence meet.
-            </h2>
-            <p className="lede">
-              I am an MTech Software Engineering student (NUS, ISS) and BTech
-              ICT graduate (Marwadi University), building systems that blend
-              embedded hardware, AI, and cloud-native software — from research
-              prototypes at IIT Guwahati to community-driven engineering
-              initiatives.
-            </p>
-            <div className="hero-grid">
-              <div className="hero-card">
-                <h3>01 · Research</h3>
-                <p>
-                  Exploring architectures for in-memory computing, secure
-                  Network-on-Chip designs, and high-throughput neural network
-                  inference.
-                </p>
-              </div>
-              <div className="hero-card">
-                <h3>02 · Engineering</h3>
-                <p>
-                  Building systems that span firmware, embedded platforms, and
-                  software — turning complex ideas into reliable, testable
-                  tools.
-                </p>
-              </div>
-              <div className="hero-card">
-                <h3>03 · Community</h3>
-                <p>
-                  Leading technical communities, mentoring peers, and designing
-                  experiences that make engineering more accessible and
-                  exciting.
-                </p>
-              </div>
+        <section className="section hero with-trail" id="overview">
+          <p className="eyebrow">Tech Enthusiast · Innovator · Researcher</p>
+          <h2>
+            Designing systems where silicon, software, and intelligence meet.
+          </h2>
+          <p className="lede">
+            I am an MTech Software Engineering student (NUS, ISS) and BTech ICT
+            graduate (Marwadi University), building systems that blend embedded
+            hardware, AI, and cloud-native software — from research prototypes
+            at IIT Guwahati to community-driven engineering initiatives.
+          </p>
+          <div className="hero-grid">
+            <div className="hero-card">
+              <h3>01 · Research</h3>
+              <p>
+                Exploring architectures for in-memory computing, secure
+                Network-on-Chip designs, and high-throughput neural network
+                inference.
+              </p>
+            </div>
+            <div className="hero-card">
+              <h3>02 · Engineering</h3>
+              <p>
+                Building systems that span firmware, embedded platforms, and
+                software — turning complex ideas into reliable, testable tools.
+              </p>
+            </div>
+            <div className="hero-card">
+              <h3>03 · Community</h3>
+              <p>
+                Leading technical communities, mentoring peers, and designing
+                experiences that make engineering more accessible and exciting.
+              </p>
             </div>
           </div>
         </section>
 
-        <section className="section" id="about">
+        <section className="section with-trail" id="about">
           <h3>About</h3>
           <div className="section-body">
             <p>
@@ -367,7 +357,7 @@ function Portfolio() {
           </div>
         </section>
 
-        <section className="section" id="skills">
+        <section className="section with-trail" id="skills">
           <h3>Skills &amp; Platforms</h3>
           <div className="section-body skills-grid">
             {skills.map((group) => (
@@ -383,7 +373,7 @@ function Portfolio() {
           </div>
         </section>
 
-        <section className="section" id="education">
+        <section className="section with-trail" id="education">
           <h3>Education</h3>
           <div className="section-body cards-list">
             {education.map((edu) => (
@@ -407,7 +397,7 @@ function Portfolio() {
           </div>
         </section>
 
-        <section className="section" id="experience">
+        <section className="section with-trail" id="experience">
           <h3>Experience</h3>
           <div className="section-body">
             <div className="cards-list">
@@ -431,7 +421,7 @@ function Portfolio() {
           </div>
         </section>
 
-        <section className="section" id="leadership">
+        <section className="section with-trail" id="leadership">
           <h3>Leadership &amp; Community</h3>
           <div className="section-body">
             <div className="cards-list">
@@ -455,7 +445,7 @@ function Portfolio() {
           </div>
         </section>
 
-        <section className="section" id="highlights">
+        <section className="section with-trail" id="highlights">
           <h3>Highlights &amp; Recognition</h3>
           <div className="section-body skills-grid">
             <div>
@@ -485,7 +475,7 @@ function Portfolio() {
           </div>
         </section>
 
-        <section className="section" id="projects">
+        <section className="section with-trail" id="projects">
           <h3>Selected Work</h3>
           <div className="section-body cards-grid">
             {projects.map((project) => (
@@ -498,7 +488,7 @@ function Portfolio() {
           </div>
         </section>
 
-        <section className="section" id="contact">
+        <section className="section with-trail" id="contact">
           <h3>Let’s build something meaningful</h3>
           <div className="section-body contact-body">
             <p>
