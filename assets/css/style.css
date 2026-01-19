@@ -173,8 +173,8 @@ button {
 .nav-shelf {
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-start;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
   gap: 0.9rem;
   position: relative;
   z-index: 1;
@@ -183,7 +183,7 @@ button {
 .nav-brand {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   gap: 0.6rem;
 }
 
@@ -211,6 +211,8 @@ button {
 .brand-copy {
   display: grid;
   gap: 0.1rem;
+  justify-items: center;
+  text-align: center;
 }
 
 .brand-name {
@@ -231,8 +233,16 @@ button {
   display: flex;
   flex-wrap: wrap;
   gap: 0.6rem;
-  justify-content: flex-end;
+  justify-content: center;
   width: 100%;
+}
+
+.nav-actions .button {
+  min-width: 170px;
+}
+
+.nav-actions .button.primary {
+  min-width: 140px;
 }
 
 .nav-menu {
@@ -246,6 +256,20 @@ button {
   transition: max-height 0.35s ease, opacity 0.25s ease,
     transform 0.35s ease, margin-top 0.35s ease;
   overflow: hidden;
+}
+
+.nav-menu .nav-actions {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(140px, 1fr));
+  gap: 0.8rem;
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-menu .nav-actions .button {
+  width: 100%;
+  justify-content: center;
 }
 
 .nav-toggle {
@@ -321,6 +345,7 @@ button {
   gap: 0.6rem;
   position: relative;
   z-index: 1;
+  justify-content: center;
 }
 
 .nav-links a {
@@ -380,11 +405,11 @@ button {
 
 .navbar.compact.menu-open .nav-links {
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .navbar.compact.menu-open .nav-links a {
-  width: 100%;
+  width: auto;
 }
 
 .main {
@@ -937,6 +962,11 @@ button {
     grid-template-columns: 1fr;
   }
 
+  .nav-menu .nav-actions {
+    grid-template-columns: repeat(2, minmax(140px, 1fr));
+    justify-items: center;
+  }
+
   .panel::after {
     display: none;
   }
@@ -959,6 +989,10 @@ button {
 
   .nav-actions .button {
     justify-content: center;
+  }
+
+  .nav-menu .nav-actions {
+    grid-template-columns: 1fr;
   }
 
   .nav-brand {
