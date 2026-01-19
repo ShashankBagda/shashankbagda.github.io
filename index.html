@@ -34,8 +34,17 @@
       <span class="orb orb-2"></span>
       <span class="orb orb-3"></span>
     </div>
+    <button
+      class="nav-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="navLinks"
+    >
+      <span class="nav-toggle-icon" aria-hidden="true"></span>
+      <span class="nav-toggle-label sr-only">Menu</span>
+    </button>
     <div class="site">
-      <header class="navbar">
+      <div class="navbar" role="banner">
         <div class="nav-shelf">
           <div class="nav-brand">
             <div class="brand-photo">
@@ -51,18 +60,9 @@
               </span>
             </div>
           </div>
-          <button
-            class="nav-toggle"
-            type="button"
-            aria-expanded="false"
-            aria-controls="navLinks"
-          >
-            <span class="nav-toggle-icon" aria-hidden="true"></span>
-            <span class="nav-toggle-label">Menu</span>
-          </button>
         </div>
-        <div class="nav-menu" id="navLinks">
-          <div class="nav-actions">
+        <div class="nav-actions" aria-label="Quick links">
+          <div class="nav-actions-row">
             <a
               class="button ghost"
               href="https://docs.google.com/document/d/1HAgAFUYyYDZCXNvO3zHaOwUrOJaCGBupRh8fTzBwvRA/export?format=pdf"
@@ -77,21 +77,49 @@
             >
               Research resume
             </a>
-            <a class="button primary" href="#contact">Contact</a>
           </div>
-          <nav class="nav-links">
-            <a href="#overview">Home</a>
-            <a href="#profile">Profile</a>
-            <a href="#metrics">Metrics</a>
-            <a href="#skills">Skills</a>
-            <a href="#education">Education</a>
-            <a href="#experience">Research</a>
-            <a href="#projects">Projects</a>
-            <a href="#awards">Awards</a>
-            <a href="#leadership">Leadership</a>
-          </nav>
+          <div class="nav-actions-row">
+            <a
+              class="button ghost"
+              href="https://github.com/ShashankBagda"
+              target="_blank"
+              rel="noreferrer"
+            >
+              GitHub
+            </a>
+            <a
+              class="button ghost"
+              href="https://www.linkedin.com/in/shashank-bagda/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              LinkedIn
+            </a>
+            <a
+              class="button primary"
+              href="mailto:work.shashankbagda@gmail.com"
+            >
+              Email
+            </a>
+            <a class="button ghost" href="#contact">Contact</a>
+          </div>
         </div>
-      </header>
+      </div>
+      <div class="nav-menu" id="navLinks" aria-hidden="true">
+        <nav class="nav-links" aria-label="Primary">
+          <a href="#overview">Home</a>
+          <a href="#profile">Profile</a>
+          <a href="#metrics">Metrics</a>
+          <a href="#skills">Skills</a>
+          <a href="#education">Education</a>
+          <a href="#experience">Research</a>
+          <a href="#projects">Projects</a>
+          <a href="#awards">Awards</a>
+          <a href="#leadership">Leadership</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+      <div class="nav-overlay" aria-hidden="true"></div>
 
       <main class="main">
         <section class="panel hero" id="overview" style="--delay: 0ms">
@@ -585,62 +613,63 @@
     <script>
       const navbar = document.querySelector('.navbar')
       const navToggle = document.querySelector('.nav-toggle')
-      const navLinks = document.getElementById('navLinks')
-      const topThreshold = 80
-      const compactThreshold = 140
-      let lastScrollY = window.scrollY
+      const navMenu = document.getElementById('navLinks')
+      const navOverlay = document.querySelector('.nav-overlay')
 
       const closeMenu = () => {
-        if (!navbar || !navToggle) return
-        navbar.classList.remove('menu-open')
-        navToggle.setAttribute('aria-expanded', 'false')
-      }
-
-      const setCompact = (isCompact) => {
-        if (!navbar) return
-        if (isCompact) {
-          navbar.classList.add('compact')
-          closeMenu()
-        } else {
-          navbar.classList.remove('compact')
-          closeMenu()
+        if (!navbar || !navToggle || !navMenu) return
+        navMenu.classList.remove('is-open')
+        if (navOverlay) {
+          navOverlay.classList.remove('is-visible')
+          navOverlay.setAttribute('aria-hidden', 'true')
         }
+        navToggle.classList.remove('is-open')
+        navToggle.setAttribute('aria-expanded', 'false')
+        navMenu.setAttribute('aria-hidden', 'true')
       }
 
-      if (navbar && navToggle && navLinks) {
-        navToggle.addEventListener('click', () => {
-          if (!navbar.classList.contains('compact')) return
-          const isOpen = navbar.classList.toggle('menu-open')
+      if (navbar && navToggle && navMenu) {
+        navMenu.setAttribute('aria-hidden', 'true')
+
+        navToggle.addEventListener('click', (event) => {
+          event.stopPropagation()
+          const isOpen = navMenu.classList.toggle('is-open')
+          navToggle.classList.toggle('is-open', isOpen)
           navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false')
+          navMenu.setAttribute('aria-hidden', isOpen ? 'false' : 'true')
+          if (navOverlay) {
+            navOverlay.classList.toggle('is-visible', isOpen)
+            navOverlay.setAttribute('aria-hidden', isOpen ? 'false' : 'true')
+          }
         })
 
-        navLinks.addEventListener('click', (event) => {
+        navMenu.addEventListener('click', (event) => {
+          if (event.target.tagName === 'A') {
+            closeMenu()
+          }
+        })
+
+        if (navOverlay) {
+          navOverlay.addEventListener('click', () => {
+            closeMenu()
+          })
+        }
+
+        document.addEventListener('click', (event) => {
           if (
-            event.target.tagName === 'A' &&
-            navbar.classList.contains('compact')
+            !navbar.contains(event.target) &&
+            !navToggle.contains(event.target) &&
+            !navMenu.contains(event.target)
           ) {
             closeMenu()
           }
         })
 
-        window.addEventListener(
-          'scroll',
-          () => {
-            const currentScroll = window.scrollY
-            if (currentScroll <= topThreshold) {
-              setCompact(false)
-            } else if (
-              currentScroll > lastScrollY &&
-              currentScroll > compactThreshold
-            ) {
-              setCompact(true)
-            }
-            lastScrollY = currentScroll
-          },
-          { passive: true },
-        )
-
-        setCompact(window.scrollY > compactThreshold)
+        document.addEventListener('keydown', (event) => {
+          if (event.key === 'Escape') {
+            closeMenu()
+          }
+        })
       }
 
       const prefersReducedMotion = window.matchMedia(
