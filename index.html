@@ -4,67 +4,497 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Portfolio - Shashank Bagda</title>
-    <meta content="" name="description" />
-    <meta content="" name="keywords" />
+    <meta
+      name="description"
+      content="Shashank Bagda portfolio - software engineer and research engineer specializing in secure AI systems, backend services, and hardware-software co-design."
+    />
+    <meta
+      name="keywords"
+      content="Shashank Bagda, software engineer, research engineer, backend, DevSecOps, AI systems, hardware security"
+    />
 
     <!-- Favicons -->
     <link href="assets/img/favicon.png" rel="icon" />
     <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
 
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com" rel="preconnect" />
-    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
 
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
-    <link href="assets/css/react-portfolio.css" rel="stylesheet" />
+    <link href="assets/css/style.css" rel="stylesheet" />
   </head>
 
   <body>
-    <div class="scroll-progress">
-      <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+    <div class="ambient" aria-hidden="true">
+      <span class="orb orb-1"></span>
+      <span class="orb orb-2"></span>
+      <span class="orb orb-3"></span>
     </div>
-    <div class="app-shell">
-      <main>
-        <div class="portfolio-page">
-          <aside class="portfolio-rail">
-            <div class="rail-inner">
-              <div class="rail-avatar">
-                <img
-                  src="assets/img/profile-img.jpg"
-                  alt="Portrait of Shashank Bagda"
-                />
-              </div>
-              <h1 class="rail-name">Shashank Bagda</h1>
-              <p class="rail-role">
-                Engineering intelligent systems that sit at the intersection of
-                software, hardware, and research.
-              </p>
-              <p class="rail-tagline">
-                Crafted by engineering. Driven by curiosity. Defined by
-                innovation.
-              </p>
+    <div class="site">
+      <header class="navbar">
+        <div class="nav-shelf">
+          <div class="nav-brand">
+            <span class="brand-mark">SB</span>
+            <div class="brand-copy">
+              <span class="brand-name">Shashank Bagda</span>
+              <span class="brand-role">
+                Software Engineer | Research Engineer
+              </span>
+            </div>
+          </div>
+          <button
+            class="nav-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="navLinks"
+          >
+            <span class="nav-toggle-icon" aria-hidden="true"></span>
+            <span class="nav-toggle-label">Menu</span>
+          </button>
+        </div>
+        <div class="nav-menu" id="navLinks">
+          <div class="nav-actions">
+            <a
+              class="button ghost"
+              href="https://docs.google.com/document/d/1HAgAFUYyYDZCXNvO3zHaOwUrOJaCGBupRh8fTzBwvRA/export?format=pdf"
+              download
+            >
+              Developer resume
+            </a>
+            <a
+              class="button ghost"
+              href="https://docs.google.com/document/d/1iLZcG7HUEIsYPsxHOx9gYwX7ge7TELc-OoMMEHO62Kg/export?format=pdf"
+              download
+            >
+              Research resume
+            </a>
+            <a class="button primary" href="#contact">Contact</a>
+          </div>
+          <nav class="nav-links">
+            <a href="#overview">Home</a>
+            <a href="#profile">Profile</a>
+            <a href="#metrics">Metrics</a>
+            <a href="#skills">Skills</a>
+            <a href="#education">Education</a>
+            <a href="#experience">Research</a>
+            <a href="#projects">Projects</a>
+            <a href="#awards">Awards</a>
+            <a href="#leadership">Leadership</a>
+          </nav>
+        </div>
+      </header>
 
-              <div class="rail-chips">
-                <span class="chip">Software &amp; Hardware Engineer</span>
-                <span class="chip">Research Intern @ IIT Guwahati</span>
-                <span class="chip">Community Builder</span>
-              </div>
-
-              <div class="rail-meta">
-                <span>Singapore / India</span>
-                <a href="mailto:work.shashankbagda@gmail.com">
-                  work.shashankbagda@gmail.com
+      <main class="main">
+        <section class="panel hero" id="overview" style="--delay: 0ms">
+          <div class="panel-content hero-layout">
+            <div class="hero-content">
+              <p class="eyebrow">Hi there</p>
+              <h2>
+                Building secure, scalable systems where software meets silicon.
+              </h2>
+              <p class="lead">
+                Master&apos;s student in Software Engineering focused on
+                high-performance backend systems and secure AI infrastructure.
+                I design cloud-ready services, performance-optimized APIs, and
+                research platforms that connect hardware-software co-design with
+                reliable production engineering.
+              </p>
+              <div class="hero-actions">
+                <a class="button primary" href="#projects">View work</a>
+                <a class="button ghost" href="#contact">
+                  Start a collaboration
                 </a>
               </div>
+              <div class="hero-chips">
+                <span>Backend systems</span>
+                <span>AI systems research</span>
+                <span>DevSecOps</span>
+                <span>Hardware security</span>
+              </div>
+            </div>
 
-              <div class="rail-social">
+            <div class="hero-portrait">
+              <div class="portrait-ring">
+                <img
+                  src="assets/img/profile-img.jpg"
+                  alt="Shashank Bagda portrait"
+                />
+              </div>
+              <div class="portrait-caption">
+                <span>Software engineer</span>
+                <span>Research engineer</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="profile" style="--delay: 80ms">
+          <div class="panel-head">
+            <h3>About me</h3>
+            <p class="panel-sub">
+              Two complementary lanes: production-grade software engineering and
+              research-led AI systems.
+            </p>
+          </div>
+          <div class="profile-grid">
+            <article class="profile-card">
+              <h4>Developer focus</h4>
+              <p>
+                Build distributed backend services, secure REST APIs, and
+                full-stack applications with a strong DevSecOps foundation and
+                secure SDLC practices.
+              </p>
+              <ul>
+                <li>Languages: C++, Python, Java</li>
+                <li>Backend: REST APIs, Java (JSP/Servlets), MySQL</li>
+                <li>Web: ReactJS, HTML, CSS, JavaScript</li>
+              </ul>
+            </article>
+            <article class="profile-card">
+              <h4>Research focus</h4>
+              <p>
+                Design secure and high-performance AI systems using hardware
+                simulation, adversarial threat modeling, and scalable
+                benchmarking workflows.
+              </p>
+              <ul>
+                <li>Simulation: SIAM, GEM5 (Garnet)</li>
+                <li>ML: PyTorch, TensorFlow</li>
+                <li>Systems: multicore processing and profiling</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="metrics" style="--delay: 140ms">
+          <div class="panel-head">
+            <h3>Impact metrics</h3>
+            <p class="panel-sub">Evidence from research, systems, and community.</p>
+          </div>
+          <div class="stat-grid">
+            <article class="stat-card">
+              <span class="stat-value">12+</span>
+              <span class="stat-label">AI workload configs benchmarked</span>
+            </article>
+            <article class="stat-card">
+              <span class="stat-value">8000+</span>
+              <span class="stat-label">Simulation runs analyzed</span>
+            </article>
+            <article class="stat-card">
+              <span class="stat-value">22-28%</span>
+              <span class="stat-label">Latency reduction achieved</span>
+            </article>
+            <article class="stat-card">
+              <span class="stat-value">3500+</span>
+              <span class="stat-label">Security scenarios evaluated</span>
+            </article>
+            <article class="stat-card">
+              <span class="stat-value">110+</span>
+              <span class="stat-label">Community members grown</span>
+            </article>
+            <article class="stat-card">
+              <span class="stat-value">$3,500+</span>
+              <span class="stat-label">Funding secured for initiatives</span>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="skills" style="--delay: 200ms">
+          <div class="panel-head">
+            <h3>Skills</h3>
+            <p class="panel-sub">
+              Systems engineering, research tooling, and production delivery.
+            </p>
+          </div>
+          <div class="skills-grid">
+            <article>
+              <h4>Programming</h4>
+              <ul>
+                <li>C++, Python, Java</li>
+                <li>Data: Pandas, NumPy, Matplotlib</li>
+              </ul>
+            </article>
+            <article>
+              <h4>Backend &amp; Platforms</h4>
+              <ul>
+                <li>REST APIs, Java (JSP/Servlets)</li>
+                <li>MySQL, secure SDLC, DevSecOps</li>
+              </ul>
+            </article>
+            <article>
+              <h4>AI &amp; Systems</h4>
+              <ul>
+                <li>PyTorch, TensorFlow</li>
+                <li>System profiling, performance optimization</li>
+              </ul>
+            </article>
+            <article>
+              <h4>Hardware &amp; Embedded</h4>
+              <ul>
+                <li>Arduino, Raspberry Pi, ESP8266/ESP32, Zigbee</li>
+                <li>PCB design, circuit simulation, logic design</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="education" style="--delay: 260ms">
+          <div class="panel-head">
+            <h3>Education</h3>
+            <p class="panel-sub">Software engineering foundation with research depth.</p>
+          </div>
+          <div class="card-list">
+            <article class="card">
+              <header>
+                <h4>Master of Technology - Software Engineering</h4>
+                <p class="meta">
+                  <span>National University of Singapore | ISS</span>
+                  <span>Aug 2025 - Sep 2026</span>
+                </p>
+              </header>
+              <ul>
+                <li>
+                  Coursework: software architecture and design, cloud-native and
+                  platform engineering, DevSecOps, secure SDLC, agile methods.
+                </li>
+              </ul>
+            </article>
+
+            <article class="card">
+              <header>
+                <h4>
+                  Bachelor of Technology - Information and Communication
+                  Technology
+                </h4>
+                <p class="meta">
+                  <span>Marwadi University</span>
+                  <span>Sep 2021 - May 2025</span>
+                </p>
+              </header>
+              <ul>
+                <li>First class with distinction.</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="experience" style="--delay: 320ms">
+          <div class="panel-head">
+            <h3>Research experience</h3>
+            <p class="panel-sub">
+              System-level AI architecture and hardware security research.
+            </p>
+          </div>
+          <div class="card-list">
+            <article class="card">
+              <header>
+                <h4>Research Intern - IIT Guwahati</h4>
+                <p class="meta">
+                  <span>Indian Institute of Technology Guwahati | CSE</span>
+                  <span>May 2024 - Aug 2024</span>
+                </p>
+              </header>
+              <ul>
+                <li>
+                  Evaluated homogeneous and heterogeneous AI architectures with
+                  the SIAM simulator across 12+ workloads.
+                </li>
+                <li>
+                  Reduced end-to-end latency by 22-28% using parallel execution
+                  and in-memory computing on multicore platforms.
+                </li>
+                <li>
+                  Conducted benchmarking across 8000+ simulation runs to assess
+                  latency, throughput, and resource trade-offs.
+                </li>
+                <li>
+                  Built C++ and Python automation pipelines to cut research
+                  iteration time by about 35%.
+                </li>
+              </ul>
+            </article>
+
+            <article class="card">
+              <header>
+                <h4>Research Intern - IIT Guwahati</h4>
+                <p class="meta">
+                  <span>Indian Institute of Technology Guwahati | CSE</span>
+                  <span>May 2023 - Jun 2023</span>
+                </p>
+              </header>
+              <ul>
+                <li>
+                  Designed hardware trojan detection mechanisms for multicore
+                  Network-on-Chip systems.
+                </li>
+                <li>
+                  Modeled threats and evaluated 3500+ security scenarios using
+                  GEM5 (Garnet standalone).
+                </li>
+                <li>
+                  Implemented dynamic routing algorithms in C++ and Python,
+                  reducing packet latency by 17-21%.
+                </li>
+                <li>
+                  Improved system resilience by about 30% through simulation-led
+                  performance analysis.
+                </li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="projects" style="--delay: 380ms">
+          <div class="panel-head">
+            <h3>Projects</h3>
+            <p class="panel-sub">Selected work across software and research.</p>
+          </div>
+          <div class="card-grid">
+            <article class="card">
+              <p class="tag">Full-stack systems</p>
+              <h4>Gomoku - Online Multiplayer Game</h4>
+              <p>
+                Built distributed backend services with secure REST APIs,
+                matchmaking, and real-time game state management.
+              </p>
+            </article>
+            <article class="card">
+              <p class="tag">AI pipeline</p>
+              <h4>Handwriting to G Code</h4>
+              <p>
+                Developed an AI-driven pipeline that converts handwritten input
+                into machine-ready control instructions.
+              </p>
+            </article>
+            <article class="card">
+              <p class="tag">Systems tooling</p>
+              <h4>Lab Component Manager</h4>
+              <p>
+                Delivered backend workflows with CRUD APIs and access control
+                for lab operations.
+              </p>
+            </article>
+            <article class="card">
+              <p class="tag">Research systems</p>
+              <h4>Hardware Security &amp; Systems Research</h4>
+              <p>
+                Conducted NoC security analysis, adversarial threat modeling,
+                and simulation-driven benchmarking at IIT Guwahati.
+              </p>
+            </article>
+            <article class="card">
+              <p class="tag">Architecture</p>
+              <h4>Telecom Architecture</h4>
+              <p>
+                Modeled a scalable telecom system with performance, reliability,
+                and fault-tolerance trade-offs.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="awards" style="--delay: 440ms">
+          <div class="panel-head">
+            <h3>Intellectual property &amp; awards</h3>
+            <p class="panel-sub">
+              Patents, copyright, and recognition.
+            </p>
+          </div>
+          <div class="profile-grid">
+            <article class="profile-card">
+              <h4>Intellectual property</h4>
+              <ul>
+                <li>
+                  Patent: Method for Converting Handwritten Characters into
+                  Machine-Readable Instructions (202421033236)
+                </li>
+                <li>Copyright: Telecom Architecture (8416/2023-CO/SW)</li>
+              </ul>
+            </article>
+            <article class="profile-card">
+              <h4>Awards</h4>
+              <ul>
+                <li>
+                  SSIP Hackathon 2022 - Second Highest Honour (Government of
+                  Gujarat, India)
+                </li>
+                <li>Club Founder Award 2024 - Circuitology Club</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="leadership" style="--delay: 500ms">
+          <div class="panel-head">
+            <h3>Leadership &amp; community</h3>
+            <p class="panel-sub">
+              Building communities and leading technical programs.
+            </p>
+          </div>
+          <div class="card-list">
+            <article class="card">
+              <header>
+                <h4>Founder - Circuitology Club</h4>
+                <p class="meta">
+                  <span>Marwadi University</span>
+                  <span>2021 - Present</span>
+                </p>
+              </header>
+              <ul>
+                <li>
+                  Built a 110+ member community focused on robotics, embedded
+                  systems, and STEM outreach.
+                </li>
+                <li>
+                  Secured USD 3,500+ in funding and delivered 30+ workshops and
+                  hackathons.
+                </li>
+              </ul>
+            </article>
+            <article class="card">
+              <header>
+                <h4>Chair - IEEE MEFGI Student Branch</h4>
+                <p class="meta">
+                  <span>Marwadi Education Foundation Group of Institutions</span>
+                  <span>Apr 2024 - Oct 2024</span>
+                </p>
+              </header>
+              <ul>
+                <li>
+                  Led student operations, technical events, and collaborations
+                  with IEEE professionals.
+                </li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="contact" style="--delay: 560ms">
+          <div class="panel-head">
+            <h3>Contact</h3>
+            <p class="panel-sub">
+              Open to research collaborations, software roles, and systems
+              engineering projects.
+            </p>
+          </div>
+          <div class="contact-body">
+            <div class="contact-copy">
+              <h4>Let&apos;s build something meaningful</h4>
+              <p>
+                If you are building AI infrastructure, secure hardware systems,
+                or cloud-ready platforms, I would love to connect. Share your
+                idea and I will get back quickly.
+              </p>
+              <div class="contact-details">
+                <span>work.shashankbagda@gmail.com</span>
+                <!-- <span>+65 9039 3206</span> -->
+                <span>Singapore / India</span>
+              </div>
+              <div class="contact-links">
                 <a
                   href="https://www.linkedin.com/in/shashank-bagda/"
                   target="_blank"
@@ -79,479 +509,189 @@
                 >
                   GitHub
                 </a>
-              </div>
-
-              <button type="button" class="rail-resume" id="resumeButton">
-                Download Resume
-              </button>
-            </div>
-          </aside>
-
-          <div class="portfolio-main">
-            <section class="section hero with-trail" id="overview">
-              <p class="eyebrow">
-                Tech Enthusiast · Innovator · Researcher
-              </p>
-              <h2>
-                Designing systems where silicon, software, and intelligence
-                meet.
-              </h2>
-              <p class="lede">
-                I am an MTech Software Engineering student (NUS, ISS) and BTech
-                ICT graduate (Marwadi University), building systems that blend
-                embedded hardware, AI, and cloud-native software — from research
-                prototypes at IIT Guwahati to community-driven engineering
-                initiatives.
-              </p>
-              <div class="hero-grid">
-                <div class="hero-card">
-                  <h3>01 · Research</h3>
-                  <p>
-                    Exploring architectures for in-memory computing, secure
-                    Network-on-Chip designs, and high-throughput neural network
-                    inference.
-                  </p>
-                </div>
-                <div class="hero-card">
-                  <h3>02 · Engineering</h3>
-                  <p>
-                    Building systems that span firmware, embedded platforms, and
-                    software — turning complex ideas into reliable, testable
-                    tools.
-                  </p>
-                </div>
-                <div class="hero-card">
-                  <h3>03 · Community</h3>
-                  <p>
-                    Leading technical communities, mentoring peers, and
-                    designing experiences that make engineering more accessible
-                    and exciting.
-                  </p>
-                </div>
-              </div>
-            </section>
-
-            <section class="section with-trail" id="about">
-              <h3>About</h3>
-              <div class="section-body">
-                <p>
-                  I’m Shashank — a technology enthusiast, creative thinker, and
-                  aspiring researcher dedicated to shaping the future of
-                  intelligent systems. I specialise in bridging hardware and
-                  software to build systems that are not just functional, but
-                  expressive and impactful.
-                </p>
-                <p>
-                  I hold a Bachelor’s degree in Information and Communication
-                  Technology from Marwadi University and am currently pursuing my
-                  MTech in Software Engineering at the National University of
-                  Singapore (ISS). My journey spans embedded systems, IoT,
-                  robotics, and software engineering.
-                </p>
-                <p>
-                  Over the years, I’ve led research internships, hackathons, and
-                  technical clubs, developing skills across C/C++, Java, Python,
-                  AI, and digital design. I am particularly fascinated by how
-                  intelligent systems, hardware acceleration, and scalable
-                  architectures can shape the next generation of computing.
-                </p>
-                <p>
-                  My research work at IIT Guwahati focuses on multi-network
-                  architectures for deep learning, in-memory computing, and
-                  security for Network-on-Chip systems using tools like GEM5 and
-                  SIAM. I enjoy navigating the full stack of these problems —
-                  from architecture and simulation to the code that brings them
-                  to life.
-                </p>
-                <p>
-                  Beyond research, I founded the Circuitology Club and chaired
-                  the IEEE MEFGI Student Branch, where I led 20+ events,
-                  mentored peers, and built communities around curiosity and
-                  making.
-                </p>
-                <p>
-                  Whether it’s next‑gen chip architectures or tools that
-                  simplify engineering workflows, I’m interested in problems
-                  that demand both precision and imagination. Let’s connect and
-                  build something remarkable together.
-                </p>
-              </div>
-            </section>
-
-            <section class="section with-trail" id="skills">
-              <h3>Skills &amp; Platforms</h3>
-              <div class="section-body skills-grid">
-                <div>
-                  <h4>Software</h4>
-                  <ul>
-                    <li>C++, Python, Java</li>
-                    <li>ReactJS, REST APIs, JSP/Servlets</li>
-                    <li>MySQL, HTML/CSS/JavaScript</li>
-                  </ul>
-                </div>
-                <div>
-                  <h4>Systems &amp; Simulation</h4>
-                  <ul>
-                    <li>Linux (Ubuntu, RaspbianOS, CentOS), Windows</li>
-                    <li>GEM5, SIAM, Proteus</li>
-                    <li>Git, GitHub, GitLab, VS Code, IntelliJ</li>
-                  </ul>
-                </div>
-                <div>
-                  <h4>Embedded &amp; IoT</h4>
-                  <ul>
-                    <li>Arduino, Raspberry Pi, ESP32/ESP8266, Zigbee</li>
-                    <li>Sensor integration, device control, IoT dashboards</li>
-                    <li>PCB design, circuit simulation, logic design</li>
-                  </ul>
-                </div>
-                <div>
-                  <h4>Soft Skills</h4>
-                  <ul>
-                    <li>Leadership &amp; community building</li>
-                    <li>Team collaboration &amp; communication</li>
-                    <li>Problem solving, adaptability, critical thinking</li>
-                  </ul>
-                </div>
-              </div>
-            </section>
-
-            <section class="section with-trail" id="education">
-              <h3>Education</h3>
-              <div class="section-body cards-list">
-                <article class="card-block">
-                  <header>
-                    <h4>Master of Technology – Software Engineering</h4>
-                    <p class="meta">
-                      <span>National University of Singapore · ISS</span>
-                      <span>Aug 2025 – Sep 2026</span>
-                    </p>
-                  </header>
-                  <ul>
-                    <li>
-                      Focus: Software Architecture &amp; Design, Cloud‑Native &
-                      Platform Engineering, DevSecOps, SDLC.
-                    </li>
-                    <li>
-                      Project: GOMOKU – online multiplayer strategy game.
-                    </li>
-                  </ul>
-                </article>
-
-                <article class="card-block">
-                  <header>
-                    <h4>
-                      Bachelor of Technology – Information and Communication
-                      Technology
-                    </h4>
-                    <p class="meta">
-                      <span>Marwadi University, India</span>
-                      <span>Sep 2021 – May 2025</span>
-                    </p>
-                  </header>
-                  <ul>
-                    <li>Graduated with First Class with Distinction.</li>
-                  </ul>
-                </article>
-              </div>
-            </section>
-
-            <section class="section with-trail" id="experience">
-              <h3>Experience</h3>
-              <div class="section-body">
-                <div class="cards-list">
-                  <article class="card-block">
-                    <header>
-                      <h4>Research Intern – IIT Guwahati</h4>
-                      <p class="meta">
-                        <span>
-                          Indian Institute of Technology Guwahati · CSE
-                        </span>
-                        <span>May 2024 – Aug 2024</span>
-                      </p>
-                    </header>
-                    <ul>
-                      <li>
-                        Achieved scalable AI solutions by designing homogeneous
-                        and heterogeneous multi-network architectures for deep
-                        learning workloads.
-                      </li>
-                      <li>
-                        Improved computational efficiency using parallel
-                        processing and In-Memory Computing across multicore
-                        systems.
-                      </li>
-                      <li>
-                        Engineered hybrid network structures and optimised
-                        end-to-end execution using the SIAM Simulator.
-                      </li>
-                      <li>
-                        Developed high-performance algorithms in C++ and Python
-                        for neural network inference and system-level analysis.
-                      </li>
-                    </ul>
-                  </article>
-
-                  <article class="card-block">
-                    <header>
-                      <h4>Research Intern – IIT Guwahati</h4>
-                      <p class="meta">
-                        <span>
-                          Indian Institute of Technology Guwahati · CSE
-                        </span>
-                        <span>May 2023 – Jun 2023</span>
-                      </p>
-                    </header>
-                    <ul>
-                      <li>
-                        Designed and implemented security algorithms for
-                        Hardware Trojan detection in multicore Network-on-Chip
-                        systems.
-                      </li>
-                      <li>
-                        Enhanced cyber-physical system protection with optimised
-                        routing protocols and intrusion-aware data paths.
-                      </li>
-                      <li>
-                        Used GEM5 with Garnet to model multicore platforms,
-                        assess security vulnerabilities, and tune performance.
-                      </li>
-                      <li>
-                        Programmed analysis and routing algorithms in C++ and
-                        Python, improving reliability and throughput.
-                      </li>
-                    </ul>
-                  </article>
-                </div>
-              </div>
-            </section>
-
-            <section class="section with-trail" id="leadership">
-              <h3>Leadership &amp; Community</h3>
-              <div class="section-body">
-                <div class="cards-list">
-                  <article class="card-block">
-                    <header>
-                      <h4>Founder – Circuitology Club</h4>
-                      <p class="meta">
-                        <span>Marwadi University</span>
-                        <span>Jul 2022 – Present</span>
-                      </p>
-                    </header>
-                    <ul>
-                      <li>
-                        Created a hardware technologies club focused on
-                        robotics, embedded systems, and real‑world
-                        problem‑solving.
-                      </li>
-                      <li>
-                        Grew the community to 110+ members, organising 30+
-                        workshops, hackathons, and STEM outreach initiatives.
-                      </li>
-                      <li>
-                        Secured significant funding and partnerships to support
-                        student‑led projects and competitions.
-                      </li>
-                    </ul>
-                  </article>
-
-                  <article class="card-block">
-                    <header>
-                      <h4>Chair – IEEE MEFGI Student Branch</h4>
-                      <p class="meta">
-                        <span>
-                          Marwadi Education Foundation Group of Institutions
-                        </span>
-                        <span>Apr 2024 – Oct 2024</span>
-                      </p>
-                    </header>
-                    <ul>
-                      <li>
-                        Led branch operations, technical events, and
-                        collaborations with industry experts and IEEE
-                        initiatives.
-                      </li>
-                      <li>
-                        Curated programs that combined research, innovation, and
-                        outreach for the campus community.
-                      </li>
-                    </ul>
-                  </article>
-                </div>
-              </div>
-            </section>
-
-            <section class="section with-trail" id="projects">
-              <h3>Selected Work</h3>
-              <div class="section-body cards-grid">
-                <article class="card-block">
-                  <p class="tag">Embedded AI · Automation</p>
-                  <h4>AI-Powered Handwriting to G-code Pipeline</h4>
-                  <p>
-                    Transforms handwritten patterns into machine-ready G-code,
-                    bridging human creativity with CNC-style fabrication.
-                  </p>
-                </article>
-                <article class="card-block">
-                  <p class="tag">Robotics · Human–Machine Interaction</p>
-                  <h4>Gesture-Controlled Vehicle</h4>
-                  <p>
-                    Built a gesture-driven control system for a small-scale
-                    vehicle, combining sensing, control logic, and real-time
-                    feedback.
-                  </p>
-                </article>
-                <article class="card-block">
-                  <p class="tag">Research · Hardware Security</p>
-                  <h4>Secure NoC Frameworks</h4>
-                  <p>
-                    Worked on secure routing and intrusion detection for
-                    Network-on-Chip architectures using simulation-driven
-                    design.
-                  </p>
-                </article>
-                <article class="card-block">
-                  <p class="tag">IoT · Systems Design</p>
-                  <h4>IoT Monitoring &amp; Control Dashboards</h4>
-                  <p>
-                    Built dashboards and backends to monitor sensors, actuators,
-                    and system health across embedded and cloud-connected
-                    devices.
-                  </p>
-                </article>
-              </div>
-            </section>
-
-            <section class="section with-trail" id="contact">
-              <h3>Let’s build something meaningful</h3>
-              <div class="section-body contact-body">
-                <p>
-                  Open to research collaborations, engineering roles, and
-                  projects at the edge of software, hardware, and AI. Tell me
-                  what you’re building — or what you wish existed.
-                </p>
-
-                <form
-                  class="contact-form"
-                  id="contactForm"
-                  action="https://formspree.io/f/mblylqlz"
-                  method="POST"
+                <!-- <a
+                  href="https://shashankbagda.github.io"
+                  target="_blank"
+                  rel="noreferrer"
                 >
-                  <input type="hidden" name="_redirect" value="" />
-
-                  <div class="field-row">
-                    <div class="field">
-                      <label for="name">Name</label>
-                      <input
-                        id="name"
-                        type="text"
-                        name="name"
-                        placeholder="Your name"
-                        required
-                      />
-                    </div>
-                    <div class="field">
-                      <label for="email">Email</label>
-                      <input
-                        id="email"
-                        type="email"
-                        name="email"
-                        placeholder="you@example.com"
-                        required
-                      />
-                    </div>
-                  </div>
-
-                  <div class="field">
-                    <label for="subject">Subject</label>
-                    <input
-                      id="subject"
-                      type="text"
-                      name="subject"
-                      placeholder="How can we work together?"
-                      required
-                    />
-                  </div>
-
-                  <div class="field">
-                    <label for="message">Message</label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      rows="5"
-                      placeholder="Tell me a bit about your idea, team, or challenge."
-                      required
-                    ></textarea>
-                  </div>
-
-                  <button type="submit" class="primary-button" id="contactSubmit">
-                    Send message
-                  </button>
-                </form>
+                  Portfolio
+                </a> -->
               </div>
-            </section>
+            </div>
 
-            <footer class="portfolio-footer">
-              <p>© <span id="yearSpan"></span> Shashank Bagda</p>
-            </footer>
+            <form
+              class="contact-form"
+              id="contactForm"
+              action="https://formspree.io/f/mblylqlz"
+              method="POST"
+            >
+              <input type="hidden" name="_redirect" value="" />
+
+              <div class="field-row">
+                <div class="field">
+                  <label for="name">Name</label>
+                  <input
+                    id="name"
+                    type="text"
+                    name="name"
+                    placeholder="Your name"
+                    required
+                  />
+                </div>
+                <div class="field">
+                  <label for="email">Email</label>
+                  <input
+                    id="email"
+                    type="email"
+                    name="email"
+                    placeholder="you@example.com"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="subject">Subject</label>
+                <input
+                  id="subject"
+                  type="text"
+                  name="subject"
+                  placeholder="Collaboration, research, or engineering"
+                  required
+                />
+              </div>
+
+              <div class="field">
+                <label for="message">Message</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  placeholder="Tell me about your idea or role."
+                  required
+                ></textarea>
+              </div>
+
+              <button
+                type="submit"
+                class="button primary"
+                id="contactSubmit"
+              >
+                Send message
+              </button>
+            </form>
           </div>
-        </div>
+        </section>
+
+        <footer class="site-footer">
+          <p>&copy; <span id="yearSpan"></span> Shashank Bagda</p>
+        </footer>
       </main>
     </div>
 
     <script>
-      // Scroll progress attached to navbar bar
-      const progressBar = document.getElementById('scrollProgressBar')
-      window.addEventListener(
-        'scroll',
-        () => {
-          const { scrollTop, scrollHeight, clientHeight } =
-            document.documentElement
-          const total = scrollHeight - clientHeight
-          const ratio = total > 0 ? scrollTop / total : 0
-          if (progressBar) {
-            progressBar.style.transform = `scaleX(${ratio})`
-          }
-        },
-        { passive: true },
-      )
+      const navbar = document.querySelector('.navbar')
+      const navToggle = document.querySelector('.nav-toggle')
+      const navLinks = document.getElementById('navLinks')
+      const topThreshold = 80
+      const compactThreshold = 140
+      let lastScrollY = window.scrollY
 
-      // Resume download with subtle feedback
-      const resumeUrl =
-        'https://docs.google.com/document/d/1HAgAFUYyYDZCXNvO3zHaOwUrOJaCGBupRh8fTzBwvRA/export?format=pdf'
-      const resumeButton = document.getElementById('resumeButton')
-      if (resumeButton) {
-        resumeButton.addEventListener('click', (event) => {
-          event.preventDefault()
-          if (resumeButton.dataset.downloading === 'true') return
-          resumeButton.dataset.downloading = 'true'
-          resumeButton.textContent = 'Preparing download…'
-
-          const link = document.createElement('a')
-          link.href = resumeUrl
-          link.download = 'Shashank_Bagda_Resume.pdf'
-          document.body.appendChild(link)
-          link.click()
-          document.body.removeChild(link)
-
-          setTimeout(() => {
-            resumeButton.dataset.downloading = 'false'
-            resumeButton.textContent = 'Download resume'
-          }, 1500)
-        })
+      const closeMenu = () => {
+        if (!navbar || !navToggle) return
+        navbar.classList.remove('menu-open')
+        navToggle.setAttribute('aria-expanded', 'false')
       }
 
-      // Contact form background submit with feedback
+      const setCompact = (isCompact) => {
+        if (!navbar) return
+        if (isCompact) {
+          navbar.classList.add('compact')
+          closeMenu()
+        } else {
+          navbar.classList.remove('compact')
+          closeMenu()
+        }
+      }
+
+      if (navbar && navToggle && navLinks) {
+        navToggle.addEventListener('click', () => {
+          if (!navbar.classList.contains('compact')) return
+          const isOpen = navbar.classList.toggle('menu-open')
+          navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false')
+        })
+
+        navLinks.addEventListener('click', (event) => {
+          if (
+            event.target.tagName === 'A' &&
+            navbar.classList.contains('compact')
+          ) {
+            closeMenu()
+          }
+        })
+
+        window.addEventListener(
+          'scroll',
+          () => {
+            const currentScroll = window.scrollY
+            if (currentScroll <= topThreshold) {
+              setCompact(false)
+            } else if (
+              currentScroll > lastScrollY &&
+              currentScroll > compactThreshold
+            ) {
+              setCompact(true)
+            }
+            lastScrollY = currentScroll
+          },
+          { passive: true },
+        )
+
+        setCompact(window.scrollY > compactThreshold)
+      }
+
+      const prefersReducedMotion = window.matchMedia(
+        '(prefers-reduced-motion: reduce)',
+      )
+      const revealItems = document.querySelectorAll(
+        '.profile-card, .stat-card, .card, .skills-grid article',
+      )
+
+      if (revealItems.length) {
+        revealItems.forEach((item, index) => {
+          item.classList.add('reveal')
+          item.style.transitionDelay = `${Math.min(index * 40, 200)}ms`
+        })
+
+        if (prefersReducedMotion.matches) {
+          revealItems.forEach((item) => item.classList.add('is-visible'))
+        } else {
+          const revealObserver = new IntersectionObserver(
+            (entries, observer) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add('is-visible')
+                  observer.unobserve(entry.target)
+                }
+              })
+            },
+            { threshold: 0.18 },
+          )
+
+          revealItems.forEach((item) => revealObserver.observe(item))
+        }
+      }
+
       const contactForm = document.getElementById('contactForm')
       const contactSubmit = document.getElementById('contactSubmit')
       if (contactForm && contactSubmit) {
-        contactForm.addEventListener('submit', async (e) => {
-          e.preventDefault()
+        contactForm.addEventListener('submit', async (event) => {
+          event.preventDefault()
           if (contactSubmit.dataset.state === 'sending') return
 
           const formData = new FormData(contactForm)
           contactSubmit.dataset.state = 'sending'
-          contactSubmit.textContent = 'Sending…'
+          contactSubmit.textContent = 'Sending...'
           contactSubmit.classList.add('is-sending')
 
           try {
@@ -577,7 +717,7 @@
             }
           } catch (err) {
             contactSubmit.dataset.state = 'error'
-            contactSubmit.textContent = 'Something went wrong – retry'
+            contactSubmit.textContent = 'Something went wrong - retry'
             contactSubmit.classList.remove('is-sending')
             contactSubmit.classList.add('is-error')
             setTimeout(() => {
@@ -589,7 +729,6 @@
         })
       }
 
-      // Footer year
       const yearSpan = document.getElementById('yearSpan')
       if (yearSpan) {
         yearSpan.textContent = new Date().getFullYear()
