@@ -88,7 +88,8 @@ body::after {
   border-radius: 50%;
   opacity: 0.45;
   filter: blur(0.5px);
-  animation: orbDrift 18s ease-in-out infinite;
+  animation: orbDrift 26s ease-in-out infinite;
+  will-change: transform;
 }
 
 .ambient .orb-1 {
@@ -172,7 +173,7 @@ button {
 .nav-shelf {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 0.9rem;
   position: relative;
@@ -181,22 +182,30 @@ button {
 
 .nav-brand {
   display: flex;
-  align-items: center;
-  gap: 0.9rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.6rem;
 }
 
-.brand-mark {
-  width: 52px;
-  height: 52px;
-  border-radius: 16px;
+.brand-photo {
+  width: 220px;
+  height: 220px;
+  border-radius: 999px;
+  padding: 8px;
   background: linear-gradient(135deg, var(--accent), var(--accent-strong));
-  color: #ffffff;
-  display: grid;
-  place-items: center;
-  font-family: 'Bebas Neue', 'Trebuchet MS', sans-serif;
-  font-size: 1.6rem;
-  letter-spacing: 0.08em;
-  box-shadow: 0 10px 20px rgba(47, 111, 169, 0.3);
+  box-shadow: 0 14px 28px rgba(23, 32, 43, 0.18);
+  transition: width 0.45s ease, height 0.45s ease, padding 0.45s ease,
+    border-radius 0.45s ease, box-shadow 0.45s ease;
+  will-change: transform;
+}
+
+.brand-photo img {
+  width: 100%;
+  height: 100%;
+  border-radius: 999px;
+  object-fit: cover;
+  display: block;
+  transition: border-radius 0.45s ease;
 }
 
 .brand-copy {
@@ -337,6 +346,18 @@ button {
   box-shadow: 0 16px 32px rgba(23, 32, 43, 0.16);
 }
 
+.navbar.compact .brand-photo {
+  width: 64px;
+  height: 64px;
+  padding: 3px;
+  border-radius: 18px;
+  box-shadow: 0 10px 20px rgba(47, 111, 169, 0.24);
+}
+
+.navbar.compact .brand-photo img {
+  border-radius: 14px;
+}
+
 .navbar.compact .nav-toggle {
   display: inline-flex;
 }
@@ -468,13 +489,9 @@ button {
 
 .hero-layout {
   display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.4fr);
+  grid-template-columns: minmax(0, 1fr);
   gap: 2.2rem;
   align-items: center;
-}
-
-.hero-content {
-  order: 2;
 }
 
 .eyebrow {
@@ -523,40 +540,6 @@ button {
   color: var(--accent-strong);
 }
 
-.hero-portrait {
-  display: grid;
-  gap: 1rem;
-  justify-items: center;
-  animation: floatPortrait 8s ease-in-out infinite;
-  order: 1;
-}
-
-.portrait-ring {
-  width: 220px;
-  height: 220px;
-  border-radius: 999px;
-  border: 6px solid var(--accent);
-  padding: 8px;
-  background: linear-gradient(135deg, #ffffff, rgba(242, 179, 191, 0.22));
-  box-shadow: 0 12px 24px rgba(23, 32, 43, 0.2);
-}
-
-.portrait-ring img {
-  width: 100%;
-  height: 100%;
-  border-radius: 999px;
-  object-fit: cover;
-}
-
-.portrait-caption {
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  font-size: 0.7rem;
-  color: var(--muted);
-  text-align: center;
-  display: grid;
-  gap: 0.35rem;
-}
 
 .profile-grid {
   display: grid;
@@ -871,15 +854,11 @@ button {
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  body {
-    animation: ambientShift 24s ease-in-out infinite;
-  }
-
   .panel {
     opacity: 0;
     transform: translateY(18px);
-    animation: panelIn 0.8s ease forwards, panelSheen 18s ease-in-out infinite;
-    animation-delay: var(--delay, 0ms), 0s;
+    animation: panelIn 0.8s ease forwards;
+    animation-delay: var(--delay, 0ms);
   }
 
   .hero-layout > * {
@@ -892,7 +871,7 @@ button {
     animation-delay: calc(var(--delay, 0ms) + 160ms);
   }
 
-  .hero-layout > *:last-child {
+  .hero-layout > *:last-child:not(:first-child) {
     animation-delay: calc(var(--delay, 0ms) + 260ms);
   }
 
@@ -929,30 +908,6 @@ button {
   }
 }
 
-@keyframes ambientShift {
-  0% {
-    background-position: 0% 0%, 100% 100%, 0 0, 0 0;
-  }
-  50% {
-    background-position: 18% 12%, 82% 88%, 0 0, 0 0;
-  }
-  100% {
-    background-position: 0% 0%, 100% 100%, 0 0, 0 0;
-  }
-}
-
-@keyframes panelSheen {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
 @keyframes floatShape {
   0%,
   100% {
@@ -960,16 +915,6 @@ button {
   }
   50% {
     transform: translate3d(0, -12px, 0);
-  }
-}
-
-@keyframes floatPortrait {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
   }
 }
 
@@ -990,14 +935,6 @@ button {
 
   .hero-layout {
     grid-template-columns: 1fr;
-  }
-
-  .hero-content {
-    order: 2;
-  }
-
-  .hero-portrait {
-    order: 1;
   }
 
   .panel::after {
@@ -1026,6 +963,7 @@ button {
 
   .nav-brand {
     flex-direction: column;
+    align-items: center;
   }
 
   .brand-copy {
