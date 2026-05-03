@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 160">
+  <title>Custom SaaS Platform</title>
+
+  <!-- Browser frame -->
+  <rect x="20" y="20" width="160" height="120" rx="6" fill="#0F172A" stroke="#1E3A5F" stroke-width="2"/>
+  <!-- Title bar -->
+  <rect x="20" y="20" width="160" height="28" rx="6" fill="#162034"/>
+  <rect x="20" y="36" width="160" height="12" fill="#162034"/>
+  <!-- Traffic lights -->
+  <circle cx="36" cy="34" r="4" fill="#1E3A5F"/>
+  <circle cx="50" cy="34" r="4" fill="#1E3A5F"/>
+  <circle cx="64" cy="34" r="4" fill="#EFC14F" opacity="0.6"/>
+  <!-- URL bar -->
+  <rect x="76" y="26" width="90" height="16" rx="3" fill="#0F172A"/>
+  <rect x="80" y="30" width="60" height="8" rx="2" fill="#1E3A5F"/>
+
+  <!-- Content area -->
+  <!-- Left bracket -->
+  <path d="M68 62h7v4H72v28h3v4H68V62z" fill="#EFC14F"/>
+  <!-- Slash -->
+  <line x1="87" y1="62" x2="107" y2="98" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+  <!-- Right bracket -->
+  <path d="M120 62h-7v4h3v28h-3v4h7V62z" fill="#EFC14F"/>
+
+  <!-- Decorative code lines at bottom -->
+  <rect x="32" y="112" width="50" height="4" rx="2" fill="#1E3A5F"/>
+  <rect x="88" y="112" width="30" height="4" rx="2" fill="#EFC14F" opacity="0.3"/>
+  <rect x="124" y="112" width="40" height="4" rx="2" fill="#1E3A5F"/>
+  <rect x="32" y="122" width="35" height="4" rx="2" fill="#1E3A5F"/>
+  <rect x="73" y="122" width="60" height="4" rx="2" fill="#1E3A5F"/>
+</svg>

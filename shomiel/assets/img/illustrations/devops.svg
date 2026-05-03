@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 160">
+  <title>DevOps CI/CD Pipeline</title>
+
+  <!-- Outer ring -->
+  <circle cx="100" cy="80" r="62" fill="none" stroke="#1E3A5F" stroke-width="3"/>
+
+  <!-- Pipeline arc segments with gaps (dashed effect) -->
+  <circle cx="100" cy="80" r="62" fill="none" stroke="#EFC14F" stroke-width="3"
+    stroke-dasharray="32 10" stroke-dashoffset="0" opacity="0.7"/>
+
+  <!-- Inner ring -->
+  <circle cx="100" cy="80" r="44" fill="none" stroke="#1E3A5F" stroke-width="2"/>
+
+  <!-- Gear teeth on outer ring (8 teeth) -->
+  <g fill="#EFC14F" opacity="0.6">
+    <rect x="96" y="10" width="8" height="12" rx="2"/>
+    <rect x="96" y="138" width="8" height="12" rx="2"/>
+    <rect x="10" y="76" width="12" height="8" rx="2"/>
+    <rect x="178" y="76" width="12" height="8" rx="2"/>
+    <!-- Diagonal teeth -->
+    <rect x="144" y="21" width="8" height="12" rx="2" transform="rotate(45 148 27)"/>
+    <rect x="34" y="21" width="8" height="12" rx="2" transform="rotate(-45 38 27)"/>
+    <rect x="144" y="117" width="8" height="12" rx="2" transform="rotate(-45 148 123)"/>
+    <rect x="34" y="117" width="8" height="12" rx="2" transform="rotate(45 38 123)"/>
+  </g>
+
+  <!-- Center hub -->
+  <circle cx="100" cy="80" r="24" fill="#162034" stroke="#EFC14F" stroke-width="1.5"/>
+
+  <!-- Play/run arrow in center -->
+  <polygon points="93,70 115,80 93,90" fill="#EFC14F"/>
+
+  <!-- Stage nodes on the ring -->
+  <circle cx="100" cy="18" r="6" fill="#EFC14F" stroke="#0F172A" stroke-width="1.5"/>
+  <circle cx="162" cy="62" r="6" fill="#EFC14F" stroke="#0F172A" stroke-width="1.5" opacity="0.7"/>
+  <circle cx="162" cy="98" r="6" fill="#EFC14F" stroke="#0F172A" stroke-width="1.5" opacity="0.7"/>
+  <circle cx="100" cy="142" r="6" fill="#EFC14F" stroke="#0F172A" stroke-width="1.5" opacity="0.5"/>
+  <circle cx="38" cy="98" r="6" fill="#EFC14F" stroke="#0F172A" stroke-width="1.5" opacity="0.7"/>
+  <circle cx="38" cy="62" r="6" fill="#EFC14F" stroke="#0F172A" stroke-width="1.5" opacity="0.7"/>
+</svg>
