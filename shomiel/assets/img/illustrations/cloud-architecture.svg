@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 160">
+  <title>Cloud Architecture</title>
+  <!-- Isometric cloud server blocks -->
+
+  <!-- Back block (top) -->
+  <g transform="translate(100, 30)">
+    <!-- Top face -->
+    <polygon points="0,-18 32,0 0,18 -32,0" fill="#1E3A5F"/>
+    <!-- Right face -->
+    <polygon points="32,0 32,28 0,46 0,18" fill="#0F172A"/>
+    <!-- Left face -->
+    <polygon points="-32,0 -32,28 0,46 0,18" fill="#162034"/>
+    <!-- Status light -->
+    <circle cx="14" cy="36" r="3" fill="#EFC14F"/>
+  </g>
+
+  <!-- Middle block -->
+  <g transform="translate(100, 72)">
+    <!-- Top face -->
+    <polygon points="0,-18 32,0 0,18 -32,0" fill="#243B55" stroke="#EFC14F" stroke-width="0.5" stroke-opacity="0.4"/>
+    <!-- Right face -->
+    <polygon points="32,0 32,28 0,46 0,18" fill="#0F172A"/>
+    <!-- Left face -->
+    <polygon points="-32,0 -32,28 0,46 0,18" fill="#162034"/>
+    <!-- LED strip on right face -->
+    <line x1="32" y1="8" x2="16" y2="36" stroke="#EFC14F" stroke-width="1.5" stroke-opacity="0.7"/>
+  </g>
+
+  <!-- Front block (bottom) -->
+  <g transform="translate(100, 110)">
+    <!-- Top face -->
+    <polygon points="0,-18 32,0 0,18 -32,0" fill="#2A4570"/>
+    <!-- Right face -->
+    <polygon points="32,0 32,22 0,40 0,18" fill="#0F172A"/>
+    <!-- Left face -->
+    <polygon points="-32,0 -32,22 0,40 0,18" fill="#162034"/>
+  </g>
+
+  <!-- Cloud outline above -->
+  <g transform="translate(100, 20)" fill="none" stroke="#EFC14F" stroke-width="1.5" opacity="0.6">
+    <path d="M-14 0 Q-18 -12 -6 -14 Q-4 -22 8 -20 Q16 -28 24 -18 Q34 -16 30 -6 Q36 -2 34 6 H-18 Q-22 4 -14 0z"/>
+  </g>
+
+  <!-- Connecting lines from cloud to blocks -->
+  <line x1="100" y1="26" x2="100" y2="35" stroke="#EFC14F" stroke-width="1" stroke-dasharray="2,2" opacity="0.5"/>
+</svg>

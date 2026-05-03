@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /shomiel/
+
+Sitemap: https://shashankbagda.github.io/shomiel/sitemap.xml
