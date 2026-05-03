@@ -29,10 +29,10 @@
       );
     });
 
-    // Update theme-color meta tag
+    // Update theme-color meta tag to reflect the active background
     const meta = document.querySelector('meta[name="theme-color"]');
     if (meta) {
-      meta.content = '#0F172A';
+      meta.content = theme === DARK ? '#0B1120' : '#FFFFFF';
     }
   }
 

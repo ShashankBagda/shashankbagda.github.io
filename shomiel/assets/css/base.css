@@ -191,10 +191,6 @@ img, video, svg {
   display: block;
 }
 
-img {
-  loading: lazy;
-}
-
 /* ── Tables ── */
 table {
   width: 100%;
