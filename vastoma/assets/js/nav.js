@@ -1,5 +1,5 @@
 /**
- * Shomiel Navigation
+ * Vastoma Navigation
  * Mobile hamburger, active link detection, scroll shrink, focus trap, smooth scroll.
  */
 

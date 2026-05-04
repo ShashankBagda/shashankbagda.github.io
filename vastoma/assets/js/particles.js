@@ -1,5 +1,5 @@
 /**
- * Shomiel Particle System
+ * Vastoma Particle System
  * Canvas-based floating particles for the hero section.
  * Respects prefers-reduced-motion.
  */

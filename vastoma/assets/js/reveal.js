@@ -1,5 +1,5 @@
 /**
- * Shomiel Scroll Reveal
+ * Vastoma Scroll Reveal
  * IntersectionObserver-based reveal for .reveal elements.
  * Adds .is-visible when element enters the viewport.
  */

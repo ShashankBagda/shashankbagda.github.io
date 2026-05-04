@@ -1,12 +1,12 @@
 /**
- * Shomiel Theme Manager
+ * Vastoma Theme Manager
  * Handles light/dark mode toggle, localStorage persistence, system preference.
  */
 
 (function () {
   'use strict';
 
-  const STORAGE_KEY = 'shomiel-theme';
+  const STORAGE_KEY = 'Vastoma-theme';
   const DARK  = 'dark';
   const LIGHT = 'light';
 

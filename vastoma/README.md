@@ -1,13 +1,13 @@
-# Shomiel — Build smart. Scale further.
+# Vastoma — Build smart. Scale further.
 
-Shomiel is a production-ready multi-page marketing website for an enterprise IT company. The site is built with vanilla HTML, CSS, and JavaScript — no build step, no frameworks. It implements the full Shomiel Brand & Design System v2.0.
+Vastoma is a production-ready multi-page marketing website for an enterprise IT company. The site is built with vanilla HTML, CSS, and JavaScript — no build step, no frameworks. It implements the full Vastoma Brand & Design System v2.0.
 
 ---
 
 ## Folder structure
 
 ```
-shomiel/
+Vastoma/
 ├── index.html              Home / landing page
 ├── about.html              About + team + values
 ├── services.html           Services / capabilities
@@ -16,7 +16,7 @@ shomiel/
 ├── pricing.html            Pricing tiers
 ├── blog.html               Blog/insights index
 ├── contact.html            Contact form + offices
-├── brand-guide.html        Shomiel Brand Guide v2.0
+├── brand-guide.html        Vastoma Brand Guide v2.0
 ├── 404.html                Branded not-found page
 ├── sitemap.xml             XML sitemap
 ├── robots.txt              Robots directives
@@ -50,7 +50,7 @@ shomiel/
 python -m http.server 8000
 ```
 
-Then visit: [http://localhost:8000/shomiel/](http://localhost:8000/shomiel/)
+Then visit: [http://localhost:8000/Vastoma/](http://localhost:8000/Vastoma/)
 
 Or using Node.js:
 
@@ -58,13 +58,13 @@ Or using Node.js:
 npx serve .
 ```
 
-Then visit: [http://localhost:3000/shomiel/](http://localhost:3000/shomiel/)
+Then visit: [http://localhost:3000/Vastoma/](http://localhost:3000/Vastoma/)
 
 ---
 
 ## Live URL
 
-**[https://shashankbagda.github.io/shomiel/](https://shashankbagda.github.io/shomiel/)**
+**[https://shashankbagda.github.io/Vastoma/](https://shashankbagda.github.io/Vastoma/)**
 
 ---
 
@@ -93,4 +93,4 @@ All tokens are defined in `assets/css/tokens.css` and referenced via `var(--toke
 
 ## License
 
-© 2026 Shomiel. All rights reserved.
+© 2026 Vastoma. All rights reserved.

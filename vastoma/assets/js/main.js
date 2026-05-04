@@ -1,5 +1,5 @@
 /**
- * Shomiel — Main Entry Point
+ * Vastoma — Main Entry Point
  * Initializes all interactive UI modules.
  */
 
@@ -570,9 +570,9 @@
     return { dismiss: dismiss };
   }
 
-  // Expose globally so other scripts can call Shomiel.toast(...)
-  window.Shomiel = window.Shomiel || {};
-  window.Shomiel.toast = showToast;
+  // Expose globally so other scripts can call Vastoma.toast(...)
+  window.Vastoma = window.Vastoma || {};
+  window.Vastoma.toast = showToast;
 
   /* ════════════════════════════════════════
      PAGE TRANSITION FADE
