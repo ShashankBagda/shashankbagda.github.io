@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <title>Vastome</title>
+  <rect width="32" height="32" rx="6" fill="#0F172A"/>
+  <!-- Left bracket -->
+  <path d="M8 8h3v2H10v12h1v2H8V8z" fill="#EFC14F"/>
+  <!-- Right bracket -->
+  <path d="M24 8h-3v2h1v12h-1v2h3V8z" fill="#EFC14F"/>
+  <!-- S letter -->
+  <path d="M13 11h6v3h-5v1.5h5v5.5h-6v-3h5v-1.5h-5V11z" fill="#FFFFFF"/>
+</svg>

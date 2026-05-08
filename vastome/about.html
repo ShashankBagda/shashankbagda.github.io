@@ -1,0 +1,692 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Vastome â€” Our Mission &amp; Team</title>
+  <meta name="description" content="Learn about Vastome's mission to build smart enterprise software. Meet our team and discover our values." />
+  <meta name="theme-color" content="#0F172A" />
+  <link rel="canonical" href="https://shashankbagda.github.io/Vastome/about.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://shashankbagda.github.io/Vastome/about.html" />
+  <meta property="og:title" content="About Vastome â€” Our Mission &amp; Team" />
+  <meta property="og:description" content="Learn about Vastome's mission to build smart enterprise software. Meet our team and discover our values." />
+  <meta property="og:image" content="assets/img/og-cover.svg" />
+  <meta property="og:site_name" content="Vastome" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="About Vastome â€” Our Mission &amp; Team" />
+  <meta name="twitter:description" content="Learn about Vastome's mission to build smart enterprise software. Meet our team and discover our values." />
+  <meta name="twitter:image" content="assets/img/og-cover.svg" />
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+  <link rel="stylesheet" href="assets/css/tokens.css" />
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+  <link rel="stylesheet" href="assets/css/animations.css" />
+  <style>
+    .about-hero {
+      background: var(--navy);
+      color: #fff;
+      padding-block: var(--space-24);
+      position: relative;
+      overflow: hidden;
+    }
+    .about-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(239,193,79,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(239,193,79,0.06) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+    .about-hero .container { position: relative; z-index: 1; }
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-sm);
+      color: rgba(255,255,255,0.55);
+      margin-bottom: var(--space-6);
+    }
+    .breadcrumb a { color: rgba(255,255,255,0.55); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold); }
+    .breadcrumb-sep { opacity: 0.4; }
+    .about-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: var(--space-6);
+    }
+    .about-hero h1 span { color: var(--gold); }
+    .about-hero p {
+      font-size: var(--text-xl);
+      color: rgba(255,255,255,0.75);
+      max-width: 600px;
+    }
+    .mission-section {
+      padding-block: var(--space-24);
+      background: var(--bg);
+    }
+    .eyebrow {
+      font-family: var(--font-mono);
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--gold-deep);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: var(--space-4);
+    }
+    .mission-statement {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+      font-weight: 600;
+      line-height: 1.3;
+      color: var(--text);
+      max-width: 800px;
+      margin-bottom: var(--space-8);
+    }
+    .mission-body {
+      font-size: var(--text-lg);
+      color: var(--text-muted);
+      max-width: 680px;
+      line-height: 1.8;
+    }
+    .timeline-section {
+      padding-block: var(--space-24);
+      background: var(--bg-soft);
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: var(--space-16);
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 4vw, 3rem);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: var(--space-4);
+    }
+    .section-sub {
+      font-size: var(--text-lg);
+      color: var(--text-muted);
+    }
+    .timeline {
+      position: relative;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 28px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+    }
+    .timeline-item {
+      display: flex;
+      gap: var(--space-6);
+      padding-left: var(--space-4);
+      margin-bottom: var(--space-10);
+      position: relative;
+    }
+    .timeline-dot {
+      flex-shrink: 0;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--navy);
+      border: 2px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1.2;
+      text-align: center;
+    }
+    .timeline-content {
+      padding-top: var(--space-2);
+    }
+    .timeline-label {
+      font-weight: 700;
+      color: var(--text);
+      font-size: var(--text-lg);
+      margin-bottom: var(--space-1);
+    }
+    .timeline-desc {
+      color: var(--text-muted);
+      font-size: var(--text-base);
+    }
+    .values-section {
+      padding-block: var(--space-24);
+      background: var(--bg);
+    }
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-6);
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    @media (max-width: 640px) {
+      .values-grid { grid-template-columns: 1fr; }
+    }
+    .value-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-xl);
+      padding: var(--space-8);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .value-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.1);
+    }
+    .value-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--r-lg);
+      background: rgba(239,193,79,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: var(--space-4);
+    }
+    .value-name {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: var(--space-2);
+    }
+    .value-desc {
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+    .team-section {
+      padding-block: var(--space-24);
+      background: var(--bg-soft);
+    }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-6);
+    }
+    @media (max-width: 900px) {
+      .team-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 580px) {
+      .team-grid { grid-template-columns: 1fr; }
+    }
+    .team-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-xl);
+      padding: var(--space-8);
+      text-align: center;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .team-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.1);
+    }
+    .team-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--navy), #1e3a5f);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto var(--space-4);
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      font-weight: 700;
+      color: var(--gold);
+      border: 2px solid var(--gold);
+    }
+    .team-name {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: var(--space-1);
+    }
+    .team-role {
+      font-size: var(--text-sm);
+      color: var(--gold-deep);
+      font-weight: 600;
+      margin-bottom: var(--space-3);
+    }
+    .team-bio {
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: var(--space-4);
+    }
+    .team-socials {
+      display: flex;
+      gap: var(--space-3);
+      justify-content: center;
+    }
+    .team-social-link {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .team-social-link:hover {
+      color: var(--gold-deep);
+      border-color: var(--gold);
+    }
+    .join-cta {
+      background: var(--navy);
+      padding-block: var(--space-20);
+      text-align: center;
+      color: #fff;
+    }
+    .join-cta h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 4vw, 2.75rem);
+      font-weight: 700;
+      margin-bottom: var(--space-4);
+    }
+    .join-cta p {
+      font-size: var(--text-lg);
+      color: rgba(255,255,255,0.7);
+      margin-bottom: var(--space-8);
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cta-group {
+      display: flex;
+      gap: var(--space-4);
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="nav-header" role="banner">
+    <div class="container">
+      <nav class="nav-inner" aria-label="Main navigation">
+        <a href="index.html" class="nav-logo-wrap" aria-label="Vastome â€” home">
+          <span class="brand-icon" aria-hidden="true">
+            <span class="bracket-l"></span>
+            <span class="bracket-r"></span>
+            <span class="dl dl1"></span>
+            <span class="dl dl2"></span>
+            <span class="node"></span>
+            <span class="cursor"></span>
+            <span class="dl dl3"></span>
+          </span>
+          <span class="logo-wordmark">Vastome</span>
+        </a>
+        <ul class="nav-links" role="list">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="services.html" class="nav-link">Services</a></li>
+          <li><a href="solutions.html" class="nav-link">Solutions</a></li>
+          <li><a href="work.html" class="nav-link">Work</a></li>
+          <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+          <li><a href="blog.html" class="nav-link">Blog</a></li>
+          <li><a href="about.html" class="nav-link is-active" aria-current="page">About</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+        <div class="nav-actions">
+          <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle dark mode" aria-checked="false" role="switch">
+            <span class="theme-toggle-thumb" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+            </span>
+          </button>
+          <a href="contact.html" class="btn btn-accent desktop-nav-cta" aria-label="Get started with Vastome">Get started</a>
+          <button class="nav-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-drawer" data-nav-toggle>
+            <span class="nav-toggle-bar" aria-hidden="true"></span>
+            <span class="nav-toggle-bar" aria-hidden="true"></span>
+            <span class="nav-toggle-bar" aria-hidden="true"></span>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <div id="nav-drawer" class="nav-drawer" role="dialog" aria-label="Navigation menu" aria-modal="true" data-nav-drawer>
+    <div class="nav-drawer-backdrop" data-nav-close aria-hidden="true"></div>
+    <div class="nav-drawer-panel">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-6);">
+        <a href="index.html" class="nav-logo-wrap" style="font-size:var(--text-base);">
+          <span class="brand-icon" aria-hidden="true" style="transform:scale(.8);transform-origin:left center;"><span class="bracket-l"></span><span class="bracket-r"></span><span class="dl dl1"></span><span class="dl dl2"></span><span class="node"></span><span class="cursor"></span><span class="dl dl3"></span></span>
+          <span>Vastome</span>
+        </a>
+        <button type="button" class="btn btn-ghost btn-icon" aria-label="Close menu" data-nav-close>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <nav aria-label="Mobile navigation">
+        <a href="index.html" class="nav-drawer-link">Home</a>
+        <a href="services.html" class="nav-drawer-link">Services</a>
+        <a href="solutions.html" class="nav-drawer-link">Solutions</a>
+        <a href="work.html" class="nav-drawer-link">Work</a>
+        <a href="pricing.html" class="nav-drawer-link">Pricing</a>
+        <a href="blog.html" class="nav-drawer-link">Blog</a>
+        <a href="about.html" class="nav-drawer-link is-active" aria-current="page">About</a>
+        <a href="contact.html" class="nav-drawer-link">Contact</a>
+      </nav>
+      <div style="margin-top:var(--space-6);padding-top:var(--space-6);border-top:1px solid var(--border);">
+        <a href="contact.html" class="btn btn-accent" style="display:block;text-align:center;">Get started</a>
+      </div>
+    </div>
+  </div>
+
+  <main id="main-content">
+    <!-- Hero -->
+    <section class="about-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Home</a>
+          <span class="breadcrumb-sep" aria-hidden="true">/</span>
+          <span aria-current="page">About</span>
+        </nav>
+        <h1>We build software <span>that scales</span></h1>
+        <p>Vastome is an enterprise software company on a mission to help organizations move faster, operate smarter, and ship with unshakeable confidence.</p>
+      </div>
+    </section>
+
+    <!-- Mission -->
+    <section class="mission-section">
+      <div class="container">
+        <p class="eyebrow">Our mission</p>
+        <p class="mission-statement reveal">We build intelligent software systems that help enterprises operate at their full potential.</p>
+        <p class="mission-body reveal">Founded by engineers who grew frustrated with bloated, over-complicated enterprise tooling, Vastome was born from a simple conviction: the best software gets out of the way and lets your team do their best work. Since our founding, we've partnered with forward-thinking organizations across finance, healthcare, retail, and government to deliver systems that are clean, maintainable, and built to last. Every line of code we write reflects our commitment to clarity, precision, and the quiet confidence that comes from doing the work properly the first time.</p>
+      </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="timeline-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="eyebrow">Our story</p>
+          <h2 class="section-title">A brief history</h2>
+          <p class="section-sub">From a small team with a big idea to a global engineering force.</p>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item reveal">
+            <div class="timeline-dot">2026<br>Q1</div>
+            <div class="timeline-content">
+              <p class="timeline-label">Company founded</p>
+              <p class="timeline-desc">Vastome is incorporated in Bangalore, India by four engineers who previously built infrastructure for Fortune 500 companies. The founding team sets out to create a new kind of enterprise software firm â€” one that values craft over speed and depth over delivery.</p>
+            </div>
+          </div>
+          <div class="timeline-item reveal">
+            <div class="timeline-dot">2026<br>Q2</div>
+            <div class="timeline-content">
+              <p class="timeline-label">First enterprise client</p>
+              <p class="timeline-desc">Vastome signs its first enterprise engagement with a leading regional bank to architect a cloud-native payments platform. The project delivers in eight weeks, two weeks ahead of schedule, setting the tone for everything that follows.</p>
+            </div>
+          </div>
+          <div class="timeline-item reveal">
+            <div class="timeline-dot">2026<br>Q3</div>
+            <div class="timeline-content">
+              <p class="timeline-label">Singapore expansion</p>
+              <p class="timeline-desc">Growing demand from Southeast Asian financial institutions leads Vastome to establish its second office in Singapore. The APAC hub accelerates client partnerships across six countries in under ninety days.</p>
+            </div>
+          </div>
+          <div class="timeline-item reveal">
+            <div class="timeline-dot">2026<br>Q4</div>
+            <div class="timeline-content">
+              <p class="timeline-label">San Francisco office opens</p>
+              <p class="timeline-desc">Vastome plants its flag in the heart of Silicon Valley to serve North American SaaS and fintech clients. The US office brings AI/ML expertise and deepens our partnerships with hyperscaler cloud providers.</p>
+            </div>
+          </div>
+          <div class="timeline-item reveal">
+            <div class="timeline-dot">2027</div>
+            <div class="timeline-content">
+              <p class="timeline-label">50+ engineers across 12 countries</p>
+              <p class="timeline-desc">Vastome reaches a milestone: over 50 full-time engineers distributed across twelve countries, serving clients on five continents. Our distributed model means we're always close to the problem, no matter the timezone.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Values -->
+    <section class="values-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="eyebrow">What drives us</p>
+          <h2 class="section-title">Our values</h2>
+          <p class="section-sub">Four principles that shape every project we take on.</p>
+        </div>
+        <div class="values-grid">
+          <div class="value-card reveal">
+            <div class="value-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#EFC14F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </div>
+            <p class="value-name">Clarity</p>
+            <p class="value-desc">Complexity is the enemy of progress. We eliminate noise, surface what matters, and communicate with honesty even when the truth is uncomfortable. Clear systems, clear communication, clear intent.</p>
+          </div>
+          <div class="value-card reveal">
+            <div class="value-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#EFC14F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <p class="value-name">Precision</p>
+            <p class="value-desc">Good enough is never enough. We obsess over the details that other teams skip â€” the edge case that crashes production at 2 AM, the query that scales to ten million rows, the UI that works for every user.</p>
+          </div>
+          <div class="value-card reveal">
+            <div class="value-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#EFC14F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+            </div>
+            <p class="value-name">Intelligence</p>
+            <p class="value-desc">We apply AI and data not because it's trendy, but because intelligent systems genuinely change outcomes. We invest heavily in understanding the problem before writing a line of solution code.</p>
+          </div>
+          <div class="value-card reveal">
+            <div class="value-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#EFC14F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="9" y1="9" x2="15" y2="15"/><line x1="15" y1="9" x2="9" y2="15"/></svg>
+            </div>
+            <p class="value-name">Restraint</p>
+            <p class="value-desc">The best architecture is the one that solves tomorrow's problem without creating ten new ones today. We advocate for the minimal, durable solution and resist the temptation to over-engineer.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team -->
+    <section class="team-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="eyebrow">The people</p>
+          <h2 class="section-title">Meet the team</h2>
+          <p class="section-sub">Engineers, architects, and strategists who live for the hard problems.</p>
+        </div>
+        <div class="team-grid">
+          <div class="team-card reveal">
+            <div class="team-avatar" aria-hidden="true">AR</div>
+            <p class="team-name">Arjun Raghavan</p>
+            <p class="team-role">Co-founder &amp; CEO</p>
+            <p class="team-bio">Former principal architect at a tier-1 bank. Built distributed systems for 10M+ users. Obsessed with clean abstractions and scalable design. 14 years in enterprise engineering.</p>
+            <div class="team-socials">
+              <a href="https://linkedin.com" class="team-social-link" target="_blank" rel="noopener noreferrer" aria-label="Arjun Raghavan on LinkedIn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.37V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zm1.78 13.02H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0z"/></svg>
+              </a>
+              <a href="https://github.com" class="team-social-link" target="_blank" rel="noopener noreferrer" aria-label="Arjun Raghavan on GitHub">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.29-.01-1.05-.02-2.06-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.21.08 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.31 3.5 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.31-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23A11.5 11.5 0 0 1 12 5.8c1.02.005 2.05.14 3.01.41 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.87.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.49 5.92.43.37.82 1.1.82 2.22 0 1.61-.01 2.9-.01 3.29 0 .32.22.7.83.58A12.01 12.01 0 0 0 24 12C24 5.37 18.63 0 12 0z"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="team-card reveal">
+            <div class="team-avatar" aria-hidden="true">PS</div>
+            <p class="team-name">Priya Subramaniam</p>
+            <p class="team-role">Co-founder &amp; CTO</p>
+            <p class="team-bio">ML engineer who shipped production AI systems at scale. Led platform teams of 30+ at a global SaaS unicorn. Loves Rust, distributed tracing, and hiking the Western Ghats.</p>
+            <div class="team-socials">
+              <a href="https://linkedin.com" class="team-social-link" target="_blank" rel="noopener noreferrer" aria-label="Priya Subramaniam on LinkedIn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.37V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zm1.78 13.02H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0z"/></svg>
+              </a>
+              <a href="https://github.com" class="team-social-link" target="_blank" rel="noopener noreferrer" aria-label="Priya Subramaniam on GitHub">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.29-.01-1.05-.02-2.06-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.21.08 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.31 3.5 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.31-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23A11.5 11.5 0 0 1 12 5.8c1.02.005 2.05.14 3.01.41 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.87.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.49 5.92.43.37.82 1.1.82 2.22 0 1.61-.01 2.9-.01 3.29 0 .32.22.7.83.58A12.01 12.01 0 0 0 24 12C24 5.37 18.63 0 12 0z"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="team-card reveal">
+            <div class="team-avatar" aria-hidden="true">DK</div>
+            <p class="team-name">Daniel Kwame</p>
+            <p class="team-role">VP of Engineering</p>
+            <p class="team-bio">Infrastructure specialist with deep expertise in Kubernetes, multi-cloud architecture, and zero-trust security. Former SRE lead at a major telco. Accra-born, Singapore-based.</p>
+            <div class="team-socials">
+              <a href="https://linkedin.com" class="team-social-link" target="_blank" rel="noopener noreferrer" aria-label="Daniel Kwame on LinkedIn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.37V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zm1.78 13.02H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0z"/></svg>
+              </a>
+              <a href="https://github.com" class="team-social-link" target="_blank" rel="noopener noreferrer" aria-label="Daniel Kwame on GitHub">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.29-.01-1.05-.02-2.06-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.21.08 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.31 3.5 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.31-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23A11.5 11.5 0 0 1 12 5.8c1.02.005 2.05.14 3.01.41 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.87.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.49 5.92.43.37.82 1.1.82 2.22 0 1.61-.01 2.9-.01 3.29 0 .32.22.7.83.58A12.01 12.01 0 0 0 24 12C24 5.37 18.63 0 12 0z"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="team-card reveal">
+            <div class="team-avatar" aria-hidden="true">SM</div>
+            <p class="team-name">Sofia Marchetti</p>
+            <p class="team-role">Head of Product Design</p>
+            <p class="team-bio">Design systems architect and accessibility champion. Led design at two enterprise SaaS companies before joining Vastome. Believes every UX decision is a product decision. Based in Milan.</p>
+            <div class="team-socials">
+              <a href="https://linkedin.com" class="team-social-link" target="_blank" rel="noopener noreferrer" aria-label="Sofia Marchetti on LinkedIn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.37V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zm1.78 13.02H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0z"/></svg>
+              </a>
+              <a href="https://twitter.com" class="team-social-link" target="_blank" rel="noopener noreferrer" aria-label="Sofia Marchetti on X">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.24 2h3.14l-6.86 7.84L22.5 22h-6.31l-4.95-6.47L5.5 22H2.36l7.34-8.39L2 2h6.47l4.47 5.84L18.24 2zm-1.1 17.98h1.74L6.95 3.74H5.09l12.05 16.24z"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="team-card reveal">
+            <div class="team-avatar" aria-hidden="true">JL</div>
+            <p class="team-name">James Liu</p>
+            <p class="team-role">Lead Data Engineer</p>
+            <p class="team-bio">Former quant developer turned data platform engineer. Built petabyte-scale pipelines for hedge funds and Fortune 100 retailers. dbt core contributor. San Francisco office lead.</p>
+            <div class="team-socials">
+              <a href="https://linkedin.com" class="team-social-link" target="_blank" rel="noopener noreferrer" aria-label="James Liu on LinkedIn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.37V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zm1.78 13.02H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0z"/></svg>
+              </a>
+              <a href="https://github.com" class="team-social-link" target="_blank" rel="noopener noreferrer" aria-label="James Liu on GitHub">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.29-.01-1.05-.02-2.06-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.21.08 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.31 3.5 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.31-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23A11.5 11.5 0 0 1 12 5.8c1.02.005 2.05.14 3.01.41 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.87.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.49 5.92.43.37.82 1.1.82 2.22 0 1.61-.01 2.9-.01 3.29 0 .32.22.7.83.58A12.01 12.01 0 0 0 24 12C24 5.37 18.63 0 12 0z"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="team-card reveal">
+            <div class="team-avatar" aria-hidden="true">NP</div>
+            <p class="team-name">Nadia Petrov</p>
+            <p class="team-role">Head of Security</p>
+            <p class="team-bio">Certified ethical hacker and cloud security specialist. Previously led red-team engagements for government agencies and global banks. Fluent in threat modeling, zero-trust, and compliance frameworks.</p>
+            <div class="team-socials">
+              <a href="https://linkedin.com" class="team-social-link" target="_blank" rel="noopener noreferrer" aria-label="Nadia Petrov on LinkedIn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.37V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zm1.78 13.02H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0z"/></svg>
+              </a>
+              <a href="https://twitter.com" class="team-social-link" target="_blank" rel="noopener noreferrer" aria-label="Nadia Petrov on X">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.24 2h3.14l-6.86 7.84L22.5 22h-6.31l-4.95-6.47L5.5 22H2.36l7.34-8.39L2 2h6.47l4.47 5.84L18.24 2zm-1.1 17.98h1.74L6.95 3.74H5.09l12.05 16.24z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Join CTA -->
+    <section class="join-cta">
+      <div class="container">
+        <h2>Ready to join a team that does the work properly?</h2>
+        <p>We're always looking for engineers, designers, and strategists who care deeply about their craft and want to build things that last.</p>
+        <div class="cta-group">
+          <a href="contact.html" class="btn btn-accent">Start a conversation</a>
+          <a href="services.html" class="btn btn-ghost" style="color:#fff;border-color:rgba(255,255,255,0.3);">Explore our work</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo" aria-label="Vastome â€” home">
+            <span style="display:inline-flex;align-items:center;gap:8px;">
+              <span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;background:var(--gold);color:var(--navy);font-family:var(--font-mono);font-size:11px;font-weight:700;border-radius:6px;" aria-hidden="true">[S]</span>
+              Vastome
+            </span>
+          </a>
+          <p class="footer-tagline">Build smart. Scale further.<br>Enterprise software for the teams who move fast and ship with confidence.</p>
+          <div class="footer-social" aria-label="Vastome social links">
+            <a href="https://github.com" class="footer-social-link" target="_blank" rel="noopener noreferrer" aria-label="Vastome on GitHub">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.29-.01-1.05-.02-2.06-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.21.08 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.31 3.5 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.31-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23A11.5 11.5 0 0 1 12 5.8c1.02.005 2.05.14 3.01.41 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.87.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.49 5.92.43.37.82 1.1.82 2.22 0 1.61-.01 2.9-.01 3.29 0 .32.22.7.83.58A12.01 12.01 0 0 0 24 12C24 5.37 18.63 0 12 0z"/></svg>
+            </a>
+            <a href="https://linkedin.com" class="footer-social-link" target="_blank" rel="noopener noreferrer" aria-label="Vastome on LinkedIn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.37V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zm1.78 13.02H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0z"/></svg>
+            </a>
+            <a href="https://twitter.com" class="footer-social-link" target="_blank" rel="noopener noreferrer" aria-label="Vastome on X (Twitter)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.24 2h3.14l-6.86 7.84L22.5 22h-6.31l-4.95-6.47L5.5 22H2.36l7.34-8.39L2 2h6.47l4.47 5.84L18.24 2zm-1.1 17.98h1.74L6.95 3.74H5.09l12.05 16.24z"/></svg>
+            </a>
+          </div>
+          <div>
+            <p style="font-size:var(--text-sm);color:rgba(255,255,255,0.55);margin-bottom:var(--space-2);">Get insights in your inbox</p>
+            <form class="footer-newsletter" aria-label="Newsletter signup">
+              <label for="footer-email-about" class="sr-only">Email address for newsletter</label>
+              <input id="footer-email-about" type="email" class="footer-newsletter-input" placeholder="you@company.com" autocomplete="email" />
+              <button type="submit" class="footer-newsletter-btn">Subscribe</button>
+            </form>
+          </div>
+        </div>
+        <nav aria-label="Product links">
+          <p class="footer-col-title">Product</p>
+          <ul class="footer-links" role="list">
+            <li><a href="services.html">Services</a></li>
+            <li><a href="solutions.html">Solutions</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="work.html">Case studies</a></li>
+            <li><a href="brand-guide.html">Brand guide</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Company links">
+          <p class="footer-col-title">Company</p>
+          <ul class="footer-links" role="list">
+            <li><a href="about.html">About</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        <div>
+          <nav aria-label="Legal links">
+            <p class="footer-col-title">Legal</p>
+            <ul class="footer-links" role="list">
+              <li><a href="privacy.html">Privacy policy</a></li>
+              <li><a href="terms.html">Terms of service</a></li>
+              <li><a href="cookies.html">Cookie policy</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; <span class="footer-year"></span> Vastome Ltd. All rights reserved.</p>
+        <p class="footer-copy">Built with <span aria-label="love">â¤ï¸</span> by Vastome</p>
+      </div>
+    </div>
+  </footer>
+
+  <script defer src="assets/js/theme.js"></script>
+  <script defer src="assets/js/nav.js"></script>
+  <script defer src="assets/js/reveal.js"></script>
+  <script defer src="assets/js/main.js"></script>
+  <script>document.querySelectorAll('.footer-year').forEach(el => el.textContent = new Date().getFullYear());</script>
+</body>
+</html>

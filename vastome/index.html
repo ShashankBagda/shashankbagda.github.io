@@ -1,0 +1,1594 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vastome â€” Build smart. Scale further.</title>
+
+  <!-- SEO & Meta -->
+  <meta name="description" content="Vastome delivers cloud architecture, AI/ML engineering, and custom SaaS platforms that help enterprises ship faster, scale smarter, and stay secure." />
+  <meta name="theme-color" content="#0F172A" />
+  <link rel="canonical" href="https://shashankbagda.github.io/Vastome/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://shashankbagda.github.io/Vastome/" />
+  <meta property="og:title"       content="Vastome â€” Build smart. Scale further." />
+  <meta property="og:description" content="Cloud architecture, AI/ML engineering, and custom SaaS platforms for enterprises." />
+  <meta property="og:image"       content="assets/img/og-cover.svg" />
+  <meta property="og:site_name"   content="Vastome" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="Vastome â€” Build smart. Scale further." />
+  <meta name="twitter:description" content="Cloud architecture, AI/ML engineering, and custom SaaS platforms for enterprises." />
+  <meta name="twitter:image"       content="assets/img/og-cover.svg" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+
+  <!-- Design System CSS -->
+  <link rel="stylesheet" href="assets/css/tokens.css" />
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+  <link rel="stylesheet" href="assets/css/animations.css" />
+
+  <!-- Page-level styles -->
+  <style>
+    /* â”€â”€ Hero â”€â”€ */
+    .hero-section {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      background-color: var(--navy);
+      overflow: hidden;
+    }
+    .hero-canvas {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero-bg-svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.12;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .hero-pattern {
+      position: absolute;
+      inset: 0;
+      background-image: url('assets/img/pattern-grid.svg');
+      background-repeat: repeat;
+      background-size: 40px 40px;
+      opacity: 0.06;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding-block: var(--space-24);
+      width: 100%;
+    }
+    .hero-eyebrow {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: var(--space-6);
+    }
+    .hero-heading {
+      font-family: var(--font-display);
+      font-size: clamp(48px, 8vw, 96px);
+      line-height: 1;
+      font-weight: 800;
+      color: #FFFFFF;
+      letter-spacing: -0.04em;
+      margin-bottom: var(--space-6);
+    }
+    .hero-heading-line {
+      display: block;
+    }
+    .hero-heading-line--accent {
+      color: var(--gold);
+    }
+    .hero-subheadline {
+      font-family: var(--font-body);
+      font-size: var(--text-lg);
+      line-height: var(--text-lg-lh);
+      color: rgba(255, 255, 255, 0.72);
+      max-width: 580px;
+      margin-bottom: var(--space-10);
+    }
+    .hero-ctas {
+      display: flex;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .btn-ghost-hero {
+      background-color: transparent;
+      color: rgba(255, 255, 255, 0.85);
+      border: 2px solid rgba(255, 255, 255, 0.25);
+    }
+    .btn-ghost-hero:hover {
+      background-color: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.5);
+      color: #FFFFFF;
+      text-decoration: none;
+      transform: translateY(-1px);
+    }
+    .scroll-indicator {
+      position: absolute;
+      bottom: var(--space-8);
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-2);
+    }
+    .scroll-indicator-label {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      color: rgba(255, 255, 255, 0.35);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .scroll-chevron {
+      color: rgba(255, 255, 255, 0.35);
+    }
+
+    /* â”€â”€ Logo Cloud â”€â”€ */
+    .logo-cloud {
+      background-color: var(--bg-soft);
+      border-block: 1px solid var(--border);
+      padding-block: var(--space-10);
+      overflow: hidden;
+    }
+    .logo-cloud-label {
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-subtle);
+      margin-bottom: var(--space-8);
+    }
+    .marquee-wrapper {
+      overflow: hidden;
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+      mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+    }
+    .marquee-track {
+      display: flex;
+      align-items: center;
+      gap: var(--space-16);
+      width: max-content;
+      animation: marqueeScroll 28s linear infinite;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+    .client-logo {
+      font-family: var(--font-display);
+      font-size: var(--text-base);
+      font-weight: 700;
+      color: var(--text-subtle);
+      white-space: nowrap;
+      letter-spacing: -0.02em;
+      transition: color var(--dur-fast) var(--ease-out);
+      text-decoration: none;
+    }
+    .client-logo:hover {
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    /* â”€â”€ Services â”€â”€ */
+    .services-section {
+      padding-block: var(--space-24);
+      background-color: var(--bg);
+    }
+    .section-eyebrow {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: var(--space-4);
+      display: block;
+    }
+    .section-heading {
+      font-family: var(--font-display);
+      font-size: var(--text-h1);
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.03em;
+      margin-bottom: var(--space-4);
+    }
+    .section-subheading {
+      font-size: var(--text-lg);
+      line-height: var(--text-lg-lh);
+      color: var(--text-muted);
+      max-width: 560px;
+    }
+    .section-intro {
+      margin-bottom: var(--space-12);
+    }
+    .service-card {
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-xl);
+      padding: var(--space-8);
+      transition: box-shadow var(--dur-base) var(--ease-out),
+                  transform var(--dur-base) var(--ease-out),
+                  border-color var(--dur-base) var(--ease-out);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+    .service-card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-4px);
+      border-color: var(--gold);
+    }
+    .service-card-icon {
+      width: 48px;
+      height: 48px;
+      background-color: color-mix(in srgb, var(--gold) 12%, var(--bg-soft));
+      border-radius: var(--r-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+    .service-card-title {
+      font-family: var(--font-display);
+      font-size: var(--text-h3);
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+    .service-card-desc {
+      font-size: var(--text-sm);
+      line-height: var(--text-base-lh);
+      color: var(--text-muted);
+      flex: 1;
+    }
+    .service-card-link {
+      font-family: var(--font-display);
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--gold);
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      text-decoration: none;
+      transition: gap var(--dur-fast) var(--ease-out), color var(--dur-fast);
+    }
+    .service-card-link:hover {
+      gap: var(--space-3);
+      color: var(--gold-deep);
+      text-decoration: none;
+    }
+    .service-illustration {
+      width: 100%;
+      max-height: 120px;
+      object-fit: contain;
+      border-radius: var(--r-md);
+    }
+
+    /* â”€â”€ Stats Band â”€â”€ */
+    .stats-band {
+      background-color: var(--navy);
+      padding-block: var(--space-16);
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-8);
+    }
+    .stat-band-item {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-3);
+    }
+    .stat-band-icon {
+      width: 44px;
+      height: 44px;
+      background-color: rgba(239, 193, 79, 0.15);
+      border-radius: var(--r-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+    }
+    .stat-band-number {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 800;
+      color: var(--gold);
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+    .stat-band-label {
+      font-family: var(--font-mono);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.55);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    @media (max-width: 768px) {
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .stats-grid { grid-template-columns: 1fr; }
+    }
+
+    /* â”€â”€ Case Study Feature â”€â”€ */
+    .case-study-feature {
+      padding-block: var(--space-24);
+      background-color: var(--bg-soft);
+    }
+    .case-study-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-16);
+      align-items: center;
+    }
+    .case-study-image {
+      border-radius: var(--r-2xl);
+      overflow: hidden;
+      background-color: var(--bg-muted);
+      aspect-ratio: 4 / 3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .case-study-copy { display: flex; flex-direction: column; gap: var(--space-6); }
+    .case-study-eyebrow {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .case-study-heading {
+      font-family: var(--font-display);
+      font-size: var(--text-h2);
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.03em;
+    }
+    .case-study-desc {
+      font-size: var(--text-base);
+      line-height: var(--text-base-lh);
+      color: var(--text-muted);
+    }
+    .case-study-metrics {
+      display: flex;
+      gap: var(--space-8);
+      flex-wrap: wrap;
+    }
+    .kpi { display: flex; flex-direction: column; gap: var(--space-1); }
+    .kpi-value {
+      font-family: var(--font-display);
+      font-size: var(--text-h2);
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.04em;
+    }
+    .kpi-label {
+      font-size: var(--text-xs);
+      font-weight: 500;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    @media (max-width: 900px) {
+      .case-study-split { grid-template-columns: 1fr; }
+    }
+
+    /* â”€â”€ Process â”€â”€ */
+    .process-section {
+      padding-block: var(--space-24);
+      background-color: var(--bg);
+    }
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      position: relative;
+      margin-top: var(--space-16);
+    }
+    .process-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: var(--space-6) var(--space-4);
+      position: relative;
+    }
+    .process-step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      top: 32px;
+      right: -50%;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(to right, var(--gold), color-mix(in srgb, var(--gold) 30%, transparent));
+      z-index: 0;
+    }
+    .process-step-num {
+      position: relative;
+      z-index: 1;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background-color: var(--navy);
+      color: var(--gold);
+      font-family: var(--font-display);
+      font-size: var(--text-h3);
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: var(--space-5);
+      box-shadow: 0 0 0 8px var(--bg);
+      flex-shrink: 0;
+    }
+    .process-step-emoji {
+      font-size: 24px;
+      margin-bottom: var(--space-2);
+    }
+    .process-step-title {
+      font-family: var(--font-display);
+      font-size: var(--text-base);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: var(--space-2);
+    }
+    .process-step-desc {
+      font-size: var(--text-sm);
+      line-height: var(--text-base-lh);
+      color: var(--text-muted);
+    }
+    @media (max-width: 768px) {
+      .process-steps { grid-template-columns: repeat(2, 1fr); }
+      .process-step:not(:last-child)::after { display: none; }
+    }
+    @media (max-width: 480px) {
+      .process-steps { grid-template-columns: 1fr; }
+    }
+
+    /* â”€â”€ Testimonials â”€â”€ */
+    .testimonials-section {
+      padding-block: var(--space-24);
+      background-color: var(--bg-soft);
+    }
+    .carousel {
+      position: relative;
+      overflow: hidden;
+      margin-top: var(--space-12);
+    }
+    .carousel-track {
+      display: flex;
+      transition: transform var(--dur-slow) var(--ease-out);
+      will-change: transform;
+    }
+    .carousel-slide {
+      min-width: 100%;
+      padding: var(--space-2);
+    }
+    .testimonial-card {
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-2xl);
+      padding: var(--space-10);
+      max-width: 760px;
+      margin-inline: auto;
+      box-shadow: var(--shadow-md);
+    }
+    .testimonial-quote {
+      font-family: var(--font-display);
+      font-size: var(--text-h3);
+      font-weight: 500;
+      line-height: 1.5;
+      color: var(--text);
+      margin-bottom: var(--space-8);
+      position: relative;
+    }
+    .testimonial-quote::before {
+      content: '\201C';
+      font-size: 80px;
+      line-height: 0.6;
+      color: var(--gold);
+      opacity: 0.4;
+      font-family: Georgia, serif;
+      display: block;
+      margin-bottom: var(--space-4);
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+    }
+    .testimonial-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--navy), var(--gold-deep));
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFFFFF;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: var(--text-base);
+    }
+    .testimonial-name {
+      font-family: var(--font-display);
+      font-size: var(--text-base);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+    .testimonial-meta {
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+    }
+    .carousel-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-4);
+      margin-top: var(--space-8);
+    }
+    .carousel-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1.5px solid var(--border-strong);
+      background-color: var(--surface);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      transition: border-color var(--dur-fast), color var(--dur-fast), background-color var(--dur-fast);
+    }
+    .carousel-btn:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      background-color: color-mix(in srgb, var(--gold) 8%, var(--surface));
+    }
+    .carousel-dots {
+      display: flex;
+      gap: var(--space-2);
+      align-items: center;
+    }
+    .carousel-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--border-strong);
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: background-color var(--dur-fast), transform var(--dur-fast);
+    }
+    .carousel-dot.is-active {
+      background-color: var(--gold);
+      transform: scale(1.4);
+    }
+
+    /* â”€â”€ Pricing â”€â”€ */
+    .pricing-preview {
+      padding-block: var(--space-24);
+      background-color: var(--bg);
+    }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-6);
+      margin-top: var(--space-12);
+      align-items: start;
+    }
+    .pricing-card {
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-xl);
+      padding: var(--space-8);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-6);
+      transition: box-shadow var(--dur-base), transform var(--dur-base);
+    }
+    .pricing-card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-3px);
+    }
+    .pricing-card--featured {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 1px var(--gold), var(--shadow-lg);
+      position: relative;
+    }
+    .pricing-badge {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: var(--gold);
+      color: var(--navy);
+      font-family: var(--font-display);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: var(--space-1) var(--space-4);
+      border-radius: var(--r-full);
+      white-space: nowrap;
+    }
+    .pricing-tier {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .pricing-price {
+      display: flex;
+      align-items: baseline;
+      gap: var(--space-1);
+    }
+    .pricing-amount {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 4vw, 44px);
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.04em;
+    }
+    .pricing-period {
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+    }
+    .pricing-desc {
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+      line-height: var(--text-base-lh);
+    }
+    .pricing-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+      flex: 1;
+    }
+    .pricing-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-3);
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+    }
+    .pricing-features li::before {
+      content: '';
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      min-width: 16px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'%3E%3Ccircle cx='8' cy='8' r='7.5' stroke='%23EFC14F' stroke-width='1'/%3E%3Cpath d='M5 8l2 2 4-4' stroke='%23EFC14F' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-size: contain;
+      margin-top: 1px;
+    }
+    .pricing-cta { margin-top: auto; }
+    .pricing-footer {
+      text-align: center;
+      margin-top: var(--space-10);
+    }
+    @media (max-width: 900px) {
+      .pricing-grid { grid-template-columns: 1fr; max-width: 480px; margin-inline: auto; }
+    }
+
+    /* â”€â”€ CTA Band â”€â”€ */
+    .cta-band {
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-soft) 50%, var(--gold) 100%);
+      background-size: 200% 200%;
+      animation: gradientShift 12s ease infinite;
+      padding-block: var(--space-16);
+      text-align: center;
+    }
+    .cta-band-heading {
+      font-family: var(--font-display);
+      font-size: var(--text-h1);
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: -0.04em;
+      margin-bottom: var(--space-4);
+    }
+    .cta-band-sub {
+      font-size: var(--text-lg);
+      color: color-mix(in srgb, var(--navy) 72%, transparent);
+      margin-bottom: var(--space-8);
+      max-width: 480px;
+      margin-inline: auto;
+    }
+    .cta-band-form {
+      display: flex;
+      gap: var(--space-3);
+      max-width: 480px;
+      margin-inline: auto;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .cta-band-form .form-input {
+      flex: 1;
+      min-width: 220px;
+      border-color: color-mix(in srgb, var(--navy) 25%, transparent);
+      background-color: rgba(255,255,255,0.8);
+    }
+    .cta-band-form .form-input:focus {
+      background-color: #FFFFFF;
+    }
+    .btn-cta-navy {
+      background-color: var(--navy);
+      color: #FFFFFF;
+      border-color: var(--navy);
+      font-family: var(--font-display);
+      font-weight: 700;
+    }
+    .btn-cta-navy:hover {
+      background-color: color-mix(in srgb, var(--navy) 80%, var(--navy-graphite));
+      border-color: var(--navy);
+      color: #FFFFFF;
+      text-decoration: none;
+      transform: translateY(-1px);
+    }
+
+    /* â”€â”€ Footer extras â”€â”€ */
+    .footer-social {
+      display: flex;
+      gap: var(--space-3);
+      margin-top: var(--space-2);
+    }
+    .footer-social-link {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--r-md);
+      background-color: rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.55);
+      transition: background-color var(--dur-fast), color var(--dur-fast);
+      text-decoration: none;
+    }
+    .footer-social-link:hover {
+      background-color: color-mix(in srgb, var(--gold) 20%, transparent);
+      color: var(--gold);
+      text-decoration: none;
+    }
+    .footer-newsletter {
+      margin-top: var(--space-6);
+      display: flex;
+      gap: var(--space-2);
+    }
+    .footer-newsletter-input {
+      flex: 1;
+      padding: var(--space-2) var(--space-4);
+      font-size: var(--text-sm);
+      border-radius: var(--r-md);
+      border: 1.5px solid rgba(255,255,255,0.18);
+      background-color: rgba(255,255,255,0.06);
+      color: #FFFFFF;
+      font-family: var(--font-body);
+    }
+    .footer-newsletter-input::placeholder { color: rgba(255,255,255,0.35); }
+    .footer-newsletter-input:focus {
+      outline: 2px solid var(--gold);
+      outline-offset: 0;
+      background-color: rgba(255,255,255,0.1);
+    }
+    .footer-newsletter-btn {
+      padding: var(--space-2) var(--space-4);
+      background-color: var(--gold);
+      color: var(--navy);
+      font-family: var(--font-display);
+      font-size: var(--text-sm);
+      font-weight: 700;
+      border: none;
+      border-radius: var(--r-md);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background-color var(--dur-fast);
+    }
+    .footer-newsletter-btn:hover { background-color: var(--gold-deep); }
+
+    /* â”€â”€ Skip link override to match base.css class name â”€â”€ */
+    .skip-link {
+      position: absolute;
+      top: var(--space-3);
+      left: var(--space-3);
+      z-index: var(--z-toast);
+      padding: var(--space-3) var(--space-6);
+      background-color: var(--accent);
+      color: var(--accent-text);
+      font-weight: 700;
+      font-family: var(--font-display);
+      border-radius: var(--r-md);
+      transform: translateY(-200%);
+      transition: transform var(--dur-fast) var(--ease-out);
+      text-decoration: none;
+    }
+    .skip-link:focus {
+      transform: translateY(0);
+      outline: 2px solid var(--accent-text);
+      outline-offset: 2px;
+    }
+
+    /* â”€â”€ Nav logo mark â”€â”€ */
+    .nav-logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-family: var(--font-display);
+      font-size: var(--text-h3);
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.03em;
+      flex-shrink: 0;
+    }
+    .nav-logo-wrap:hover { color: var(--text); text-decoration: none; }
+    /* â”€â”€ Responsive helpers â”€â”€ */
+    @media (max-width: 1023px) {
+      .desktop-nav-cta { display: none; }
+    }
+  </style>
+
+  <!-- Scripts (deferred) -->
+  <script src="assets/js/theme.js" defer></script>
+  <script src="assets/js/nav.js" defer></script>
+  <script src="assets/js/reveal.js" defer></script>
+  <script src="assets/js/particles.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+</head>
+
+<body>
+
+  <!-- Skip to main content -->
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+       NAVIGATION HEADER
+  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+  <header class="nav-header" role="banner">
+    <div class="container">
+      <nav class="nav-inner" aria-label="Main navigation">
+
+        <!-- Logo -->
+        <a href="index.html" class="nav-logo-wrap" aria-label="Vastome â€” home">
+          <span class="brand-icon" aria-hidden="true">
+            <span class="bracket-l"></span>
+            <span class="bracket-r"></span>
+            <span class="dl dl1"></span>
+            <span class="dl dl2"></span>
+            <span class="node"></span>
+            <span class="cursor"></span>
+            <span class="dl dl3"></span>
+          </span>
+          <span class="logo-wordmark">Vastome</span>
+        </a>
+
+        <!-- Desktop nav links -->
+        <ul class="nav-links" role="list">
+          <li><a href="index.html"    class="nav-link is-active" aria-current="page">Home</a></li>
+          <li><a href="services.html" class="nav-link">Services</a></li>
+          <li><a href="solutions.html" class="nav-link">Solutions</a></li>
+          <li><a href="work.html"     class="nav-link">Work</a></li>
+          <li><a href="pricing.html"  class="nav-link">Pricing</a></li>
+          <li><a href="blog.html"     class="nav-link">Blog</a></li>
+          <li><a href="about.html"    class="nav-link">About</a></li>
+          <li><a href="contact.html"  class="nav-link">Contact</a></li>
+        </ul>
+
+        <!-- Actions -->
+        <div class="nav-actions">
+          <!-- Theme toggle -->
+          <button
+            class="theme-toggle"
+            type="button"
+            data-theme-toggle
+            aria-label="Toggle dark mode"
+            aria-checked="false"
+            role="switch"
+          >
+            <span class="theme-toggle-thumb" aria-hidden="true">
+              <!-- Sun icon (light mode) -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+            </span>
+          </button>
+
+          <!-- CTA -->
+          <a href="contact.html" class="btn btn-accent desktop-nav-cta" aria-label="Get started with Vastome">
+            Get started
+          </a>
+
+          <!-- Mobile hamburger -->
+          <button
+            class="nav-toggle"
+            type="button"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+            aria-controls="nav-drawer"
+            data-nav-toggle
+          >
+            <span class="nav-toggle-bar" aria-hidden="true"></span>
+            <span class="nav-toggle-bar" aria-hidden="true"></span>
+            <span class="nav-toggle-bar" aria-hidden="true"></span>
+          </button>
+        </div>
+
+      </nav>
+    </div>
+  </header>
+
+  <!-- Mobile nav drawer -->
+  <div id="nav-drawer" class="nav-drawer" role="dialog" aria-label="Navigation menu" aria-modal="true" data-nav-drawer>
+    <div class="nav-drawer-backdrop" data-nav-close aria-hidden="true"></div>
+    <div class="nav-drawer-panel">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-6);">
+        <a href="index.html" class="nav-logo-wrap" style="font-size:var(--text-base);">
+          <span class="brand-icon" aria-hidden="true" style="transform:scale(.8);transform-origin:left center;"><span class="bracket-l"></span><span class="bracket-r"></span><span class="dl dl1"></span><span class="dl dl2"></span><span class="node"></span><span class="cursor"></span><span class="dl dl3"></span></span>
+          <span class="logo-wordmark">Vastome</span>
+        </a>
+        <button type="button" class="btn btn-ghost btn-icon" aria-label="Close menu" data-nav-close>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <nav aria-label="Mobile navigation">
+        <a href="index.html"     class="nav-drawer-link is-active" aria-current="page">Home</a>
+        <a href="services.html"  class="nav-drawer-link">Services</a>
+        <a href="solutions.html" class="nav-drawer-link">Solutions</a>
+        <a href="work.html"      class="nav-drawer-link">Work</a>
+        <a href="pricing.html"   class="nav-drawer-link">Pricing</a>
+        <a href="blog.html"      class="nav-drawer-link">Blog</a>
+        <a href="about.html"     class="nav-drawer-link">About</a>
+        <a href="contact.html"   class="nav-drawer-link">Contact</a>
+      </nav>
+      <div style="margin-top:var(--space-6);padding-top:var(--space-6);border-top:1px solid var(--border);">
+        <a href="contact.html" class="btn btn-accent w-full" style="justify-content:center;">Get started</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+       MAIN CONTENT
+  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+  <main id="main-content" tabindex="-1">
+
+    <!-- â”€â”€ HERO â”€â”€ -->
+    <section class="hero-section" aria-labelledby="hero-heading">
+
+      <!-- Particle canvas -->
+      <canvas id="hero-canvas" class="hero-canvas" aria-hidden="true"></canvas>
+
+      <!-- Hero background SVG overlay -->
+      <img src="assets/img/hero-bg.svg" class="hero-bg-svg" alt="" role="presentation" aria-hidden="true" />
+
+      <!-- Pattern grid overlay -->
+      <div class="hero-pattern" aria-hidden="true"></div>
+
+      <div class="container hero-content">
+        <p class="hero-eyebrow reveal" aria-label="Enterprise Software Platform">Enterprise Software Platform</p>
+
+        <h1 id="hero-heading" class="hero-heading reveal reveal-delay-1">
+          <span class="hero-heading-line">Build smart.</span>
+          <span class="hero-heading-line hero-heading-line--accent">Scale further.</span>
+        </h1>
+
+        <p class="hero-subheadline reveal reveal-delay-2">
+          Vastome delivers cloud architecture, AI/ML engineering, and custom SaaS platforms that help enterprises ship faster, scale smarter, and stay secure.
+        </p>
+
+        <div class="hero-ctas reveal reveal-delay-3">
+          <a href="contact.html" class="btn btn-accent btn-lg" aria-label="Get started with Vastome">
+            Get started
+          </a>
+          <a href="#demo" class="btn btn-lg btn-ghost-hero" aria-label="Watch our product demo">
+            <!-- Circle-play icon (inline SVG) -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+            Watch demo
+          </a>
+        </div>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="scroll-indicator" aria-hidden="true">
+        <span class="scroll-indicator-label">Scroll</span>
+        <svg class="scroll-chevron animate-bounce-down" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+
+    </section>
+
+    <!-- â”€â”€ LOGO CLOUD â”€â”€ -->
+    <section class="logo-cloud" aria-label="Trusted by teams at these companies">
+      <div class="container">
+        <p class="logo-cloud-label reveal">Trusted by teams at</p>
+        <div class="marquee-wrapper reveal reveal-delay-1">
+          <!-- Duplicate items for seamless loop -->
+          <div class="marquee-track" aria-hidden="true">
+            <span class="client-logo">Acme Corp</span>
+            <span class="client-logo">Nexus AI</span>
+            <span class="client-logo">CloudFirst</span>
+            <span class="client-logo">DataFlow</span>
+            <span class="client-logo">TechVentures</span>
+            <span class="client-logo">PlatformX</span>
+            <!-- Duplicate for loop -->
+            <span class="client-logo">Acme Corp</span>
+            <span class="client-logo">Nexus AI</span>
+            <span class="client-logo">CloudFirst</span>
+            <span class="client-logo">DataFlow</span>
+            <span class="client-logo">TechVentures</span>
+            <span class="client-logo">PlatformX</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- â”€â”€ SERVICES PREVIEW â”€â”€ -->
+    <section class="services-section" id="services" aria-labelledby="services-heading">
+      <div class="container">
+        <div class="section-intro reveal">
+          <span class="section-eyebrow">What we do</span>
+          <h2 id="services-heading" class="section-heading">Expert services,<br>end to end</h2>
+          <p class="section-subheading">From infrastructure to intelligent applications â€” Vastome covers every layer of modern software delivery.</p>
+        </div>
+
+        <div class="card-grid">
+
+          <!-- Cloud Architecture -->
+          <article class="service-card reveal reveal-delay-1" aria-labelledby="service-cloud">
+            <div class="service-card-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 0 1 0 9Z"/></svg>
+            </div>
+            <img src="assets/img/illustrations/cloud-architecture.svg" class="service-illustration" alt="Cloud architecture illustration" loading="lazy" />
+            <h3 id="service-cloud" class="service-card-title">Cloud Architecture</h3>
+            <p class="service-card-desc">Multi-cloud and hybrid strategies â€” AWS, GCP, and Azure â€” designed for resilience, cost efficiency, and infinite scale.</p>
+            <a href="services.html#cloud" class="service-card-link" aria-label="Learn more about Cloud Architecture">Learn more <span aria-hidden="true">â†’</span></a>
+          </article>
+
+          <!-- AI/ML Engineering -->
+          <article class="service-card reveal reveal-delay-2" aria-labelledby="service-ai">
+            <div class="service-card-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 1 4 4v1h1a3 3 0 0 1 0 6h-1v1a4 4 0 0 1-8 0v-1H7a3 3 0 0 1 0-6h1V6a4 4 0 0 1 4-4Z"/><circle cx="12" cy="12" r="1"/></svg>
+            </div>
+            <img src="assets/img/illustrations/ai-ml.svg" class="service-illustration" alt="AI/ML engineering illustration" loading="lazy" />
+            <h3 id="service-ai" class="service-card-title">AI/ML Engineering</h3>
+            <p class="service-card-desc">Production-grade machine learning pipelines, LLM integrations, and intelligent automation that drives real business outcomes.</p>
+            <a href="services.html#ai-ml" class="service-card-link" aria-label="Learn more about AI/ML Engineering">Learn more <span aria-hidden="true">â†’</span></a>
+          </article>
+
+          <!-- Custom SaaS -->
+          <article class="service-card reveal reveal-delay-3" aria-labelledby="service-saas">
+            <div class="service-card-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg>
+            </div>
+            <img src="assets/img/illustrations/custom-saas.svg" class="service-illustration" alt="Custom SaaS platform illustration" loading="lazy" />
+            <h3 id="service-saas" class="service-card-title">Custom SaaS Platforms</h3>
+            <p class="service-card-desc">Bespoke multi-tenant SaaS products built for growth â€” from MVP to enterprise-grade platform in record time.</p>
+            <a href="services.html#saas" class="service-card-link" aria-label="Learn more about Custom SaaS Platforms">Learn more <span aria-hidden="true">â†’</span></a>
+          </article>
+
+          <!-- DevOps & Platform -->
+          <article class="service-card reveal reveal-delay-1" aria-labelledby="service-devops">
+            <div class="service-card-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+            </div>
+            <img src="assets/img/illustrations/devops.svg" class="service-illustration" alt="DevOps and platform engineering illustration" loading="lazy" />
+            <h3 id="service-devops" class="service-card-title">DevOps &amp; Platform</h3>
+            <p class="service-card-desc">CI/CD pipelines, Kubernetes orchestration, IaC, and developer platforms that accelerate delivery velocity.</p>
+            <a href="services.html#devops" class="service-card-link" aria-label="Learn more about DevOps and Platform Engineering">Learn more <span aria-hidden="true">â†’</span></a>
+          </article>
+
+          <!-- Data Engineering -->
+          <article class="service-card reveal reveal-delay-2" aria-labelledby="service-data">
+            <div class="service-card-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></svg>
+            </div>
+            <img src="assets/img/illustrations/data-engineering.svg" class="service-illustration" alt="Data engineering illustration" loading="lazy" />
+            <h3 id="service-data" class="service-card-title">Data Engineering</h3>
+            <p class="service-card-desc">Lakehouse architectures, real-time streaming, and analytics pipelines that turn raw data into strategic advantage.</p>
+            <a href="services.html#data" class="service-card-link" aria-label="Learn more about Data Engineering">Learn more <span aria-hidden="true">â†’</span></a>
+          </article>
+
+          <!-- Cybersecurity -->
+          <article class="service-card reveal reveal-delay-3" aria-labelledby="service-sec">
+            <div class="service-card-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <img src="assets/img/illustrations/cybersecurity.svg" class="service-illustration" alt="Cybersecurity illustration" loading="lazy" />
+            <h3 id="service-sec" class="service-card-title">Cybersecurity</h3>
+            <p class="service-card-desc">Zero-trust frameworks, penetration testing, compliance automation, and 24/7 threat monitoring to keep you secure.</p>
+            <a href="services.html#security" class="service-card-link" aria-label="Learn more about Cybersecurity">Learn more <span aria-hidden="true">â†’</span></a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- â”€â”€ STATS BAND â”€â”€ -->
+    <section class="stats-band" aria-labelledby="stats-heading">
+      <div class="container">
+        <h2 id="stats-heading" class="sr-only">Vastome by the numbers</h2>
+        <div class="stats-grid">
+
+          <div class="stat-band-item reveal">
+            <div class="stat-band-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <span class="stat-band-number stat-number" data-target="50" data-suffix="+" aria-label="50 plus engineers">50+</span>
+            <span class="stat-band-label">Engineers</span>
+          </div>
+
+          <div class="stat-band-item reveal reveal-delay-1">
+            <div class="stat-band-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </div>
+            <span class="stat-band-number stat-number" data-target="12" aria-label="12 countries">12</span>
+            <span class="stat-band-label">Countries</span>
+          </div>
+
+          <div class="stat-band-item reveal reveal-delay-2">
+            <div class="stat-band-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            </div>
+            <span class="stat-band-number stat-number" data-target="99.99" data-decimals="2" data-suffix="%" aria-label="99.99 percent uptime">99.99%</span>
+            <span class="stat-band-label">Uptime</span>
+          </div>
+
+          <div class="stat-band-item reveal reveal-delay-3">
+            <div class="stat-band-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <span class="stat-band-number stat-number" data-target="1.2" data-decimals="1" data-prefix="$" data-suffix="B" aria-label="1.2 billion dollars processed">$1.2B</span>
+            <span class="stat-band-label">Processed</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- â”€â”€ FEATURED CASE STUDY â”€â”€ -->
+    <section class="case-study-feature" aria-labelledby="case-study-heading">
+      <div class="container">
+        <div class="case-study-split">
+
+          <!-- Image / illustration (left) -->
+          <div class="case-study-image reveal reveal-left" aria-label="Case study visual">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 360" width="480" height="360" aria-hidden="true" role="img">
+              <defs>
+                <linearGradient id="csGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#0F172A"/>
+                  <stop offset="100%" style="stop-color:#1A1A2E"/>
+                </linearGradient>
+              </defs>
+              <rect width="480" height="360" fill="url(#csGrad)" rx="16"/>
+              <!-- Decorative grid lines -->
+              <line x1="0" y1="90" x2="480" y2="90" stroke="#EFC14F" stroke-opacity="0.08" stroke-width="1"/>
+              <line x1="0" y1="180" x2="480" y2="180" stroke="#EFC14F" stroke-opacity="0.08" stroke-width="1"/>
+              <line x1="0" y1="270" x2="480" y2="270" stroke="#EFC14F" stroke-opacity="0.08" stroke-width="1"/>
+              <line x1="120" y1="0" x2="120" y2="360" stroke="#EFC14F" stroke-opacity="0.08" stroke-width="1"/>
+              <line x1="240" y1="0" x2="240" y2="360" stroke="#EFC14F" stroke-opacity="0.08" stroke-width="1"/>
+              <line x1="360" y1="0" x2="360" y2="360" stroke="#EFC14F" stroke-opacity="0.08" stroke-width="1"/>
+              <!-- Bar chart -->
+              <rect x="60" y="220" width="40" height="80" rx="4" fill="#EFC14F" fill-opacity="0.6"/>
+              <rect x="120" y="180" width="40" height="120" rx="4" fill="#EFC14F" fill-opacity="0.7"/>
+              <rect x="180" y="140" width="40" height="160" rx="4" fill="#EFC14F" fill-opacity="0.8"/>
+              <rect x="240" y="100" width="40" height="200" rx="4" fill="#EFC14F" fill-opacity="0.9"/>
+              <rect x="300" y="70" width="40" height="230" rx="4" fill="#EFC14F"/>
+              <rect x="360" y="50" width="40" height="250" rx="4" fill="#EFC14F"/>
+              <!-- Trend line -->
+              <polyline points="80,225 140,185 200,145 260,105 320,75 380,55" stroke="#FFFFFF" stroke-width="2" fill="none" stroke-dasharray="6,3" opacity="0.5"/>
+              <!-- Label -->
+              <text x="240" y="340" fill="white" fill-opacity="0.35" font-size="11" text-anchor="middle" font-family="JetBrains Mono, monospace" letter-spacing="2">REVENUE GROWTH 2020â€“2024</text>
+            </svg>
+          </div>
+
+          <!-- Copy (right) -->
+          <div class="case-study-copy reveal reveal-right">
+            <span class="case-study-eyebrow">Featured Case Study</span>
+            <h2 id="case-study-heading" class="case-study-heading">How CloudFirst scaled to 10M users without downtime</h2>
+            <p class="case-study-desc">When CloudFirst needed to 10Ã— their user base in under six months, their legacy monolith was the bottleneck. Vastome redesigned their entire cloud architecture â€” migrating to a Kubernetes-native microservices platform on AWS with zero-downtime deployments.</p>
+            <p class="case-study-desc">The result: 10Ã— capacity, 60% cost reduction, and a 99.99% uptime SLA that held through peak traffic events.</p>
+
+            <div class="case-study-metrics" aria-label="Key performance indicators">
+              <div class="kpi">
+                <span class="kpi-value">10Ã—</span>
+                <span class="kpi-label">User Capacity</span>
+              </div>
+              <div class="kpi">
+                <span class="kpi-value">âˆ’60%</span>
+                <span class="kpi-label">Cloud Spend</span>
+              </div>
+              <div class="kpi">
+                <span class="kpi-value">0</span>
+                <span class="kpi-label">Downtime Hours</span>
+              </div>
+            </div>
+
+            <a href="work.html" class="btn btn-secondary btn-lg" aria-label="Read the full CloudFirst case study">
+              Read case study <span aria-hidden="true">â†’</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- â”€â”€ HOW WE WORK â”€â”€ -->
+    <section class="process-section" aria-labelledby="process-heading">
+      <div class="container">
+        <div class="section-intro text-center reveal" style="margin-inline:auto;max-width:560px;">
+          <span class="section-eyebrow">Our process</span>
+          <h2 id="process-heading" class="section-heading">How we work</h2>
+          <p class="section-subheading" style="margin-inline:auto;">A repeatable, transparent process that delivers confidence at every step.</p>
+        </div>
+
+        <div class="process-steps" role="list">
+
+          <div class="process-step reveal reveal-delay-1" role="listitem">
+            <div class="process-step-num" aria-hidden="true">01</div>
+            <p class="process-step-emoji" aria-hidden="true">ðŸ”</p>
+            <h3 class="process-step-title">Discover</h3>
+            <p class="process-step-desc">We audit your existing stack, map goals to constraints, and surface the risks most teams miss before writing a single line of code.</p>
+          </div>
+
+          <div class="process-step reveal reveal-delay-2" role="listitem">
+            <div class="process-step-num" aria-hidden="true">02</div>
+            <p class="process-step-emoji" aria-hidden="true">âœï¸</p>
+            <h3 class="process-step-title">Design</h3>
+            <p class="process-step-desc">Architecture blueprints, API contracts, and data models are reviewed and approved before build begins â€” eliminating costly rework.</p>
+          </div>
+
+          <div class="process-step reveal reveal-delay-3" role="listitem">
+            <div class="process-step-num" aria-hidden="true">03</div>
+            <p class="process-step-emoji" aria-hidden="true">âš¡</p>
+            <h3 class="process-step-title">Build</h3>
+            <p class="process-step-desc">Agile sprints with daily standups, continuous integration, automated testing, and transparent progress dashboards you can monitor in real time.</p>
+          </div>
+
+          <div class="process-step reveal reveal-delay-4" role="listitem">
+            <div class="process-step-num" aria-hidden="true">04</div>
+            <p class="process-step-emoji" aria-hidden="true">ðŸš€</p>
+            <h3 class="process-step-title">Scale</h3>
+            <p class="process-step-desc">We don't hand over and disappear. Ongoing SRE support, capacity planning, and performance optimisation keep you ahead as you grow.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- â”€â”€ TESTIMONIALS â”€â”€ -->
+    <section class="testimonials-section" aria-labelledby="testimonials-heading">
+      <div class="container">
+        <div class="section-intro text-center reveal" style="margin-inline:auto;max-width:500px;">
+          <span class="section-eyebrow">What clients say</span>
+          <h2 id="testimonials-heading" class="section-heading">Trusted by teams who ship</h2>
+        </div>
+
+        <div
+          class="carousel"
+          role="region"
+          aria-label="Client testimonials"
+          data-autoplay="true"
+          data-interval="5000"
+        >
+          <div class="carousel-track" aria-live="polite">
+
+            <div class="carousel-slide" role="group" aria-label="Testimonial 1 of 3">
+              <div class="testimonial-card">
+                <blockquote class="testimonial-quote">
+                  Vastome didn't just build infrastructure â€” they fundamentally changed how our engineering team thinks about scale. We went from firefighting incidents every week to deploying three times a day with zero downtime.
+                </blockquote>
+                <div class="testimonial-author">
+                  <div class="testimonial-avatar" aria-hidden="true">JL</div>
+                  <div>
+                    <p class="testimonial-name">Jessica Lee</p>
+                    <p class="testimonial-meta">VP Engineering â€” CloudFirst</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="carousel-slide" role="group" aria-label="Testimonial 2 of 3">
+              <div class="testimonial-card">
+                <blockquote class="testimonial-quote">
+                  The AI pipeline Vastome built for us cut our data processing time from 14 hours to 22 minutes. The ROI was visible within the first month â€” we extended the engagement immediately.
+                </blockquote>
+                <div class="testimonial-author">
+                  <div class="testimonial-avatar" aria-hidden="true">MR</div>
+                  <div>
+                    <p class="testimonial-name">Marcus Reid</p>
+                    <p class="testimonial-meta">CTO â€” DataFlow Analytics</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="carousel-slide" role="group" aria-label="Testimonial 3 of 3">
+              <div class="testimonial-card">
+                <blockquote class="testimonial-quote">
+                  We needed a partner who could move at startup speed without sacrificing enterprise rigour. Vastome nailed both. Our SOC 2 audit was the smoothest we've ever had.
+                </blockquote>
+                <div class="testimonial-author">
+                  <div class="testimonial-avatar" aria-hidden="true">SP</div>
+                  <div>
+                    <p class="testimonial-name">Sarah Park</p>
+                    <p class="testimonial-meta">Director of Security â€” TechVentures</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Controls -->
+          <div class="carousel-controls" aria-label="Testimonial carousel controls">
+            <button class="carousel-btn" type="button" data-dir="prev" aria-label="Previous testimonial">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <div class="carousel-dots" role="group" aria-label="Slide indicators"></div>
+            <button class="carousel-btn" type="button" data-dir="next" aria-label="Next testimonial">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- â”€â”€ PRICING PREVIEW â”€â”€ -->
+    <section class="pricing-preview" aria-labelledby="pricing-heading">
+      <div class="container">
+        <div class="section-intro text-center reveal" style="margin-inline:auto;max-width:520px;">
+          <span class="section-eyebrow">Pricing</span>
+          <h2 id="pricing-heading" class="section-heading">Simple, transparent pricing</h2>
+          <p class="section-subheading" style="margin-inline:auto;">No hidden fees. No surprises. Pick the plan that fits your scale.</p>
+        </div>
+
+        <div class="pricing-grid">
+
+          <!-- Starter -->
+          <div class="pricing-card reveal reveal-delay-1">
+            <div>
+              <p class="pricing-tier">Starter</p>
+              <div class="pricing-price" aria-label="$499 per month">
+                <span class="pricing-amount">$499</span>
+                <span class="pricing-period">/mo</span>
+              </div>
+            </div>
+            <p class="pricing-desc">Perfect for growing teams shipping their first production service.</p>
+            <ul class="pricing-features" aria-label="Starter plan features">
+              <li>Up to 3 services</li>
+              <li>Cloud setup &amp; review</li>
+              <li>CI/CD pipeline configuration</li>
+              <li>Monthly architecture review</li>
+              <li>Email support</li>
+            </ul>
+            <div class="pricing-cta">
+              <a href="contact.html?plan=starter" class="btn btn-secondary w-full" style="justify-content:center;" aria-label="Get started with the Starter plan">Get started</a>
+            </div>
+          </div>
+
+          <!-- Growth (featured) -->
+          <div class="pricing-card pricing-card--featured reveal reveal-delay-2" style="position:relative;">
+            <span class="pricing-badge" aria-label="Most popular plan">Most popular</span>
+            <div>
+              <p class="pricing-tier">Growth</p>
+              <div class="pricing-price" aria-label="$1499 per month">
+                <span class="pricing-amount">$1,499</span>
+                <span class="pricing-period">/mo</span>
+              </div>
+            </div>
+            <p class="pricing-desc">For teams serious about scale, performance, and reliability.</p>
+            <ul class="pricing-features" aria-label="Growth plan features">
+              <li>Unlimited services</li>
+              <li>Full cloud architecture design</li>
+              <li>AI/ML pipeline integration</li>
+              <li>Weekly engineering sprints</li>
+              <li>Priority Slack support</li>
+            </ul>
+            <div class="pricing-cta">
+              <a href="contact.html?plan=growth" class="btn btn-accent w-full" style="justify-content:center;" aria-label="Get started with the Growth plan">Get started</a>
+            </div>
+          </div>
+
+          <!-- Enterprise -->
+          <div class="pricing-card reveal reveal-delay-3">
+            <div>
+              <p class="pricing-tier">Enterprise</p>
+              <div class="pricing-price" aria-label="Custom enterprise pricing">
+                <span class="pricing-amount">Custom</span>
+              </div>
+            </div>
+            <p class="pricing-desc">Dedicated team, custom SLAs, and full-spectrum platform ownership.</p>
+            <ul class="pricing-features" aria-label="Enterprise plan features">
+              <li>Dedicated engineering pod</li>
+              <li>Custom SLA &amp; compliance</li>
+              <li>On-site workshops available</li>
+              <li>24/7 SRE on-call support</li>
+              <li>White-glove onboarding</li>
+            </ul>
+            <div class="pricing-cta">
+              <a href="contact.html?plan=enterprise" class="btn btn-primary w-full" style="justify-content:center;" aria-label="Contact us about Enterprise pricing">Talk to us</a>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="pricing-footer reveal">
+          <a href="pricing.html" class="service-card-link" style="justify-content:center;font-size:var(--text-base);" aria-label="View full pricing details">
+            View full pricing <span aria-hidden="true">â†’</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- â”€â”€ CTA BAND â”€â”€ -->
+    <section class="cta-band" aria-labelledby="cta-band-heading">
+      <div class="container">
+        <h2 id="cta-band-heading" class="cta-band-heading reveal">Ready to build?</h2>
+        <p class="cta-band-sub reveal reveal-delay-1">Tell us about your project â€” we'll get back to you within 24 hours.</p>
+        <form class="cta-band-form reveal reveal-delay-2" aria-label="Get started contact form" novalidate>
+          <label for="cta-email" class="sr-only">Work email address</label>
+          <input
+            id="cta-email"
+            type="email"
+            class="form-input"
+            placeholder="your@company.com"
+            autocomplete="email"
+            aria-label="Enter your work email"
+          />
+          <button type="submit" class="btn btn-cta-navy btn-lg" aria-label="Submit to get started">
+            Get started
+          </button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+       FOOTER
+  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <!-- Brand column -->
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo" aria-label="Vastome â€” home">
+            <span style="display:inline-flex;align-items:center;gap:8px;">
+              <span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;background:var(--gold);color:var(--navy);font-family:var(--font-mono);font-size:11px;font-weight:700;border-radius:6px;" aria-hidden="true">[S]</span>
+              Vastome
+            </span>
+          </a>
+          <p class="footer-tagline">Build smart. Scale further.<br>Enterprise software for the teams who move fast and ship with confidence.</p>
+
+          <!-- Social icons -->
+          <div class="footer-social" aria-label="Vastome social links">
+            <a href="https://github.com" class="footer-social-link" target="_blank" rel="noopener noreferrer" aria-label="Vastome on GitHub">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.29-.01-1.05-.02-2.06-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.21.08 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.31 3.5 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.31-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23A11.5 11.5 0 0 1 12 5.8c1.02.005 2.05.14 3.01.41 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.87.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.49 5.92.43.37.82 1.1.82 2.22 0 1.61-.01 2.9-.01 3.29 0 .32.22.7.83.58A12.01 12.01 0 0 0 24 12C24 5.37 18.63 0 12 0z"/></svg>
+            </a>
+            <a href="https://linkedin.com" class="footer-social-link" target="_blank" rel="noopener noreferrer" aria-label="Vastome on LinkedIn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.37V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zm1.78 13.02H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0z"/></svg>
+            </a>
+            <a href="https://twitter.com" class="footer-social-link" target="_blank" rel="noopener noreferrer" aria-label="Vastome on X (Twitter)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.24 2h3.14l-6.86 7.84L22.5 22h-6.31l-4.95-6.47L5.5 22H2.36l7.34-8.39L2 2h6.47l4.47 5.84L18.24 2zm-1.1 17.98h1.74L6.95 3.74H5.09l12.05 16.24z"/></svg>
+            </a>
+          </div>
+
+          <!-- Newsletter -->
+          <div>
+            <p style="font-size:var(--text-sm);color:rgba(255,255,255,0.55);margin-bottom:var(--space-2);">Get insights in your inbox</p>
+            <form class="footer-newsletter" aria-label="Newsletter signup">
+              <label for="footer-email" class="sr-only">Email address for newsletter</label>
+              <input id="footer-email" type="email" class="footer-newsletter-input" placeholder="you@company.com" autocomplete="email" />
+              <button type="submit" class="footer-newsletter-btn">Subscribe</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Product column -->
+        <nav aria-label="Product links">
+          <p class="footer-col-title">Product</p>
+          <ul class="footer-links" role="list">
+            <li><a href="services.html">Services</a></li>
+            <li><a href="solutions.html">Solutions</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="work.html">Case Studies</a></li>
+            <li><a href="docs.html">API Docs</a></li>
+          </ul>
+        </nav>
+
+        <!-- Company column -->
+        <nav aria-label="Company links">
+          <p class="footer-col-title">Company</p>
+          <ul class="footer-links" role="list">
+            <li><a href="about.html">About</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="careers.html">Careers</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+
+        <!-- Resources + Legal column -->
+        <div>
+          <nav aria-label="Resources links">
+            <p class="footer-col-title">Resources</p>
+            <ul class="footer-links" role="list">
+              <li><a href="brand.html">Brand Guide</a></li>
+              <li><a href="docs.html">Documentation</a></li>
+              <li><a href="status.html">Status</a></li>
+              <li><a href="support.html">Support</a></li>
+            </ul>
+          </nav>
+          <nav aria-label="Legal links" style="margin-top:var(--space-8);">
+            <p class="footer-col-title">Legal</p>
+            <ul class="footer-links" role="list">
+              <li><a href="privacy.html">Privacy Policy</a></li>
+              <li><a href="terms.html">Terms of Service</a></li>
+              <li><a href="cookies.html">Cookie Policy</a></li>
+              <li><a href="security.html">Security</a></li>
+            </ul>
+          </nav>
+        </div>
+
+      </div>
+
+      <!-- Footer bottom bar -->
+      <div class="footer-bottom">
+        <p class="footer-copy">
+          &copy; <span id="footer-year">2025</span> Vastome Ltd. All rights reserved.
+        </p>
+        <p class="footer-copy">
+          Built with <span aria-label="love">â¤ï¸</span> by Vastome
+        </p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Dynamic footer year -->
+  <script>
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>

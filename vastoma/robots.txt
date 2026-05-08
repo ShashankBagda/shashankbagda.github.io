@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /Vastoma/
-
-Sitemap: https://shashankbagda.github.io/Vastoma/sitemap.xml

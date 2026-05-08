@@ -1,0 +1,325 @@
+/* ============================================================
+   Vastome DESIGN SYSTEM v2.0 — ANIMATIONS
+   Keyframes, reveal helpers, motion preferences.
+   ============================================================ */
+
+/* ── Keyframes ── */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.05); }
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(100%); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+
+@keyframes slideOutRight {
+  from { transform: translateX(0);    opacity: 1; }
+  to   { transform: translateX(100%); opacity: 0; }
+}
+
+@keyframes progressFill {
+  from { width: 0; }
+  to   { width: 100%; }
+}
+
+@keyframes shimmer {
+  from { background-position: -200% 0; }
+  to   { background-position: 200% 0; }
+}
+
+@keyframes bounceDown {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(6px); }
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* ── Utility Animation Classes ── */
+
+.animate-fade-up {
+  animation: fadeUp var(--dur-slow) var(--ease-out) both;
+}
+
+.animate-fade-in {
+  animation: fadeIn var(--dur-base) var(--ease-out) both;
+}
+
+.animate-scale-in {
+  animation: scaleIn var(--dur-base) var(--ease-out) both;
+}
+
+.animate-float {
+  animation: float 4s var(--ease-in-out) infinite;
+}
+
+.animate-spin {
+  animation: spin 1.2s linear infinite;
+}
+
+.animate-pulse {
+  animation: pulse 2s var(--ease-in-out) infinite;
+}
+
+.animate-bounce-down {
+  animation: bounceDown 1.6s var(--ease-in-out) infinite;
+}
+
+.animate-shimmer {
+  background-size: 200% 100%;
+  animation: shimmer 1.6s linear infinite;
+}
+
+/* Cursor blink for typewriter effect */
+.cursor-blink {
+  display: inline-block;
+  width: 2px;
+  height: 1.1em;
+  background-color: var(--accent);
+  vertical-align: text-bottom;
+  animation: cursorBlink 1s step-end infinite;
+}
+
+/* Gradient shift — applied to hero background element */
+.gradient-shift {
+  background-size: 200% 200%;
+  animation: gradientShift 20s ease infinite;
+}
+
+/* ── Scroll Reveal ── */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  /* transition applied when .is-visible is added by JS */
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity var(--dur-slow) var(--ease-out),
+              transform var(--dur-slow) var(--ease-out);
+  will-change: auto;
+}
+
+/* Stagger delays for sibling elements */
+.reveal-delay-1.is-visible { transition-delay: 80ms; }
+.reveal-delay-2.is-visible { transition-delay: 160ms; }
+.reveal-delay-3.is-visible { transition-delay: 240ms; }
+.reveal-delay-4.is-visible { transition-delay: 320ms; }
+.reveal-delay-5.is-visible { transition-delay: 400ms; }
+.reveal-delay-6.is-visible { transition-delay: 480ms; }
+
+/* Reveal variants */
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-24px);
+}
+
+.reveal-left.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity var(--dur-slow) var(--ease-out),
+              transform var(--dur-slow) var(--ease-out);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(24px);
+}
+
+.reveal-right.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity var(--dur-slow) var(--ease-out),
+              transform var(--dur-slow) var(--ease-out);
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+.reveal-scale.is-visible {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity var(--dur-slow) var(--ease-out),
+              transform var(--dur-slow) var(--ease-out);
+}
+
+/* ── Loading Skeleton ── */
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--bg-muted) 25%,
+    var(--bg-soft) 50%,
+    var(--bg-muted) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.6s linear infinite;
+  border-radius: var(--r-md);
+  color: transparent;
+  user-select: none;
+}
+
+/* ── Page Transition ── */
+
+.page-enter {
+  animation: fadeIn var(--dur-base) var(--ease-out) both;
+}
+
+.page-exit {
+  animation: fadeIn var(--dur-fast) var(--ease-out) reverse both;
+}
+
+/* ── Ripple ── */
+
+.ripple-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple-wave {
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  background-color: rgba(255, 255, 255, 0.35);
+  animation: ripple 0.6s linear;
+  pointer-events: none;
+}
+
+/* ── Transition Helpers ── */
+
+.transition-none   { transition: none !important; }
+.transition-all    { transition: all var(--dur-base) var(--ease-out); }
+.transition-colors { transition: color var(--dur-fast), background-color var(--dur-fast), border-color var(--dur-fast); }
+.transition-shadow { transition: box-shadow var(--dur-base) var(--ease-out); }
+.transition-transform { transition: transform var(--dur-base) var(--ease-out); }
+
+/* ── Hover lift helpers ── */
+.hover-lift {
+  transition: transform var(--dur-base) var(--ease-out),
+              box-shadow var(--dur-base) var(--ease-out);
+}
+
+.hover-lift:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+/* ════════════════════════════════════════
+   REDUCED MOTION — disable everything
+   ════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Keep reveal elements visible immediately */
+  .reveal,
+  .reveal-left,
+  .reveal-right,
+  .reveal-scale {
+    opacity: 1;
+    transform: none;
+    transition: none !important;
+  }
+
+  .marquee-track {
+    animation: none;
+  }
+
+  .gradient-shift {
+    animation: none;
+  }
+
+  .cursor-blink {
+    animation: none;
+    opacity: 1;
+  }
+
+  .animate-float,
+  .animate-spin,
+  .animate-pulse,
+  .animate-bounce-down,
+  .animate-shimmer,
+  .skeleton {
+    animation: none;
+  }
+
+  .hover-lift:hover {
+    transform: none;
+  }
+}

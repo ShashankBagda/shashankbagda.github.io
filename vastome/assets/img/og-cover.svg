@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <title>Vastome — Build smart. Scale further.</title>
+  <defs>
+    <pattern id="grid" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M60 0H0V60" fill="none" stroke="#1E293B" stroke-width="1"/>
+    </pattern>
+    <linearGradient id="fade-left" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0F172A" stop-opacity="1"/>
+      <stop offset="60%" stop-color="#0F172A" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="fade-right" x1="100%" y1="0%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#0F172A" stop-opacity="1"/>
+      <stop offset="60%" stop-color="#0F172A" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#0F172A"/>
+
+  <!-- Grid pattern -->
+  <rect width="1200" height="630" fill="url(#grid)"/>
+
+  <!-- Edge fades -->
+  <rect width="400" height="630" fill="url(#fade-left)"/>
+  <rect x="800" width="400" height="630" fill="url(#fade-right)"/>
+
+  <!-- Geometric accent circles -->
+  <circle cx="960" cy="200" r="180" fill="none" stroke="#EFC14F" stroke-width="1" opacity="0.12"/>
+  <circle cx="960" cy="200" r="120" fill="none" stroke="#EFC14F" stroke-width="1" opacity="0.1"/>
+  <circle cx="960" cy="200" r="60" fill="none" stroke="#EFC14F" stroke-width="1.5" opacity="0.15"/>
+  <circle cx="240" cy="460" r="130" fill="none" stroke="#EFC14F" stroke-width="1" opacity="0.08"/>
+
+  <!-- Diagonal accent lines -->
+  <line x1="700" y1="0" x2="1100" y2="630" stroke="#EFC14F" stroke-width="1" opacity="0.06"/>
+  <line x1="750" y1="0" x2="1150" y2="630" stroke="#EFC14F" stroke-width="1" opacity="0.04"/>
+
+  <!-- Logo mark — bracket icon, centered-left -->
+  <g transform="translate(350, 230)">
+    <!-- Icon background -->
+    <rect width="80" height="80" rx="14" fill="#EFC14F" opacity="0.12"/>
+    <!-- Left bracket -->
+    <path d="M20 20h8v5H25v30h3v5H20V20z" fill="#EFC14F"/>
+    <!-- Right bracket -->
+    <path d="M60 20h-8v5h3v30h-3v5h8V20z" fill="#EFC14F"/>
+    <!-- S -->
+    <path d="M33 29h14v7h-12v4h12v11h-14v-7h12v-4h-12V29z" fill="#FFFFFF"/>
+  </g>
+
+  <!-- Wordmark -->
+  <text x="455" y="285" font-family="'Segoe UI', Arial, sans-serif" font-size="64" font-weight="700" letter-spacing="3" fill="#FFFFFF">Vastome</text>
+
+  <!-- Divider -->
+  <rect x="455" y="305" width="380" height="2" rx="1" fill="#EFC14F" opacity="0.6"/>
+
+  <!-- Tagline -->
+  <text x="456" y="345" font-family="'Segoe UI', Arial, sans-serif" font-size="26" font-weight="400" letter-spacing="2" fill="#EFC14F">Build smart. Scale further.</text>
+
+  <!-- Services row -->
+  <text x="456" y="400" font-family="'Segoe UI', Arial, sans-serif" font-size="14" letter-spacing="3" fill="#64748B" text-anchor="start">CLOUD · AI/ML · DEVOPS · DATA · SECURITY</text>
+
+  <!-- URL -->
+  <text x="600" y="590" font-family="'Segoe UI', Arial, sans-serif" font-size="18" fill="#475569" text-anchor="middle" letter-spacing="1">Vastome.com</text>
+</svg>

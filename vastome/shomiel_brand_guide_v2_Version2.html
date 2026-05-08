@@ -1,0 +1,1348 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vastome â€” Brand Style Guide v2.0</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   Vastome Â· DESIGN TOKEN SYSTEM
+   Single source of truth for web + product
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+*{margin:0;padding:0;box-sizing:border-box;}
+
+:root{
+  /* â”€â”€ BRAND CORE (mode-independent) â”€â”€ */
+  --navy:#0F172A;
+  --navy-graphite:#1A1A2E;
+  --gold:#EFC14F;
+  --gold-deep:#D4A437;
+  --gold-soft:#F7DB8A;
+  --red:#C62828;
+  --red-deep:#9B1C1C;
+
+  /* â”€â”€ SEMANTIC â”€â”€ */
+  --success:#10B981;
+  --warning:#F59E0B;
+  --error:#EF4444;
+  --info:#3B82F6;
+
+  /* â”€â”€ TYPOGRAPHY â”€â”€ */
+  --font-display:'Space Grotesk',sans-serif;
+  --font-body:'Inter',sans-serif;
+  --font-mono:'JetBrains Mono',monospace;
+
+  /* â”€â”€ SPACING (4px base) â”€â”€ */
+  --space-1:4px;  --space-2:8px;  --space-3:12px; --space-4:16px;
+  --space-5:20px; --space-6:24px; --space-8:32px; --space-10:40px;
+  --space-12:48px;--space-16:64px;--space-20:80px;--space-24:96px;
+
+  /* â”€â”€ RADIUS â”€â”€ */
+  --r-none:0;     --r-sm:4px;    --r-md:8px;
+  --r-lg:12px;    --r-xl:16px;   --r-2xl:24px;
+  --r-full:9999px;
+
+  /* â”€â”€ ELEVATION (light mode) â”€â”€ */
+  --shadow-xs:0 1px 2px rgba(15,23,42,.04);
+  --shadow-sm:0 1px 3px rgba(15,23,42,.06),0 1px 2px rgba(15,23,42,.04);
+  --shadow-md:0 4px 6px -1px rgba(15,23,42,.08),0 2px 4px -2px rgba(15,23,42,.05);
+  --shadow-lg:0 10px 15px -3px rgba(15,23,42,.10),0 4px 6px -4px rgba(15,23,42,.06);
+  --shadow-xl:0 20px 25px -5px rgba(15,23,42,.12),0 8px 10px -6px rgba(15,23,42,.08);
+  --shadow-glow:0 0 0 4px rgba(239,193,79,.25);
+
+  /* â”€â”€ MOTION â”€â”€ */
+  --ease-out:cubic-bezier(0.16,1,0.3,1);
+  --ease-in-out:cubic-bezier(0.65,0,0.35,1);
+  --dur-fast:150ms;
+  --dur-base:250ms;
+  --dur-slow:400ms;
+
+  /* â”€â”€ LAYOUT â”€â”€ */
+  --container:1240px;
+  --container-narrow:880px;
+}
+
+/* â”€â”€ LIGHT MODE TOKENS â”€â”€ */
+[data-theme="light"]{
+  --bg:#FFFFFF;
+  --bg-soft:#F8F8F8;
+  --bg-muted:#F3F4F6;
+  --surface:#FFFFFF;
+  --surface-raised:#FFFFFF;
+  --border:#E5E7EB;
+  --border-strong:#D1D5DB;
+  --text:#111827;
+  --text-secondary:#374151;
+  --text-muted:#6B7280;
+  --text-subtle:#9CA3AF;
+  --inverse:#0F172A;
+  --inverse-text:#F8F8F8;
+  --accent:var(--gold);
+  --accent-text:#0F172A;
+  --primary:var(--navy);
+  --primary-text:#FFFFFF;
+}
+
+/* â”€â”€ DARK MODE TOKENS â”€â”€ */
+[data-theme="dark"]{
+  --bg:#0B1120;
+  --bg-soft:#0F172A;
+  --bg-muted:#1A1A2E;
+  --surface:#111827;
+  --surface-raised:#1F2937;
+  --border:#1F2937;
+  --border-strong:#374151;
+  --text:#F8F8F8;
+  --text-secondary:#D1D5DB;
+  --text-muted:#9CA3AF;
+  --text-subtle:#6B7280;
+  --inverse:#F8F8F8;
+  --inverse-text:#0F172A;
+  --accent:var(--gold);
+  --accent-text:#0F172A;
+  --primary:var(--gold);
+  --primary-text:#0F172A;
+  --shadow-xs:0 1px 2px rgba(0,0,0,.4);
+  --shadow-sm:0 1px 3px rgba(0,0,0,.5);
+  --shadow-md:0 4px 6px -1px rgba(0,0,0,.5);
+  --shadow-lg:0 10px 15px -3px rgba(0,0,0,.6);
+  --shadow-xl:0 20px 25px -5px rgba(0,0,0,.7);
+}
+
+/* â”€â”€ BASE â”€â”€ */
+html{scroll-behavior:smooth;}
+body{
+  font-family:var(--font-body);
+  background:var(--bg);
+  color:var(--text);
+  transition:background var(--dur-base) var(--ease-out),color var(--dur-base) var(--ease-out);
+  -webkit-font-smoothing:antialiased;
+}
+
+/* â”€â”€ THEME TOGGLE â”€â”€ */
+.theme-toggle{
+  position:fixed;top:24px;right:24px;z-index:100;
+  display:flex;align-items:center;gap:8px;
+  background:var(--surface-raised);
+  border:1px solid var(--border);
+  border-radius:var(--r-full);
+  padding:6px;
+  box-shadow:var(--shadow-md);
+}
+.theme-toggle button{
+  border:none;background:transparent;cursor:pointer;
+  padding:8px 14px;border-radius:var(--r-full);
+  font-family:var(--font-mono);font-size:10px;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--text-muted);
+  transition:all var(--dur-fast) var(--ease-out);
+}
+.theme-toggle button.active{background:var(--navy);color:var(--gold);}
+[data-theme="dark"] .theme-toggle button.active{background:var(--gold);color:var(--navy);}
+
+/* â”€â”€ HEADER â”€â”€ */
+.header{
+  background:var(--navy);
+  padding:var(--space-12) var(--space-16);
+  display:flex;align-items:flex-end;justify-content:space-between;
+  border-bottom:3px solid var(--gold);
+}
+.brand-label{font-family:var(--font-display);color:var(--gold);font-size:11px;letter-spacing:.25em;text-transform:uppercase;font-weight:500;opacity:.85;}
+.doc-title{font-family:var(--font-display);color:#fff;font-size:13px;letter-spacing:.1em;text-transform:uppercase;font-weight:400;opacity:.5;}
+
+/* â”€â”€ NAV â”€â”€ */
+.nav{
+  position:sticky;top:0;z-index:50;
+  background:var(--surface);
+  border-bottom:1px solid var(--border);
+  padding:var(--space-3) var(--space-16);
+  display:flex;gap:var(--space-6);overflow-x:auto;
+  backdrop-filter:blur(8px);
+}
+.nav a{
+  font-family:var(--font-mono);font-size:10px;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--text-muted);text-decoration:none;
+  white-space:nowrap;padding:6px 0;border-bottom:2px solid transparent;
+  transition:color var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out);
+}
+.nav a:hover{color:var(--gold);border-bottom-color:var(--gold);}
+
+/* â”€â”€ SECTIONS â”€â”€ */
+.section{padding:var(--space-16);border-bottom:1px solid var(--border);background:var(--bg);}
+.section-alt{background:var(--bg-soft);}
+.section-label{
+  font-family:var(--font-display);font-size:10px;letter-spacing:.3em;
+  text-transform:uppercase;color:var(--text-muted);font-weight:500;
+  margin-bottom:var(--space-4);padding-bottom:var(--space-3);
+  border-bottom:1px solid var(--border);
+}
+.section-title{
+  font-family:var(--font-display);font-size:36px;font-weight:600;
+  color:var(--text);letter-spacing:-0.01em;margin-bottom:var(--space-3);
+}
+.section-intro{
+  font-size:15px;color:var(--text-muted);line-height:1.7;
+  max-width:760px;margin-bottom:var(--space-10);
+}
+
+/* â”€â”€ LOGO â”€â”€ */
+.logo-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;}
+.logo-box{padding:var(--space-12);display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:210px;position:relative;}
+.logo-mark{display:flex;align-items:center;gap:22px;}
+
+.brand-icon{position:relative;width:52px;height:44px;flex-shrink:0;}
+.brand-icon .bracket-l{position:absolute;left:0;top:0;width:8px;height:44px;border:2.5px solid currentColor;border-right:none;border-radius:3px 0 0 3px;}
+.brand-icon .bracket-r{position:absolute;right:0;top:0;width:8px;height:44px;border:2.5px solid currentColor;border-left:none;border-radius:0 3px 3px 0;}
+.brand-icon .dl{position:absolute;height:2.5px;border-radius:2px;}
+.brand-icon .dl1{top:8px;left:12px;right:14px;}
+.brand-icon .dl2{top:21px;left:12px;right:14px;}
+.brand-icon .dl3{bottom:8px;left:12px;right:22px;}
+.brand-icon .node{position:absolute;top:50%;right:19px;transform:translateY(-50%);width:8px;height:8px;border-radius:50%;background:var(--gold);}
+.brand-icon .cursor{position:absolute;top:50%;right:11px;transform:translateY(-50%);width:2.5px;height:11px;border-radius:1px;background:var(--red);animation:blink 1.2s infinite;}
+@keyframes blink{0%,49%{opacity:1;}50%,100%{opacity:0;}}
+
+.wordmark{font-family:var(--font-display);font-weight:500;letter-spacing:.08em;font-size:26px;line-height:1;}
+.tagline{font-family:var(--font-body);font-weight:300;font-size:9px;letter-spacing:.2em;text-transform:uppercase;margin-top:6px;}
+.ver-lbl{position:absolute;bottom:14px;right:18px;font-size:9px;font-family:var(--font-mono);letter-spacing:.12em;opacity:.4;text-transform:uppercase;}
+
+/* â”€â”€ PALETTE â”€â”€ */
+.palette-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;}
+.swatch{overflow:hidden;border:1px solid var(--border);background:var(--surface);}
+.swatch-top{height:100px;position:relative;}
+.usage-lbl{position:absolute;bottom:0;left:0;right:0;padding:6px 12px;font-family:var(--font-mono);font-size:9px;font-weight:500;letter-spacing:.05em;}
+.swatch-body{padding:var(--space-4);}
+.hex{font-family:var(--font-mono);font-size:13px;font-weight:500;color:var(--text);margin-bottom:4px;}
+.sw-name{font-family:var(--font-display);font-size:12px;font-weight:600;color:var(--text);margin-bottom:3px;}
+.shade{font-size:10px;color:var(--text-muted);letter-spacing:.05em;text-transform:uppercase;margin-bottom:6px;}
+.sw-desc{font-size:10.5px;color:var(--text-subtle);line-height:1.5;}
+.tags{margin-top:8px;display:flex;flex-wrap:wrap;gap:4px;}
+.tag{display:inline-block;padding:2px 8px;border-radius:3px;font-size:9px;font-family:var(--font-mono);letter-spacing:.06em;text-transform:uppercase;}
+.tag-role{background:var(--bg-muted);color:var(--text-muted);border:1px solid var(--border);}
+.tag-pct{background:var(--navy);color:var(--gold);}
+.tag-meaning{background:rgba(16,185,129,.1);color:#059669;border:1px solid rgba(16,185,129,.3);}
+
+/* â”€â”€ TYPOGRAPHY â”€â”€ */
+.font-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;margin-bottom:var(--space-10);}
+.font-card{background:var(--surface);border:1px solid var(--border);padding:var(--space-8);}
+.font-role-lbl{font-size:9px;font-family:var(--font-mono);letter-spacing:.2em;text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-4);padding-bottom:var(--space-3);border-bottom:1px solid var(--border);}
+.font-nm{font-size:32px;font-weight:600;line-height:1.1;margin-bottom:var(--space-2);color:var(--text);}
+.font-meta{font-size:11px;color:var(--text-muted);margin-bottom:var(--space-5);line-height:1.8;}
+.specimen{font-size:11px;color:var(--text-subtle);line-height:1.7;border-top:1px solid var(--border);padding-top:var(--space-4);}
+table{width:100%;border-collapse:collapse;background:var(--surface);}
+th{text-align:left;font-size:9px;letter-spacing:.2em;text-transform:uppercase;font-family:var(--font-mono);color:var(--text-muted);padding:0 var(--space-4) var(--space-3);border-bottom:1px solid var(--border);font-weight:500;}
+td{padding:14px var(--space-4);border-bottom:1px solid var(--border);vertical-align:middle;color:var(--text);}
+tr:last-child td{border-bottom:none;}
+.td-meta{font-family:var(--font-mono);font-size:10px;color:var(--text-muted);white-space:nowrap;}
+.td-use{font-size:10px;color:var(--text-subtle);}
+
+/* â”€â”€ RATIO â”€â”€ */
+.ratio-bar{display:flex;height:48px;border-radius:var(--r-md);overflow:hidden;margin-bottom:var(--space-6);border:1px solid var(--border);}
+.ratio-seg{display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:10px;font-weight:600;letter-spacing:.05em;}
+.ratio-legend{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-3);}
+.ratio-item{display:flex;align-items:center;gap:10px;font-size:11px;color:var(--text-muted);}
+.ratio-dot{width:12px;height:12px;border-radius:2px;flex-shrink:0;}
+
+/* â”€â”€ GENERIC GRID â”€â”€ */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-4);}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-4);}
+.grid-6{display:grid;grid-template-columns:repeat(6,1fr);gap:var(--space-2);}
+
+/* â”€â”€ DEMO CARDS â”€â”€ */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:var(--space-6);}
+.card h4{font-family:var(--font-display);font-size:14px;font-weight:600;margin-bottom:var(--space-2);color:var(--text);}
+.card p{font-size:12px;color:var(--text-muted);line-height:1.6;}
+.code-inline{font-family:var(--font-mono);font-size:11px;background:var(--bg-muted);color:var(--text);padding:2px 6px;border-radius:var(--r-sm);}
+
+/* â”€â”€ BUTTONS â”€â”€ */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  font-family:var(--font-body);font-weight:500;font-size:14px;
+  padding:12px 22px;border-radius:var(--r-md);border:1px solid transparent;
+  cursor:pointer;transition:all var(--dur-fast) var(--ease-out);
+  text-decoration:none;letter-spacing:.01em;
+}
+.btn-primary{background:var(--navy);color:#fff;}
+.btn-primary:hover{background:#1E293B;transform:translateY(-1px);box-shadow:var(--shadow-md);}
+.btn-accent{background:var(--gold);color:var(--navy);}
+.btn-accent:hover{background:var(--gold-deep);transform:translateY(-1px);box-shadow:var(--shadow-md);}
+.btn-secondary{background:transparent;color:var(--text);border-color:var(--border-strong);}
+.btn-secondary:hover{background:var(--bg-muted);}
+.btn-ghost{background:transparent;color:var(--text);}
+.btn-ghost:hover{background:var(--bg-muted);}
+.btn-destructive{background:var(--red);color:#fff;}
+.btn-destructive:hover{background:var(--red-deep);}
+.btn-sm{padding:8px 14px;font-size:12px;}
+.btn-lg{padding:16px 28px;font-size:16px;}
+
+/* â”€â”€ FORM â”€â”€ */
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:var(--space-4);}
+.field label{font-size:11px;font-weight:500;color:var(--text-secondary);letter-spacing:.04em;text-transform:uppercase;}
+.input{
+  font-family:var(--font-body);font-size:14px;
+  padding:10px 14px;border:1px solid var(--border-strong);
+  border-radius:var(--r-md);background:var(--surface);color:var(--text);
+  transition:all var(--dur-fast) var(--ease-out);
+}
+.input:focus{outline:none;border-color:var(--gold);box-shadow:var(--shadow-glow);}
+.input::placeholder{color:var(--text-subtle);}
+
+/* â”€â”€ ALERTS â”€â”€ */
+.alert{padding:var(--space-4);border-radius:var(--r-md);border-left:3px solid;font-size:13px;line-height:1.6;}
+.alert-success{background:rgba(16,185,129,.08);border-color:var(--success);color:#065F46;}
+.alert-warning{background:rgba(245,158,11,.08);border-color:var(--warning);color:#92400E;}
+.alert-error{background:rgba(239,68,68,.08);border-color:var(--error);color:#991B1B;}
+.alert-info{background:rgba(59,130,246,.08);border-color:var(--info);color:#1E40AF;}
+[data-theme="dark"] .alert-success{color:#6EE7B7;}
+[data-theme="dark"] .alert-warning{color:#FCD34D;}
+[data-theme="dark"] .alert-error{color:#FCA5A5;}
+[data-theme="dark"] .alert-info{color:#93C5FD;}
+
+/* â”€â”€ SPACING DEMO â”€â”€ */
+.space-demo{display:flex;align-items:flex-end;gap:var(--space-3);height:140px;border-bottom:1px solid var(--border);padding-bottom:8px;}
+.space-bar{background:linear-gradient(180deg,var(--gold) 0%,var(--gold-deep) 100%);width:48px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;color:var(--navy);font-family:var(--font-mono);font-size:9px;font-weight:600;padding-top:6px;border-radius:var(--r-sm) var(--r-sm) 0 0;}
+
+/* â”€â”€ RADIUS DEMO â”€â”€ */
+.radius-demo{display:grid;grid-template-columns:repeat(7,1fr);gap:var(--space-3);}
+.radius-box{aspect-ratio:1;background:var(--navy);display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--gold);font-family:var(--font-mono);font-size:10px;}
+.radius-box span{margin-top:4px;font-size:8px;opacity:.6;}
+
+/* â”€â”€ ELEVATION DEMO â”€â”€ */
+.elev-demo{display:grid;grid-template-columns:repeat(5,1fr);gap:var(--space-6);padding:var(--space-8);background:var(--bg-soft);border-radius:var(--r-lg);}
+.elev-box{aspect-ratio:1;background:var(--surface);border-radius:var(--r-lg);display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--text-muted);font-family:var(--font-mono);font-size:10px;text-align:center;padding:var(--space-3);}
+
+/* â”€â”€ ICON SET â”€â”€ */
+.icon-set{display:grid;grid-template-columns:repeat(8,1fr);gap:2px;}
+.icon-tile{aspect-ratio:1;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--text);}
+.icon-tile svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;}
+
+/* â”€â”€ GRADIENTS â”€â”€ */
+.grad-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
+.grad-box{height:140px;display:flex;flex-direction:column;justify-content:flex-end;padding:var(--space-4);color:#fff;font-family:var(--font-mono);font-size:10px;border-radius:var(--r-md);overflow:hidden;}
+.grad-1{background:linear-gradient(135deg,#0F172A 0%,#1A1A2E 100%);}
+.grad-2{background:linear-gradient(135deg,#0F172A 0%,#C62828 100%);}
+.grad-3{background:linear-gradient(135deg,#EFC14F 0%,#F7DB8A 100%);color:var(--navy);}
+.grad-4{background:linear-gradient(135deg,#0F172A 0%,#EFC14F 120%);}
+.grad-5{background:radial-gradient(circle at 30% 20%,#1A1A2E 0%,#0F172A 60%);}
+.grad-6{background:linear-gradient(135deg,#C62828 0%,#9B1C1C 100%);}
+
+/* â”€â”€ APP MOCKUPS â”€â”€ */
+.mock-window{border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;background:var(--surface);box-shadow:var(--shadow-lg);}
+.mock-bar{background:var(--bg-muted);padding:10px 14px;display:flex;align-items:center;gap:6px;border-bottom:1px solid var(--border);}
+.mock-dot{width:10px;height:10px;border-radius:50%;}
+.mock-body{padding:var(--space-8);}
+
+/* â”€â”€ CARD STAT â”€â”€ */
+.stat{display:flex;flex-direction:column;gap:6px;}
+.stat-num{font-family:var(--font-display);font-size:36px;font-weight:700;color:var(--text);line-height:1;}
+.stat-lbl{font-family:var(--font-mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--text-muted);}
+.stat-trend{font-size:11px;color:var(--success);font-weight:500;}
+
+/* â”€â”€ DO/DONT â”€â”€ */
+.dodont{display:grid;grid-template-columns:1fr 1fr;gap:2px;}
+.do-box,.dont-box{padding:var(--space-6);min-height:160px;display:flex;flex-direction:column;justify-content:space-between;}
+.do-box{background:rgba(16,185,129,.06);border-left:3px solid var(--success);}
+.dont-box{background:rgba(239,68,68,.06);border-left:3px solid var(--error);}
+.do-lbl{font-family:var(--font-mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;}
+.do-lbl.ok{color:var(--success);}
+.do-lbl.bad{color:var(--error);}
+
+/* â”€â”€ VOICE â”€â”€ */
+.voice-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-4);}
+.voice-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:var(--space-6);}
+.voice-card h5{font-family:var(--font-display);font-size:18px;font-weight:600;margin-bottom:var(--space-3);color:var(--text);}
+.voice-pair{display:flex;gap:var(--space-3);margin-top:var(--space-3);font-size:13px;}
+.voice-yes{color:var(--success);font-weight:500;flex:1;padding:var(--space-3);background:rgba(16,185,129,.08);border-radius:var(--r-sm);}
+.voice-no{color:var(--error);font-weight:500;flex:1;padding:var(--space-3);background:rgba(239,68,68,.08);border-radius:var(--r-sm);text-decoration:line-through;}
+
+/* â”€â”€ BUSINESS CARD MOCK â”€â”€ */
+.bcard{aspect-ratio:1.75/1;border-radius:var(--r-md);padding:var(--space-6);display:flex;flex-direction:column;justify-content:space-between;box-shadow:var(--shadow-xl);}
+.bcard-front{background:var(--navy);color:#fff;}
+.bcard-back{background:var(--gold);color:var(--navy);}
+
+/* â”€â”€ FOOTER â”€â”€ */
+.footer{background:var(--navy);padding:var(--space-8) var(--space-16);display:flex;align-items:center;justify-content:space-between;border-top:3px solid var(--gold);}
+
+/* â”€â”€ UTILS â”€â”€ */
+.callout{margin-top:var(--space-8);padding:var(--space-6) var(--space-7);background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:var(--r-sm);}
+.callout-lbl{font-size:10px;font-family:var(--font-mono);letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:var(--space-2);font-weight:600;}
+.callout-text{font-size:13px;color:var(--text-secondary);line-height:1.8;}
+
+@media (max-width:900px){
+  .header,.section,.footer,.nav{padding-left:var(--space-6);padding-right:var(--space-6);}
+  .palette-grid,.font-grid,.grid-3,.grid-4,.icon-set,.radius-demo,.grad-grid,.ratio-legend{grid-template-columns:1fr 1fr;}
+  .logo-grid,.dodont,.voice-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- THEME TOGGLE -->
+<div class="theme-toggle">
+  <button class="active" onclick="setTheme('light')">â˜€ Light</button>
+  <button onclick="setTheme('dark')">â˜¾ Dark</button>
+</div>
+
+<!-- HEADER -->
+<header class="header">
+  <div>
+    <div class="brand-label">Vastome Â· Brand Identity</div>
+    <div style="color:#fff;font-family:'Space Grotesk',sans-serif;font-size:32px;font-weight:600;letter-spacing:.04em;margin-top:8px;">Brand &amp; Design System</div>
+    <div style="color:rgba(255,255,255,.55);font-size:13px;margin-top:6px;max-width:560px;line-height:1.6;">The single source of truth for all visual, verbal, and product design decisions across Vastome â€” web, app, marketing, and print.</div>
+  </div>
+  <div style="text-align:right;">
+    <div class="doc-title">v2.0 Â· May 2026</div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.35);margin-top:6px;letter-spacing:.1em;">26 SECTIONS Â· LIGHT + DARK</div>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="#foundation">01 Foundation</a>
+  <a href="#logo">02 Logo</a>
+  <a href="#clearspace">03 Clear Space</a>
+  <a href="#misuse">04 Misuse</a>
+  <a href="#palette">05 Palette</a>
+  <a href="#modes">06 Light/Dark</a>
+  <a href="#semantic">07 Semantic</a>
+  <a href="#gradients">08 Gradients</a>
+  <a href="#a11y">09 Accessibility</a>
+  <a href="#typography">10 Typography</a>
+  <a href="#scale">11 Type Scale</a>
+  <a href="#spacing">12 Spacing</a>
+  <a href="#radius">13 Radius</a>
+  <a href="#elevation">14 Elevation</a>
+  <a href="#buttons">15 Buttons</a>
+  <a href="#forms">16 Forms</a>
+  <a href="#cards">17 Cards</a>
+  <a href="#alerts">18 Alerts</a>
+  <a href="#icons">19 Icons</a>
+  <a href="#imagery">20 Imagery</a>
+  <a href="#motion">21 Motion</a>
+  <a href="#grid">22 Grid</a>
+  <a href="#voice">23 Voice</a>
+  <a href="#applications">24 Applications</a>
+</nav>
+
+<!-- â•â•â•â•â•â•â•â•â•â•â•â• 01 FOUNDATION â•â•â•â•â•â•â•â•â•â•â•â• -->
+<section class="section" id="foundation">
+  <div class="section-label">01 â€” Brand Foundation</div>
+  <h2 class="section-title">Who Vastome Is</h2>
+  <p class="section-intro">Vastome is an enterprise technology company building intelligent software systems that scale. Every design choice in this guide reflects our three core promises: <strong>structured intelligence</strong>, <strong>quiet confidence</strong>, and <strong>active execution</strong>.</p>
+
+  <div class="grid-3">
+    <div class="card">
+      <div class="font-role-lbl">Mission</div>
+      <p style="color:var(--text);font-size:14px;line-height:1.7;">To help global enterprises build smarter software faster â€” through scalable architectures, AI-assisted engineering, and disciplined execution.</p>
+    </div>
+    <div class="card">
+      <div class="font-role-lbl">Vision</div>
+      <p style="color:var(--text);font-size:14px;line-height:1.7;">A world where every business â€” regardless of size â€” operates on intelligent, future-proof systems that grow without breaking.</p>
+    </div>
+    <div class="card">
+      <div class="font-role-lbl">Tagline</div>
+      <p style="color:var(--text);font-size:14px;line-height:1.7;font-family:var(--font-display);font-weight:500;">Build smart. Scale further.</p>
+      <p style="margin-top:8px;font-size:11px;color:var(--text-muted);">Used in all formal communication, never modified.</p>
+    </div>
+  </div>
+
+  <div style="margin-top:var(--space-8);">
+    <div class="font-role-lbl" style="margin-bottom:var(--space-4);">Five Brand Values</div>
+    <div class="grid-4">
+      <div class="card"><h4>â‘  Clarity</h4><p>Every screen, sentence, and interaction must be obvious without explanation.</p></div>
+      <div class="card"><h4>â‘¡ Precision</h4><p>Details matter. Engineering quality shows in pixels and words alike.</p></div>
+      <div class="card"><h4>â‘¢ Intelligence</h4><p>Smart by default â€” products think ahead, designs anticipate the user.</p></div>
+      <div class="card"><h4>â‘£ Restraint</h4><p>Less, but better. We earn attention; we don't shout for it.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- â•â•â•â•â•â•â•â•â•â•â•â• 02 LOGO â•â•â•â•â•â•â•â•â•â•â•â• -->
+<section class="section section-alt" id="logo">
+  <div class="section-label">02 â€” Logo System Â· All Versions</div>
+  <h2 class="section-title">The Mark</h2>
+  <p class="section-intro">The Vastome logo combines a code-bracket icon with a custom-spaced wordmark. It exists in four primary configurations and three icon-only formats.</p>
+
+  <div class="logo-grid">
+    <!-- Light Primary -->
+    <div class="logo-box" style="background:#F8F8F8;">
+      <div class="logo-mark">
+        <div class="brand-icon" style="color:#0F172A;">
+          <div class="bracket-l"></div><div class="bracket-r"></div>
+          <div class="dl dl1" style="background:#0F172A;"></div>
+          <div class="dl dl2" style="background:#0F172A;"></div>
+          <div class="node"></div><div class="cursor"></div>
+          <div class="dl dl3" style="background:#0F172A;"></div>
+        </div>
+        <div>
+          <div class="wordmark" style="color:#0F172A;">Vastome</div>
+          <div class="tagline" style="color:#6B7280;">build smart Â· scale further</div>
+        </div>
+      </div>
+      <span class="ver-lbl" style="color:#0F172A;">Light Primary</span>
+    </div>
+
+    <!-- Dark -->
+    <div class="logo-box" style="background:#0F172A;">
+      <div class="logo-mark">
+        <div class="brand-icon" style="color:#F8F8F8;">
+          <div class="bracket-l" style="border-color:#F8F8F8;"></div>
+          <div class="bracket-r" style="border-color:#F8F8F8;"></div>
+          <div class="dl dl1" style="background:#F8F8F8;"></div>
+          <div class="dl dl2" style="background:#F8F8F8;"></div>
+          <div class="node"></div><div class="cursor"></div>
+          <div class="dl dl3" style="background:#F8F8F8;"></div>
+        </div>
+        <div>
+          <div class="wordmark" style="color:#F8F8F8;">Vastome</div>
+          <div class="tagline" style="color:rgba(255,255,255,.4);">build smart Â· scale further</div>
+        </div>
+      </div>
+      <span class="ver-lbl" style="color:rgba(255,255,255,.3);">Dark Alternate</span>
+    </div>
+
+    <!-- Gold -->
+    <div class="logo-box" style="background:#EFC14F;">
+      <div class="logo-mark">
+        <div class="brand-icon">
+          <div class="bracket-l" style="border-color:#0F172A;"></div>
+          <div class="bracket-r" style="border-color:#0F172A;"></div>
+          <div class="dl dl1" style="background:#0F172A;"></div>
+          <div class="dl dl2" style="background:#0F172A;"></div>
+          <div class="node" style="background:#0F172A;"></div>
+          <div class="cursor" style="background:#C62828;"></div>
+          <div class="dl dl3" style="background:#0F172A;"></div>
+        </div>
+        <div>
+          <div class="wordmark" style="color:#0F172A;">Vastome</div>
+          <div class="tagline" style="color:rgba(15,23,42,.5);">build smart Â· scale further</div>
+        </div>
+      </div>
+      <span class="ver-lbl" style="color:rgba(15,23,42,.3);">Gold Special</span>
+    </div>
+
+    <!-- Monochrome -->
+    <div class="logo-box" style="background:#fff;border:1px solid var(--border);">
+      <div class="logo-mark">
+        <div class="brand-icon">
+          <div class="bracket-l" style="border-color:#111827;"></div>
+          <div class="bracket-r" style="border-color:#111827;"></div>
+          <div class="dl dl1" style="background:#111827;"></div>
+          <div class="dl dl2" style="background:#111827;"></div>
+          <div class="node" style="background:#111827;"></div>
+          <div class="cursor" style="background:#111827;"></div>
+          <div class="dl dl3" style="background:#111827;"></div>
+        </div>
+        <div>
+          <div class="wordmark" style="color:#111827;">Vastome</div>
+          <div class="tagline" style="color:#6B7280;">build smart Â· scale further</div>
+        </div>
+      </div>
+      <span class="ver-lbl" style="color:#B0BEC5;">Monochrome Print</span>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="callout-lbl">Icon Concept Â· What It Means</div>
+    <div class="callout-text">
+      The icon is a <strong style="color:var(--text);">code bracket [ ]</strong> â€” the universal symbol of software â€” containing three horizontal lines representing <strong style="color:var(--text);">data streams and system layers</strong> (frontend, logic, infrastructure). The middle line is interrupted by a <strong style="color:var(--gold);">Solar Gold node</strong> â€” the AI decision point, the intelligent core. A <strong style="color:var(--red);">Martian Red cursor</strong> follows immediately â€” representing active execution and live deployment. Together: <em>"structured intelligence, actively running."</em>
+    </div>
+  </div>
+</section>
+
+<!-- â•â•â•â•â•â•â•â•â•â•â•â• 03 CLEAR SPACE & MIN SIZE â•â•â•â•â•â•â•â•â•â•â•â• -->
+<section class="section" id="clearspace">
+  <div class="section-label">03 â€” Clear Space &amp; Minimum Size</div>
+  <h2 class="section-title">Breathing Room</h2>
+  <p class="section-intro">The logo must always be surrounded by a minimum protected area equal to the height of the bracket icon (X). Never crop, crowd, or place the logo on busy imagery without an overlay.</p>
+
+  <div class="grid-2">
+    <div class="card" style="position:relative;">
+      <h4>Clear Space Rule Â· 1X Padding</h4>
+      <p style="margin-bottom:var(--space-4);">Reserve <span class="code-inline">1X</span> on all sides where X = icon height (44px in standard).</p>
+      <div style="border:1px dashed var(--border-strong);padding:44px;display:flex;justify-content:center;align-items:center;background:var(--bg-soft);border-radius:var(--r-md);">
+        <div class="logo-mark">
+          <div class="brand-icon" style="color:var(--text);">
+            <div class="bracket-l"></div><div class="bracket-r"></div>
+            <div class="dl dl1" style="background:currentColor;"></div>
+            <div class="dl dl2" style="background:currentColor;"></div>
+            <div class="node"></div><div class="cursor"></div>
+            <div class="dl dl3" style="background:currentColor;"></div>
+          </div>
+          <div class="wordmark" style="color:var(--text);">Vastome</div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <h4>Minimum Sizes</h4>
+      <p style="margin-bottom:var(--space-4);">To ensure legibility, the logo must never be rendered smaller than these thresholds:</p>
+      <table style="background:transparent;">
+        <tr><td class="td-meta">Full Lockup Â· Digital</td><td style="font-size:12px;">120 px wide</td></tr>
+        <tr><td class="td-meta">Full Lockup Â· Print</td><td style="font-size:12px;">28 mm wide</td></tr>
+        <tr><td class="td-meta">Icon Only Â· Digital</td><td style="font-size:12px;">24 px</td></tr>
+        <tr><td class="td-meta">Icon Only Â· Favicon</td><td style="font-size:12px;">16 px</td></tr>
+        <tr><td class="td-meta">App Icon</td><td style="font-size:12px;">512 px (master)</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- â•â•â•â•â•â•â•â•â•â•â•â• 04 LOGO MISUSE â•â•â•â•â•â•â•â•â•â•â•â• -->
+<section class="section section-alt" id="misuse">
+  <div class="section-label">04 â€” Logo Misuse Â· The Don'ts</div>
+  <h2 class="section-title">How Not to Use the Logo</h2>
+  <p class="section-intro">Consistency builds trust. These rules are non-negotiable in any external communication.</p>
+
+  <div class="dodont">
+    <div class="do-box"><div class="do-lbl ok">âœ“ Do</div><p style="color:var(--text);font-size:13px;line-height:1.7;">Use approved logo files only. Maintain clear space. Place on solid Navy, White, or Gold backgrounds. Keep proportions locked.</p></div>
+    <div class="dont-box"><div class="do-lbl bad">âœ— Don't</div><p style="color:var(--text);font-size:13px;line-height:1.7;">Stretch, rotate, recolor, add drop shadows, glow effects, gradients, outlines, or place on low-contrast / busy photographs.</p></div>
+    <div class="do-box"><div class="do-lbl ok">âœ“ Do</div><p style="color:var(--text);font-size:13px;line-height:1.7;">Use the dark-mode variant on backgrounds darker than #1F2937. Use icon-only on tight spaces (favicon, app, social avatar).</p></div>
+    <div class="dont-box"><div class="do-lbl bad">âœ— Don't</div><p style="color:var(--text);font-size:13px;line-height:1.7;">Recreate the wordmark in another typeface. Change the icon color combination. Animate the cursor blink in static contexts.</p></div>
+  </div>
+</section>
+
+<!-- â•â•â•â•â•â•â•â•â•â•â•â• 05 PALETTE â•â•â•â•â•â•â•â•â•â•â•â• -->
+<section class="section" id="palette">
+  <div class="section-label">05 â€” Color Palette Â· Brand Core</div>
+  <h2 class="section-title">Color System</h2>
+  <p class="section-intro">Every color has a defined role and usage percentage. The palette is divided into <strong>Brand Core</strong> (always visible), <strong>Neutrals</strong> (backbone), and <strong>Semantic</strong> (functional UI states).</p>
+
+  <div class="palette-grid">
+    <div class="swatch">
+      <div class="swatch-top" style="background:#0F172A;"><div class="usage-lbl" style="color:rgba(255,255,255,.45);">Primary 75%</div></div>
+      <div class="swatch-body">
+        <div class="hex">#0F172A</div><div class="sw-name">Deep Navy</div>
+        <div class="shade">Shade 900 Â· Midnight</div>
+        <div class="sw-desc">Primary base. Backgrounds, wordmark, icon strokes. Enterprise authority.</div>
+        <div class="tags"><span class="tag tag-role">Primary</span><span class="tag tag-pct">75%</span><span class="tag tag-meaning">Authority</span></div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-top" style="background:#EFC14F;"><div class="usage-lbl" style="color:rgba(15,23,42,.55);">Accent 15%</div></div>
+      <div class="swatch-body">
+        <div class="hex">#EFC14F</div><div class="sw-name">Solar Gold</div>
+        <div class="shade">Shade 400 Â· Amber</div>
+        <div class="sw-desc">Primary accent. Logo node, CTAs, headings. Leadership and ambition.</div>
+        <div class="tags"><span class="tag tag-role">Accent</span><span class="tag tag-pct">15%</span><span class="tag tag-meaning">Leadership</span></div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-top" style="background:#C62828;"><div class="usage-lbl" style="color:rgba(255,255,255,.45);">Power 5%</div></div>
+      <div class="swatch-body">
+        <div class="hex">#C62828</div><div class="sw-name">Martian Red</div>
+        <div class="shade">Shade 800 Â· Crimson</div>
+        <div class="sw-desc">Power accent. Cursor, alerts, hover. Action and decisive execution.</div>
+        <div class="tags"><span class="tag tag-role">Power</span><span class="tag tag-pct">5%</span><span class="tag tag-meaning">Action</span></div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-top" style="background:#F8F8F8;border-bottom:1px solid var(--border);"><div class="usage-lbl" style="color:#B0BEC5;">Background</div></div>
+      <div class="swatch-body">
+        <div class="hex">#F8F8F8</div><div class="sw-name">Soft White</div>
+        <div class="shade">Shade 50 Â· Pearl</div>
+        <div class="sw-desc">Light mode background. Clean, warm white. Clarity and openness.</div>
+        <div class="tags"><span class="tag tag-role">BG Light</span><span class="tag tag-meaning">Clarity</span></div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-top" style="background:#1A1A2E;"><div class="usage-lbl" style="color:rgba(255,255,255,.3);">Dark Mode</div></div>
+      <div class="swatch-body">
+        <div class="hex">#1A1A2E</div><div class="sw-name">Graphite Navy</div>
+        <div class="shade">Shade 950 Â· Deep Space</div>
+        <div class="sw-desc">Dark mode surface. Depth, dimension, quiet confidence.</div>
+        <div class="tags"><span class="tag tag-role">BG Dark</span><span class="tag tag-meaning">Depth</span></div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-top" style="background:#111827;"><div class="usage-lbl" style="color:rgba(255,255,255,.4);">Body Text</div></div>
+      <div class="swatch-body">
+        <div class="hex">#111827</div><div class="sw-name">Off Black</div>
+        <div class="shade">Shade 900 Â· Ink</div>
+        <div class="sw-desc">Body text. Sharp, high-contrast readable type.</div>
+        <div class="tags"><span class="tag tag-role">Text</span><span class="tag tag-meaning">Precision</span></div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-top" style="background:#6B7280;"><div class="usage-lbl" style="color:rgba(255,255,255,.55);">Subtext</div></div>
+      <div class="swatch-body">
+        <div class="hex">#6B7280</div><div class="sw-name">Cool Grey</div>
+        <div class="shade">Shade 500 Â· Slate</div>
+        <div class="sw-desc">Taglines, captions, metadata. Understated support.</div>
+        <div class="tags"><span class="tag tag-role">Muted</span><span class="tag tag-meaning">Support</span></div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-top" style="background:#B0BEC5;border-bottom:1px solid var(--border);"><div class="usage-lbl" style="color:rgba(255,255,255,.65);">Dividers</div></div>
+      <div class="swatch-body">
+        <div class="hex">#B0BEC5</div><div class="sw-name">Light Silver</div>
+        <div class="shade">Shade 300 Â· Mist</div>
+        <div class="sw-desc">Borders, dividers, hairlines. Gentle structure.</div>
+        <div class="tags"><span class="tag tag-role">Divider</span><span class="tag tag-meaning">Structure</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TINT/SHADE SCALE -->
+  <div style="margin-top:var(--space-8);">
+    <div class="font-role-lbl" style="margin-bottom:var(--space-4);">Extended Tint &amp; Shade Scale</div>
+    <div class="grid-6" style="grid-template-columns:repeat(10,1fr);">
+      <div style="background:#F8FAFC;height:60px;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:9px;color:var(--text);border:1px solid var(--border);">50</div>
+      <div style="background:#F1F5F9;height:60px;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:9px;color:var(--text);">100</div>
+      <div style="background:#E2E8F0;height:60px;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:9px;color:var(--text);">200</div>
+      <div style="background:#CBD5E1;height:60px;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:9px;color:var(--text);">300</div>
+      <div style="background:#94A3B8;height:60px;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:9px;color:#fff;">400</div>
+      <div style="background:#64748B;height:60px;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:9px;color:#fff;">500</div>
+      <div style="background:#475569;height:60px;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:9px;color:#fff;">600</div>
+      <div style="background:#334155;height:60px;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:9px;color:#fff;">700</div>
+      <div style="background:#1E293B;height:60px;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:9px;color:var(--gold);">800</div>
+      <div style="background:#0F172A;height:60px;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:9px;color:var(--gold);">900</div>
+    </div>
+    <div style="font-size:10px;color:var(--text-muted);margin-top:8px;font-family:var(--font-mono);letter-spacing:.1em;">NAVY SCALE Â· 50 (lightest) â†’ 900 (deepest, brand)</div>
+  </div>
+</section>
+
+<!-- â•â•â•â•â•â•â•â•â•â•â•â• 06 LIGHT/DARK MODES â•â•â•â•â•â•â•â•â•â•â•â• -->
+<section class="section section-alt" id="modes">
+  <div class="section-label">06 â€” Light Mode &amp; Dark Mode</div>
+  <h2 class="section-title">Mode-Aware Tokens</h2>
+  <p class="section-intro">Both modes share the same brand core (Navy, Gold, Red) but swap surface and text tokens. Always reference tokens â€” never hardcode hex values in components. Use the toggle in the top-right corner to preview both.</p>
+
+  <div class="grid-2">
+    <!-- LIGHT -->
+    <div style="background:#FFFFFF;border:1px solid #E5E7EB;border-radius:var(--r-lg);overflow:hidden;">
+      <div style="background:#F8F8F8;padding:var(--space-4) var(--space-6);font-family:var(--font-mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:#6B7280;border-bottom:1px solid #E5E7EB;">â˜€ Light Mode</div>
+      <div style="padding:var(--space-6);">
+        <table style="background:transparent;">
+          <tr><td class="td-meta" style="color:#6B7280;">--bg</td><td><span style="display:inline-block;width:18px;height:18px;background:#FFFFFF;border:1px solid #E5E7EB;vertical-align:middle;margin-right:8px;border-radius:3px;"></span><span style="color:#111827;font-family:var(--font-mono);font-size:11px;">#FFFFFF</span></td></tr>
+          <tr><td class="td-meta" style="color:#6B7280;">--bg-soft</td><td><span style="display:inline-block;width:18px;height:18px;background:#F8F8F8;border:1px solid #E5E7EB;vertical-align:middle;margin-right:8px;border-radius:3px;"></span><span style="color:#111827;font-family:var(--font-mono);font-size:11px;">#F8F8F8</span></td></tr>
+          <tr><td class="td-meta" style="color:#6B7280;">--surface</td><td><span style="display:inline-block;width:18px;height:18px;background:#FFFFFF;border:1px solid #E5E7EB;vertical-align:middle;margin-right:8px;border-radius:3px;"></span><span style="color:#111827;font-family:var(--font-mono);font-size:11px;">#FFFFFF</span></td></tr>
+          <tr><td class="td-meta" style="color:#6B7280;">--border</td><td><span style="display:inline-block;width:18px;height:18px;background:#E5E7EB;vertical-align:middle;margin-right:8px;border-radius:3px;"></span><span style="color:#111827;font-family:var(--font-mono);font-size:11px;">#E5E7EB</span></td></tr>
+          <tr><td class="td-meta" style="color:#6B7280;">--text</td><td><span style="display:inline-block;width:18px;height:18px;background:#111827;vertical-align:middle;margin-right:8px;border-radius:3px;"></span><span style="color:#111827;font-family:var(--font-mono);font-size:11px;">#111827</span></td></tr>
+          <tr><td class="td-meta" style="color:#6B7280;">--text-muted</td><td><span style="display:inline-block;width:18px;height:18px;background:#6B7280;vertical-align:middle;margin-right:8px;border-radius:3px;"></span><span style="color:#111827;font-family:var(--font-mono);font-size:11px;">#6B7280</span></td></tr>
+          <tr><td class="td-meta" style="color:#6B7280;">--primary</td><td><span style="display:inline-block;width:18px;height:18px;background:#0F172A;vertical-align:middle;margin-right:8px;border-radius:3px;"></span><span style="color:#111827;font-family:var(--font-mono);font-size:11px;">Navy</span></td></tr>
+          <tr><td class="td-meta" style="color:#6B7280;">--accent</td><td><span style="display:inline-block;width:18px;height:18px;background:#EFC14F;vertical-align:middle;margin-right:8px;border-radius:3px;"></span><span style="color:#111827;font-family:var(--font-mono);font-size:11px;">Gold</span></td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- DARK -->
+    <div style="background:#0B1120;border:1px solid #1F2937;border-radius:var(--r-lg);overflow:hidden;">
+      <div style="background:#1A1A2E;padding:var(--space-4) var(--space-6);font-family:var(--font-mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:#9CA3AF;border-bottom:1px solid #1F2937;">â˜¾ Dark Mode</div>
+      <div style="padding:var(--space-6);">
+        <table style="background:transparent;">
+          <tr><td class="td-meta" style="color:#9CA3AF;border-bottom-color:#1F2937;">--bg</td><td style="border-bottom-color:#1F2937;"><span style="display:inline-block;width:18px;height:18px;background:#0B1120;border:1px solid #374151;vertical-align:middle;margin-right:8px;border-radius:3px;"></span><span style="color:#F8F8F8;font-family:var(--font-mono);font-size:11px;">#0B1120</span></td></tr>
+          <tr><td class="td-meta" style="color:#9CA3AF;border-bottom-color:#1F2937;">--bg-soft</td><td style="border-bottom-color:#1F2937;"><span style="display:inline-block;width:18px;height:18px;background:#0F172A;border:1px solid #374151;vertical-align:middle;margin-right:8px;border-radius:3px;"></span><span style="color:#F8F8F8;font-family:var(--font-mono);font-size:11px;">#0F172A</span></td></tr>
+          <tr><td class="td-meta" style="color:#9CA3AF;border-bottom-color:#1F2937;">--surface</td><td style="border-bottom-color:#1F2937;"><span style="display:inline-block;width:18px;height:18px;background:#111827;border:1px solid #374151;vertical-align:middle;margin-right:8px;border-radius:3px;"></span><span style="color:#F8F8F8;font-family:var(--font-mono);font-size:11px;">#111827</span></td></tr>
+          <tr><td class="td-meta" style="color:#9CA3AF;border-bottom-color:#1F2937;">--border</td><td style="border-bottom-color:#1F2937;"><span style="display:inline-block;width:18px;height:18px;background:#1F2937;vertical-align:middle;margin-right:8px;border-radius:3px;"></span><span style="color:#F8F8F8;font-family:var(--font-mono);font-size:11px;">#1F2937</span></td></tr>
+          <tr><td class="td-meta" style="color:#9CA3AF;border-bottom-color:#1F2937;">--text</td><td style="border-bottom-color:#1F2937;"><span style="display:inline-block;width:18px;height:18px;background:#F8F8F8;vertical-align:middle;margin-right:8px;border-radius:3px;"></span><span style="color:#F8F8F8;font-family:var(--font-mono);font-size:11px;">#F8F8F8</span></td></tr>
+          <tr><td class="td-meta" style="color:#9CA3AF;border-bottom-color:#1F2937;">--text-muted</td><td style="border-bottom-color:#1F2937;"><span style="display:inline-block;width:18px;height:18px;background:#9CA3AF;vertical-align:middle;margin-right:8px;border-radius:3px;"></span><span style="color:#F8F8F8;font-family:var(--font-mono);font-size:11px;">#9CA3AF</span></td></tr>
+          <tr><td class="td-meta" style="color:#9CA3AF;border-bottom-color:#1F2937;">--primary</td><td style="border-bottom-color:#1F2937;"><span style="display:inline-block;width:18px;height:18px;background:#EFC14F;vertical-align:middle;margin-right:8px;border-radius:3px;"></span><span style="color:#F8F8F8;font-family:var(--font-mono);font-size:11px;">Gold (inverted)</span></td></tr>
+          <tr><td class="td-meta" style="color:#9CA3AF;border-bottom-color:#1F2937;">--accent</td><td style="border-bottom-color:#1F2937;"><span style="display:inline-block;width:18px;height:18px;background:#EFC14F;vertical-align:middle;margin-right:8px;border-radius:3px;"></span><span style="color:#F8F8F8;font-family:var(--font-mono);font-size:11px;">Gold</span></td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="callout-lbl">Mode Switching Rule</div>
+    <div class="callout-text">In dark mode, the <strong style="color:var(--text);">primary action color flips from Navy to Gold</strong> â€” because Navy disappears against dark surfaces. The Gold accent stays consistent in both modes as the brand's visual signature.</div>
+  </div>
+</section>
+
+<!-- â•â•â•â•â•â•â•â•â•â•â•â• 07 SEMANTIC â•â•â•â•â•â•â•â•â•â•â•â• -->
+<section class="section" id="semantic">
+  <div class="section-label">07 â€” Semantic Colors Â· UI States</div>
+  <h2 class="section-title">Functional Color</h2>
+  <p class="section-intro">Reserved exclusively for UI feedback. Never use as decorative colors.</p>
+
+  <div class="grid-4">
+    <div class="swatch"><div class="swatch-top" style="background:#10B981;"><div class="usage-lbl" style="color:rgba(255,255,255,.7);">Success</div></div><div class="swatch-body"><div class="hex">#10B981</div><div class="sw-name">Success Green</div><div class="sw-desc">Confirmations, success toasts, positive metrics, completed states.</div></div></div>
+    <div class="swatch"><div class="swatch-top" style="background:#F59E0B;"><div class="usage-lbl" style="color:rgba(255,255,255,.7);">Warning</div></div><div class="swatch-body"><div class="hex">#F59E0B</div><div class="sw-name">Warning Amber</div><div class="sw-desc">Caution, pending actions, "review needed" states. Distinct from Solar Gold.</div></div></div>
+    <div class="swatch"><div class="swatch-top" style="background:#EF4444;"><div class="usage-lbl" style="color:rgba(255,255,255,.7);">Error</div></div><div class="swatch-body"><div class="hex">#EF4444</div><div class="sw-name">Error Red</div><div class="sw-desc">Destructive actions, validation errors, system failures. Brighter than brand red.</div></div></div>
+    <div class="swatch"><div class="swatch-top" style="background:#3B82F6;"><div class="usage-lbl" style="color:rgba(255,255,255,.7);">Info</div></div><div class="swatch-body"><div class="hex">#3B82F6</div><div class="sw-name">Info Blue</div><div class="sw-desc">Informational toasts, links, helper tips, system messages.</div></div></div>
+  </div>
+</section>
+
+<!-- â•â•â•â•â•â•â•â•â•â•â•â• 08 GRADIENTS â•â•â•â•â•â•â•â•â•â•â•â• -->
+<section class="section section-alt" id="gradients">
+  <div class="section-label">08 â€” Gradient Library</div>
+  <h2 class="section-title">Approved Gradients</h2>
+  <p class="section-intro">Use sparingly â€” for hero sections, large brand surfaces, and key marketing moments. Never for body text or small UI.</p>
+
+  <div class="grad-grid">
+    <div class="grad-box grad-1"><strong>Midnight</strong><span style="opacity:.6;">#0F172A â†’ #1A1A2E Â· 135Â°</span></div>
+    <div class="grad-box grad-2"><strong>Eclipse</strong><span style="opacity:.6;">#0F172A â†’ #C62828 Â· 135Â°</span></div>
+    <div class="grad-box grad-3"><strong>Sunrise</strong><span style="opacity:.6;">#EFC14F â†’ #F7DB8A Â· 135Â°</span></div>
+    <div class="grad-box grad-4"><strong>Aurora</strong><span style="opacity:.6;">#0F172A â†’ #EFC14F Â· 135Â°</span></div>
+    <div class="grad-box grad-5"><strong>Cosmos</strong><span style="opacity:.6;">Radial Â· #1A1A2E â†’ #0F172A</span></div>
+    <div class="grad-box grad-6"><strong>Mars</strong><span style="opacity:.6;">#C62828 â†’ #9B1C1C Â· 135Â°</span></div>
+  </div>
+</section>
+
+<!-- â•â•â•â•â•â•â•â•â•â•â•â• 09 ACCESSIBILITY â•â•â•â•â•â•â•â•â•â•â•â• -->
+<section class="section" id="a11y">
+  <div class="section-label">09 â€” Accessibility &amp; Contrast (WCAG 2.2)</div>
+  <h2 class="section-title">Designed for Everyone</h2>
+  <p class="section-intro">Vastome meets <strong>WCAG AA minimum</strong>, targets <strong>AAA</strong> for body text. All approved color pairs are pre-tested below.</p>
+
+  <table>
+    <thead><tr><th>Foreground</th><th>Background</th><th>Ratio</th><th>WCAG AA (4.5:1)</th><th>WCAG AAA (7:1)</th><th>Use</th></tr></thead>
+    <tbody>
+      <tr><td><span style="color:#111827;font-weight:500;">Off Black on White</span></td><td class="td-meta">#FFFFFF</td><td class="td-meta">17.4:1</td><td style="color:var(--success);">âœ“ Pass</td><td style="color:var(--success);">âœ“ Pass</td><td class="td-use">Body text Â· primary</td></tr>
+      <tr><td><span style="color:#0F172A;font-weight:500;">Navy on Soft White</span></td><td class="td-meta">#F8F8F8</td><td class="td-meta">15.9:1</td><td style="color:var(--success);">âœ“ Pass</td><td style="color:var(--success);">âœ“ Pass</td><td class="td-use">Headings Â· light mode</td></tr>
+      <tr><td><span style="color:#EFC14F;font-weight:500;background:#0F172A;padding:2px 8px;">Gold on Navy</span></td><td class="td-meta">#0F172A</td><td class="td-meta">9.8:1</td><td style="color:var(--success);">âœ“ Pass</td><td style="color:var(--success);">âœ“ Pass</td><td class="td-use">Accents Â· dark mode primary</td></tr>
+      <tr><td><span style="color:#0F172A;background:#EFC14F;font-weight:500;padding:2px 8px;">Navy on Gold</span></td><td class="td-meta">#EFC14F</td><td class="td-meta">9.8:1</td><td style="color:var(--success);">âœ“ Pass</td><td style="color:var(--success);">âœ“ Pass</td><td class="td-use">CTA buttons</td></tr>
+      <tr><td><span style="color:#6B7280;">Cool Grey on White</span></td><td class="td-meta">#FFFFFF</td><td class="td-meta">4.7:1</td><td style="color:var(--success);">âœ“ Pass</td><td style="color:var(--error);">âœ— Fail</td><td class="td-use">Secondary text only</td></tr>
+      <tr><td><span style="color:#F8F8F8;background:#0F172A;padding:2px 8px;">White on Navy</span></td><td class="td-meta">#0F172A</td><td class="td-meta">16.5:1</td><td style="color:var(--success);">âœ“ Pass</td><td style="color:var(--success);">âœ“ Pass</td><td class="td-use">Dark mode body</td></tr>
+      <tr><td><span style="color:#fff;background:#C62828;padding:2px 8px;">White on Red</span></td><td class="td-meta">#C62828</td><td class="td-meta">5.9:1</td><td style="color:var(--success);">âœ“ Pass</td><td style="color:var(--error);">âœ— Fail</td><td class="td-use">Destructive buttons</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <div class="callout-lbl">Additional A11y Rules</div>
+    <div class="callout-text">
+      â€¢ Never communicate state with color alone â€” always pair with icon or label.<br>
+      â€¢ Focus rings: 2px solid Gold + 2px offset ring (<span class="code-inline">--shadow-glow</span>).<br>
+      â€¢ Minimum interactive target: 44 Ã— 44 px.<br>
+      â€¢ Body line-height â‰¥ 1.5; paragraph spacing â‰¥ 1.5Ã— line-height.<br>
+      â€¢ Animations respect <span class="code-inline">prefers-reduced-motion</span>.
+    </div>
+  </div>
+</section>
+
+<!-- â•â•â•â•â•â•â•â•â•â•â•â• 10 TYPOGRAPHY â•â•â•â•â•â•â•â•â•â•â•â• -->
+<section class="section section-alt" id="typography">
+  <div class="section-label">10 â€” Typography System Â· 3 Font Families</div>
+  <h2 class="section-title">Type Foundation</h2>
+  <p class="section-intro">Three families with strict roles. Never introduce a fourth typeface in any Vastome artifact.</p>
+
+  <div class="font-grid">
+    <div class="font-card">
+      <div class="font-role-lbl">Display Â· Headings &amp; Logo</div>
+      <div class="font-nm" style="font-family:'Space Grotesk',sans-serif;">Space Grotesk</div>
+      <div class="font-meta"><strong>Source:</strong> Google Fonts Â· <strong>Weights:</strong> 300/400/500/600/700 Â· <strong>Min size:</strong> 18px Â· <strong>CSS:</strong> <span class="code-inline">--font-display</span></div>
+      <div class="specimen" style="font-family:'Space Grotesk',sans-serif;">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz<br>0123456789 !@#$%&amp;*()</div>
+    </div>
+    <div class="font-card">
+      <div class="font-role-lbl">Body Â· All UI Text</div>
+      <div class="font-nm" style="font-family:'Inter',sans-serif;">Inter</div>
+      <div class="font-meta"><strong>Source:</strong> Google Fonts Â· <strong>Weights:</strong> 300/400/500/600/700/800 Â· <strong>Min size:</strong> 12px Â· <strong>CSS:</strong> <span class="code-inline">--font-body</span></div>
+      <div class="specimen" style="font-family:'Inter',sans-serif;">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz<br>0123456789 !@#$%&amp;*()</div>
+    </div>
+    <div class="font-card">
+      <div class="font-role-lbl">Mono Â· Code &amp; Labels</div>
+      <div class="font-nm" style="font-family:'JetBrains Mono',monospace;font-size:22px;">JetBrains Mono</div>
+      <div class="font-meta"><strong>Source:</strong> Google Fonts Â· <strong>Weights:</strong> 400/500/600 Â· <strong>Min size:</strong> 10px Â· <strong>CSS:</strong> <span class="code-inline">--font-mono</span></div>
+      <div class="specimen" style="font-family:'JetBrains Mono',monospace;">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz<br>#0F172A Â· v1.0 Â· const x = 42;</div>
+    </div>
+  </div>
+</section>
+
+<!-- â•â•â•â•â•â•â•â•â•â•â•â• 11 TYPE SCALE â•â•â•â•â•â•â•â•â•â•â•â• -->
+<section class="section" id="scale">
+  <div class="section-label">11 â€” Type Scale &amp; Tokens</div>
+  <h2 class="section-title">The Scale</h2>
+  <p class="section-intro">A modular type scale with a 1.25 ratio. Every text element on every Vastome surface uses one of these tokens.</p>
+
+  <table>
+    <thead><tr><th>Sample</th><th>Token</th><th>Size Â· LH</th><th>Family</th><th>Weight</th><th>Tracking</th><th>Use</th></tr></thead>
+    <tbody>
+      <tr><td><span style="font-family:'Space Grotesk',sans-serif;font-size:56px;font-weight:700;color:var(--text);line-height:1;letter-spacing:-.02em;">Aa</span></td><td class="td-meta">--text-display</td><td class="td-meta">56 / 60</td><td class="td-meta">Space Grotesk</td><td class="td-meta">700</td><td class="td-meta">-2%</td><td class="td-use">Hero Â· landing</td></tr>
+      <tr><td><span style="font-family:'Space Grotesk',sans-serif;font-size:40px;font-weight:600;color:var(--text);line-height:1.1;">H1</span></td><td class="td-meta">--text-h1</td><td class="td-meta">40 / 44</td><td class="td-meta">Space Grotesk</td><td class="td-meta">600</td><td class="td-meta">-1%</td><td class="td-use">Page title</td></tr>
+      <tr><td><span style="font-family:'Space Grotesk',sans-serif;font-size:32px;font-weight:600;color:var(--text);">H2</span></td><td class="td-meta">--text-h2</td><td class="td-meta">32 / 38</td><td class="td-meta">Space Grotesk</td><td class="td-meta">600</td><td class="td-meta">-1%</td><td class="td-use">Section heading</td></tr>
+      <tr><td><span style="font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:600;color:var(--text);">H3</span></td><td class="td-meta">--text-h3</td><td class="td-meta">24 / 30</td><td class="td-meta">Space Grotesk</td><td class="td-meta">600</td><td class="td-meta">0</td><td class="td-use">Subsection</td></tr>
+      <tr><td><span style="font-family:'Inter',sans-serif;font-size:18px;font-weight:600;color:var(--text);">H4 / Lead</span></td><td class="td-meta">--text-lg</td><td class="td-meta">18 / 28</td><td class="td-meta">Inter</td><td class="td-meta">600</td><td class="td-meta">0</td><td class="td-use">Card titles</td></tr>
+      <tr><td><span style="font-family:'Inter',sans-serif;font-size:16px;font-weight:400;color:var(--text-secondary);">Body â€” default reading.</span></td><td class="td-meta">--text-base</td><td class="td-meta">16 / 26</td><td class="td-meta">Inter</td><td class="td-meta">400</td><td class="td-meta">0</td><td class="td-use">Body copy</td></tr>
+      <tr><td><span style="font-family:'Inter',sans-serif;font-size:14px;font-weight:500;color:var(--text);">Button / Nav</span></td><td class="td-meta">--text-sm</td><td class="td-meta">14 / 20</td><td class="td-meta">Inter</td><td class="td-meta">500</td><td class="td-meta">+1%</td><td class="td-use">UI text</td></tr>
+      <tr><td><span style="font-family:'Inter',sans-serif;font-size:12px;font-weight:500;color:var(--text-muted);">Caption / Meta</span></td><td class="td-meta">--text-xs</td><td class="td-meta">12 / 18</td><td class="td-meta">Inter</td><td class="td-meta">500</td><td class="td-meta">+2%</td><td class="td-use">Captions</td></tr>
+      <tr><td><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-muted);">EYEBROW LABEL</span></td><td class="td-meta">--text-overline</td><td class="td-meta">11 / 16</td><td class="td-meta">JetBrains Mono</td><td class="td-meta">500</td><td class="td-meta">+20%</td><td class="td-use">Section labels</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- â•â•â•â•â•â•â•â•â•â•â•â• 12 SPACING â•â•â•â•â•â•â•â•â•â•â•â• -->
+<section class="section section-alt" id="spacing">
+  <div class="section-label">12 â€” Spacing System Â· 4-Point Grid</div>
+  <h2 class="section-title">Spatial Rhythm</h2>
+  <p class="section-intro">All margin, padding, and gap values come from this scale. The base unit is <strong>4px</strong>. Never use values outside this scale.</p>
+
+  <div class="space-demo">
+    <div class="space-bar" style="height:8px;">4</div>
+    <div class="space-bar" style="height:16px;">8</div>
+    <div class="space-bar" style="height:24px;">12</div>
+    <div class="space-bar" style="height:32px;">16</div>
+    <div class="space-bar" style="height:40px;">20</div>
+    <div class="space-bar" style="height:48px;">24</div>
+    <div class="space-bar" style="height:64px;">32</div>
+    <div class="space-bar" style="height:80px;">40</div>
+    <div class="space-bar" style="height:96px;">48</div>
+    <div class="space-bar" style="height:128px;">64</div>
+  </div>
+  <div style="margin-top:var(--space-4);font-family:var(--font-mono);font-size:10px;color:var(--text-muted);letter-spacing:.1em;">Tokens: --space-1 (4px) â†’ --space-16 (64px) Â· Scale: 4 Â· 8 Â· 12 Â· 16 Â· 20 Â· 24 Â· 32 Â· 40 Â· 48 Â· 64 Â· 80 Â· 96</div>
+</section>
+
+<!-- â•â•â•â•â•â•â•â•â•â•â•â• 13 RADIUS â•â•â•â•â•â•â•â•â•â•â•â• -->
+<section class="section" id="radius">
+  <div class="section-label">13 â€” Border Radius</div>
+  <h2 class="section-title">Corner System</h2>
+  <p class="section-intro">Soft but disciplined. We avoid pill-shaped buttons except for tags and filters. Cards use <span class="code-inline">--r-lg</span>; modals use <span class="code-inline">--r-xl</span>.</p>
+
+  <div class="radius-demo">
+    <div class="radius-box" style="border-radius:0;">0<span>--r-none</span></div>
+    <div class="radius-box" style="border-radius:4px;">4<span>--r-sm</span></div>
+    <div class="radius-box" style="border-radius:8px;">8<span>--r-md</span></div>
+    <div class="radius-box" style="border-radius:12px;">12<span>--r-lg</span></div>
+    <div class="radius-box" style="border-radius:16px;">16<span>--r-xl</span></div>
+    <div class="radius-box" style="border-radius:24px;">24<span>--r-2xl</span></div>
+    <div class="radius-box" style="border-radius:9999px;">âˆž<span>--r-full</span></div>
+  </div>
+</section>
+
+<!-- â•â•â•â•â•â•â•â•â•â•â•â• 14 ELEVATION â•â•â•â•â•â•â•â•â•â•â•â• -->
+<section class="section section-alt" id="elevation">
+  <div class="section-label">14 â€” Elevation &amp; Shadows</div>
+  <h2 class="section-title">Depth Hierarchy</h2>
+  <p class="section-intro">Five levels of elevation. Avoid blanket shadows â€” only used to communicate hierarchy or interactive lift.</p>
+
+  <div class="elev-demo">
+    <div class="elev-box" style="box-shadow:var(--shadow-xs);">XS<br><span style="opacity:.5;">subtle</span></div>
+    <div class="elev-box" style="box-shadow:var(--shadow-sm);">SM<br><span style="opacity:.5;">cards</span></div>
+    <div class="elev-box" style="box-shadow:var(--shadow-md);">MD<br><span style="opacity:.5;">dropdowns</span></div>
+    <div class="elev-box" style="box-shadow:var(--shadow-lg);">LG<br><span style="opacity:.5;">popovers</span></div>
+    <div class="elev-box" style="box-shadow:var(--shadow-xl);">XL<br><span style="opacity:.5;">modals</span></div>
+  </div>
+</section>
+
+<!-- â•â•â•â•â•â•â•â•â•â•â•â• 15 BUTTONS â•â•â•â•â•â•â•â•â•â•â•â• -->
+<section class="section" id="buttons">
+  <div class="section-label">15 â€” Button Components</div>
+  <h2 class="section-title">Action Hierarchy</h2>
+  <p class="section-intro">One primary action per screen maximum. Use Accent (Gold) for the most important action and Primary (Navy) for general actions.</p>
+
+  <div class="grid-3">
+    <div class="card">
+      <h4>Variants</h4>
+      <div style="display:flex;flex-direction:column;gap:var(--space-3);margin-top:var(--space-4);">
+        <button class="btn btn-accent">Get Started â†’</button>
+        <button class="btn btn-primary">Primary Action</button>
+        <button class="btn btn-secondary">Secondary</button>
+        <button class="btn btn-ghost">Ghost / Tertiary</button>
+        <button class="btn btn-destructive">Delete Account</button>
+      </div>
+    </div>
+    <div class="card">
+      <h4>Sizes</h4>
+      <div style="display:flex;flex-direction:column;gap:var(--space-3);margin-top:var(--space-4);align-items:flex-start;">
+        <button class="btn btn-primary btn-sm">Small Â· 32px</button>
+        <button class="btn btn-primary">Default Â· 40px</button>
+        <button class="btn btn-primary btn-lg">Large Â· 48px</button>
+      </div>
+    </div>
+    <div class="card">
+      <h4>States</h4>
+      <div style="display:flex;flex-direction:column;gap:var(--space-3);margin-top:var(--space-4);align-items:flex-start;">
+        <button class="btn btn-accent">Default</button>
+        <button class="btn btn-accent" style="background:var(--gold-deep);transform:translateY(-1px);box-shadow:var(--shadow-md);">Hover</button>
+        <button class="btn btn-accent" style="box-shadow:var(--shadow-glow);outline:2px solid var(--gold);">Focus</button>
+        <button class="btn btn-accent" style="opacity:.5;cursor:not-allowed;">Disabled</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- â•â•â•â•â•â•â•â•â•â•â•â• 16 FORMS â•â•â•â•â•â•â•â•â•â•â•â• -->
+<section class="section section-alt" id="forms">
+  <div class="section-label">16 â€” Form Elements</div>
+  <h2 class="section-title">Input Anatomy</h2>
+  <p class="section-intro">Always paired with a label. Help text and validation messages use <span class="code-inline">--text-xs</span>.</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="field"><label>Full Name</label><input class="input" placeholder="Jane Doe"></div>
+      <div class="field"><label>Email Address</label><input class="input" type="email" value="jane@Vastome.com"></div>
+      <div class="field"><label>Project Type</label>
+        <select class="input"><option>Enterprise SaaS</option><option>AI Platform</option><option>Mobile App</option></select>
+      </div>
+      <div class="field"><label>Description</label><textarea class="input" rows="3" placeholder="Tell us about your project..."></textarea></div>
+      <button class="btn btn-accent" style="margin-top:8px;">Submit Inquiry</button>
+    </div>
+    <div class="card">
+      <h4>States</h4>
+      <div class="field"><label>Default</label><input class="input" placeholder="Type hereâ€¦"></div>
+      <div class="field"><label>Focused</label><input class="input" value="Active focus" style="border-color:var(--gold);box-shadow:var(--shadow-glow);"></div>
+      <div class="field"><label style="color:var(--error);">Error</label><input class="input" value="invalid@" style="border-color:var(--error);"><span style="font-size:11px;color:var(--error);margin-top:4px;">Please enter a valid email.</span></div>
+      <div class="field"><label style="color:var(--success);">Success</label><input class="input" value="confirmed@Vastome.com" style="border-color:var(--success);"></div>
+      <div class="field"><label style="opacity:.6;">Disabled</label><input class="input" value="Locked" disabled style="opacity:.5;cursor:not-allowed;background:var(--bg-muted);"></div>
+    </div>
+  </div>
+</section>
+
+<!-- â•â•â•â•â•â•â•â•â•â•â•â• 17 CARDS â•â•â•â•â•â•â•â•â•â•â•â• -->
+<section class="section" id="cards">
+  <div class="section-label">17 â€” Cards &amp; Surfaces</div>
+  <h2 class="section-title">Card Anatomy</h2>
+  <p class="section-intro">Cards are containers for grouped content. Always use <span class="code-inline">--r-lg</span> radius and <span class="code-inline">--shadow-sm</span> by default.</p>
+
+  <div class="grid-3">
+    <div class="card">
+      <div class="stat-lbl">Active Customers</div>
+      <div class="stat-num" style="margin-top:8px;">2,847</div>
+      <div class="stat-trend">â†‘ 12.4% MoM</div>
+    </div>
+    <div class="card" style="background:var(--navy);color:#fff;border-color:var(--navy);">
+      <div class="stat-lbl" style="color:var(--gold);">Revenue Â· 2026</div>
+      <div class="stat-num" style="color:#fff;margin-top:8px;">$8.2M</div>
+      <div style="font-size:11px;color:rgba(255,255,255,.6);margin-top:4px;">â†‘ 38% YoY</div>
+    </div>
+    <div class="card" style="background:var(--gold);border-color:var(--gold);">
+      <div class="stat-lbl" style="color:var(--navy);">Featured</div>
+      <h4 style="color:var(--navy);font-size:18px;margin-top:8px;">Build Smart. Scale Further.</h4>
+      <p style="color:rgba(15,23,42,.7);margin-top:6px;">Our flagship enterprise platform.</p>
+    </div>
+  </div>
+</section>
+
+<!-- â•â•â•â•â•â•â•â•â•â•â•â• 18 ALERTS â•â•â•â•â•â•â•â•â•â•â•â• -->
+<section class="section section-alt" id="alerts">
+  <div class="section-label">18 â€” Alerts &amp; Toasts</div>
+  <h2 class="section-title">Feedback Patterns</h2>
+  <div style="display:flex;flex-direction:column;gap:var(--space-4);max-width:760px;">
+    <div class="alert alert-success"><strong>Deployment successful.</strong> Build #482 is live in production.</div>
+    <div class="alert alert-info"><strong>New release available.</strong> v2.1.0 brings AI-assisted code review.</div>
+    <div class="alert alert-warning"><strong>API limit nearing.</strong> 87% of monthly quota used â€” review usage.</div>
+    <div class="alert alert-error"><strong>Connection failed.</strong> Unable to reach upstream. Retry in 30s.</div>
+  </div>
+</section>
+
+<!-- â•â•â•â•â•â•â•â•â•â•â•â• 19 ICONS â•â•â•â•â•â•â•â•â•â•â•â• -->
+<section class="section" id="icons">
+  <div class="section-label">19 â€” Iconography</div>
+  <h2 class="section-title">Icon Style</h2>
+  <p class="section-intro">Use <strong>Lucide Icons</strong> exclusively. Stroke 1.75px, rounded line-caps, 24Ã—24 viewbox. Never mix icon sets.</p>
+
+  <div class="icon-set">
+    <div class="icon-tile"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+    <div class="icon-tile"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div>
+    <div class="icon-tile"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+    <div class="icon-tile"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+    <div class="icon-tile"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+    <div class="icon-tile"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+    <div class="icon-tile"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="9" x2="15" y2="9"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="13" y2="17"/></svg></div>
+    <div class="icon-tile"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+  </div>
+
+  <div class="callout">
+    <div class="callout-lbl">Icon Rules</div>
+    <div class="callout-text">Always pair icons with labels in primary navigation. Use <span class="code-inline">currentColor</span> for stroke so icons inherit text color. Never decorate icons with shadows or gradients.</div>
+  </div>
+</section>
+
+<!-- â•â•â•â•â•â•â•â•â•â•â•â• 20 IMAGERY â•â•â•â•â•â•â•â•â•â•â•â• -->
+<section class="section section-alt" id="imagery">
+  <div class="section-label">20 â€” Imagery &amp; Photography</div>
+  <h2 class="section-title">Visual Tone</h2>
+  <p class="section-intro">Imagery is architectural, abstract, and engineered â€” never stock-photo clichÃ©.</p>
+
+  <div class="grid-2">
+    <div>
+      <div class="font-role-lbl">âœ“ Yes â€” Use</div>
+      <ul style="margin-top:var(--space-3);font-size:13px;color:var(--text-secondary);line-height:2;list-style:none;">
+        <li>â— Clean architectural photography (concrete, glass, steel)</li>
+        <li>â— Macro shots of circuit boards, fiber optics, code editors</li>
+        <li>â— Abstract data visualizations on dark backgrounds</li>
+        <li>â— Real engineers / customers in their natural environments</li>
+        <li>â— Duotone treatments using Navy + Gold</li>
+      </ul>
+    </div>
+    <div>
+      <div class="font-role-lbl">âœ— No â€” Avoid</div>
+      <ul style="margin-top:var(--space-3);font-size:13px;color:var(--text-secondary);line-height:2;list-style:none;">
+        <li>â— Stock photos of people pointing at screens</li>
+        <li>â— ClichÃ© handshakes, lightbulbs, jigsaw puzzles</li>
+        <li>â— Rainbow gradients, neon, cyberpunk aesthetics</li>
+        <li>â— Over-saturated or HDR imagery</li>
+        <li>â— 3D-rendered AI brains or robotic faces</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- â•â•â•â•â•â•â•â•â•â•â•â• 21 MOTION â•â•â•â•â•â•â•â•â•â•â•â• -->
+<section class="section" id="motion">
+  <div class="section-label">21 â€” Motion Principles</div>
+  <h2 class="section-title">Movement With Purpose</h2>
+  <p class="section-intro">Motion exists to clarify, never to decorate. Three durations, two easings â€” that's it.</p>
+
+  <div class="grid-3">
+    <div class="card">
+      <h4>Durations</h4>
+      <p><span class="code-inline">--dur-fast 150ms</span> â€” micro-interactions (hover, focus)<br>
+      <span class="code-inline">--dur-base 250ms</span> â€” defaults (open, fade)<br>
+      <span class="code-inline">--dur-slow 400ms</span> â€” large transitions (page, modal)</p>
+    </div>
+    <div class="card">
+      <h4>Easings</h4>
+      <p><span class="code-inline">--ease-out</span> â€” entrances, expansions<br>
+      <span class="code-inline">--ease-in-out</span> â€” state changes, slides<br><br>Never use linear easing for UI.</p>
+    </div>
+    <div class="card">
+      <h4>Principles</h4>
+      <p>â‘  Always purposeful<br>â‘¡ Never longer than 400ms in UI<br>â‘¢ Respect <span class="code-inline">prefers-reduced-motion</span><br>â‘£ Animate transform + opacity only (never width/height)</p>
+    </div>
+  </div>
+</section>
+
+<!-- â•â•â•â•â•â•â•â•â•â•â•â• 22 GRID â•â•â•â•â•â•â•â•â•â•â•â• -->
+<section class="section section-alt" id="grid">
+  <div class="section-label">22 â€” Grid &amp; Layout</div>
+  <h2 class="section-title">Page Geometry</h2>
+  <p class="section-intro">12-column grid with responsive breakpoints. Max content width is 1240px.</p>
+
+  <div class="grid-3">
+    <div class="card"><h4>Breakpoints</h4><p><span class="code-inline">sm</span> 640px<br><span class="code-inline">md</span> 768px<br><span class="code-inline">lg</span> 1024px<br><span class="code-inline">xl</span> 1280px<br><span class="code-inline">2xl</span> 1536px</p></div>
+    <div class="card"><h4>Container</h4><p>Max width <span class="code-inline">1240px</span><br>Narrow content <span class="code-inline">880px</span><br>Side gutter <span class="code-inline">--space-6</span> mobile, <span class="code-inline">--space-16</span> desktop</p></div>
+    <div class="card"><h4>Columns</h4><p>12 columns desktop<br>8 columns tablet<br>4 columns mobile<br>Gutter <span class="code-inline">--space-6</span> (24px)</p></div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(12,1fr);gap:8px;margin-top:var(--space-6);">
+    <div style="background:var(--gold);height:32px;border-radius:var(--r-sm);"></div><div style="background:var(--gold);height:32px;border-radius:var(--r-sm);"></div><div style="background:var(--gold);height:32px;border-radius:var(--r-sm);"></div><div style="background:var(--gold);height:32px;border-radius:var(--r-sm);"></div><div style="background:var(--gold);height:32px;border-radius:var(--r-sm);"></div><div style="background:var(--gold);height:32px;border-radius:var(--r-sm);"></div><div style="background:var(--gold);height:32px;border-radius:var(--r-sm);"></div><div style="background:var(--gold);height:32px;border-radius:var(--r-sm);"></div><div style="background:var(--gold);height:32px;border-radius:var(--r-sm);"></div><div style="background:var(--gold);height:32px;border-radius:var(--r-sm);"></div><div style="background:var(--gold);height:32px;border-radius:var(--r-sm);"></div><div style="background:var(--gold);height:32px;border-radius:var(--r-sm);"></div>
+  </div>
+</section>
+
+<!-- â•â•â•â•â•â•â•â•â•â•â•â• 23 VOICE â•â•â•â•â•â•â•â•â•â•â•â• -->
+<section class="section" id="voice">
+  <div class="section-label">23 â€” Voice &amp; Tone</div>
+  <h2 class="section-title">How We Sound</h2>
+  <p class="section-intro">Vastome sounds like a senior engineer who respects your time. Clear, confident, never corporate.</p>
+
+  <div class="voice-grid">
+    <div class="voice-card"><h5>â‘  Clear, not clever</h5><p style="font-size:12px;color:var(--text-muted);">Plain English beats jargon every time.</p>
+      <div class="voice-pair"><div class="voice-yes">"We deploy in 14 days."</div><div class="voice-no">"We leverage agile synergies."</div></div>
+    </div>
+    <div class="voice-card"><h5>â‘¡ Confident, not arrogant</h5><p style="font-size:12px;color:var(--text-muted);">Make the claim, then prove it.</p>
+      <div class="voice-pair"><div class="voice-yes">"Built for scale. Tested at 10M req/s."</div><div class="voice-no">"World's best platform."</div></div>
+    </div>
+    <div class="voice-card"><h5>â‘¢ Specific, not vague</h5><p style="font-size:12px;color:var(--text-muted);">Numbers, names, and verbs.</p>
+      <div class="voice-pair"><div class="voice-yes">"Cut deployment time by 73%."</div><div class="voice-no">"Significantly faster deployments."</div></div>
+    </div>
+    <div class="voice-card"><h5>â‘£ Human, not corporate</h5><p style="font-size:12px;color:var(--text-muted);">Write like you're talking to one engineer.</p>
+      <div class="voice-pair"><div class="voice-yes">"Here's how it works."</div><div class="voice-no">"Please find enclosed our solution overview."</div></div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="callout-lbl">Writing Mechanics</div>
+    <div class="callout-text">
+      â€¢ Sentence case for headings (not Title Case).<br>
+      â€¢ Oxford comma always.<br>
+      â€¢ Numerals for numbers â‰¥ 10. Spell out one through nine.<br>
+      â€¢ Active voice over passive.<br>
+      â€¢ Avoid: "robust", "synergy", "leverage", "best-in-class", "seamless", "next-gen".
+    </div>
+  </div>
+</section>
+
+<!-- â•â•â•â•â•â•â•â•â•â•â•â• 24 APPLICATIONS â•â•â•â•â•â•â•â•â•â•â•â• -->
+<section class="section section-alt" id="applications">
+  <div class="section-label">24 â€” Real-World Applications</div>
+  <h2 class="section-title">In Context</h2>
+  <p class="section-intro">How the brand looks in production.</p>
+
+  <!-- Web header mock -->
+  <div class="mock-window" style="margin-bottom:var(--space-6);">
+    <div class="mock-bar">
+      <div class="mock-dot" style="background:#EF4444;"></div>
+      <div class="mock-dot" style="background:#F59E0B;"></div>
+      <div class="mock-dot" style="background:#10B981;"></div>
+      <span style="font-family:var(--font-mono);font-size:10px;color:var(--text-muted);margin-left:12px;">Vastome.com</span>
+    </div>
+    <div style="background:var(--navy);padding:var(--space-12) var(--space-16);color:#fff;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:64px;">
+        <div class="logo-mark" style="gap:14px;">
+          <div class="brand-icon" style="color:#fff;transform:scale(.8);">
+            <div class="bracket-l" style="border-color:#fff;"></div><div class="bracket-r" style="border-color:#fff;"></div>
+            <div class="dl dl1" style="background:#fff;"></div><div class="dl dl2" style="background:#fff;"></div>
+            <div class="node"></div><div class="cursor"></div>
+            <div class="dl dl3" style="background:#fff;"></div>
+          </div>
+          <div style="font-family:var(--font-display);font-size:20px;font-weight:500;letter-spacing:.08em;">Vastome</div>
+        </div>
+        <div style="display:flex;gap:32px;font-size:13px;color:rgba(255,255,255,.7);">
+          <span>Platform</span><span>Solutions</span><span>Pricing</span><span>Docs</span>
+          <button class="btn btn-accent btn-sm">Get Started</button>
+        </div>
+      </div>
+      <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:16px;">ENTERPRISE SOFTWARE PLATFORM</div>
+      <h1 style="font-family:var(--font-display);font-size:64px;font-weight:700;line-height:1.05;letter-spacing:-.02em;margin-bottom:20px;max-width:840px;">Build smart.<br>Scale further.</h1>
+      <p style="font-size:18px;color:rgba(255,255,255,.65);max-width:560px;line-height:1.6;margin-bottom:32px;">Vastome helps enterprises ship intelligent software 3Ã— faster â€” with AI-assisted engineering and disciplined execution.</p>
+      <div style="display:flex;gap:16px;">
+        <button class="btn btn-accent btn-lg">Start Free Trial â†’</button>
+        <button class="btn btn-lg" style="background:transparent;color:#fff;border:1px solid rgba(255,255,255,.25);">Watch Demo</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Business cards -->
+  <div class="font-role-lbl" style="margin-bottom:var(--space-4);">Business Cards Â· Front + Back</div>
+  <div class="grid-2" style="gap:var(--space-6);max-width:780px;">
+    <div class="bcard bcard-front">
+      <div class="logo-mark" style="gap:14px;">
+        <div class="brand-icon" style="color:#fff;transform:scale(.85);">
+          <div class="bracket-l" style="border-color:#fff;"></div><div class="bracket-r" style="border-color:#fff;"></div>
+          <div class="dl dl1" style="background:#fff;"></div><div class="dl dl2" style="background:#fff;"></div>
+          <div class="node"></div><div class="cursor"></div>
+          <div class="dl dl3" style="background:#fff;"></div>
+        </div>
+        <div style="font-family:var(--font-display);font-size:22px;font-weight:500;letter-spacing:.08em;">Vastome</div>
+      </div>
+      <div>
+        <div style="font-family:var(--font-display);font-size:18px;font-weight:600;color:#fff;">Shashank Bagda</div>
+        <div style="font-size:11px;color:var(--gold);margin-top:4px;letter-spacing:.1em;text-transform:uppercase;">Founder Â· CEO</div>
+        <div style="font-family:var(--font-mono);font-size:10px;color:rgba(255,255,255,.5);margin-top:12px;letter-spacing:.05em;">shashank@Vastome.com Â· +91 â€¢â€¢â€¢ â€¢â€¢â€¢ â€¢â€¢â€¢â€¢</div>
+      </div>
+    </div>
+    <div class="bcard bcard-back" style="align-items:center;justify-content:center;">
+      <div style="text-align:center;">
+        <div style="font-family:var(--font-display);font-size:32px;font-weight:600;letter-spacing:.04em;color:var(--navy);">build smart.</div>
+        <div style="font-family:var(--font-display);font-size:32px;font-weight:600;letter-spacing:.04em;color:var(--navy);">scale further.</div>
+        <div style="font-family:var(--font-mono);font-size:10px;color:rgba(15,23,42,.5);margin-top:20px;letter-spacing:.2em;text-transform:uppercase;">Vastome.com</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Social avatar + favicon -->
+  <div style="margin-top:var(--space-10);">
+    <div class="font-role-lbl" style="margin-bottom:var(--space-4);">Social Avatars Â· Square</div>
+    <div style="display:flex;gap:var(--space-4);align-items:center;">
+      <div style="width:120px;height:120px;background:var(--navy);border-radius:24px;display:flex;align-items:center;justify-content:center;">
+        <div class="brand-icon" style="color:#fff;transform:scale(1.4);">
+          <div class="bracket-l" style="border-color:#fff;"></div><div class="bracket-r" style="border-color:#fff;"></div>
+          <div class="dl dl1" style="background:#fff;"></div><div class="dl dl2" style="background:#fff;"></div>
+          <div class="node"></div><div class="cursor"></div>
+          <div class="dl dl3" style="background:#fff;"></div>
+        </div>
+      </div>
+      <div style="width:80px;height:80px;background:var(--gold);border-radius:18px;display:flex;align-items:center;justify-content:center;">
+        <div class="brand-icon" style="color:var(--navy);">
+          <div class="bracket-l"></div><div class="bracket-r"></div>
+          <div class="dl dl1" style="background:var(--navy);"></div><div class="dl dl2" style="background:var(--navy);"></div>
+          <div class="node" style="background:var(--navy);"></div><div class="cursor"></div>
+          <div class="dl dl3" style="background:var(--navy);"></div>
+        </div>
+      </div>
+      <div style="width:48px;height:48px;background:var(--navy);border-radius:10px;display:flex;align-items:center;justify-content:center;">
+        <div class="brand-icon" style="color:#fff;transform:scale(.6);">
+          <div class="bracket-l" style="border-color:#fff;"></div><div class="bracket-r" style="border-color:#fff;"></div>
+          <div class="dl dl1" style="background:#fff;"></div><div class="dl dl2" style="background:#fff;"></div>
+          <div class="node"></div><div class="cursor"></div>
+          <div class="dl dl3" style="background:#fff;"></div>
+        </div>
+      </div>
+      <div style="width:32px;height:32px;background:var(--navy);border-radius:6px;display:flex;align-items:center;justify-content:center;">
+        <div class="brand-icon" style="color:#fff;transform:scale(.45);">
+          <div class="bracket-l" style="border-color:#fff;"></div><div class="bracket-r" style="border-color:#fff;"></div>
+          <div class="dl dl1" style="background:#fff;"></div><div class="dl dl2" style="background:#fff;"></div>
+          <div class="node"></div><div class="cursor"></div>
+          <div class="dl dl3" style="background:#fff;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- â•â•â•â•â•â•â•â•â•â•â•â• COLOR USAGE RATIO â•â•â•â•â•â•â•â•â•â•â•â• -->
+<section class="section">
+  <div class="section-label">25 â€” Color Usage Ratio Â· 80 / 15 / 5</div>
+  <h2 class="section-title">The Mix</h2>
+  <p class="section-intro">For any composition (web page, deck, ad), color distribution should follow this ratio approximately.</p>
+  <div class="ratio-bar">
+    <div class="ratio-seg" style="width:38%;background:#0F172A;color:#fff;">38% Navy</div>
+    <div class="ratio-seg" style="width:37%;background:#F8F8F8;color:#0F172A;">37% White</div>
+    <div class="ratio-seg" style="width:15%;background:#EFC14F;color:#0F172A;">15% Gold</div>
+    <div class="ratio-seg" style="width:5%;background:#C62828;color:#fff;">5%</div>
+    <div class="ratio-seg" style="width:5%;background:#6B7280;color:#fff;">5%</div>
+  </div>
+  <div class="ratio-legend">
+    <div class="ratio-item"><div class="ratio-dot" style="background:#0F172A;"></div><span><strong style="color:var(--text);">Navy 38%</strong> â€” Base &amp; text</span></div>
+    <div class="ratio-item"><div class="ratio-dot" style="background:#F8F8F8;border:1px solid var(--border);"></div><span><strong style="color:var(--text);">White 37%</strong> â€” Backgrounds</span></div>
+    <div class="ratio-item"><div class="ratio-dot" style="background:#EFC14F;"></div><span><strong style="color:var(--text);">Gold 15%</strong> â€” Accent &amp; CTAs</span></div>
+    <div class="ratio-item"><div class="ratio-dot" style="background:#C62828;"></div><span><strong style="color:var(--text);">Red 5%</strong> â€” Power moments</span></div>
+  </div>
+</section>
+
+<!-- â•â•â•â•â•â•â•â•â•â•â•â• DESIGN TOKEN EXPORT â•â•â•â•â•â•â•â•â•â•â•â• -->
+<section class="section section-alt">
+  <div class="section-label">26 â€” Design Token Export Â· For Engineering</div>
+  <h2 class="section-title">Token Reference</h2>
+  <p class="section-intro">Copy-paste-ready CSS custom properties. Any new product or page must consume these tokens â€” never hard-coded values.</p>
+  <pre style="background:var(--navy);color:var(--gold);padding:var(--space-6);border-radius:var(--r-md);font-family:var(--font-mono);font-size:12px;line-height:1.7;overflow-x:auto;">
+:root {
+  /* Brand Core */
+  --navy: #0F172A;     --navy-graphite: #1A1A2E;
+  --gold: #EFC14F;     --gold-deep: #D4A437;     --gold-soft: #F7DB8A;
+  --red:  #C62828;     --red-deep:  #9B1C1C;
+
+  /* Semantic */
+  --success: #10B981;  --warning: #F59E0B;
+  --error:   #EF4444;  --info:    #3B82F6;
+
+  /* Type */
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body:    'Inter', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+
+  /* Spacing (4px grid) */
+  --space-1: 4px;  --space-2: 8px;  --space-3: 12px; --space-4: 16px;
+  --space-6: 24px; --space-8: 32px; --space-12: 48px; --space-16: 64px;
+
+  /* Radius */
+  --r-sm: 4px; --r-md: 8px; --r-lg: 12px; --r-xl: 16px; --r-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(15,23,42,.06);
+  --shadow-md: 0 4px 6px -1px rgba(15,23,42,.08);
+  --shadow-lg: 0 10px 15px -3px rgba(15,23,42,.10);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.16,1,0.3,1);
+  --dur-fast: 150ms; --dur-base: 250ms; --dur-slow: 400ms;
+}
+  </pre>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div>
+    <div style="color:var(--gold);font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:600;letter-spacing:.08em;">Vastome</div>
+    <div style="font-family:'Inter',sans-serif;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:6px;">build smart Â· scale further</div>
+  </div>
+  <div style="text-align:right;">
+    <div style="font-size:10px;font-family:'JetBrains Mono',monospace;color:rgba(255,255,255,.3);letter-spacing:.15em;text-transform:uppercase;">Brand &amp; Design System Â· v2.0 Â· 2026</div>
+    <div style="font-size:10px;color:rgba(255,255,255,.3);margin-top:4px;">Â© Vastome Ltd. Â· All rights reserved</div>
+  </div>
+</footer>
+
+<script>
+function setTheme(mode){
+  document.documentElement.setAttribute('data-theme',mode);
+  document.querySelectorAll('.theme-toggle button').forEach(b=>b.classList.remove('active'));
+  event.target.classList.add('active');
+  try{localStorage.setItem('Vastome-theme',mode);}catch(e){}
+}
+(function(){
+  try{
+    const saved=localStorage.getItem('Vastome-theme');
+    if(saved){
+      document.documentElement.setAttribute('data-theme',saved);
+      document.querySelectorAll('.theme-toggle button').forEach(b=>{
+        b.classList.toggle('active',b.textContent.toLowerCase().includes(saved));
+      });
+    }
+  }catch(e){}
+})();
+</script>
+
+</body>
+</html>
+
