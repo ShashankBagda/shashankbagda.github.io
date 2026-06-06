@@ -1,0 +1,56 @@
+.services-overview,
+.services-cta-band {
+  display: grid;
+  gap: 32px;
+}
+
+.service-section + .service-section {
+  border-top: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.section-dark.service-section + .service-section {
+  border-top-color: rgba(247, 219, 138, 0.08);
+}
+
+.service-detail {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(280px, 5fr);
+  grid-template-areas: 'copy meta';
+  gap: clamp(32px, 5vw, 64px);
+  align-items: start;
+}
+
+.service-detail.reverse {
+  grid-template-columns: minmax(280px, 5fr) minmax(0, 7fr);
+  grid-template-areas: 'meta copy';
+}
+
+.service-copy {
+  grid-area: copy;
+  display: grid;
+  gap: 18px;
+}
+
+.service-meta {
+  grid-area: meta;
+  display: grid;
+  gap: 18px;
+}
+
+.service-bullets {
+  gap: 12px;
+}
+
+.service-cta {
+  margin-top: 8px;
+}
+
+@media (max-width: 1024px) {
+  .service-detail,
+  .service-detail.reverse {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'copy'
+      'meta';
+  }
+}

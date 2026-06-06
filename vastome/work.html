@@ -1,762 +1,232 @@
-﻿<!DOCTYPE html>
-<html lang="en" data-theme="light">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Case Studies â€” Vastome Work</title>
-  <meta name="description" content="See how Vastome has helped enterprises transform with custom software solutions." />
-  <meta name="theme-color" content="#0F172A" />
-  <link rel="canonical" href="https://shashankbagda.github.io/Vastome/work.html" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://shashankbagda.github.io/Vastome/work.html" />
-  <meta property="og:title" content="Case Studies â€” Vastome Work" />
-  <meta property="og:description" content="See how Vastome has helped enterprises transform with custom software solutions." />
-  <meta property="og:image" content="assets/img/og-cover.svg" />
-  <meta property="og:site_name" content="Vastome" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Case Studies â€” Vastome Work" />
-  <meta name="twitter:description" content="See how Vastome has helped enterprises transform with custom software solutions." />
-  <meta name="twitter:image" content="assets/img/og-cover.svg" />
-  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" />
-  <link rel="stylesheet" href="assets/css/tokens.css" />
-  <link rel="stylesheet" href="assets/css/base.css" />
-  <link rel="stylesheet" href="assets/css/components.css" />
-  <link rel="stylesheet" href="assets/css/animations.css" />
-  <style>
-    .work-hero {
-      background: var(--navy);
-      color: #fff;
-      padding-block: var(--space-24);
-      position: relative;
-      overflow: hidden;
-    }
-    .work-hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(239,193,79,0.06) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(239,193,79,0.06) 1px, transparent 1px);
-      background-size: 48px 48px;
-    }
-    .work-hero .container { position: relative; z-index: 1; }
-    .work-hero h1 {
-      font-family: var(--font-display);
-      font-size: clamp(2.5rem, 6vw, 4.5rem);
-      font-weight: 700;
-      line-height: 1.1;
-      margin-bottom: var(--space-6);
-    }
-    .work-hero h1 span { color: var(--gold); }
-    .work-hero p {
-      font-size: var(--text-xl);
-      color: rgba(255,255,255,0.75);
-      max-width: 580px;
-    }
-    .work-filters {
-      padding-block: var(--space-8);
-      background: var(--bg);
-      border-bottom: 1px solid var(--border);
-    }
-    .filter-pills {
-      display: flex;
-      gap: var(--space-2);
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .filter-pill {
-      padding: var(--space-2) var(--space-5);
-      border-radius: 999px;
-      font-size: var(--text-sm);
-      font-weight: 600;
-      color: var(--text-muted);
-      background: transparent;
-      border: 1px solid var(--border);
-      cursor: pointer;
-      transition: color 0.2s, background 0.2s, border-color 0.2s;
-    }
-    .filter-pill:hover, .filter-pill.is-active {
-      color: var(--navy);
-      background: var(--gold);
-      border-color: var(--gold);
-    }
-    .work-section {
-      padding-block: var(--space-20);
-      background: var(--bg);
-    }
-    .work-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--space-6);
-    }
-    @media (max-width: 1024px) {
-      .work-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 640px) {
-      .work-grid { grid-template-columns: 1fr; }
-    }
-    .work-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--r-xl);
-      overflow: hidden;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-      cursor: pointer;
-    }
-    .work-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 20px 56px rgba(0,0,0,0.12);
-    }
-    .work-card.hidden { display: none; }
-    .work-card-image {
-      height: 180px;
-      background: linear-gradient(135deg, var(--navy) 0%, #1a2744 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .work-card-image-pattern {
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(239,193,79,0.08) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(239,193,79,0.08) 1px, transparent 1px);
-      background-size: 24px 24px;
-    }
-    .work-card-initials {
-      position: relative;
-      z-index: 1;
-      font-family: var(--font-display);
-      font-size: 2.5rem;
-      font-weight: 800;
-      color: rgba(239,193,79,0.3);
-      letter-spacing: -0.02em;
-    }
-    .work-card-body {
-      padding: var(--space-6);
-    }
-    .work-card-badges {
-      display: flex;
-      gap: var(--space-2);
-      flex-wrap: wrap;
-      margin-bottom: var(--space-3);
-    }
-    .badge {
-      padding: 3px 10px;
-      border-radius: 999px;
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-    }
-    .badge-cloud { background: rgba(56,189,248,0.12); color: #0ea5e9; }
-    .badge-ai { background: rgba(168,85,247,0.12); color: #a855f7; }
-    .badge-saas { background: rgba(34,197,94,0.12); color: #16a34a; }
-    .badge-devops { background: rgba(239,68,68,0.12); color: #dc2626; }
-    .badge-data { background: rgba(245,158,11,0.12); color: #d97706; }
-    .badge-security { background: rgba(239,193,79,0.12); color: var(--gold-deep); }
-    .work-card-client {
-      font-size: var(--text-xs);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--text-muted);
-      margin-bottom: var(--space-2);
-    }
-    .work-card-title {
-      font-family: var(--font-display);
-      font-size: var(--text-lg);
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: var(--space-3);
-      line-height: 1.35;
-    }
-    .work-card-desc {
-      font-size: var(--text-sm);
-      color: var(--text-muted);
-      line-height: 1.7;
-      margin-bottom: var(--space-4);
-    }
-    .work-card-metrics {
-      display: flex;
-      gap: var(--space-4);
-      padding-top: var(--space-4);
-      border-top: 1px solid var(--border);
-    }
-    .metric-item { flex: 1; }
-    .metric-num {
-      font-family: var(--font-display);
-      font-size: var(--text-xl);
-      font-weight: 800;
-      color: var(--gold-deep);
-    }
-    .metric-label {
-      font-size: 11px;
-      color: var(--text-muted);
-      margin-top: 2px;
-    }
-    /* Modal */
-    .modal-backdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.6);
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: var(--space-4);
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.25s ease;
-    }
-    .modal-backdrop.is-open {
-      opacity: 1;
-      pointer-events: all;
-    }
-    .modal {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--r-xl);
-      max-width: 720px;
-      width: 100%;
-      max-height: 90vh;
-      overflow-y: auto;
-      transform: translateY(20px);
-      transition: transform 0.25s ease;
-    }
-    .modal-backdrop.is-open .modal {
-      transform: translateY(0);
-    }
-    .modal-header {
-      padding: var(--space-6);
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: var(--space-4);
-      position: sticky;
-      top: 0;
-      background: var(--surface);
-      z-index: 1;
-    }
-    .modal-body {
-      padding: var(--space-8);
-    }
-    .modal-title {
-      font-family: var(--font-display);
-      font-size: var(--text-2xl);
-      font-weight: 700;
-      color: var(--text);
-    }
-    .modal-section-title {
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: var(--space-3);
-      font-size: var(--text-lg);
-    }
-    .modal-metrics-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--space-4);
-      margin-bottom: var(--space-8);
-    }
-    .modal-metric-card {
-      background: var(--bg-soft);
-      border: 1px solid var(--border);
-      border-radius: var(--r-lg);
-      padding: var(--space-4);
-      text-align: center;
-    }
-    @media (max-width: 600px) {
-      .modal-metrics-grid { grid-template-columns: 1fr; }
-    }
-  </style>
-</head>
-<body>
-  <a class="skip-link" href="#main-content">Skip to main content</a>
-
-  <header class="nav-header" role="banner">
-    <div class="container">
-      <nav class="nav-inner" aria-label="Main navigation">
-        <a href="index.html" class="nav-logo-wrap" aria-label="Vastome â€” home">
-          <span class="brand-icon" aria-hidden="true">
-            <span class="bracket-l"></span>
-            <span class="bracket-r"></span>
-            <span class="dl dl1"></span>
-            <span class="dl dl2"></span>
-            <span class="node"></span>
-            <span class="cursor"></span>
-            <span class="dl dl3"></span>
-          </span>
-          <span class="logo-wordmark">Vastome</span>
-        </a>
-        <ul class="nav-links" role="list">
+<!DOCTYPE html>
+    <html lang="en" data-theme="light">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Work — Vastome</title>
+      <meta name="description" content="Selected Vastome case studies across cloud migration, AI platforms, SaaS architecture, DevOps, data engineering, and security transformation." />
+      <meta name="theme-color" content="#0F172A" />
+      <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+      <link rel="stylesheet" href="assets/css/tokens.css" />
+      <link rel="stylesheet" href="assets/css/base.css" />
+      <link rel="stylesheet" href="assets/css/components.css" />
+      <link rel="stylesheet" href="assets/css/animations.css" />
+      <link rel="stylesheet" href="assets/css/pages/work.css" />
+    </head>
+    <body class="page-inner page-work">
+      <a href="#main" class="skip-to-content">Skip to content</a>
+      <nav class="nav" id="nav" aria-label="Main navigation">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="Vastome home">
+        <img src="assets/img/logo.png" alt="Vastome" height="36" />
+      </a>
+      <ul class="nav-links" role="list">
           <li><a href="index.html" class="nav-link">Home</a></li>
-          <li><a href="services.html" class="nav-link">Services</a></li>
-          <li><a href="solutions.html" class="nav-link">Solutions</a></li>
-          <li><a href="work.html" class="nav-link is-active" aria-current="page">Work</a></li>
-          <li><a href="pricing.html" class="nav-link">Pricing</a></li>
-          <li><a href="blog.html" class="nav-link">Blog</a></li>
-          <li><a href="about.html" class="nav-link">About</a></li>
-          <li><a href="contact.html" class="nav-link">Contact</a></li>
+          <li><a href="about.html" class="nav-link">01 About</a></li>
+          <li><a href="services.html" class="nav-link">02 Services</a></li>
+          <li><a href="solutions.html" class="nav-link">03 Solutions</a></li>
+          <li><a href="work.html" class="nav-link is-active">04 Work</a></li>
+          <li><a href="blog.html" class="nav-link">05 Blog</a></li>
+          <li><a href="pricing.html" class="nav-link">06 Pricing</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+  <svg class="icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <circle cx="12" cy="12" r="4"></circle>
+    <path d="M12 2v2.5"></path>
+    <path d="M12 19.5V22"></path>
+    <path d="M4.93 4.93l1.77 1.77"></path>
+    <path d="M17.3 17.3l1.77 1.77"></path>
+    <path d="M2 12h2.5"></path>
+    <path d="M19.5 12H22"></path>
+    <path d="M4.93 19.07l1.77-1.77"></path>
+    <path d="M17.3 6.7l1.77-1.77"></path>
+  </svg>
+  <svg class="icon icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3c0 0 0 0 0 0A7 7 0 0 0 21 12.79z"></path>
+  </svg>
+</button>
+        <a href="contact.html" class="btn btn-accent btn-sm nav-cta-link">Contact</a>
+        <button class="nav-toggle" id="navToggle" type="button" aria-label="Toggle navigation" aria-controls="navOverlay" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="nav-overlay" id="navOverlay" aria-hidden="true">
+  <div class="container">
+    <div class="nav-overlay-inner">
+      <ul class="overlay-links" role="list">
+          <li><a href="index.html" class="overlay-link">Home</a></li>
+          <li><a href="about.html" class="overlay-link">01 About</a></li>
+          <li><a href="services.html" class="overlay-link">02 Services</a></li>
+          <li><a href="solutions.html" class="overlay-link">03 Solutions</a></li>
+          <li><a href="work.html" class="overlay-link is-active">04 Work</a></li>
+          <li><a href="blog.html" class="overlay-link">05 Blog</a></li>
+          <li><a href="pricing.html" class="overlay-link">06 Pricing</a></li>
+      </ul>
+      <div class="overlay-footer">
+        <p>Cloud, AI, SaaS, and security engineering for ambitious teams.</p>
+        <a href="contact.html" class="btn btn-accent">Start a project</a>
+      </div>
+    </div>
+  </div>
+</div>
+      <main id="main">
+        <section class="page-hero">
+  <div class="container">
+    <span class="section-eyebrow reveal">OUR WORK</span>
+    <h1 class="page-hero-heading reveal">Work that<br><em class="text-gold">speaks.</em></h1>
+    <p class="page-hero-sub reveal">Selected engagements from the last three years. Numbers are real. Client names have been anonymised where requested.</p>
+  </div>
+</section>
+
+<section class="section section-light section-shell" data-number="01">
+  <div class="container">
+    <div class="section-intro reveal-left">
+      <span class="section-eyebrow reveal">SELECTED ENGAGEMENTS</span>
+      <h2 class="section-heading reveal">Six recent outcomes across cloud, AI, SaaS, and security.</h2>
+    </div>
+    <div class="case-studies-grid stagger-children">
+      <article class="card card-case-study case-study-card reveal">
+        <div class="case-study-meta"><span class="card-kicker">Cloud Migration</span><span class="tag">Cloud Architecture</span></div>
+        <h3 class="card-title card-title-sm">ClearStream Bank</h3>
+        <p class="card-text">Rebuilt core banking infrastructure on AWS for 2M+ customers. 99.99% uptime maintained throughout 18-month migration.</p>
+        <div class="card-footer"><span class="tag">Cloud Architecture</span><span class="tag">AWS</span></div>
+        <p class="card-outcome"><strong>Outcome:</strong> 40% cost reduction, zero migration incidents</p>
+      </article>
+      <article class="card card-case-study case-study-card reveal">
+        <div class="case-study-meta"><span class="card-kicker">Clinical AI Platform</span><span class="tag">AI/ML Engineering</span></div>
+        <h3 class="card-title card-title-sm">MedVision Health</h3>
+        <p class="card-text">Computer vision platform that reduces radiologist review time by 60% across 12 hospital networks.</p>
+        <div class="card-footer"><span class="tag">AI/ML Engineering</span><span class="tag">Healthcare</span></div>
+        <p class="card-outcome"><strong>Outcome:</strong> FDA-cleared, 60% time reduction</p>
+      </article>
+      <article class="card card-case-study case-study-card reveal">
+        <div class="case-study-meta"><span class="card-kicker">Multi-Tenant SaaS Re-architecture</span><span class="tag">SaaS Platforms</span></div>
+        <h3 class="card-title card-title-sm">TalentOS</h3>
+        <p class="card-text">Took an HR SaaS product from 0 to 10,000 enterprise customers by rebuilding the multi-tenant core.</p>
+        <div class="card-footer"><span class="tag">SaaS Platforms</span><span class="tag">DevOps</span></div>
+        <p class="card-outcome"><strong>Outcome:</strong> 10,000 customers, 300ms → 45ms p95 latency</p>
+      </article>
+      <article class="card card-case-study case-study-card reveal">
+        <div class="case-study-meta"><span class="card-kicker">CI/CD Transformation</span><span class="tag">DevOps &amp; Platform</span></div>
+        <h3 class="card-title card-title-sm">RocketShip Labs</h3>
+        <p class="card-text">From weekly releases to 50 deployments per day with zero downtime incidents in 12 months.</p>
+        <div class="card-footer"><span class="tag">DevOps &amp; Platform</span><span class="tag">GitOps</span></div>
+        <p class="card-outcome"><strong>Outcome:</strong> 50× deployment frequency</p>
+      </article>
+      <article class="card card-case-study case-study-card reveal">
+        <div class="case-study-meta"><span class="card-kicker">Real-Time Recommendation Engine</span><span class="tag">Data Engineering</span></div>
+        <h3 class="card-title card-title-sm">NovaMart</h3>
+        <p class="card-text">Kafka + Flink real-time engine drives 23% uplift in average order value across 4M daily active users.</p>
+        <div class="card-footer"><span class="tag">Data Engineering</span><span class="tag">AI/ML</span></div>
+        <p class="card-outcome"><strong>Outcome:</strong> +23% AOV</p>
+      </article>
+      <article class="card card-case-study case-study-card reveal">
+        <div class="case-study-meta"><span class="card-kicker">Zero-Trust Security Migration</span><span class="tag">Cybersecurity</span></div>
+        <h3 class="card-title card-title-sm">GovConnect</h3>
+        <p class="card-text">Zero-trust architecture for a national government citizen data platform handling 8M records.</p>
+        <div class="card-footer"><span class="tag">Cybersecurity</span><span class="tag">Cloud</span></div>
+        <p class="card-outcome"><strong>Outcome:</strong> SOC 2 Type II, ISO 27001 certified</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section section-dark section-shell" data-number="02">
+  <div class="container">
+    <div class="section-intro reveal-left">
+      <span class="section-eyebrow reveal">RESULTS</span>
+      <h2 class="section-heading reveal">Measured outcomes across recent engagements.</h2>
+    </div>
+    <div class="work-results-grid stagger-children">
+      <article class="stat-block reveal">
+        <div class="stat-number">99.99%</div>
+        <p class="stat-label">Migration uptime</p>
+      </article>
+      <article class="stat-block reveal">
+        <div class="stat-number">10k</div>
+        <p class="stat-label">Enterprise customers supported</p>
+      </article>
+      <article class="stat-block reveal">
+        <div class="stat-number">50×</div>
+        <p class="stat-label">Deployment frequency increase</p>
+      </article>
+      <article class="stat-block reveal">
+        <div class="stat-number">23%</div>
+        <p class="stat-label">Average order value uplift</p>
+      </article>
+      <article class="stat-block reveal">
+        <div class="stat-number">8M</div>
+        <p class="stat-label">Citizen records protected</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section section-light">
+  <div class="container">
+    <div class="cta-section cta-section--centered reveal section-shell" data-number="03">
+      <h2 class="cta-heading">Looking for similar outcomes?</h2>
+      <p>Bring us the brief, the legacy stack, or the impossible deadline — we'll help shape the delivery plan.</p>
+      <a href="contact.html" class="btn btn-accent">Start a conversation →</a>
+    </div>
+  </div>
+</section>
+      </main>
+      <footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="assets/img/logo.png" alt="Vastome" height="32" />
+        <p>Build smart. Scale further.</p>
+      </div>
+      <div class="footer-nav">
+        <h6>Services</h6>
+        <ul role="list">
+          <li><a href="services.html#cloud-architecture">Cloud Architecture</a></li>
+          <li><a href="services.html#ai-ml-engineering">AI/ML Engineering</a></li>
+          <li><a href="services.html#custom-saas-platforms">Custom SaaS Platforms</a></li>
+          <li><a href="services.html#devops-platform-engineering">DevOps &amp; Platform</a></li>
+          <li><a href="services.html#data-engineering">Data Engineering</a></li>
+          <li><a href="services.html#cybersecurity">Cybersecurity</a></li>
         </ul>
-        <div class="nav-actions">
-          <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle dark mode" aria-checked="false" role="switch">
-            <span class="theme-toggle-thumb" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
-            </span>
-          </button>
-          <a href="contact.html" class="btn btn-accent desktop-nav-cta" aria-label="Get started with Vastome">Get started</a>
-          <button class="nav-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-drawer" data-nav-toggle>
-            <span class="nav-toggle-bar" aria-hidden="true"></span>
-            <span class="nav-toggle-bar" aria-hidden="true"></span>
-            <span class="nav-toggle-bar" aria-hidden="true"></span>
-          </button>
-        </div>
+      </div>
+      <div class="footer-nav">
+        <h6>Company</h6>
+        <ul role="list">
+          <li><a href="about.html">About</a></li>
+          <li><a href="work.html">Work</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h6>Contact</h6>
+        <ul role="list">
+          <li><a href="mailto:hello@vastome.io">hello@vastome.io</a></li>
+          <li><a href="tel:+442034567890">+44 20 3456 7890</a></li>
+          <li><span>London &amp; Remote</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Vastome Ltd. All rights reserved.</p>
+      <nav aria-label="Legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
       </nav>
     </div>
-  </header>
-
-  <div id="nav-drawer" class="nav-drawer" role="dialog" aria-label="Navigation menu" aria-modal="true" data-nav-drawer>
-    <div class="nav-drawer-backdrop" data-nav-close aria-hidden="true"></div>
-    <div class="nav-drawer-panel">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-6);">
-        <a href="index.html" class="nav-logo-wrap" style="font-size:var(--text-base);">
-          <span class="brand-icon" aria-hidden="true" style="transform:scale(.8);transform-origin:left center;"><span class="bracket-l"></span><span class="bracket-r"></span><span class="dl dl1"></span><span class="dl dl2"></span><span class="node"></span><span class="cursor"></span><span class="dl dl3"></span></span>
-          <span>Vastome</span>
-        </a>
-        <button type="button" class="btn btn-ghost btn-icon" aria-label="Close menu" data-nav-close>
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-        </button>
-      </div>
-      <nav aria-label="Mobile navigation">
-        <a href="index.html" class="nav-drawer-link">Home</a>
-        <a href="services.html" class="nav-drawer-link">Services</a>
-        <a href="solutions.html" class="nav-drawer-link">Solutions</a>
-        <a href="work.html" class="nav-drawer-link is-active" aria-current="page">Work</a>
-        <a href="pricing.html" class="nav-drawer-link">Pricing</a>
-        <a href="blog.html" class="nav-drawer-link">Blog</a>
-        <a href="about.html" class="nav-drawer-link">About</a>
-        <a href="contact.html" class="nav-drawer-link">Contact</a>
-      </nav>
-      <div style="margin-top:var(--space-6);padding-top:var(--space-6);border-top:1px solid var(--border);">
-        <a href="contact.html" class="btn btn-accent" style="display:block;text-align:center;">Get started</a>
-      </div>
-    </div>
   </div>
-
-  <main id="main-content">
-    <!-- Hero -->
-    <section class="work-hero">
-      <div class="container">
-        <h1>Work that <span>speaks</span></h1>
-        <p>Every case study here is a real engagement with real outcomes. We let the numbers do the talking.</p>
-      </div>
-    </section>
-
-    <!-- Filters -->
-    <div class="work-filters" aria-label="Filter work by category">
-      <div class="container">
-        <div class="filter-pills" role="group" aria-label="Category filter">
-          <button class="filter-pill is-active" data-filter="all" type="button">All</button>
-          <button class="filter-pill" data-filter="cloud" type="button">Cloud</button>
-          <button class="filter-pill" data-filter="ai" type="button">AI</button>
-          <button class="filter-pill" data-filter="saas" type="button">SaaS</button>
-          <button class="filter-pill" data-filter="devops" type="button">DevOps</button>
-          <button class="filter-pill" data-filter="data" type="button">Data</button>
-          <button class="filter-pill" data-filter="security" type="button">Security</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Work Grid -->
-    <section class="work-section">
-      <div class="container">
-        <div class="work-grid" id="work-grid">
-          <article class="work-card reveal" data-category="cloud" role="button" tabindex="0" aria-label="Open ClearStream Bank case study" data-modal="modal-1">
-            <div class="work-card-image"><div class="work-card-image-pattern"></div><span class="work-card-initials">CSB</span></div>
-            <div class="work-card-body">
-              <div class="work-card-badges">
-                <span class="badge badge-cloud">Cloud</span>
-              </div>
-              <p class="work-card-client">ClearStream Bank â€” Fintech</p>
-              <h2 class="work-card-title">Rebuilding a core banking platform on AWS for 2M+ customers</h2>
-              <p class="work-card-desc">Legacy on-premises infrastructure was costing millions annually and blocking product velocity. Vastome designed and executed a full cloud migration in 16 weeks.</p>
-              <div class="work-card-metrics">
-                <div class="metric-item"><p class="metric-num">94%</p><p class="metric-label">Latency reduction</p></div>
-                <div class="metric-item"><p class="metric-num">40%</p><p class="metric-label">Cost saving</p></div>
-                <div class="metric-item"><p class="metric-num">16wk</p><p class="metric-label">Delivery</p></div>
-              </div>
-            </div>
-          </article>
-
-          <article class="work-card reveal" data-category="ai" role="button" tabindex="0" aria-label="Open MedVision Health case study" data-modal="modal-2">
-            <div class="work-card-image"><div class="work-card-image-pattern"></div><span class="work-card-initials">MVH</span></div>
-            <div class="work-card-body">
-              <div class="work-card-badges">
-                <span class="badge badge-ai">AI/ML</span>
-              </div>
-              <p class="work-card-client">MedVision Health â€” Healthcare</p>
-              <h2 class="work-card-title">Clinical AI platform reduces radiologist review time by 60%</h2>
-              <p class="work-card-desc">A 12-hospital network needed to address radiologist burnout without compromising diagnostic quality. Vastome built a computer vision screening system with explainable AI output.</p>
-              <div class="work-card-metrics">
-                <div class="metric-item"><p class="metric-num">60%</p><p class="metric-label">Time saved</p></div>
-                <div class="metric-item"><p class="metric-num">97.3%</p><p class="metric-label">Model accuracy</p></div>
-                <div class="metric-item"><p class="metric-num">12</p><p class="metric-label">Hospitals deployed</p></div>
-              </div>
-            </div>
-          </article>
-
-          <article class="work-card reveal" data-category="saas" role="button" tabindex="0" aria-label="Open TalentOS case study" data-modal="modal-3">
-            <div class="work-card-image"><div class="work-card-image-pattern"></div><span class="work-card-initials">TOS</span></div>
-            <div class="work-card-body">
-              <div class="work-card-badges">
-                <span class="badge badge-saas">SaaS</span>
-              </div>
-              <p class="work-card-client">TalentOS â€” HR Tech SaaS</p>
-              <h2 class="work-card-title">0 to 10,000 enterprise customers: re-architecting an HR SaaS for scale</h2>
-              <p class="work-card-desc">TalentOS had product-market fit but a single-tenant architecture that couldn't support enterprise sales. Vastome redesigned the platform as multi-tenant in eight weeks.</p>
-              <div class="work-card-metrics">
-                <div class="metric-item"><p class="metric-num">10K+</p><p class="metric-label">Enterprise customers</p></div>
-                <div class="metric-item"><p class="metric-num">8wk</p><p class="metric-label">Delivery</p></div>
-                <div class="metric-item"><p class="metric-num">3x</p><p class="metric-label">ARR growth</p></div>
-              </div>
-            </div>
-          </article>
-
-          <article class="work-card reveal" data-category="devops" role="button" tabindex="0" aria-label="Open RocketShip Labs case study" data-modal="modal-4">
-            <div class="work-card-image"><div class="work-card-image-pattern"></div><span class="work-card-initials">RSL</span></div>
-            <div class="work-card-body">
-              <div class="work-card-badges">
-                <span class="badge badge-devops">DevOps</span>
-              </div>
-              <p class="work-card-client">RocketShip Labs â€” SaaS / Tech</p>
-              <h2 class="work-card-title">From weekly releases to 50 deployments per day with zero downtime</h2>
-              <p class="work-card-desc">A 200-engineer SaaS company was shipping weekly due to a fragile deployment process and lack of test coverage. Vastome rebuilt the entire CI/CD pipeline and internal developer platform.</p>
-              <div class="work-card-metrics">
-                <div class="metric-item"><p class="metric-num">50/day</p><p class="metric-label">Deployments</p></div>
-                <div class="metric-item"><p class="metric-num">90%</p><p class="metric-label">MTTR reduction</p></div>
-                <div class="metric-item"><p class="metric-num">0</p><p class="metric-label">Downtime incidents</p></div>
-              </div>
-            </div>
-          </article>
-
-          <article class="work-card reveal" data-category="data" role="button" tabindex="0" aria-label="Open NovaMart Retail case study" data-modal="modal-5">
-            <div class="work-card-image"><div class="work-card-image-pattern"></div><span class="work-card-initials">NMR</span></div>
-            <div class="work-card-body">
-              <div class="work-card-badges">
-                <span class="badge badge-data">Data</span>
-                <span class="badge badge-ai">AI/ML</span>
-              </div>
-              <p class="work-card-client">NovaMart â€” Retail E-commerce</p>
-              <h2 class="work-card-title">Real-time recommendation engine drives 23% uplift in average order value</h2>
-              <p class="work-card-desc">NovaMart's batch recommendation system couldn't leverage real-time signals. Vastome built a streaming feature store and real-time ranking model served at 50K req/sec.</p>
-              <div class="work-card-metrics">
-                <div class="metric-item"><p class="metric-num">23%</p><p class="metric-label">AOV increase</p></div>
-                <div class="metric-item"><p class="metric-num">50K</p><p class="metric-label">Req/sec served</p></div>
-                <div class="metric-item"><p class="metric-num">&lt;20ms</p><p class="metric-label">P99 latency</p></div>
-              </div>
-            </div>
-          </article>
-
-          <article class="work-card reveal" data-category="security" role="button" tabindex="0" aria-label="Open GovConnect case study" data-modal="modal-6">
-            <div class="work-card-image"><div class="work-card-image-pattern"></div><span class="work-card-initials">GVC</span></div>
-            <div class="work-card-body">
-              <div class="work-card-badges">
-                <span class="badge badge-security">Security</span>
-                <span class="badge badge-cloud">Cloud</span>
-              </div>
-              <p class="work-card-client">GovConnect â€” Government</p>
-              <h2 class="work-card-title">Zero-trust migration secures citizen data platform for national agency</h2>
-              <p class="work-card-desc">A national government agency managing identity data for 40M citizens had a perimeter-based security model with multiple unpatched vulnerabilities. Vastome led a zero-trust architecture migration.</p>
-              <div class="work-card-metrics">
-                <div class="metric-item"><p class="metric-num">100%</p><p class="metric-label">Critical vulns patched</p></div>
-                <div class="metric-item"><p class="metric-num">40M</p><p class="metric-label">Citizens protected</p></div>
-                <div class="metric-item"><p class="metric-num">ISO 27001</p><p class="metric-label">Certified</p></div>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- Modals -->
-  <div class="modal-backdrop" id="modal-1" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
-    <div class="modal">
-      <div class="modal-header">
-        <div>
-          <div class="work-card-badges" style="margin-bottom:var(--space-2);"><span class="badge badge-cloud">Cloud</span></div>
-          <h2 class="modal-title" id="modal-1-title">ClearStream Bank â€” Cloud Migration</h2>
-        </div>
-        <button class="btn btn-ghost btn-icon" aria-label="Close case study" data-modal-close>
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="modal-metrics-grid">
-          <div class="modal-metric-card"><p class="metric-num">94%</p><p class="metric-label">Payment latency reduction</p></div>
-          <div class="modal-metric-card"><p class="metric-num">40%</p><p class="metric-label">Infrastructure cost saving</p></div>
-          <div class="modal-metric-card"><p class="metric-num">16wk</p><p class="metric-label">Migration delivery</p></div>
-        </div>
-        <p class="modal-section-title">Challenge</p>
-        <p style="color:var(--text-muted);line-height:1.8;margin-bottom:var(--space-6);">ClearStream Bank was running a 15-year-old on-premises core banking system. Infrastructure costs were exceeding $4M annually, payment processing latency averaged 4 seconds, and the engineering team spent 60% of their time on maintenance rather than product development. The bank needed to modernize without disrupting service to their 2 million customers.</p>
-        <p class="modal-section-title">Approach</p>
-        <p style="color:var(--text-muted);line-height:1.8;margin-bottom:var(--space-6);">Vastome's cloud architects designed a strangler-fig migration pattern, allowing new services to be built on AWS while legacy components were progressively decommissioned. We introduced asynchronous payment processing with SQS and Lambda, Redis caching for account lookups, and Aurora PostgreSQL for the core ledger. A blue-green deployment strategy ensured zero downtime throughout the 16-week migration.</p>
-        <p class="modal-section-title">Outcome</p>
-        <p style="color:var(--text-muted);line-height:1.8;">"Vastome delivered what three previous vendors failed to: a cloud migration that actually shipped on time and under budget. The improvement in payment latency alone has driven measurable customer satisfaction gains." â€” VP Engineering, ClearStream Bank</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal-backdrop" id="modal-2" role="dialog" aria-modal="true" aria-labelledby="modal-2-title">
-    <div class="modal">
-      <div class="modal-header">
-        <div>
-          <div class="work-card-badges" style="margin-bottom:var(--space-2);"><span class="badge badge-ai">AI/ML</span></div>
-          <h2 class="modal-title" id="modal-2-title">MedVision Health â€” Clinical AI Platform</h2>
-        </div>
-        <button class="btn btn-ghost btn-icon" aria-label="Close case study" data-modal-close>
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="modal-metrics-grid">
-          <div class="modal-metric-card"><p class="metric-num">60%</p><p class="metric-label">Review time saved</p></div>
-          <div class="modal-metric-card"><p class="metric-num">97.3%</p><p class="metric-label">Diagnostic accuracy</p></div>
-          <div class="modal-metric-card"><p class="metric-num">12</p><p class="metric-label">Hospitals deployed</p></div>
-        </div>
-        <p class="modal-section-title">Challenge</p>
-        <p style="color:var(--text-muted);line-height:1.8;margin-bottom:var(--space-6);">MedVision Health's network of 12 hospitals was experiencing radiologist burnout driven by a growing backlog of imaging studies. With a 30% staff shortage and radiology study volume increasing 18% year-on-year, the network needed a technological solution that could triage and pre-screen studies without compromising diagnostic quality.</p>
-        <p class="modal-section-title">Approach</p>
-        <p style="color:var(--text-muted);line-height:1.8;margin-bottom:var(--space-6);">Vastome built a HIPAA-compliant computer vision pipeline using PyTorch and MONAI for medical imaging. The system pre-screens chest X-rays and CT scans, surfaces anomalies with confidence scores and heatmap overlays, and routes urgent studies to the top of the radiologist queue. The MLOps pipeline on AWS HealthLake enables continuous model retraining as new labeled studies become available.</p>
-        <p class="modal-section-title">Outcome</p>
-        <p style="color:var(--text-muted);line-height:1.8;">"The AI system has transformed how our radiologists work. They're spending their time on genuinely complex cases, not routine screening â€” that's exactly what we wanted." â€” Chief Medical Information Officer, MedVision Health</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal-backdrop" id="modal-3" role="dialog" aria-modal="true" aria-labelledby="modal-3-title">
-    <div class="modal">
-      <div class="modal-header">
-        <div>
-          <div class="work-card-badges" style="margin-bottom:var(--space-2);"><span class="badge badge-saas">SaaS</span></div>
-          <h2 class="modal-title" id="modal-3-title">TalentOS â€” Multi-Tenant SaaS Re-architecture</h2>
-        </div>
-        <button class="btn btn-ghost btn-icon" aria-label="Close case study" data-modal-close>
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="modal-metrics-grid">
-          <div class="modal-metric-card"><p class="metric-num">10K+</p><p class="metric-label">Enterprise customers</p></div>
-          <div class="modal-metric-card"><p class="metric-num">8wk</p><p class="metric-label">Architecture delivered</p></div>
-          <div class="modal-metric-card"><p class="metric-num">3x</p><p class="metric-label">ARR growth (12mo)</p></div>
-        </div>
-        <p class="modal-section-title">Challenge</p>
-        <p style="color:var(--text-muted);line-height:1.8;margin-bottom:var(--space-6);">TalentOS had product-market fit with SMBs but was losing enterprise deals because their single-tenant architecture couldn't support SSO, SCIM provisioning, data isolation guarantees, or audit logs â€” all requirements for enterprise procurement. Every new enterprise customer required a new dedicated deployment, making scaling economically unviable.</p>
-        <p class="modal-section-title">Approach</p>
-        <p style="color:var(--text-muted);line-height:1.8;margin-bottom:var(--space-6);">Vastome redesigned TalentOS as a true multi-tenant platform with row-level security in PostgreSQL, Okta SSO and SCIM integration, immutable audit logging via AWS CloudTrail, and a feature-flag system enabling per-tenant feature toggling. The migration was executed with zero downtime using shadow-mode deployments and progressive traffic shifting.</p>
-        <p class="modal-section-title">Outcome</p>
-        <p style="color:var(--text-muted);line-height:1.8;">"Vastome didn't just build the architecture â€” they educated our team throughout the process. We shipped eight weeks after kickoff and closed our first Fortune 500 customer 30 days later." â€” CTO, TalentOS</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal-backdrop" id="modal-4" role="dialog" aria-modal="true" aria-labelledby="modal-4-title">
-    <div class="modal">
-      <div class="modal-header">
-        <div>
-          <div class="work-card-badges" style="margin-bottom:var(--space-2);"><span class="badge badge-devops">DevOps</span></div>
-          <h2 class="modal-title" id="modal-4-title">RocketShip Labs â€” CI/CD Transformation</h2>
-        </div>
-        <button class="btn btn-ghost btn-icon" aria-label="Close case study" data-modal-close>
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="modal-metrics-grid">
-          <div class="modal-metric-card"><p class="metric-num">50/day</p><p class="metric-label">Daily deployments</p></div>
-          <div class="modal-metric-card"><p class="metric-num">90%</p><p class="metric-label">MTTR reduction</p></div>
-          <div class="modal-metric-card"><p class="metric-num">0</p><p class="metric-label">Unplanned outages</p></div>
-        </div>
-        <p class="modal-section-title">Challenge</p>
-        <p style="color:var(--text-muted);line-height:1.8;margin-bottom:var(--space-6);">RocketShip Labs had grown to 200 engineers but was still shipping once a week due to a manual, fear-driven release process. Deploys took 4 hours, required two engineers to babysit them, and had a 30% failure rate that often resulted in weekend rollbacks. Engineering morale was suffering.</p>
-        <p class="modal-section-title">Approach</p>
-        <p style="color:var(--text-muted);line-height:1.8;margin-bottom:var(--space-6);">Vastome built a new CI/CD platform on GitHub Actions with automated testing gates, canary deployments via Argo Rollouts, and feature flags through LaunchDarkly. We also designed an internal developer portal using Backstage, giving every engineer self-service access to deployment status, runbooks, and service dependency graphs. Datadog and PagerDuty were configured for intelligent alerting.</p>
-        <p class="modal-section-title">Outcome</p>
-        <p style="color:var(--text-muted);line-height:1.8;">"The cultural shift this enabled was as significant as the technical one. Engineers are no longer afraid to ship. We went from one painful release per week to 50 effortless ones per day." â€” Head of Platform, RocketShip Labs</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal-backdrop" id="modal-5" role="dialog" aria-modal="true" aria-labelledby="modal-5-title">
-    <div class="modal">
-      <div class="modal-header">
-        <div>
-          <div class="work-card-badges" style="margin-bottom:var(--space-2);"><span class="badge badge-data">Data</span><span class="badge badge-ai">AI/ML</span></div>
-          <h2 class="modal-title" id="modal-5-title">NovaMart â€” Real-Time Recommendation Engine</h2>
-        </div>
-        <button class="btn btn-ghost btn-icon" aria-label="Close case study" data-modal-close>
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="modal-metrics-grid">
-          <div class="modal-metric-card"><p class="metric-num">23%</p><p class="metric-label">AOV increase</p></div>
-          <div class="modal-metric-card"><p class="metric-num">50K rps</p><p class="metric-label">Peak throughput</p></div>
-          <div class="modal-metric-card"><p class="metric-num">&lt;20ms</p><p class="metric-label">P99 latency</p></div>
-        </div>
-        <p class="modal-section-title">Challenge</p>
-        <p style="color:var(--text-muted);line-height:1.8;margin-bottom:var(--space-6);">NovaMart's recommendation system was running nightly batch jobs that produced static recommendations per user. Real-time behavioral signals â€” what a user had browsed in the last 10 minutes â€” were completely ignored. Competitors with real-time personalization were winning market share.</p>
-        <p class="modal-section-title">Approach</p>
-        <p style="color:var(--text-muted);line-height:1.8;margin-bottom:var(--space-6);">Vastome built a real-time feature store on Redis and Apache Kafka to capture and serve behavioral features with sub-10ms latency. A two-tower neural network for candidate retrieval and a gradient-boosted ranking model were deployed on Kubernetes with horizontal autoscaling. The system handles 50,000 recommendation requests per second at peak during sale events.</p>
-        <p class="modal-section-title">Outcome</p>
-        <p style="color:var(--text-muted);line-height:1.8;">"The 23% AOV improvement has directly contributed to a nine-figure annual revenue uplift. The system held up perfectly through our biggest-ever flash sale â€” 3x normal traffic, zero degradation." â€” Chief Data Officer, NovaMart</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal-backdrop" id="modal-6" role="dialog" aria-modal="true" aria-labelledby="modal-6-title">
-    <div class="modal">
-      <div class="modal-header">
-        <div>
-          <div class="work-card-badges" style="margin-bottom:var(--space-2);"><span class="badge badge-security">Security</span><span class="badge badge-cloud">Cloud</span></div>
-          <h2 class="modal-title" id="modal-6-title">GovConnect â€” Zero-Trust Security Migration</h2>
-        </div>
-        <button class="btn btn-ghost btn-icon" aria-label="Close case study" data-modal-close>
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="modal-metrics-grid">
-          <div class="modal-metric-card"><p class="metric-num">100%</p><p class="metric-label">Critical vulns resolved</p></div>
-          <div class="modal-metric-card"><p class="metric-num">40M</p><p class="metric-label">Citizens protected</p></div>
-          <div class="modal-metric-card"><p class="metric-num">ISO 27001</p><p class="metric-label">Certification achieved</p></div>
-        </div>
-        <p class="modal-section-title">Challenge</p>
-        <p style="color:var(--text-muted);line-height:1.8;margin-bottom:var(--space-6);">GovConnect managed the digital identity infrastructure for 40 million citizens. A third-party security audit identified 23 critical vulnerabilities in their perimeter-based network model, including several that could allow unauthorized access to personally identifiable information. The agency had 90 days to remediate before a mandatory compliance deadline.</p>
-        <p class="modal-section-title">Approach</p>
-        <p style="color:var(--text-muted);line-height:1.8;margin-bottom:var(--space-6);">Vastome's security team executed a phased zero-trust migration: first deploying micro-segmentation and identity-aware proxies, then eliminating VPN dependencies with Cloudflare Access, followed by implementing continuous device posture assessment and privileged access management with CyberArk. All 23 critical vulnerabilities were remediated within 60 days.</p>
-        <p class="modal-section-title">Outcome</p>
-        <p style="color:var(--text-muted);line-height:1.8;">"Vastome turned a compliance crisis into a genuine security transformation. We're now operating a security posture that exceeds requirements â€” and we achieved ISO 27001 certification six months after engagement close." â€” CISO, GovConnect</p>
-      </div>
-    </div>
-  </div>
-
-  <footer class="footer" role="contentinfo">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <a href="index.html" class="footer-logo" aria-label="Vastome â€” home">
-            <span style="display:inline-flex;align-items:center;gap:8px;">
-              <span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;background:var(--gold);color:var(--navy);font-family:var(--font-mono);font-size:11px;font-weight:700;border-radius:6px;" aria-hidden="true">[S]</span>
-              Vastome
-            </span>
-          </a>
-          <p class="footer-tagline">Build smart. Scale further.<br>Enterprise software for the teams who move fast and ship with confidence.</p>
-          <div class="footer-social" aria-label="Vastome social links">
-            <a href="https://github.com" class="footer-social-link" target="_blank" rel="noopener noreferrer" aria-label="Vastome on GitHub">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.29-.01-1.05-.02-2.06-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.21.08 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.31 3.5 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.31-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23A11.5 11.5 0 0 1 12 5.8c1.02.005 2.05.14 3.01.41 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.87.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.49 5.92.43.37.82 1.1.82 2.22 0 1.61-.01 2.9-.01 3.29 0 .32.22.7.83.58A12.01 12.01 0 0 0 24 12C24 5.37 18.63 0 12 0z"/></svg>
-            </a>
-            <a href="https://linkedin.com" class="footer-social-link" target="_blank" rel="noopener noreferrer" aria-label="Vastome on LinkedIn">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.37V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zm1.78 13.02H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0z"/></svg>
-            </a>
-            <a href="https://twitter.com" class="footer-social-link" target="_blank" rel="noopener noreferrer" aria-label="Vastome on X (Twitter)">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.24 2h3.14l-6.86 7.84L22.5 22h-6.31l-4.95-6.47L5.5 22H2.36l7.34-8.39L2 2h6.47l4.47 5.84L18.24 2zm-1.1 17.98h1.74L6.95 3.74H5.09l12.05 16.24z"/></svg>
-            </a>
-          </div>
-          <div>
-            <p style="font-size:var(--text-sm);color:rgba(255,255,255,0.55);margin-bottom:var(--space-2);">Get insights in your inbox</p>
-            <form class="footer-newsletter" aria-label="Newsletter signup">
-              <label for="footer-email-work" class="sr-only">Email address for newsletter</label>
-              <input id="footer-email-work" type="email" class="footer-newsletter-input" placeholder="you@company.com" autocomplete="email" />
-              <button type="submit" class="footer-newsletter-btn">Subscribe</button>
-            </form>
-          </div>
-        </div>
-        <nav aria-label="Product links">
-          <p class="footer-col-title">Product</p>
-          <ul class="footer-links" role="list">
-            <li><a href="services.html">Services</a></li>
-            <li><a href="solutions.html">Solutions</a></li>
-            <li><a href="pricing.html">Pricing</a></li>
-            <li><a href="work.html">Case studies</a></li>
-            <li><a href="brand-guide.html">Brand guide</a></li>
-          </ul>
-        </nav>
-        <nav aria-label="Company links">
-          <p class="footer-col-title">Company</p>
-          <ul class="footer-links" role="list">
-            <li><a href="about.html">About</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </nav>
-        <div>
-          <nav aria-label="Legal links">
-            <p class="footer-col-title">Legal</p>
-            <ul class="footer-links" role="list">
-              <li><a href="privacy.html">Privacy policy</a></li>
-              <li><a href="terms.html">Terms of service</a></li>
-              <li><a href="cookies.html">Cookie policy</a></li>
-            </ul>
-          </nav>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p class="footer-copy">&copy; <span class="footer-year"></span> Vastome Ltd. All rights reserved.</p>
-        <p class="footer-copy">Built with <span aria-label="love">â¤ï¸</span> by Vastome</p>
-      </div>
-    </div>
-  </footer>
-
-  <script defer src="assets/js/theme.js"></script>
-  <script defer src="assets/js/nav.js"></script>
-  <script defer src="assets/js/reveal.js"></script>
-  <script defer src="assets/js/main.js"></script>
-  <script>document.querySelectorAll('.footer-year').forEach(el => el.textContent = new Date().getFullYear());</script>
-  <script>
-    // Filter
-    const pills = document.querySelectorAll('.filter-pill');
-    const cards = document.querySelectorAll('.work-card');
-    pills.forEach(pill => {
-      pill.addEventListener('click', () => {
-        pills.forEach(p => p.classList.remove('is-active'));
-        pill.classList.add('is-active');
-        const filter = pill.dataset.filter;
-        cards.forEach(card => {
-          if (filter === 'all' || card.dataset.category === filter) {
-            card.classList.remove('hidden');
-          } else {
-            card.classList.add('hidden');
-          }
-        });
-      });
-    });
-    // Modals
-    function openModal(id) {
-      const m = document.getElementById(id);
-      if (m) { m.classList.add('is-open'); document.body.style.overflow = 'hidden'; }
-    }
-    function closeAllModals() {
-      document.querySelectorAll('.modal-backdrop').forEach(m => m.classList.remove('is-open'));
-      document.body.style.overflow = '';
-    }
-    cards.forEach(card => {
-      card.addEventListener('click', () => openModal(card.dataset.modal));
-      card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(card.dataset.modal); } });
-    });
-    document.querySelectorAll('[data-modal-close]').forEach(btn => btn.addEventListener('click', closeAllModals));
-    document.querySelectorAll('.modal-backdrop').forEach(backdrop => {
-      backdrop.addEventListener('click', e => { if (e.target === backdrop) closeAllModals(); });
-    });
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAllModals(); });
-  </script>
-</body>
-</html>
+</footer>
+      <script src="assets/js/main.js" defer></script>
+    </body>
+    </html>
